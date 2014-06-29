@@ -1,0 +1,4 @@
+Control.create( name: 'public', description: 'An educational institution whose programs and activities are operated by publicly elected or appointed school officials and which is supported primarily by public funds.' )
+Control.create( name: 'private not-for-profit', description: 'A private institution in which the individual(s) or agency in control receives no compensation, other than wages, rent, or other expenses for the assumption of risk. These include both independent not-for-profit schools and those affiliated with a religious organization.' )
+Control.create( name: 'privte for-profit', description: 'A private institution in which the individual(s) or agency in control receives compensation other than wages, rent, or other expenses for the assumption of risk.' )
+Control.create( name: 'not available', description: '' )

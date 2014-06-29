@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Column:</strong>
+  <%= @condition.column %>
+</p>
+
+<p>
+  <strong>Parameter:</strong>
+  <%= @condition.parameter %>
+</p>
+
+<p>
+  <strong>Operator:</strong>
+  <%= @condition.operator %>
+</p>
+
+<p>
+  <strong>Query:</strong>
+  <%= @condition.query %>
+</p>
+
+<p>
+  <strong>Complexoperator:</strong>
+  <%= @condition.complexOperator %>
+</p>
+
+<%= link_to 'Edit', edit_condition_path(@condition) %> |
+<%= link_to 'Back', conditions_path %>

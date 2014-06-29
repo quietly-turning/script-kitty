@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+	<nav class="top-bar">
+		<ul class="title-area">
+			<li class="name">
+				<h1><%= link_to "WeCreateIT", root_path %></a></h1>
+			</li>
+		</ul>
+		<section class="top-bar-section">
+			<!-- Right Nav Section -->
+		  	<ul class="left">
+				<li class="has-dropdown not-click">
+				      <a href="#">Tables</a>
+				      <ul class="dropdown">
+				          <li><%= link_to "Institutions", institutions_path %></li>
+						  <li><%= link_to "Websites", websites_path %></li>
+						  <li><%= link_to "Locales", locales_path %></li>
+						  <li><%= link_to "Level", levels_path %></li>
+						  <li><%= link_to "Controls", controls_path %></li>
+					  </ul>
+				</li>
+			</ul>
+		</section>
+	</nav>
+
+
+
+	<div class="small-12 columns"> <%= yield %> </div>
+	<%= javascript_include_tag "application" %>
+  </body>
+</html>

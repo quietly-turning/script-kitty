@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @operator.name %>
+</p>
+
+<p>
+  <strong>Sql value:</strong>
+  <%= @operator.sql_value %>
+</p>
+
+<p>
+  <strong>Html representation:</strong>
+  <%= @operator.html_representation %>
+</p>
+
+<%= link_to 'Edit', edit_operator_path(@operator) %> |
+<%= link_to 'Back', operators_path %>
