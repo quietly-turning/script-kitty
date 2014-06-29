@@ -19,10 +19,11 @@
 			</li>
 		</ul>
 		<section class="top-bar-section">
-			<!-- Right Nav Section -->
+			<!-- Left Nav Section -->
 		  	<ul class="left">
+				<li class="divider"></li>
 				<li class="has-dropdown not-click">
-				      <a href="#">Tables</a>
+				      <a href="#">Datasets</a>
 				      <ul class="dropdown">
 				          <li><%= link_to "Institutions", institutions_path %></li>
 						  <li><%= link_to "Websites", websites_path %></li>
@@ -31,6 +32,20 @@
 						  <li><%= link_to "Controls", controls_path %></li>
 					  </ul>
 				</li>
+				
+				<li class="divider"></li>
+				<li><%= link_to "Queries", queries_path %></li>
+				<li class="divider"></li>
+			</ul>
+			
+			<!-- Right Nav Section -->
+			<ul class="right">
+				<% if !user_signed_in? %>
+					<li class="divider"></li>
+					<li><%= link_to "Login", new_user_session_path  %></li>
+					<li class="divider"></li>
+					<li><%= link_to "Sign Up", new_user_registration_path %></li>
+				<% end %>
 			</ul>
 		</section>
 	</nav>
