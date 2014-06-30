@@ -1,2 +1,52 @@
-things to teach
+#####################################
+#		Exercises
 
+
+## 1.  a simple query
+SELECT * FROM institutions
+
+
+
+
+## 2.  a simple query with a single condition
+SELECT * FROM institutions WHERE city = "Athens"
+
+
+
+
+## 3.  difference between "=" and "like" (and how to use "like")
+# this returns nothing
+SELECT * FROM institutions WHERE chief = "stan"
+
+# this returns nothing
+SELECT * FROM institutions WHERE chief LIKE "STAN"
+
+# this returns 25 rows
+SELECT * FROM institutions WHERE chief LIKE "%STAN%"
+
+
+
+
+## 4.  a query with two conditions chained by "and"
+
+
+## 5.  a query with two conditions chained by "or"
+
+
+## 6.  a query with multiple conditions chained by "and" and "or"
+
+
+## 7.  a second query with multiple conditions chained by "and" and "or"
+
+
+## 8.
+
+
+## 9.
+
+
+## 10. complex queries that pull from multiple tables (and how to avoid result permutations)
+SELECT institutions.name, institutions.state, locales.name
+FROM institutions, locales
+WHERE institutions.city = "Houston"
+AND institutions.locale_id = locales.id
