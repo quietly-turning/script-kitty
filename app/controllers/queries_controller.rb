@@ -15,6 +15,8 @@ class QueriesController < ApplicationController
   # GET /queries/new
   def new
     @query = Query.new
+    @operators = Operator.all
+    @condition = @query.conditions.build
   end
 
   # GET /queries/1/edit
@@ -25,6 +27,13 @@ class QueriesController < ApplicationController
   # POST /queries.json
   def create
     @query = Query.new(query_params)
+    @query.user_id = current_user.id
+    @query.dummy_id = current_user.queries.count + 1
+    
+    # generate raw sql string
+    @query.processConditions
+    @query.constructFormattedQuery
+    @query.constructHTMLtable
 
     respond_to do |format|
       if @query.save

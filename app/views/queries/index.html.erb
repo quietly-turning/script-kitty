@@ -3,7 +3,6 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
       <th>Dummy</th>
       <th>Formatted sql</th>
       <th>Raw sql</th>
@@ -16,7 +15,6 @@
   <tbody>
     <% @queries.each do |query| %>
       <tr>
-        <td><%= query.name %></td>
         <td><%= query.dummy_id %></td>
         <td><%= query.formatted_sql %></td>
         <td><%= query.raw_sql %></td>

@@ -84,7 +84,6 @@ ActiveRecord::Schema.define(version: 20140630051525) do
   end
 
   create_table "queries", force: true do |t|
-    t.string   "name"
     t.integer  "dummy_id"
     t.text     "formatted_sql"
     t.text     "raw_sql"
