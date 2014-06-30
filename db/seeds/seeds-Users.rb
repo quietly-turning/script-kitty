@@ -1,7 +1,7 @@
 ####################################
 #          Seed A User
 ####################################
-User.create(admin: 1, email: 'test@test.com', password: 'topsecret', password_confirmation: 'topsecret');
+User.create(admin: 1, visual_interface: 0, email: 'test@test.com', password: 'topsecret', password_confirmation: 'topsecret');
 
 
 ####################################

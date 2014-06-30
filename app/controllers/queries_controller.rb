@@ -1,4 +1,6 @@
 class QueriesController < ApplicationController
+  
+  before_filter :authenticate_user!
   before_action :set_query, only: [:show, :edit, :update, :destroy]
 
   # GET /queries
