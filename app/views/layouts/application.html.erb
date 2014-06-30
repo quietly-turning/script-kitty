@@ -34,6 +34,17 @@
 				</li>
 				
 				<li class="divider"></li>
+				<li class="has-dropdown not-click">
+					<a href="#">Exercises</a>
+					<ul class="dropdown">
+						<% for exercise in Exercise.all %>
+							<li><%= link_to "Exercise #{exercise.id}", exercise_path(exercise.id) %></li>
+						<% end %>
+					</ul>
+				</li>
+				
+				
+				<li class="divider"></li>
 				<li><%= link_to "Queries", queries_path %></li>
 				<li class="divider"></li>
 			</ul>

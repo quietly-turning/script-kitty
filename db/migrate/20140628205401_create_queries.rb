@@ -7,7 +7,8 @@ class CreateQueries < ActiveRecord::Migration
       t.text :raw_sql
       t.text :html_table
       t.references :user, index: true
-
+      t.references :exercise, index: true
+      
       t.timestamps
     end
   end

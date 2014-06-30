@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :exercises
+
   resources :conditions
 
   resources :queries

@@ -16,8 +16,9 @@ rails g scaffold website classification url institution:references
 
 # query building stuff
 rails g scaffold datatype name
-rails g scaffold operator name sql_value html_representation
-rails g scaffold query name dummy_id:integer formatted_sql:text raw_sql:text html_table:text user:references
+rails g scaffold exercise question:text
+rails g scaffold query name dummy_id:integer formatted_sql:text raw_sql:text html_table:text user:references exercise:references
+rails g scaffold operator name sql_value html_representation query:references
 rails g scaffold condition column parameter operator:references query:references complexOperator
 
 # rake tasks

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140628205402) do
+ActiveRecord::Schema.define(version: 20140630051525) do
 
   create_table "conditions", force: true do |t|
     t.string   "column"
@@ -35,6 +35,12 @@ ActiveRecord::Schema.define(version: 20140628205402) do
 
   create_table "datatypes", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "exercises", force: true do |t|
+    t.text     "question"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -84,10 +90,12 @@ ActiveRecord::Schema.define(version: 20140628205402) do
     t.text     "raw_sql"
     t.text     "html_table"
     t.integer  "user_id"
+    t.integer  "exercise_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "queries", ["exercise_id"], name: "index_queries_on_exercise_id", using: :btree
   add_index "queries", ["user_id"], name: "index_queries_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
