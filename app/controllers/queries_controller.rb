@@ -33,9 +33,9 @@ class QueriesController < ApplicationController
     @query.dummy_id = current_user.queries.count + 1
     
     # generate raw sql string
-    @query.processConditions
-    @query.constructFormattedQuery
-    @query.constructHTMLtable
+    # @query.processConditions
+    # @query.constructFormattedQuery
+    # @query.constructHTMLtable
 
     respond_to do |format|
       if @query.save
@@ -80,6 +80,6 @@ class QueriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def query_params
-      params.require(:query).permit(:name, :dummy_id, :formatted_sql, :raw_sql, :html_table, :user_id)
+      params.require(:query).permit(:name, :dummy_id, :formatted_sql, :raw_sql, :html_table, :user_id, :exercise_id)
     end
 end

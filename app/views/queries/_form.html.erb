@@ -11,31 +11,10 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :dummy_id %><br>
-    <%= f.number_field :dummy_id %>
-  </div>
-  <div class="field">
-    <%= f.label :formatted_sql %><br>
-    <%= f.text_area :formatted_sql %>
-  </div>
-  <div class="field">
-    <%= f.label :raw_sql %><br>
-    <%= f.text_area :raw_sql %>
-  </div>
-  <div class="field">
-    <%= f.label :html_table %><br>
-    <%= f.text_area :html_table %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<% if current_user.visual_interface? %>
+		<%= render :partial => 'queries/visual_form', :locals => {:form => f} %>
+	<% else %>
+		<%= render :partial => 'queries/simple_form', :locals => {:form => f} %>
+	<% end %>
+
 <% end %>

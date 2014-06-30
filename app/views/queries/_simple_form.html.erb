@@ -1,0 +1,10 @@
+  <div class="field">
+    <label for="query_raw_sql">Type your query here:</label><br>
+    <%= form.text_area :raw_sql %>
+	<%= form.hidden_field :exercise_id, :value => @exercise.id %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>

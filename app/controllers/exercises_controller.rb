@@ -12,6 +12,9 @@ class ExercisesController < ApplicationController
   # GET /exercises/1
   # GET /exercises/1.json
   def show
+      @query = Query.new
+      # @operators = Operator.all
+      # @condition = @query.conditions.build
   end
 
   # GET /exercises/new
