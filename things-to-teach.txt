@@ -15,13 +15,13 @@ SELECT * FROM institutions WHERE city = "Athens"
 
 
 ## 3.  difference between "=" and "like" (and how to use "like")
-# this returns nothing
+#  3a. this returns nothing
 SELECT * FROM institutions WHERE chief = "stan"
 
-# this returns nothing
+#  3b. this returns nothing
 SELECT * FROM institutions WHERE chief LIKE "stan"
 
-# this returns 25 rows
+#  3c. this returns 25 rows
 SELECT * FROM institutions WHERE chief LIKE "%stan%"
 
 
@@ -60,31 +60,40 @@ AND institutions.state != "TX"
 
 
 
-## 7.  a query with multiple conditions chained by "and" and "or"
+## 7.  a simple query that only pulls specific columns into the results
+# this returns the (name, city, state) of institutions where the chief's name contains "Victor"
+SELECT name, city, state
+FROM institutions
+WHERE chief LIKE "%Victor%"
 
 
 
-## 8.  a second query with multiple conditions chained by "and" and "or"
+
+## 8.  another query that only pulls specific columns into the results
+# this returns NY institutions with the word "medical" in the name
+SELECT name, city, state
+FROM institutions
+WHERE name LIKE "%Medical%"
+AND state = "NY"
 
 
 
 
 
 ## 9. complex query that pulls from multiple tables (and how to avoid cartesian products)
+# this returns the nineteen Penn State campuses and their respective locales
+SELECT institutions.name, institutions.state, locales.name
+FROM institutions, locales
+WHERE institutions.name LIKE "%Penn State%"
+AND locales.id = institutions.locale_id
+
+
+
+
+
+## 10. another complex query that pulls from multiple tables 
 # this returns four unique institutions (coincidentally from four unique states) where the city is "Sterling" 
 SELECT institutions.name, institutions.state, controls.name
 FROM institutions, controls
 WHERE institutions.city = "Sterling"
 AND controls.id = institutions.control_id
-
-
-
-
-
-## 10. another complex query that pulls from multiple tables
-# returns six institutions located in "rural, remote" locales in ND
-SELECT institutions.name, institutions.state, locales.name
-FROM institutions, locales
-WHERE locales.name = "rural, remote"
-AND locales.id = institutions.locale_id
-AND institutions.state = "ND"
