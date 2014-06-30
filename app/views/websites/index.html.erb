@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+	  <th>ID</th>
       <th>Type</th>
       <th>Url</th>
       <th>Institution</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @websites.each do |website| %>
       <tr>
+		<td><%= website.id %></td>
         <td><%= website.classification %></td>
         <td><%= website.url %></td>
         <td><%= website.institution.name %></td>
@@ -25,8 +27,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Website', new_website_path %>
-

@@ -1,8 +1,10 @@
 <h1>Institutions</h1>
+<p><%= paginate @institutions %></p>
 
 <table>
   <thead>
     <tr>
+	  <th>ID</th>
       <th>Name</th>
       <th>City</th>
       <th>State</th>
@@ -18,6 +20,7 @@
   <tbody>
     <% @institutions.each do |institution| %>
       <tr>
+		<td><%= institution.id %></td>
         <td><%= institution.name %></td>
         <td><%= institution.city %></td>
         <td><%= institution.state %></td>
@@ -33,9 +36,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Institution', new_institution_path %>
-
-<p><%= paginate @institutions %></p>

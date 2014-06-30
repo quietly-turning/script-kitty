@@ -5,7 +5,7 @@ class InstitutionsController < ApplicationController
   # GET /institutions.json
   def index
     # @institutions = Institution.all
-    @institutions = Institution.order(:name).page params[:page]
+    @institutions = Institution.order(:id).page params[:page]
   end
 
   # GET /institutions/1
