@@ -15,9 +15,9 @@
 
 development:
     adapter: mysql2
-    database: Thesis
-    username: root
-    password: root
+    database: thesis
+    username: thesis_user
+    password: moomoo
     host: 127.0.0.1
     port: 3306
 
