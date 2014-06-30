@@ -20,7 +20,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
 gem 'foundation-rails'
 gem 'kaminari'
-
+gem 'jquery-ace-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

@@ -12,8 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//
 //= require foundation
 //= require turbolinks
 //= require_tree .
+//
+//= require ace/ace
+//= require ace/theme-twilight
+//= require ace/mode-sql
+//= require jquery-ace.min
 
 $(function(){ $(document).foundation(); });
