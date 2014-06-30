@@ -19,34 +19,72 @@ SELECT * FROM institutions WHERE city = "Athens"
 SELECT * FROM institutions WHERE chief = "stan"
 
 # this returns nothing
-SELECT * FROM institutions WHERE chief LIKE "STAN"
+SELECT * FROM institutions WHERE chief LIKE "stan"
 
 # this returns 25 rows
-SELECT * FROM institutions WHERE chief LIKE "%STAN%"
+SELECT * FROM institutions WHERE chief LIKE "%stan%"
 
 
 
 
-## 4.  a query with two conditions chained by "and"
 
 
-## 5.  a query with two conditions chained by "or"
+## 4.  a query with two conditions chained by "or"
+# this returns 23 various rows
+SELECT *
+FROM institutions
+WHERE institutions.chief LIKE "%Laura%"
+OR institutions.chief LIKE "%Carrol%
 
 
-## 6.  a query with multiple conditions chained by "and" and "or"
 
 
-## 7.  a second query with multiple conditions chained by "and" and "or"
+## 5.  a query with two conditions chained by "and"
+# this returns a single row where the chief is "Laura Carroll"
+SELECT *
+FROM institutions
+WHERE institutions.chief LIKE "%Laura%"
+AND institutions.chief LIKE "%Carrol%
 
 
-## 8.
 
 
-## 9.
+## 6. a query that uses "does not equal" and has two conditions chained together by "and"
+# this returns a single rural college in Houston, Missouri
+SELECT *
+FROM institutions
+WHERE institutions.city = "Houston"
+AND institutions.state != "TX"
 
 
-## 10. complex queries that pull from multiple tables (and how to avoid result permutations)
+
+
+
+## 7.  a query with multiple conditions chained by "and" and "or"
+
+
+
+## 8.  a second query with multiple conditions chained by "and" and "or"
+
+
+
+
+
+## 9. complex query that pulls from multiple tables (and how to avoid cartesian products)
+# this returns four unique institutions (coincidentally from four unique states) where the city is "Sterling" 
+SELECT institutions.name, institutions.state, controls.name
+FROM institutions, controls
+WHERE institutions.city = "Sterling"
+AND controls.id = institutions.control_id
+
+
+
+
+
+## 10. another complex query that pulls from multiple tables
+# returns six institutions located in "rural, remote" locales in ND
 SELECT institutions.name, institutions.state, locales.name
 FROM institutions, locales
-WHERE institutions.city = "Houston"
-AND institutions.locale_id = locales.id
+WHERE locales.name = "rural, remote"
+AND locales.id = institutions.locale_id
+AND institutions.state = "ND"
