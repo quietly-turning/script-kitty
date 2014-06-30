@@ -1,12 +1,10 @@
-<h1>queries</h1>
+<h1>All Queries</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Dummy ID</th>
-      <th>Formatted SQL</th>
+      <th>(Dummy) ID</th>
       <th>Raw SQL</th>
-      <th>HTML table</th>
       <th>User ID</th>
 	  <th>Exercise ID</th>
       <th colspan="3">manage</th>
@@ -17,9 +15,7 @@
     <% @queries.each do |query| %>
       <tr>
         <td><%= query.dummy_id %></td>
-        <td><%= query.formatted_sql %></td>
         <td><%= query.raw_sql %></td>
-        <td><%= query.html_table %></td>
         <td><%= query.user.id %></td>
 		<td><%= query.exercise.id %></td>
         <td><%= link_to 'Show', query %></td>

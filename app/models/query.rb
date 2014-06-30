@@ -178,5 +178,110 @@ class Query < ActiveRecord::Base
 
 ########################################################  
 ########################################################
+	
+	# probably shouldn't use this...
+	def parse_raw_sql
+		#get the select values
+		s = self.raw_sql[/select (.*?) from /mi, 1]
+		# #split the select values by comma and strip whitespace
+		# selects = select.split(",").strip
+				
+		w = ""
+		
+		second_half = self.raw_sql[/from (.*?)/mi, 1]
+		#this is REALLY hacky and only works because
+		#none of our datasets contain the text "where"
+		if second_half.downcase.include? " where "
+			w = self.raw_sql[/ where (.*?)/mi, 1]
+		end
+		
+		return Institution.select(s).where(w)
+	end
+
+
+
+    def constructHTMLtable_simple
+		htmlTable = ""
+				
+		connection = ActiveRecord::Base.connection
+        @result = ActiveRecord::Base.connection.execute(self.raw_sql)
+		
+		# we don't really want created_at and updated_at attributes showing up in results
+		# these are flags
+		includes_created_at = @result.fields.include? "created_at"
+		includes_updated_at = @result.fields.include? "updated_at"
+
+
+		
+		# enforce a limit of 500 results per query
+		# this helps mitigate the likelihood of a user crashing/stalling the app
+		# create an alert box above the results table if necessary
+		unless @result.nil?
+			if @result.size >= 500
+				htmlTable += "<div data-alert class=\"alert-box warning radius small-4\">"
+				htmlTable += "There are #{@result.to_a.size} records in this result set!<br>"
+				htmlTable += "We're only showing the first 500.</div>"
+			end
+		end
+		
+	    htmlTable += "<table>"
+	    htmlTable += "\n\t<thead>\n\t\t<tr>"
+		
+		unless @result.nil?
+			# http://rubydoc.info/gems/mysql2/0.2.6/Mysql2/Result#fields-instance_method
+			for field in @result.fields
+				if field != "created_at" and field != "updated_at"
+					htmlTable += "\n\t\t\t<th>" + field + "</th>"
+				end
+			end
+		end
+		
+		htmlTable += "\n\t\t</tr>\n\t</thead>"
+		htmlTable += "\n\n\t<tbody>"
+		
+		unless @result.nil?
+			# if there are more than 500 results, only bother fetching the first 500
+			if @result.size >= 500
+				
+				@result = @result.to_a
+		        for i in 0...500
+				
+					htmlTable += "\n\t\t<tr>"
+					if includes_created_at and includes_updated_at
+						for j in 0...(@result[i].size-2)
+							htmlTable += "\n\t\t\t<td>" + @result[i][j].to_s + "</td>"
+						end
+					else
+			            @result[i].each do |value|
+			                htmlTable += "\n\t\t\t<td>" + value.to_s + "</td>"
+			            end
+					end
+					htmlTable += "\n\t\t</tr>"
+		        end
+			
+			#otherwise, there are fewer than 500 results in the set, so fetch them all
+			else
+		        for row in @result
+				
+					htmlTable += "\n\t\t<tr>"
+					if includes_created_at and includes_updated_at
+						for i in 0...(row.size-2)
+							htmlTable += "\n\t\t\t<td>" + row[i].to_s + "</td>"
+						end
+					else
+			            row.each do |value|
+			                htmlTable += "\n\t\t\t<td>" + value.to_s + "</td>"
+			            end
+					end
+					htmlTable += "\n\t\t</tr>"
+		        end
+			end
+		end
+		
+		htmlTable += "\n\t</tbody>"    
+		htmlTable += "\n\n</table>"
+		
+        self.html_table = htmlTable
+    end
 
 end

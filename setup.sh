@@ -25,3 +25,7 @@ rails g scaffold condition column parameter operator:references query:references
 # rake tasks
 rake db:migrate
 rake db:seed
+
+
+# misc. notes
+# need to create a DB user with limited permissions (insert, select):  thesis_user

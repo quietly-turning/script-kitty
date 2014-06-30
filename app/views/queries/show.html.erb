@@ -1,29 +1,36 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Dummy:</strong>
+  <strong>(Dummy) Query ID:</strong>
   <%= @query.dummy_id %>
 </p>
 
 <p>
-  <strong>Formatted sql:</strong>
+  <strong>Formatted SQL:</strong>
   <%= @query.formatted_sql %>
 </p>
 
 <p>
-  <strong>Raw sql:</strong>
+  <strong>Raw SQL Query:</strong>
   <%= @query.raw_sql %>
 </p>
 
 <p>
-  <strong>Html table:</strong>
-  <%= @query.html_table %>
+  <strong>Exercise ID:</strong>
+  <%= @query.exercise.id %>
 </p>
 
+
+<hr>
+
 <p>
-  <strong>User:</strong>
-  <%= @query.user %>
+  <strong>Results:</strong>
+  <%= raw @query.html_table %>
 </p>
+
+
+<hr>
+
 
 <%= link_to 'Edit', edit_query_path(@query) %> |
 <%= link_to 'Back', queries_path %>

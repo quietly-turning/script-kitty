@@ -12,6 +12,7 @@ class QueriesController < ApplicationController
   # GET /queries/1
   # GET /queries/1.json
   def show
+      # @alt_query_results = @query.parse_raw_sql
   end
 
   # GET /queries/new
@@ -31,11 +32,15 @@ class QueriesController < ApplicationController
     @query = Query.new(query_params)
     @query.user_id = current_user.id
     @query.dummy_id = current_user.queries.count + 1
-    
-    # generate raw sql string
-    # @query.processConditions
-    # @query.constructFormattedQuery
-    # @query.constructHTMLtable
+
+    if current_user.visual_interface?
+        # @query.processConditions
+        # @query.constructFormattedQuery
+        # @query.constructHTMLtable
+    else
+        @query.constructHTMLtable_simple
+    end
+
 
     respond_to do |format|
       if @query.save
