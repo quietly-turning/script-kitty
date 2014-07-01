@@ -1,34 +1,37 @@
-<p>
-  <strong>(Dummy) Query ID:</strong>
-  <%= @query.dummy_id %>
-</p>
+<div class="row">
+	<div class="small-12 columns">
+		<p>
+		  <strong>(Dummy) Query ID:</strong>
+		  <%= @query.dummy_id %>
+		</p>
 
-<p>
-  <strong>Formatted SQL:</strong>
-  <%= @query.formatted_sql %>
-</p>
+		<p>
+		  <strong>Formatted SQL:</strong>
+		  <%= @query.formatted_sql %>
+		</p>
 
-<p>
-  <strong>Raw SQL Query:</strong>
-  <%= @query.raw_sql %>
-</p>
+		<p>
+		  <strong>Raw SQL Query:</strong>
+		  <%= @query.raw_sql %>
+		</p>
 
-<p>
-  <strong>Exercise ID:</strong>
-  <%= @query.exercise.id %>
-</p>
-
-
-<hr>
-
-<p>
-  <strong>Results:</strong>
-  <%= raw @query.html_table %>
-</p>
+		<p>
+		  <strong>Exercise ID:</strong>
+		  <%= @query.exercise.id %>
+		</p>
 
 
-<hr>
+		<hr>
+
+		<p>
+		  <strong>Results:</strong>
+		  <%= raw @query.html_table %>
+		</p>
 
 
-<%= link_to 'Edit', edit_query_path(@query) %> |
-<%= link_to 'Back', queries_path %>
+		<hr>
+		
+		<%= link_to 'Edit', edit_query_path(@query) %> |
+		<%= link_to 'Back', queries_path %>
+	</div>
+</div>

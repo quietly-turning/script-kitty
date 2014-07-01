@@ -5,3 +5,21 @@
 .exercise-header{
 	background-color: #dfdfdf;
 }
+
+.kitty-image{
+	margin-top:10px;
+	margin-right:70px;
+}
+
+.kitty-alert{
+	margin-left: 60px;
+	margin-top: 40px;
+	background-image: image-url("bubble-alert.png");
+	background-repeat: no-repeat;
+	height: 77px;
+	width:575px;
+	padding: 20px 110px 20px 20px;
+	color: #FFF;
+	font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	font-size: 1.15em;
+}

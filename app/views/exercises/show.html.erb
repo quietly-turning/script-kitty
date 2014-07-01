@@ -11,13 +11,22 @@
 	</div>
 </div>
 
+<div class="row">
+	<div class="small-10 small-centered columns">
+		<%= render 'layouts/messages' %>
+	</div>
+</div>
 
 <div class="row">
-	<div class="small-12 columns">
+	<div class="small-12 small-centered columns">
+		<hr>
+	</div>
+</div>
 
-		<p>
-			<%= render :partial => 'queries/form'  %> 
-		</p>
+<div class="row">
+	<div class="small-9 small-centered columns">
+
+		<%= render :partial => 'queries/form'  %> 
 
 		<%= link_to 'Back', exercises_path %>
 	</div>
