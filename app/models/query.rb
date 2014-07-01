@@ -179,27 +179,6 @@ class Query < ActiveRecord::Base
 ########################################################  
 ########################################################
 	
-	# probably shouldn't use this...
-	def parse_raw_sql
-		#get the select values
-		s = self.raw_sql[/select (.*?) from /mi, 1]
-		# #split the select values by comma and strip whitespace
-		# selects = select.split(",").strip
-				
-		w = ""
-		
-		second_half = self.raw_sql[/from (.*?)/mi, 1]
-		#this is REALLY hacky and only works because
-		#none of our datasets contain the text "where"
-		if second_half.downcase.include? " where "
-			w = self.raw_sql[/ where (.*?)/mi, 1]
-		end
-		
-		return Institution.select(s).where(w)
-	end
-
-
-
     def constructHTMLtable_simple
 		htmlTable = ""
 				
@@ -212,7 +191,6 @@ class Query < ActiveRecord::Base
 		includes_updated_at = @result.fields.include? "updated_at"
 
 
-		
 		# enforce a limit of 500 results per query
 		# this helps mitigate the likelihood of a user crashing/stalling the app
 		# create an alert box above the results table if necessary
