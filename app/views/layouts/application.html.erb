@@ -64,9 +64,19 @@
 		</section>
 	</nav>
 
-
-
-	<div class="small-12 columns"> <%= yield %> </div>
+	<div class="row">
+		<div class="small-2 columns"></div>
+		<div class="small-8 columns">
+			<%= render 'layouts/messages' %>
+		</div>
+		<div class="small-2 columns"></div>
+	</div>
+	<div class="row">
+		<div class="small-12 columns">
+			<%= yield %>
+		</div>
+	</div>
+		
 	<%= javascript_include_tag "application" %>
   </body>
 </html>
