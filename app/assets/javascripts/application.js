@@ -16,10 +16,10 @@
 //= require foundation
 //= require turbolinks
 //= require_tree .
-//
-//= require ace/ace
-//= require ace/theme-twilight
-//= require ace/mode-sql
-//= require jquery-ace.min
+// 
+//= require codemirror
+//= require codemirror/modes/sql
 
-$(function(){ $(document).foundation(); });
+$(function(){ 
+	$(document).foundation();
+});

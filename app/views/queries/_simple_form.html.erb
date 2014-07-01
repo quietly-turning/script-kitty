@@ -1,13 +1,13 @@
-  <div class="field">
+<div class="field">
     <label for="query_raw_sql">Type your query here:</label><br>
-    <%= form.text_area :raw_sql, :value => @raw_sql, :data => {:behavior => 'sql-editor'}%>
+    <%= form.text_area :raw_sql, :value => @raw_sql %>
 	
 	<% unless @exercise.nil? %>
-	<%= form.hidden_field :exercise_id, :value => @exercise.id %>
+		<%= form.hidden_field :exercise_id, :value => @exercise.id %>
 	<% end %>
-  </div>
+</div>
 
 
-  <div class="actions">
+<div class="actions">
     <%= form.submit %>
-  </div>
+</div>
