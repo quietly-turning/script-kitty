@@ -1,0 +1,51 @@
+<nav class="top-bar">
+	<ul class="title-area">
+		<li class="name">
+			<h1><%= link_to "Script Kitty", root_path %></a></h1>
+		</li>
+	</ul>
+	<section class="top-bar-section">
+		<!-- Left Nav Section -->
+	  	<ul class="left">
+			<li class="divider"></li>
+			<li class="has-dropdown not-click">
+			      <a href="#">Datasets</a>
+			      <ul class="dropdown">
+			          <li><%= link_to "Institutions", institutions_path %></li>
+					  <li><%= link_to "Websites", websites_path %></li>
+					  <li><%= link_to "Locales", locales_path %></li>
+					  <li><%= link_to "Level", levels_path %></li>
+					  <li><%= link_to "Controls", controls_path %></li>
+				  </ul>
+			</li>
+			
+			<li class="divider"></li>
+			<li class="has-dropdown not-click">
+				<a href="#">Exercises</a>
+				<ul class="dropdown">
+					<% for exercise in Exercise.all %>
+						<li><%= link_to "Exercise #{exercise.id}", exercise_path(exercise.id) %></li>
+					<% end %>
+				</ul>
+			</li>
+			
+			
+			<li class="divider"></li>
+			<li><%= link_to "Queries", queries_path %></li>
+			<li class="divider"></li>
+		</ul>
+		
+		<!-- Right Nav Section -->
+		<ul class="right">
+			<% if !user_signed_in? %>
+				<li class="divider"></li>
+				<li><%= link_to "Login", new_user_session_path  %></li>
+				<li class="divider"></li>
+				<li><%= link_to "Create An Account", new_user_registration_path %></li>
+			<% else %>
+				<li class="divider"></li>
+				<li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+			<% end %>
+		</ul>
+	</section>
+</nav>

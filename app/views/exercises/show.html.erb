@@ -1,10 +1,24 @@
-<p>
-  <strong>Question:</strong>
-  <%= raw @exercise.question %>
-</p>
+<div class="exercise-header">
+	<div class="row">
+		<div class="small-12 columns">
+			<h2>Exercise <%= @exercise.id %></h2>
+	
+			<p>
+			  <strong>Question:</strong>
+			  <%= raw @exercise.question %>
+			</p>
+		</div>
+	</div>
+</div>
 
-<p>
-	<%= render :partial => 'queries/form'  %> 
-</p>
 
-<%= link_to 'Back', exercises_path %>
+<div class="row">
+	<div class="small-12 columns">
+
+		<p>
+			<%= render :partial => 'queries/form'  %> 
+		</p>
+
+		<%= link_to 'Back', exercises_path %>
+	</div>
+</div>
