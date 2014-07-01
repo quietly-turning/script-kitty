@@ -3,7 +3,7 @@ class QueriesController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_query, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::StatementInvalid do |exception|
-  	redirect_to exercise_path(params[:query][:exercise_id], {:raw_sql => params[:query][:raw_sql]} ), alert: exception.message
+  	redirect_to exercise_path(params[:query][:exercise_id], {:raw_sql => params[:query][:raw_sql]} ), alert: friendly_errors(exception.message)
   end
   
   # GET /queries
@@ -89,5 +89,24 @@ class QueriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def query_params
       params.require(:query).permit(:name, :dummy_id, :formatted_sql, :raw_sql, :html_table, :user_id, :exercise_id)
-    end	
+    end
+	
+	def friendly_errors(error)
+		message = "Oops!  There is some sort of problem with your query!"
+
+		if error.include? "Mysql2::Error: You have an error in your SQL syntax;"
+			line_number = (/at line (\d+):/.match(error)).captures[0]
+			message = "<span class='oops'>Oops!</span>  You seem to have a syntax error near line #{line_number}!"
+			
+		elsif error =~ /Mysql2::Error: Table 'thesis.(\w+)' doesn't exist:/
+			nonexistent_table = (/thesis.(\w+)/.match(error)).captures[0]
+			message = "<span class='oops'>Oops!</span>  It seems that the table <em>#{nonexistent_table}</em> doesn't exist!"
+		
+		elsif error =~ /Mysql2::Error: Unknown column '(\w+)' in 'where clause'/
+			unknown_colummn = (/Unknown column '(\w+)' in 'where clause'/.match(error)).captures[0]
+			message = "<span class='oops'>Oops!</span>  It seems that the column <em>#{unknown_colummn}</em> doesn't exist!"
+		end
+		
+		return message
+	end
 end

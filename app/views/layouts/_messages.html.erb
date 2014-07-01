@@ -2,11 +2,13 @@
 
 	<% if msg.is_a?(String) %>
     	<div data-alert class="left kitty-<%= name.to_s == 'notice' ? 'success' : 'alert' %>">
-    		<%= content_tag :div, msg %>
+    		<%= raw msg %>
     	</div>
 		<div class="kitty-image right">
 			<%= image_tag "kitty-#{name.to_s == 'notice' ? 'success' : 'alert'}.png"%>
 		</div>
+		
+		<hr>
 	<% end %>
 	
 <% end %>

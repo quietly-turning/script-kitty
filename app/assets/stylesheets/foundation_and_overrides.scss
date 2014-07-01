@@ -61,7 +61,6 @@
 
 // We use these as default colors throughout
 // $primary-color: #008CBA;
-$primary-color: #4070e3;
 // $secondary-color: #e7e7e7;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;
@@ -356,6 +355,7 @@ $primary-color: #4070e3;
 // We use these to control button text styles.
 // $button-font-family: $body-font-family;
 // $button-font-color: #fff;
+$button-font-color: #000;
 // $button-font-color-alt: #333;
 // $button-font-tny: rem-calc(11);
 // $button-font-sml: rem-calc(13);
@@ -371,6 +371,7 @@ $primary-color: #4070e3;
 // $button-border-width: 0px;
 // $button-border-style: solid;
 // $button-bg: $primary-color;
+$button-bg: #3197ee;
 // $button-border-color: scale-color($bg, $lightness: $button-function-factor);
 
 // We use this to set the default radius used throughout the core.
