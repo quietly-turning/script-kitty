@@ -2,7 +2,10 @@ class QueriesController < ApplicationController
   
   before_filter :authenticate_user!
   before_action :set_query, only: [:show, :edit, :update, :destroy]
-
+  rescue_from ActiveRecord::StatementInvalid do |exception|
+  	redirect_to exercise_path(params[:query][:exercise_id], {:raw_sql => params[:query][:raw_sql]} ), alert: exception.message
+  end
+  
   # GET /queries
   # GET /queries.json
   def index
@@ -86,5 +89,5 @@ class QueriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def query_params
       params.require(:query).permit(:name, :dummy_id, :formatted_sql, :raw_sql, :html_table, :user_id, :exercise_id)
-    end
+    end	
 end

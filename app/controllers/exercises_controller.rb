@@ -13,6 +13,15 @@ class ExercisesController < ApplicationController
   # GET /exercises/1.json
   def show
       @query = Query.new
+	  @raw_sql = ""
+	  
+	  # a paramter might exist if the user made a mistake typing the query
+	  # the last time around and we were just redirected here...
+	  if not params[:raw_sql].nil?
+		 @raw_sql = params[:raw_sql]
+	  end
+	  
+	  
       # @operators = Operator.all
       # @condition = @query.conditions.build
   end
