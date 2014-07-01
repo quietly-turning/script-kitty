@@ -1,5 +1,5 @@
 Exercise.create( question: "Let's write a simple query.  Find all the available information about all the institutions.")
-Exercise.create( question: "Find all available information about institutions where the city is <em>Athens</em>")
+Exercise.create( question: "Find all available information about institutions where the city is <em>Athens</em>.")
 Exercise.create( question: "Find all available information about institutions where the chief's name contains the text <em>stan</em>.")
 Exercise.create( question: "Find all available information about institutions where the chief's name contains the text <em>laura</em> or the chief's name contains the text <em>carroll</em>.")
 Exercise.create( question: "Find all available information about institutions where the chief's name contains the text <em>laura</em> and the chief's name <strong>also</strong> contains the text <em>carroll</em>.")
