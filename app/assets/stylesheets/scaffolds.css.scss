@@ -29,6 +29,12 @@ a {
   }
 }
 
+a.close{
+	&:hover {
+		background-color: transparent;
+	}	
+}
+
 div {
   &.field, &.actions {
     margin-bottom: 10px;

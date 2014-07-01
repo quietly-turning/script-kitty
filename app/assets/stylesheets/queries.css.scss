@@ -3,6 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #query_raw_sql {
-	width: 40em;
+	display:none;
+}
+
+
+.CodeMirror {
+	border-radius:0.4em;
+	width: 49em;
 	height: 20em;
 }
