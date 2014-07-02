@@ -1,0 +1,38 @@
+<% flash.each do |name, msg| %>
+
+	<% if msg.is_a?(String) %>
+		<div class="small-offset-2 small-8 columns">
+			
+			<% if msg == "correct" %>
+			
+	    		<div class="small-10 columns kitty-bubble bubbletype-success">
+					<div class="message">
+						<%= raw @query.exercise.response_correct %>
+					</div>
+				</div>
+				
+				<div class="small-2 columns">
+					<%= image_tag "kitty-success.png", :class => "kitty-image" %>
+				</div>
+				
+			<% else %>
+			
+	    		<div class="small-10 columns kitty-bubble bubbletype-notice">
+					<div class="message">
+						<%= raw @query.exercise.response_incorrect %>
+					</div>
+				</div>
+				
+				<div class="small-2 columns">
+					<%= image_tag "kitty-question.png", :class => "kitty-image" %>
+				</div>
+				
+			<% end %>
+			
+
+			
+		</div>
+		<hr>
+	<% end %>
+	
+<% end %>

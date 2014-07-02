@@ -1,25 +1,29 @@
+<div class="exercise-header">
+	<div class="row">
+		<div class="small-12 columns">
+			<h2>Exercise <%= @query.exercise.id %></h2>
+	
+			<p>
+			  <strong>Question:</strong>
+			  <%= raw @query.exercise.question %>
+			</p>
+		</div>
+	</div>
+</div>
+
+
+<div class="row">
+	<%= render 'queries/messages' %>
+</div>
+
+
 <div class="row">
 	<div class="small-12 columns">
-		<p>
-		  <strong>(Dummy) Query ID:</strong>
-		  <%= @query.dummy_id %>
-		</p>
 
 		<p>
-		  <strong>Formatted SQL:</strong>
-		  <%= @query.formatted_sql %>
+		  <strong>Query:</strong>
+		  <span class="raw-sql"><%= @query.raw_sql %><span>
 		</p>
-
-		<p>
-		  <strong>Raw SQL Query:</strong>
-		  <%= @query.raw_sql %>
-		</p>
-
-		<p>
-		  <strong>Exercise ID:</strong>
-		  <%= @query.exercise.id %>
-		</p>
-
 
 		<hr>
 
@@ -31,7 +35,6 @@
 
 		<hr>
 		
-		<%= link_to 'Edit', edit_query_path(@query) %> |
-		<%= link_to 'Back', queries_path %>
+		<%= link_to 'Try this exercise again', exercise_path(@query.exercise.id	) %>
 	</div>
 </div>

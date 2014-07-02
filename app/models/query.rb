@@ -196,9 +196,9 @@ class Query < ActiveRecord::Base
 		# create an alert box above the results table if necessary
 		unless @result.nil?
 			if @result.size >= 500
-				htmlTable += "<div data-alert class=\"alert-box warning radius small-4\">"
+				htmlTable += "<div data-alert class=\"alert-box warning radius small-4\">\n"
 				htmlTable += "There are #{@result.to_a.size} records in this result set!<br>"
-				htmlTable += "We're only showing the first 500.</div>"
+				htmlTable += "We're only showing the first 500.\n</div>\n\n"
 			end
 		end
 		
@@ -261,5 +261,23 @@ class Query < ActiveRecord::Base
 		
         self.html_table = htmlTable
     end
+
+	def check_if_correct
+		
+		query_array = self.raw_sql.downcase.gsub('"', '').gsub("'", "").split.sort
+		query_string = ""
+		
+		for word in query_array
+			query_string += word + " "
+		end
+		
+		self.sorted_sql = query_string
+		
+		if query_string == self.exercise.answer
+			self.correct = 1
+		else
+			self.correct = 0
+		end
+	end
 
 end

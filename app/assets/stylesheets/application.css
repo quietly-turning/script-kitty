@@ -61,6 +61,14 @@ thead tr th {
 	background-color: #3ea237;
 }
 
+.bubbletype-notice {
+	background-color: #3197ee;
+}
+
 span.oops{
 	font-size: 1.8em;
+}
+
+span.raw-sql{
+	font-family: courier;
 }
