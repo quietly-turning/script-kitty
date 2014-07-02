@@ -5,7 +5,8 @@
 		<table>
 		  <thead>
 		    <tr>
-		      <th>(Dummy) ID</th>
+			  <th>ID</th>
+		      <th>Dummy ID</th>
 		      <th>Raw SQL</th>
 		      <th>User ID</th>
 			  <th>Exercise ID</th>
@@ -16,6 +17,7 @@
 		  <tbody>
 		    <% @queries.each do |query| %>
 		      <tr>
+				<td><%= query.id %></td>
 		        <td><%= query.dummy_id %></td>
 		        <td><%= query.raw_sql %></td>
 		        <td><%= query.user.id %></td>
@@ -27,9 +29,5 @@
 		    <% end %>
 		  </tbody>
 		</table>
-
-		<br>
-
-		<%= link_to 'New Query', new_query_path %>
 	</div>
 </div>
