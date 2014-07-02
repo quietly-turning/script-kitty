@@ -5,37 +5,35 @@
 <div class="row">
 
 		<div class="small-8 columns">
-	
-		<h1>THIS NEEDS TO BE REWRITTEN</h1>	
-	
+		
 		<h2>Welcome to Script Kitty!</h2>
 
-		<p>It is important that visitors to our Animal Park have an opportunity to learn about the animals.  One way to complete this task might be to go to a library, check out books on animals, and start reading.  This would take a while and would be inconvenient for the visitors!</p>
+		<p>Script Kitty is trying to gather information about universities she might attend.  One way to complete this task might be to go to a library, check out books on animals, and start reading.  This would take a while and would be inconvenient!</p>
 
-		<p>We do have information on each animal, such as <em>name</em>, <em>weight</em> and <em>habitat</em> in a list. Currently the list has information on over one hundred unique animals. So you can imagine finding one animal in this list will take some time!</p>
+		<p>We do have information on each institution, such as its <em>name</em>, <em>city</em> and <em>state</em> in a list. This list has information on thousands of institutions, so you can imagine finding one in particular would take some time!</p>
 
 		<p>What if could we narrow down the list to just the information we are looking for?</p>
 
-		<p>We can do this!  We can ask the computer: "of all the animals in the list, can you show me only nocturnal animals?"</p>
+		<p>We can do this!  We can ask the computer: "of all the institutions in the list, can you show me only those from Pennsylvania?"</p>
 
-		<p>To the computer, the list is a <strong>database</strong> and the question we asked it is a <strong>query</strong>.</p>
+		<p>To the computer, the list is a <strong>table</strong> and the question we asked it is a <strong>query</strong>.  A collection of multiple tables in called a <strong>database</strong>.</p>
 
-		<p>Today we'll be writing queries to get specific information out of the Animal Database.  Once we have the information we are looking for, we can make create a webpage for our park visitors to view while they are visiting.</p>
+		<p>Today we'll be writing queries to get specific information out of a database containing information about higher education institutions.   There are various concepts to learn along the way, so let's jump in!</p>
 
-
-
-
-
+		<hr>
+		
 		<% if !user_signed_in? %>
-			<hr>
-
-			<p>
-				<strong>Get started!</strong>
-			</p>
-
+		
 			<p>
 				<%= link_to('Login', new_user_session_path)  %> | <%= link_to 'Sign Up', new_user_registration_path %>
 			</p>
+			
+		<% else %>
+			
+			<p>
+				<h4><%= link_to "Begin Exercise 1", exercise_path(1) %></h4>
+			</p>
+			
 		<% end %>
 
 		</div>
