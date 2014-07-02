@@ -31,7 +31,12 @@
 			
 			
 			<li class="divider"></li>
-			<li><%= link_to "Queries", queries_path %></li>
+			<li class="has-dropdown not-click">
+			      <a href="#">Admin</a>
+			      <ul class="dropdown">
+			          <li><%= link_to "Queries", queries_path %></li>
+				  </ul>
+			</li>
 			<li class="divider"></li>
 		</ul>
 		
