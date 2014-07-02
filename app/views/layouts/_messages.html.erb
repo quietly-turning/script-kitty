@@ -4,7 +4,7 @@
     	<div class="large-12 large-centered columns">
 			<div class="small-2 columns">&nbsp;</div>
 			
-    		<div class="small-7 columns kitty-bubble">
+    		<div class="small-7 columns kitty-bubble bubbletype-<%= name.to_s == 'notice' ? 'success' : 'alert' %>">
 				<div class="message"><%= raw msg %></div>
 			</div>
 			
