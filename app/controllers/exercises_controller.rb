@@ -33,6 +33,8 @@ class ExercisesController < ApplicationController
 
   # GET /exercises/1/edit
   def edit
+	  @query = Query.where(user_id: current_user.id, exercise_id: @exercise.id).take
+	  @raw_sql = @query.raw_sql
   end
 
   # POST /exercises

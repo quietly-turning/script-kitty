@@ -63,9 +63,25 @@ class QueriesController < ApplicationController
   # PATCH/PUT /queries/1
   # PATCH/PUT /queries/1.json
   def update
+	
+	if current_user.visual_interface?
+	  # @query.processConditions
+	  # @query.constructFormattedQuery
+	  # @query.constructHTMLtable
+	else
+	  @query.constructHTMLtable_simple
+	end
+
+  	@query.check_if_correct  
+	  
+	  
     respond_to do |format|
       if @query.update(query_params)
-        format.html { redirect_to @query, notice: 'Query was successfully updated.' }
+		  if @query.correct
+        	  format.html { redirect_to @query, notice: 'correct' }
+		  else
+			  format.html { redirect_to @query, notice: 'incorrect' }
+		  end
         format.json { render :show, status: :ok, location: @query }
       else
         format.html { render :edit }

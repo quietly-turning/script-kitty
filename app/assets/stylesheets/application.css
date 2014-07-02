@@ -65,6 +65,14 @@ thead tr th {
 	background-color: #3197ee;
 }
 
+a.message-anchor{
+	color: #333;
+}
+
+a.message-anchor:hover{
+	text-decoration:underline;
+}
+
 span.oops{
 	font-size: 1.8em;
 }
