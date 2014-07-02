@@ -1,98 +1,129 @@
-#####################################
-#		Exercises
+Daniel Guzek
+July 1, 2014
 
-
-## 1.  a simple query
-SELECT * FROM institutions
-
-
-
-
-## 2.  a simple query with a single condition
-SELECT * FROM institutions WHERE city = "Athens"
-
-
-
-
-## 3.  difference between "=" and "like" (and how to use "like")
-#  3a. this returns nothing
-SELECT * FROM institutions WHERE chief = "stan"
-
-#  3b. this returns nothing
-SELECT * FROM institutions WHERE chief LIKE "stan"
-
-#  3c. this returns 25 rows
-SELECT * FROM institutions WHERE chief LIKE "%stan%"
+format:
+------------------------------------
+objective
+question
+notes (optional)
+correct answer
+------------------------------------
 
 
 
 
 
+------------------------------------
 
-## 4.  a query with two conditions chained by "or"
-# this returns 23 various rows
+## 1.
+Objective: a simple query
+Question: Let's write a simple query.  Find all the available information about all the institutions.
+Answer: SELECT * FROM institutions
+
+------------------------------------
+
+## 2.
+Objective: a simple query with a single condition
+Question: Find all available information about institutions where the city is Athens.
+Answer: SELECT * FROM institutions WHERE city = "Athens"
+
+------------------------------------
+
+## 3.
+Objective: difference between "=" and "like" (and how to use "like")
+Question: Find all available information about institutions where the chief's name contains the text <em>stan</em>.
+
+Notes: this returns nothing
+Answer: SELECT * FROM institutions WHERE chief = "stan"
+
+Notes: this returns nothing
+Answer: SELECT * FROM institutions WHERE chief LIKE "stan"
+
+Notes: this returns 25 rows
+Answer: SELECT * FROM institutions WHERE chief LIKE "%stan%"
+
+------------------------------------
+
+## 4.
+Objective: a query with two conditions chained by "or"
+Question: Find all available information about institutions where the chief's name contains the text laura or the chief's name contains the text carroll.
+Notes: this returns 23 various rows
+Answer: 
+
 SELECT *
 FROM institutions
 WHERE institutions.chief LIKE "%Laura%"
 OR institutions.chief LIKE "%Carrol%
 
+------------------------------------
 
+## 5.
+Objective: a query with two conditions chained by "and"
+Question: Find all available information about institutions where the chief's name contains the text laura and the chief's name also contains the text carroll.
+Notes: this returns a single row where the chief is "Laura Carroll"
+Answer:
 
-
-## 5.  a query with two conditions chained by "and"
-# this returns a single row where the chief is "Laura Carroll"
 SELECT *
 FROM institutions
 WHERE institutions.chief LIKE "%Laura%"
 AND institutions.chief LIKE "%Carrol%
 
+------------------------------------
 
+## 6.
+Objective: a query that uses "does not equal" and has two conditions chained together by "and"
+Question: Find all available information about institutions from the city of Houston that are not in the state TX.
+Notes: this returns a single rural college in Houston, Missouri
+Answer:
 
-
-## 6. a query that uses "does not equal" and has two conditions chained together by "and"
-# this returns a single rural college in Houston, Missouri
 SELECT *
 FROM institutions
 WHERE institutions.city = "Houston"
 AND institutions.state != "TX"
 
+------------------------------------
 
+## 7. 
+Objective: a simple query that only pulls specific columns into the results
+Question: Find the name, city, and state of the institutions in which the chief's name contains the text victor.
 
-
-
-## 7.  a simple query that only pulls specific columns into the results
-# this returns the (name, city, state) of institutions where the chief's name contains "Victor"
+Answer:
 SELECT name, city, state
 FROM institutions
 WHERE chief LIKE "%Victor%"
 
+------------------------------------
 
+## 8. 
+Objective: another query that only pulls specific columns into the results
+Question: Find the name, city, and state of institutions from the state of <em>NY</em> in which the name of the institution contains the text <em>medical</em>.
+Answer:
 
-
-## 8.  another query that only pulls specific columns into the results
-# this returns NY institutions with the word "medical" in the name
 SELECT name, city, state
 FROM institutions
 WHERE name LIKE "%Medical%"
 AND state = "NY"
 
+------------------------------------
 
+## 9.
+Objective: complex query that pulls from multiple tables (and how to avoid cartesian products)
+Question: Find the institution name and the name of its locale institutions whose name contains the text <em>Penn State</em>.
+Answer:
 
-
-
-## 9. complex query that pulls from multiple tables (and how to avoid cartesian products)
-# this returns the nineteen Penn State campuses and their respective locales
 SELECT institutions.name, institutions.state, locales.name
 FROM institutions, locales
 WHERE institutions.name LIKE "%Penn State%"
 AND locales.id = institutions.locale_id
 
+------------------------------------
 
+## 10.
+Objective: another complex query that pulls from multiple tables 
+Question: Find the institution name and state and the name of its control for institutions whose city is <em>Sterling</em>.
+Notes: this returns four unique institutions (coincidentally from four unique states) where the city is "Sterling" 
+Answer:
 
-
-
-## 10. another complex query that pulls from multiple tables 
-# this returns four unique institutions (coincidentally from four unique states) where the city is "Sterling" 
 SELECT institutions.name, institutions.state, controls.name
 FROM institutions, controls
 WHERE institutions.city = "Sterling"
