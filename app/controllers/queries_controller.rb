@@ -97,7 +97,10 @@ class QueriesController < ApplicationController
 		if error.include? "Mysql2::Error: You have an error in your SQL syntax;"
 			line_number = (/at line (\d+):/.match(error)).captures[0]
 			message = "<span class='oops'>Oops!</span>  You seem to have a syntax error near line #{line_number}!"
-			
+		
+		elsif error.include? "Mysql2::Error: Query was empty:"
+			message = "<span class='oops'>Oops!</span>  It looks like your your query was empty!"
+		
 		elsif error =~ /Mysql2::Error: Table 'thesis.(\w+)' doesn't exist:/
 			nonexistent_table = (/thesis.(\w+)/.match(error)).captures[0]
 			message = "<span class='oops'>Oops!</span>  It seems that the table <em>#{nonexistent_table}</em> doesn't exist!"
