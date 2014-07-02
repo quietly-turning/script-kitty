@@ -7,23 +7,25 @@
 }
 
 .kitty-image{
+	position:relative;
+	right:18px;
 	margin-top:10px;
-	margin-right:70px;
+	max-width: none;
 }
 
-.kitty-alert{
-	margin-left: 60px;
-	margin-top: 40px;
-	background-image: image-url("bubble-alert.png");
-	background-repeat: no-repeat;
-	height: 77px;
+.kitty-bubble{
+	margin-top:60px;
+	margin-bottom:20px;
 	width:575px;
-	padding: 10px 64px 20px 20px;
+	padding: 20px;
+	background-color: #b5403c;
 	color: #FFF;
 	font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-	font-size: 1.15em;
+	font-size: 1.2em;
+	text-align:center;
+	border-radius: 1em;
 }
 
 span.oops{
-	font-size: 1.6em;
+	font-size: 1.8em;
 }
