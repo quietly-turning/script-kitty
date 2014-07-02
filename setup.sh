@@ -29,3 +29,8 @@ rake db:seed
 
 # misc. notes
 # need to create a DB user with limited permissions (insert, select):  thesis_user
+
+# GRANT SELECT ON thesis.* TO 'thesis-user'@'localhost' IDENTIFIED BY 'moomoo';
+# GRANT INSERT ON thesis.queries TO 'thesis-user'@'localhost' IDENTIFIED BY 'moomoo';
+# GRANT INSERT ON thesis.conditions TO 'thesis-user'@'localhost' IDENTIFIED BY 'moomoo';
+# GRANT INSERT ON thesis.users TO 'thesis-user'@'localhost' IDENTIFIED BY 'moomoo';
