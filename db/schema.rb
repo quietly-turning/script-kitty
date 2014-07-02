@@ -41,6 +41,9 @@ ActiveRecord::Schema.define(version: 20140630134018) do
 
   create_table "exercises", force: true do |t|
     t.text     "question"
+    t.text     "answer"
+    t.text     "response_correct"
+    t.text     "response_incorrect"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -87,7 +90,9 @@ ActiveRecord::Schema.define(version: 20140630134018) do
     t.integer  "dummy_id"
     t.text     "formatted_sql"
     t.text     "raw_sql"
-    t.text     "html_table"
+    t.text     "sorted_sql"
+    t.boolean  "correct",                          default: false
+    t.text     "html_table",    limit: 2147483647
     t.integer  "user_id"
     t.integer  "exercise_id"
     t.datetime "created_at"
