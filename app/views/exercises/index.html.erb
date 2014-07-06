@@ -1,6 +1,6 @@
 <div class="exercise-header">
 	<div class="row">
-		<div class="small-12 columns">
+		<div class="medium-offset-1 medium-11 small-12 columns">
 			<h1>Learning Objectives</h1>
 		</div>
 	</div>
@@ -8,33 +8,11 @@
 
 
 <div class="row">
-	<div class="small-12 columns">	
-		<ol>
-		<% @exercises.each do |exercise| %>
-			<li> <%= raw exercise.description %></li>
-		<% end %>
-		</ol>
-	</div>
-</div>
-
-
-<div class="exercise-header">
-	<div class="row">
-		<div class="small-12 columns">
-			<h1>Exercises</h1>
-		</div>
-	</div>
-</div>
-
-
-<div class="row">
-	
-	<div class="small-12 columns">	
+	<div class="medium-offset-1 medium-11	 small-12 columns">	
 		<ul>
 		<% @exercises.each do |exercise| %>
-			<li> <%= link_to "Exercise #{exercise.id}", exercise_path(exercise) %></li>
+			<li> <%= link_to "Exercise #{exercise.id}", exercise_path(exercise) %> - <%= raw exercise.description %></li>
 		<% end %>
 		</ul>
 	</div>
-	
 </div>
