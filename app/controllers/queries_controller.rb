@@ -112,22 +112,27 @@ class QueriesController < ApplicationController
     end
 	
 	def friendly_errors(error)
-		message = "Oops!  There is some sort of problem with your query!"
+		message = "<span class='oops'>Oops!</span>  There is some sort of problem with your query!"
 
 		if error.include? "Mysql2::Error: You have an error in your SQL syntax;"
 			line_number = (/at line (\d+):/.match(error)).captures[0]
-			message = "<span class='oops'>Oops!</span>  You seem to have a syntax error near line #{line_number}!"
+			message = "<span class='oops'>Oops!</span>  You seem to have a syntax error near &nbsp;<span class='causing-the-error'>line #{line_number}</span>!"
 		
 		elsif error.include? "Mysql2::Error: Query was empty:"
 			message = "<span class='oops'>Oops!</span>  It looks like your your query was empty!"
 		
 		elsif error =~ /Mysql2::Error: Table 'thesis.(\w+)' doesn't exist:/
 			nonexistent_table = (/thesis.(\w+)/.match(error)).captures[0]
-			message = "<span class='oops'>Oops!</span>  It seems that the table <em>#{nonexistent_table}</em> doesn't exist!"
+			message = "<span class='oops'>Oops!</span>  It seems that the table <span class='causing-the-error'>#{nonexistent_table}</span> doesn't exist!"
 		
 		elsif error =~ /Mysql2::Error: Unknown column '(\w+)' in 'where clause'/
 			unknown_colummn = (/Unknown column '(\w+)' in 'where clause'/.match(error)).captures[0]
-			message = "<span class='oops'>Oops!</span>  It seems that the column <em>#{unknown_colummn}</em> doesn't exist!"
+			message = "<span class='oops'>Oops!</span>  It seems that the column &nbsp;<span class='causing-the-error'>#{unknown_colummn}</span>&nbsp; in your<br>&nbsp;<span class='causing-the-error'>where clause</span>&nbsp; doesn't exist!"
+		
+		elsif error =~ /Mysql2::Error: Unknown column '(\w+)' in 'field list': select/
+			unknown_colummn = (/Unknown column '(\w+)' in 'field list': select/.match(error)).captures[0]
+			message = "<span class='oops'>Oops!</span>  It seems that the column &nbsp;<span class='causing-the-error'>#{unknown_colummn}</span>&nbsp; in your<br>&nbsp;<span class='causing-the-error'>select statement</span>&nbsp; doesn't exist!"	
+				
 		end
 		
 		return message
