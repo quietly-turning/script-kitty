@@ -1,25 +1,40 @@
-<div class="row">
-	<div class="small-12 columns">
-		<h1>Exercises</h1>
-
-		<table>
-		  <thead>
-		    <tr>
-		      <th>Question</th>
-		      <th colspan="3">Manage</th>
-		    </tr>
-		  </thead>
-
-		  <tbody>
-		    <% @exercises.each do |exercise| %>
-		      <tr>
-		        <td><%= raw exercise.question %></td>
-		        <td><%= link_to 'Show', exercise %></td>
-		        <td><%= link_to 'Edit', edit_exercise_path(exercise) %></td>
-		        <td><%= link_to 'Destroy', exercise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		      </tr>
-		    <% end %>
-		  </tbody>
-		</table>
+<div class="exercise-header">
+	<div class="row">
+		<div class="small-12 columns">
+			<h1>Learning Objectives</h1>
+		</div>
 	</div>
+</div>
+
+
+<div class="row">
+	<div class="small-12 columns">	
+		<ol>
+		<% @exercises.each do |exercise| %>
+			<li> <%= raw exercise.description %></li>
+		<% end %>
+		</ol>
+	</div>
+</div>
+
+
+<div class="exercise-header">
+	<div class="row">
+		<div class="small-12 columns">
+			<h1>Exercises</h1>
+		</div>
+	</div>
+</div>
+
+
+<div class="row">
+	
+	<div class="small-12 columns">	
+		<ul>
+		<% @exercises.each do |exercise| %>
+			<li> <%= link_to "Exercise #{exercise.id}", exercise_path(exercise) %></li>
+		<% end %>
+		</ul>
+	</div>
+	
 </div>

@@ -18,38 +18,46 @@
 					  <li><%= link_to "Controls", controls_path %></li>
 				  </ul>
 			</li>
-			
+						
 			<li class="divider"></li>
-			<li class="has-dropdown not-click">
-				<a href="#">Exercises</a>
-				<ul class="dropdown">
-					<% for exercise in Exercise.all %>
-						<li><%= link_to "Exercise #{exercise.id}", exercise_path(exercise.id) %></li>
-					<% end %>
-				</ul>
-			</li>
+			<% if not current_user.nil? %>
 			
+				<li class="has-dropdown not-click">
+					<%= link_to "Exercises", exercises_path %>
+					<ul class="dropdown">
+						<% for exercise in Exercise.all %>
+							<li><%= link_to "Exercise #{exercise.id}", exercise_path(exercise.id) %></li>
+						<% end %>
+					</ul>
+				</li>
 			
-			<li class="divider"></li>
-			<li class="has-dropdown not-click">
-			      <a href="#">Admin</a>
-			      <ul class="dropdown">
-			          <li><%= link_to "Queries", queries_path %></li>
-				  </ul>
-			</li>
-			<li class="divider"></li>
+				<li class="divider"></li>
+			
+				<% if current_user.admin %>
+			
+					<li class="has-dropdown not-click">
+					      <a href="#">Admin</a>
+					      <ul class="dropdown">
+					          <li><%= link_to "Queries", queries_path %></li>
+						  </ul>
+					</li>
+					<li class="divider"></li>
+			
+				<% end %>
+			<% end %>
+			
 		</ul>
 		
 		<!-- Right Nav Section -->
 		<ul class="right">
-			<% if !user_signed_in? %>
+			<% if user_signed_in? %>
+				<li class="divider"></li>
+				<li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+			<% else %>
 				<li class="divider"></li>
 				<li><%= link_to "Login", new_user_session_path  %></li>
 				<li class="divider"></li>
 				<li><%= link_to "Create An Account", new_user_registration_path %></li>
-			<% else %>
-				<li class="divider"></li>
-				<li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
 			<% end %>
 		</ul>
 	</section>
