@@ -17,7 +17,7 @@ correct answer
 
 ## 1.
 Objective: a simple query
-Question: Let's write a simple query.  Find all the available information about all the institutions.
+Question: Find all the available information about all the institutions.
 Answer: SELECT * FROM institutions
 
 ------------------------------------
