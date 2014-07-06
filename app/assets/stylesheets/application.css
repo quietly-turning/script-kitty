@@ -46,7 +46,7 @@ thead tr th {
 	margin-top:50px;
 	margin-bottom:20px;
 	padding: 20px;
-	color: #FFF;
+	color: #fff;
 	font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 	font-size: 1.2em;
 	text-align:center;
@@ -79,4 +79,8 @@ span.oops{
 
 span.raw-sql{
 	font-family: courier;
+}
+
+span.causing-the-error{
+	font-family:courier;
 }

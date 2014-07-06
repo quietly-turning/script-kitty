@@ -4,5 +4,22 @@
 
 .exercise-header{
 	background-color: #dfdfdf;
-	margin-bottom: 15px;
+}
+
+ol li, ul li{
+	font-size:1.15em;
+	line-height: 2.5em;
+}
+
+ul li{
+	list-style:none;
+}
+
+ul li.right-align{
+	text-align: right;
+}
+
+.gray-border{
+	color: #fff;
+	background-color:#333;
 }
