@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20140630134018) do
   create_table "exercises", force: true do |t|
     t.text     "question"
     t.text     "answer"
+    t.text     "description"
+    t.text     "lesson"
     t.text     "response_correct"
     t.text     "response_incorrect"
     t.datetime "created_at"
