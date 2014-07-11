@@ -1,0 +1,17 @@
+<div class="condition" style="display:none">
+	<fieldset class="buildYourQuery">
+	 	<legend>Condition</legend>
+			
+		<div class="dropHere columnAcceptor"  class="columnAcceptor"> <p>column</p> </div>
+		<div class="dropHere operatorAcceptor" class="operatorAcceptor"> <p>op.</p> </div>
+		<div><%= form.hidden_field :column, :class => 'column' %></div>
+		<div><%= form.hidden_field :operator_id, :class => 'operator' %></div>
+		<div><%= form.text_field :parameter, :placeholder => 'parameter' %></div>
+	</fieldset>
+			
+	<fieldset class="extendYourQuery">		
+		<div class="dropHere complexOperatorAcceptor"></div>
+		
+		<div><%= form.hidden_field :complexOperator, :class => 'complexOperator' %></div>
+	</fieldset>
+</div> 

@@ -21,9 +21,10 @@ class ExercisesController < ApplicationController
 	  	@raw_sql = params[:raw_sql]
 	  end
 	  
-	  
-      # @operators = Operator.all
-      # @condition = @query.conditions.build
+	  if current_user.visual_interface?
+	      @operators = Operator.all
+	      @condition = @query.conditions.build
+	  end
   end
 
   # GET /exercises/new

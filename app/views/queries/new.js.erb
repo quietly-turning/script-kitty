@@ -1,0 +1,28 @@
+// not sure where the first two hidden conditions are coming from...
+$('.condition:hidden').remove();
+
+// // because rails uses a 0 index
+// // the next condition id will be
+// // the number of conditions there are presently
+var new_id_for_legend = $('.condition').length + 1;
+var new_id = new Date() * 1 + parseInt(Math.random()*100000);
+
+var conditionHTML = "<%= escape_javascript(render :partial => 'queries/condition_fields',
+                                           :locals => {
+                                             :form => ActionView::Helpers::FormBuilder.new(
+                                               '[query][conditions_attributes][__index__]',
+                                               Condition.new, self, {} )
+                                           }) %>";
+
+while (conditionHTML.indexOf("__index__") != -1) {
+	conditionHTML = conditionHTML.replace("__index__", new_id);
+}
+
+conditionHTML.replace("Condition #", "Condition #");
+
+if ($('.condition').length == 0)
+{
+	$('#corrals').before($(conditionHTML).show());
+} else{
+    $('.condition:last').after($(conditionHTML).fadeIn());
+}
