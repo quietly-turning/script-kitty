@@ -57,21 +57,13 @@ ActiveRecord::Schema.define(version: 20140630134018) do
     t.string   "zip"
     t.string   "chief"
     t.integer  "control_id"
-    t.integer  "level_id"
     t.integer  "locale_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "institutions", ["control_id"], name: "index_institutions_on_control_id", using: :btree
-  add_index "institutions", ["level_id"], name: "index_institutions_on_level_id", using: :btree
   add_index "institutions", ["locale_id"], name: "index_institutions_on_locale_id", using: :btree
-
-  create_table "levels", force: true do |t|
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "locales", force: true do |t|
     t.string   "name"
@@ -123,15 +115,5 @@ ActiveRecord::Schema.define(version: 20140630134018) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "websites", force: true do |t|
-    t.string   "classification"
-    t.string   "url"
-    t.integer  "institution_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "websites", ["institution_id"], name: "index_websites_on_institution_id", using: :btree
 
 end

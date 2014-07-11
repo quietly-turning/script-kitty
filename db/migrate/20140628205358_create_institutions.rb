@@ -7,7 +7,6 @@ class CreateInstitutions < ActiveRecord::Migration
       t.string :zip
       t.string :chief
       t.references :control, index: true
-      t.references :level, index: true
       t.references :locale, index: true
 
       t.timestamps

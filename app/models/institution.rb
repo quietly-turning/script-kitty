@@ -1,6 +1,5 @@
 class Institution < ActiveRecord::Base
   belongs_to :control
-  belongs_to :level
   belongs_to :locale
   
   paginates_per 50

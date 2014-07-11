@@ -10,10 +10,8 @@ rails g migration AddVisualInterfaceToUsers visual_interface:boolean
 
 # dataset stuff
 rails g scaffold control name description:text
-rails g scaffold level description:text
 rails g scaffold locale name description
-rails g scaffold institution name city state zip chief control:references level:references locale:references
-rails g scaffold website classification url institution:references
+rails g scaffold institution name city state zip chief control:references locale:references
 
 # query building stuff
 rails g scaffold datatype name

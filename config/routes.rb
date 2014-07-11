@@ -9,13 +9,9 @@ Rails.application.routes.draw do
 
   resources :datatypes
 
-  resources :websites
-
   resources :institutions
 
   resources :locales
-
-  resources :levels
 
   resources :controls
 
