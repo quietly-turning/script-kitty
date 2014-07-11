@@ -35,30 +35,41 @@ class QueriesController < ApplicationController
     @query.user_id = current_user.id
     @query.dummy_id = current_user.queries.count + 1
 
-    if current_user.visual_interface?
-        # @query.processConditions
-        # @query.constructFormattedQuery
-        # @query.constructHTMLtable
-    else
-        @query.constructHTMLtable_simple
-    end
+	respond_to do |format|
+		# save the query data first
+		if @query.save
+			
+			# then attempt to run it and check its correctness
+			if current_user.visual_interface?
+				# @query.processConditions
+				# @query.constructFormattedQuery
+				# @query.constructHTMLtable
+			else
+				@query.constructHTMLtable_simple
+			end
 
-	@query.check_if_correct
-
-    respond_to do |format|
-      if @query.save
-		  if @query.correct
-        	  format.html { redirect_to @query, notice: 'correct' }
-		  else
-			  format.html { redirect_to @query, notice: 'incorrect' }
-		  end
-        format.json { render :show, status: :created, location: @query }
-      else
-        format.html { render :new }
-        format.json { render json: @query.errors, status: :unprocessable_entity }
-      end
-    end
+			@query.check_if_correct
+			
+			# then update the query entry
+			if @query.update(query_params)
+				if @query.correct
+					format.html { redirect_to @query, notice: 'correct' }
+				else
+					format.html { redirect_to @query, notice: 'incorrect' }
+				end
+				format.json { render :show, status: :created, location: @query }
+			else
+				
+		    	format.html { render :edit }
+		   	 	format.json { render json: @query.errors, status: :unprocessable_entity }
+			end
+		else
+			format.html { render :new }
+	    	format.json { render json: @query.errors, status: :unprocessable_entity }
+	  	end
+	end
   end
+
 
   # PATCH/PUT /queries/1
   # PATCH/PUT /queries/1.json
