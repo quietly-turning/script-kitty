@@ -5,14 +5,20 @@ class ApplicationController < ActionController::Base
   
 	layout :layout_by_resource
 
-	protected
+    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+ 
+    private
+      def record_not_found
+        redirect_to root_path
+      end
 
-	def layout_by_resource
-		if devise_controller?
-		  "devise_layout"
-		else
-		  "application"
+	protected
+		def layout_by_resource
+			if devise_controller?
+			  "devise_layout"
+			else
+			  "application"
+			end
 		end
-	end
   
 end
