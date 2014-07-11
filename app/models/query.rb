@@ -196,7 +196,7 @@ class Query < ActiveRecord::Base
 		# create an alert box above the results table if necessary
 		unless @result.nil?
 			if @result.size >= 500
-				htmlTable += "<div data-alert class=\"alert-box warning radius small-4\">\n"
+				htmlTable += "<div data-alert class=\"alert-box info radius small-4\">\n"
 				htmlTable += "There are #{@result.to_a.size} records in this result set!<br>"
 				htmlTable += "We're only showing the first 500.\n</div>\n\n"
 			end

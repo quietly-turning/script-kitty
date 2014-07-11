@@ -17,8 +17,8 @@ class ExercisesController < ApplicationController
 	  
 	  # a paramter might exist if the user made a mistake typing the query
 	  # the last time around and we were just redirected here...
-	  if not params[:raw_sql].nil?
-		 @raw_sql = params[:raw_sql]
+	  unless params[:raw_sql].nil?
+	  	@raw_sql = params[:raw_sql]
 	  end
 	  
 	  
