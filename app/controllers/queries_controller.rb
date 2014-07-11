@@ -64,6 +64,15 @@ class QueriesController < ApplicationController
   # PATCH/PUT /queries/1.json
   def update
 	
+  	# Because this is a study, and we are actually interested in incorrect answers,
+  	# don't actually ever edit a query, just create a new one!  In this way, mistakes
+  	# are logged for later analysis.  This method is a effectively a copy/paste of create.
+	
+	
+	@query = Query.new(query_params)
+	@query.user_id = current_user.id
+	@query.dummy_id = current_user.queries.count + 1
+	
 	if current_user.visual_interface?
 	  # @query.processConditions
 	  # @query.constructFormattedQuery
@@ -73,10 +82,9 @@ class QueriesController < ApplicationController
 	end
 
   	@query.check_if_correct  
-	  
-	  
+	
     respond_to do |format|
-      if @query.update(query_params)
+      if @query.save
 		  if @query.correct
         	  format.html { redirect_to @query, notice: 'correct' }
 		  else
