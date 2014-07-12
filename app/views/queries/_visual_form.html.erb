@@ -1,7 +1,3 @@
-<p>
-	Drag and drop a column, then an operator, into the corresponding receptacles to build your query.
-</p><br>
-
 <div id="buildYourQuery">
 	
 	<div id="poof" style="display:none"></div>
@@ -9,34 +5,6 @@
 	<%= form.fields_for :conditions do |condition_form| %>
 		<%= render :partial => 'queries/condition_fields', :locals => {:form => condition_form} %>
 	<% end %>
-	
-	
-	
-	<div id="corrals">
-		<fieldset id="columnCorral" class="corral">
-			<legend>Columns</legend>
-			<div class="draggable columnBlock">name</div>
-			<div class="draggable columnBlock">habitat</div>
-			<div class="draggable columnBlock">diet</div>
-			<div class="draggable columnBlock">nocturnal</div>
-			<div class="draggable columnBlock">weight</div>
-		</fieldset>
-	
-		<fieldset id="operatorCorral" class="corral">
-		 	<legend>Operators</legend>
-			<% for op in @operators %>
-				<div oid="<%= op.id %>" class="draggable operatorBlock">
-					<p class="<%= op.name %>"><%= raw op.html_representation %></p>
-				</div>
-			<% end %>
-		</fieldset>
-	
-		<fieldset id="complexOperatorCorral" class="corral">
-		 	<legend>Extenders</legend>
-			<div class="draggable complexOperatorBlock and"><br><p>and</p></div>
-			<div class="draggable complexOperatorBlock or"><br><p>or</p></div>
-		</fieldset>
-	</div> <!-- /corrals -->
 
 </div> <!-- /buildYourQuery -->
 

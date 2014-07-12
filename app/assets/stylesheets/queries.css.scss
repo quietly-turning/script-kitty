@@ -11,27 +11,10 @@
 	height: 20em;
 }
 
-
-
-
-
 /* --------------------------------------------------------- */
 /* ---------- QUERY BUILDER PAGE LAYOUT ---------------------*/
 /* --------------------------------------------------------- */
 
-
-.grayScale{
-    filter: url(filters.svg#grayscale); /* Firefox 3.5+ */
-    filter: gray; /* IE5+ */
-    -webkit-filter: grayscale(1); /* Chrome 18+  */
-}
-
-
-.darkerGrayScale{
-    filter: url(filters.svg#darkergrayscale); /* Firefox 3.5+ */
-    filter: gray; /* IE5+ */
-    -webkit-filter: grayscale(1); /* Chrome 18+  */
-}
 
 #poof{
     background: transparent url(poof.png) no-repeat 0 0; 
@@ -40,26 +23,191 @@
     width: 128px; 
 }
 
-#buildYourQuery {
-	float:left;
-	width: 900px;
+.actions{
+	clear: both;
+}
+
+/* --------------------------------------------------------- */
+/* ---------- QUERY BUILDER ELEMENTS LAYOUT -----------------*/
+/* --------------------------------------------------------- */
+
+
+
+.condition {
+	background :url('visual-interface/whereConditionBox-alt.png');
+	background-size: contain;
+	background-repeat:no-repeat;
+	width:860px;
+	height:137px;
+}
+
+.conditionWithAnd{
+	margin-bottom:-57px;
+}
+
+.conditionWithOr{
+	margin-bottom:-20px;
+}
+
+.columnAcceptor {
+	color:#f8941d;
+	height: 70px;
+	margin:6px 0px 5px 0px;
+	padding: 24px 0px 0px 0px;
+}
+
+.operatorAcceptor {
+	color: green;
+	height: 70px;
+	margin:6px 0px 5px 0px;
+	padding: 24px;
+}
+
+
+.andAcceptor{
+	height:70px;
+	width: 70px;	
+	margin:6px 0px 5px 5px;
+	padding: 24px;
+}
+
+.orAcceptor{
+	height:40px;
+}
+
+// the dropHere class is applied to all acceptors
+.dropHere {
+	text-align:center;
 }
 
 div.condition input{
 	font-size:1.2em;
 	height:30px;
-	width:250px;
-	margin-top:10px;
+	width:200px;
+	margin-top:24px;
 	margin-left:10px;
 }
-#query_name{
-	font-size:15px;
-	height:16px;
+
+
+
+
+
+
+
+
+.columnBlock {
+	font-size:18px;
+	padding:10px;
+	width: 160px;
+	background-color: #fff;
+	text-align:center;
+	color: #000000;
+	border: 3px solid #f8941d;
+	background-color: #fff8dc;
+	border-radius:8px;
 }
 
-.actions{
-	clear:left;
+.operatorBlock {
+	width: 84px;
+	height:80px;
+	background-image:url('visual-interface/operator.png');
+	background-size: contain;
+	text-align: center;
+	padding-top:28px;
 }
+
+.complexOperatorBlock {
+	text-align:center;
+	background-repeat:no-repeat;
+	background-size: contain;
+}
+
+
+.and {
+	width: 69px;
+	height:107px;
+	background-image:url('visual-interface/and.png');
+}
+
+.or {
+	width: 99px;
+	height:54px;
+	background-image:url('visual-interface/or.png');
+}
+
+.dropped{
+	font-weight:normal;
+}
+
+p.equals, p.doesnotequal, p.greaterthan, p.lessthan {
+	font-size:1.7em;
+}
+
+p.like{
+	font-size:1.4em;
+}
+
+.and p{
+	padding: 18px 0px 0px 10px;
+	font-size: 1.4em;
+}
+
+.or p{
+	font-size:1.4em;
+}
+
+
+
+
+fieldset legend{
+	font-weight:bold;
+	background:transparent;
+}
+
+#corrals {
+	float:left;
+	width:90%;
+	margin-top:50px;
+}
+
+.corral{
+	border:0px;
+}
+
+#columnCorral{
+	margin-right:20px;
+	width:190px;
+	height:100%;
+	float:left;
+}
+
+#operatorCorral legend{
+	color: #f03e36;
+}
+
+#operatorCorral{
+	width:170px;
+	float:left;
+}
+
+#columnCorral legend{
+	color:#f8941d;
+}
+
+
+#complexOperatorCorral{
+	float:right;;
+	width: 100px;
+}
+
+#complexOperatorCorral legend{
+	color:green;
+}
+
+
+
+
+
 
 
 /* --------------------------------------------------------- */
@@ -123,287 +271,5 @@ div.condition input{
 	border-color: #888;
 	position:relative;
 	top:1px;
-}
-
-/* --------------------------------------------------------- */
-/* ---------- QUERY BUILDER ELEMENTS LAYOUT -----------------*/
-/* --------------------------------------------------------- */
-
-
-
-.condition {
-	float:left;
-	height:107px;
-	width:800px;
-}
-
-legend{
-	font-weight:bold;
-}
-
-
-
-
-.draggable:hover{
-	cursor:pointer;
-}
-
-.condition-right-border{
-	float:left;
-}
-
-
-
-
-
-fieldset.buildYourQuery{
-	border-top: 0px;
-	border-left: 0px;
-	border-bottom: 0px;
-	border-right: 0px;
-	padding:14px 60px 0px 16px;
-	margin-right:0px;
-	background :url('visual-interface/whereConditionBox-alt.png');
-	background-size: contain;
-	background-repeat:no-repeat;
-//	border-bottom-left-radius:14px;
-//	border-top-left-radius: 14px;
-	width:880px;
-	height:137px;
-	float:left;
-	margin-top:-10px;
-}
-
-fieldset.buildYourQuery legend{
-	margin-left: 6px;
-	margin-top: 6px;
-	color:green;
-}
-
-
-
-fieldset.completedCondition{
-	background-color: #b8d699;
-}
-
-
-
-
-fieldset.buildYourQuery div{
-	float:left;
-}
-
-
-fieldset.extendYourQuery{
-	float:left;
-	margin-left:-34px;
-	margin-top:-4px;
-	width:80px;
-	border:0px;
-	height:80px;
-}
-
-
-/* what is this? */
-#tableName{
-	font-size:1.3em;
-	margin-top:20px;
-}
-
-
-
-
-
-
-
-
-
-
-.columnBlock {
-	font-size:18px;
-	padding:10px;
-	margin: 10px;
-	width: 160px;
-	background-color: #fff;
-	text-align:center;
-	color: #000000;
-	border: 3px solid #f8941d;
-	background-color: #fff8dc;
-	border-radius:8px;
-	float:left;
-}
-
-.operatorBlock {
-	font-size:16px;
-	padding:10px;
-	margin: 10px;
-	width: 30px;
-	height:30px;
-	border-radius:40px;
-	-moz-border-radius:40px;
-	-webkit-border-radius:40px;
-	color: #000000;
-	text-align:center;
-	border:3px solid #f03e36;
-	background-color:#fab66f;
-	float:left;
-
-}
-
-.complexOperatorBlock {
-	font-size:1em;
-
-	text-align:center;
-	float:left;
-	background-repeat:no-repeat;
-	background-size: contain;
-}
-
-
-.and {
-	width: 69px;
-	height:107px;
-	background-image:url('visual-interface/and.png');
-}
-
-.or {
-	width: 99px;
-	height:54px;
-	background-image:url('visual-interface/or.png');
-}
-
-.dropped{
-	float:left;
-	font-weight:normal;
-}
-
-p.equals, p.doesnotequal, p.greaterthan, p.lessthan {
-	font-weight:normal;
-	font-size:16px;
-	position:relative;
-	top:5px;
-}
-
-p.like{
-	font-weight:normal;
-	font-size:16px;
-	position:relative;
-	top:0px;
-}
-
-.operatorBlock p{
-	margin-top:0px;
-}
-
-
-.dropHere {
-	position:static;
-	margin:10px;
-	text-align:center;
-	font-size:1.1em;
-}
-
-.columnAcceptor {
-	height:42px;
-	width:180px;
-	border-radius: 4px;
-	border: 3px dashed #f8941d;
-	color:#f8941d;
-	font-weight:bold;
-}
-
-.columnAcceptor p{
-	position:relative;
-	bottom:8px;
-}
-
-.operatorAcceptor {
-	width: 50px;
-	height:50px;
-	margin:6px 20px 0px 20px;
-	border: 3px dashed #f03e36;
-	color: #f03e36;
-	font-weight:bold;
-	border-radius:40px;
-	-moz-border-radius:40px;
-	-webkit-border-radius:40px;
-}
-
-.operatorAcceptor p{
-	position:relative;
-	bottom:5px;
-}
-
-
-
-
-.complexOperatorAcceptor{
-	float:left;
-	width: 113px;
-	height:120px;
-	margin-top:6px;
-	margin-left:0px;
-}
-
-
-.complexOperatorAcceptor legend{
-	position:relative;
-	color: #7eb843;
-	top:30px;
-	left:24px;
-	width:70px;
-}
-
-
-
-
-
-
-
-
-
-
-
-#corrals {
-	float:left;
-	width:90%;
-	margin-top:50px;
-	border-top: 2px dashed gray;
-	padding-top:30px;
-}
-
-.corral{
-	border:0px;
-}
-
-#columnCorral{
-	margin-right:20px;
-	width:190px;
-	height:100%;
-	float:left;
-}
-
-#operatorCorral legend{
-	color: #f03e36;
-}
-
-#operatorCorral{
-	width:170px;
-	float:left;
-}
-
-#columnCorral legend{
-	color:#f8941d;
-}
-
-
-#complexOperatorCorral{
-	margin-right:40px;
-	float:right;;
-	width: 100px;
-}
-
-#complexOperatorCorral legend{
-	color:green;
 }
 

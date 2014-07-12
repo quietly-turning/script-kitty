@@ -16,9 +16,51 @@
 </div>
 
 <div class="row">
-	<div class="small-9 small-centered columns">
+	
+	<% if current_user.visual_interface? %>
+		<div class="small-12 columns">
+	<% else %>
+		<div class="small-9 small-centered columns">
+	<% end %>
+	
 
 		<%= render :partial => 'queries/form'  %> 
+	</div>
+</div>
 
+
+<div class="exercise-footer">
+	<div class="row">
+		<div class="small-12 columns">
+			
+			<div id="corrals">
+				
+				<fieldset id="columnCorral" class="corral">
+					<legend>Columns</legend>
+					<div class="draggable columnBlock">name</div>
+					<div class="draggable columnBlock">habitat</div>
+					<div class="draggable columnBlock">diet</div>
+					<div class="draggable columnBlock">nocturnal</div>
+					<div class="draggable columnBlock">weight</div>
+				</fieldset>
+	
+				<fieldset id="operatorCorral" class="corral">
+				 	<legend>Operators</legend>
+					<% for op in @operators %>
+						<div oid="<%= op.id %>" class="draggable operatorBlock">
+							<p class="<%= op.name %>"><%= raw op.html_representation %></p>
+						</div>
+					<% end %>
+				</fieldset>
+	
+				<fieldset id="complexOperatorCorral" class="corral">
+				 	<legend>Extenders</legend>
+					<div class="draggable complexOperatorBlock and"><br><p>and</p></div>
+					<div class="draggable complexOperatorBlock or"><br><p>or</p></div>
+				</fieldset>
+				
+			</div> <!-- /corrals -->
+			
+		</div>
 	</div>
 </div>

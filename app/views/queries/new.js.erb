@@ -18,11 +18,9 @@ while (conditionHTML.indexOf("__index__") != -1) {
 	conditionHTML = conditionHTML.replace("__index__", new_id);
 }
 
-conditionHTML.replace("Condition #", "Condition #");
-
 if ($('.condition').length == 0)
 {
-	$('#corrals').before($(conditionHTML).show());
+	$('#buildYourQuery').append($(conditionHTML).show());
 } else{
     $('.condition:last').after($(conditionHTML).fadeIn());
 }
