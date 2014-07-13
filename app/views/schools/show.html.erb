@@ -1,0 +1,37 @@
+<p>
+  <strong>Name:</strong>
+  <%= @school.name %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @school.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @school.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @school.zip %>
+</p>
+
+<p>
+  <strong>Chief:</strong>
+  <%= @school.chief %>
+</p>
+
+<p>
+  <strong>Control:</strong>
+  <%= @school.control %>
+</p>
+
+<p>
+  <strong>Locale:</strong>
+  <%= @school.locale %>
+</p>
+
+<%= link_to 'Edit', edit_school_path(@school) %> |
+<%= link_to 'Back', schools_path %>

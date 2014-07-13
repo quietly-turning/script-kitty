@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :datatypes
 
-  resources :institutions
+  resources :schools
 
   resources :locales
 

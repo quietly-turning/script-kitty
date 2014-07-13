@@ -144,23 +144,23 @@ div.parameterInput input{
 }
 
 p.equals, p.doesnotequal, p.greaterthan, p.lessthan {
-	font-size:1.5em;
+	font-size:1.3em;
 }
 
 p.like{
-	font-size:1.2em;
+	font-size:1em;
 }
 
 .and-block p{
-	padding: 10px 0px 0px 0px;
-	font-size: 1.2em;
+	padding: 10px 0px 0px 8px;
+	font-size: 1em;
 	position:relative;
 	bottom: 70px;
 }
 
 .or-block p{
-	padding: 14px 0px 0px 0px;
-	font-size:1.2em;
+	padding: 18px 0px 0px 0px;
+	font-size:1em;
 	position:relative;
 	bottom: 48px;
 }
@@ -169,8 +169,9 @@ p.like{
 
 
 fieldset legend{
-	font-weight:bold;
+	font-weight:normal;
 	background:transparent;
+	color: #FFF;
 }
 
 #corrals {
@@ -190,27 +191,14 @@ fieldset legend{
 	float:left;
 }
 
-#operatorCorral legend{
-	color: #f03e36;
-}
-
 #operatorCorral{
 	width:170px;
 	float:left;
 }
 
-#columnCorral legend{
-	color:#f8941d;
-}
-
-
 #complexOperatorCorral{
 	float:right;;
 	width: 100px;
-}
-
-#complexOperatorCorral legend{
-	color:green;
 }
 
 

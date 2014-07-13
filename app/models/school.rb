@@ -1,4 +1,4 @@
-class Institution < ActiveRecord::Base
+class School < ActiveRecord::Base
   belongs_to :control
   belongs_to :locale
   

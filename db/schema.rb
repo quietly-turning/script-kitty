@@ -33,12 +33,6 @@ ActiveRecord::Schema.define(version: 20140630134018) do
     t.datetime "updated_at"
   end
 
-  create_table "datatypes", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "exercises", force: true do |t|
     t.text     "question"
     t.text     "answer"
@@ -49,21 +43,6 @@ ActiveRecord::Schema.define(version: 20140630134018) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "institutions", force: true do |t|
-    t.string   "name"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
-    t.string   "chief"
-    t.integer  "control_id"
-    t.integer  "locale_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "institutions", ["control_id"], name: "index_institutions_on_control_id", using: :btree
-  add_index "institutions", ["locale_id"], name: "index_institutions_on_locale_id", using: :btree
 
   create_table "locales", force: true do |t|
     t.string   "name"
@@ -95,6 +74,21 @@ ActiveRecord::Schema.define(version: 20140630134018) do
 
   add_index "queries", ["exercise_id"], name: "index_queries_on_exercise_id", using: :btree
   add_index "queries", ["user_id"], name: "index_queries_on_user_id", using: :btree
+
+  create_table "schools", force: true do |t|
+    t.string   "name"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "chief"
+    t.integer  "control_id"
+    t.integer  "locale_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "schools", ["control_id"], name: "index_schools_on_control_id", using: :btree
+  add_index "schools", ["locale_id"], name: "index_schools_on_locale_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
