@@ -27,22 +27,34 @@
 	clear: both;
 }
 
+.select, .from{
+	text-align:center;
+	font-size: 1.3em;
+	height: 137px;
+	border-right: 4px solid #dfdfdf;
+}
+
+.where{
+	text-align:center;
+	font-size: 1.3em;
+}
+
+.where span{
+	position:relative;
+	right: 50px;
+}
+
+
 /* --------------------------------------------------------- */
 /* ---------- QUERY BUILDER ELEMENTS LAYOUT -----------------*/
 /* --------------------------------------------------------- */
-
-
 
 .condition {
 	background :url('visual-interface/whereConditionBox-alt.png');
 	background-size: contain;
 	background-repeat:no-repeat;
-	width:860px;
-	height:137px;
-}
-
-.conditionWithAnd{
-	margin-bottom:-57px;
+	width:800px;
+	height:103px;
 }
 
 .conditionWithOr{
@@ -51,21 +63,21 @@
 
 .columnAcceptor {
 	color:#f8941d;
-	height: 70px;
+	height: 52px;
 	margin:6px 0px 5px 0px;
 	padding: 24px 0px 0px 0px;
 }
 
 .operatorAcceptor {
 	color: green;
-	height: 70px;
+	height: 52px;
 	margin:6px 0px 5px 0px;
 	padding: 24px;
 }
 
 
 .andAcceptor{
-	height:70px;
+	height:52px;
 	width: 70px;	
 	margin:6px 0px 5px 5px;
 	padding: 24px;
@@ -78,24 +90,26 @@
 // the dropHere class is applied to all acceptors
 .dropHere {
 	text-align:center;
+	border: 1px solid red;
 }
 
 div.condition input{
-	font-size:1.2em;
-	height:30px;
-	width:200px;
-	margin-top:24px;
-	margin-left:10px;
+	font-size:0.8em;
+	height:36px;
+	width:140px;
+	margin-top:16px;
+}
+
+
+.draggable{
+	border: 1px solid black;
 }
 
 
 
 
 
-
-
-
-.columnBlock {
+.column-block {
 	font-size:18px;
 	padding:10px;
 	width: 160px;
@@ -107,7 +121,7 @@ div.condition input{
 	border-radius:8px;
 }
 
-.operatorBlock {
+.operator-block {
 	width: 84px;
 	height:80px;
 	background-image:url('visual-interface/operator.png');
@@ -116,27 +130,23 @@ div.condition input{
 	padding-top:28px;
 }
 
-.complexOperatorBlock {
+.complexOperator-block {
 	text-align:center;
 	background-repeat:no-repeat;
 	background-size: contain;
 }
 
 
-.and {
-	width: 69px;
-	height:107px;
+.and-block {
+	width: 66px;
+	height:86px;
 	background-image:url('visual-interface/and.png');
 }
 
-.or {
-	width: 99px;
-	height:54px;
+.or-block {
+	width: 80px;
+	height:44px;
 	background-image:url('visual-interface/or.png');
-}
-
-.dropped{
-	font-weight:normal;
 }
 
 p.equals, p.doesnotequal, p.greaterthan, p.lessthan {
@@ -147,13 +157,14 @@ p.like{
 	font-size:1.4em;
 }
 
-.and p{
-	padding: 18px 0px 0px 10px;
-	font-size: 1.4em;
+.and-block p{
+	padding: 10px 0px 0px 0px;
+	font-size: 1.2em;
 }
 
-.or p{
-	font-size:1.4em;
+.or-block p{
+	padding: 14px 0px 0px 0px;
+	font-size:1.2em;
 }
 
 

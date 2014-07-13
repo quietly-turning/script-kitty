@@ -37,17 +37,17 @@
 				
 				<fieldset id="columnCorral" class="corral">
 					<legend>Columns</legend>
-					<div class="draggable columnBlock">name</div>
-					<div class="draggable columnBlock">habitat</div>
-					<div class="draggable columnBlock">diet</div>
-					<div class="draggable columnBlock">nocturnal</div>
-					<div class="draggable columnBlock">weight</div>
+					<div class="draggable column-block" data-blockType="column">name</div>
+					<div class="draggable column-block" data-blockType="column">habitat</div>
+					<div class="draggable column-block" data-blockType="column">diet</div>
+					<div class="draggable column-block" data-blockType="column">nocturnal</div>
+					<div class="draggable column-block" data-blockType="column">weight</div>
 				</fieldset>
 	
 				<fieldset id="operatorCorral" class="corral">
 				 	<legend>Operators</legend>
 					<% for op in @operators %>
-						<div oid="<%= op.id %>" class="draggable operatorBlock">
+						<div oid="<%= op.id %>" class="draggable operator-block" data-blockType="operator">
 							<p class="<%= op.name %>"><%= raw op.html_representation %></p>
 						</div>
 					<% end %>
@@ -55,8 +55,8 @@
 	
 				<fieldset id="complexOperatorCorral" class="corral">
 				 	<legend>Extenders</legend>
-					<div class="draggable complexOperatorBlock and"><br><p>and</p></div>
-					<div class="draggable complexOperatorBlock or"><br><p>or</p></div>
+					<div class="draggable complexOperator-block and-block" data-blockType="and"><br><p>and</p></div>
+					<div class="draggable complexOperator-block or-block" data-blockType="or"><p>or</p></div>
 				</fieldset>
 				
 			</div> <!-- /corrals -->

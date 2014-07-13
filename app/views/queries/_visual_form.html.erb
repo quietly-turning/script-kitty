@@ -2,12 +2,30 @@
 	
 	<div id="poof" style="display:none"></div>
 	
-	<%= form.fields_for :conditions do |condition_form| %>
-		<%= render :partial => 'queries/condition_fields', :locals => {:form => condition_form} %>
-	<% end %>
+	<div class="row">
+		<div class="small-2 columns select">
+			SELECT
+		</div>
+		
+		<div class="small-2 columns from">
+			FROM
+		</div>
+		
+		<div class="small-8 columns where">
+			<span>WHERE</span>
+			<%= form.fields_for :conditions do |condition_form| %>
+				<%= render :partial => 'queries/condition_fields', :locals => {:form => condition_form} %>
+			<% end %>
+		</div>
+		
+	</div>
+	
+	
 
 </div> <!-- /buildYourQuery -->
 
 <div class="actions">
-    <%= form.submit "Submit", :class => "radius button small" %>
+	<div class="row">
+		<%= form.submit "Submit", :class => "radius button small" %>
+	</div>
 </div>

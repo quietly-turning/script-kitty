@@ -1,28 +1,32 @@
-<div class="condition" style="display:none">
-	<div class="row">
-		<div class="small-4 columns">
-			<div class="dropHere columnAcceptor"> <p>column</p> </div>
-			<div><%= form.hidden_field :column, :class => 'column' %></div>
+<div class="row condition">
+	
+	<div class="small-12 columns container">
+		
+		<div class="row toprow">
+			<div class="small-4 columns">
+				<div class="dropHere columnAcceptor" data-accepts="column-block"></div>
+				<div><%= form.hidden_field :column, :class => 'column' %></div>
+			</div>
+			<div class="small-2 columns">
+				<div class="dropHere operatorAcceptor" data-accepts="operator-block"></div>
+				<div><%= form.hidden_field :operator_id, :class => 'operator' %></div>
+			</div>
+			<div class="small-3 columns">
+				<div><%= form.text_field :parameter, :placeholder => 'parameter' %></div>
+			</div>
+			<div class="small-2 columns end">
+				<div class="dropHere andAcceptor" data-accepts="and-block"></div>
+				<div><%= form.hidden_field :complexOperator, :class => 'complexOperator' %></div>
+			</div>
 		</div>
-		<div class="small-2 columns">
-			<div class="dropHere operatorAcceptor"> <p>op.</p> </div>
-			<div><%= form.hidden_field :operator_id, :class => 'operator' %></div>
+
+		<div class="row bottomrow">
+			<div class="small-2 small-offset-4 columns end">
+				<div class="dropHere orAcceptor" data-accepts="or-block"></div>
+				<div><%= form.hidden_field :complexOperator, :class => 'complexOperator' %></div>
+			</div>
 		</div>
-		<div class="small-3 columns">
-			<div><%= form.text_field :parameter, :placeholder => 'parameter' %></div>
-		</div>
-		<div class="small-2 columns end">
-			<div class="dropHere andAcceptor"></div>
-			<div><%= form.hidden_field :complexOperator, :class => 'complexOperator' %></div>
-		</div>
+		
 	</div>
 	
-	
-	<div class="row">
-		<div class="small-2 small-offset-4 columns end">
-			<div class="dropHere orAcceptor"></div>
-			<div><%= form.hidden_field :complexOperator, :class => 'complexOperator' %></div>
-		</div>
-	</div>
-	
-</div> 
+</div>
