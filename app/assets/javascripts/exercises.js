@@ -4,13 +4,12 @@ $(function(){
 	
 	// ensure that we found a textarea
 	// (participants using the visual builder will not)
-	if (!typeof myTextArea === "undefined" )
+	if (myTextArea != null)
 	{
 		var myCodeMirror = CodeMirror.fromTextArea(myTextArea, {
 			mode: "text/x-mariadb",
 			lineNumbers: true,
 			theme: "lesser-dark"
 		});	
-	}
-	
+	}	
 });
