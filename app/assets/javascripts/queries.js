@@ -45,14 +45,15 @@ $(document).ready(function(){
 
 	function initialize()
 	{
+		initializeDraggable();
+		initializeDroppable();
+		resortConditions();
+	}
+
+	function newCondition()
+	{
 		$.get("/queries/new.js", function(){
-			initializeColumnDrag();
-			initializeOperatorDrag();
-			initializeColumnDrop();
-			initializeOperatorDrop();
-			initializeComplexOperatorDrag();
-			initializeComplexOperatorDrop();
-			resortConditions();
+			initialize()
 		});
 	}
 
@@ -74,228 +75,87 @@ $(document).ready(function(){
 	}
 
 
-
-	function initializeColumnDrag()
+	function initializeDraggable()
 	{
-		$('.columnBlock').each(function(){
-			// if the columnBlock has already been dropped into an acceptor once
-			if ($(this).data('dropped'))
-			{
-				$(this).draggable({
-					snap:   ".columnAcceptor",	
-					cursor: "move",
-					containment: '#content',
-					revert: function(e)
-					{  
-						// the user is (probably) trying to get rid of it now...
-						$(this).remove();
-	 				   	animatePoof();
-					}		
-				});
-			} else {
-				$(this).draggable({	
-					snap: '.columnAcceptor',
-					helper: "clone",
-					cursor: "move",
-					containment: '#content',
-					revert: "invalid"
-				});
-			}
-		});
-	}
-
-	function initializeOperatorDrag()
-	{
-		$('.operatorBlock').each(function(){
-			if ($(this).data('dropped'))
-			{
-				$(this).draggable({
-					snap:   ".operatorAcceptor",	
-					cursor: "move",
-					containment: '#content',
-					revert: function(e)
-					{  
-						// the user is (probably) trying to get rid of it now...
-						$(this).remove();
-	 				   	animatePoof();
-					}		
-				});
-			} else {
-				$(this).draggable({	
-					snap: '.operatorAcceptor',
-					helper: "clone",
-					cursor: "move",
-					containment: '#content',
-					revert: "invalid"
-				});
-			}
-		});
-	}
-
-
-
-	function initializeColumnDrop()
-	{
-		$('.columnAcceptor').droppable({ 	
-			accept: '.columnBlock',
-			drop: function( e, ui )
-			{
-				var columnClone = ui.helper.clone();
-				columnClone.data('dropped', true);
-				$(this).append(columnClone);
-									
-				checkIfConditionIsComplete($(this).parents('.condition'));
-				initializeColumnDrag();
-			}
-		});
-	}
-
-
-	function initializeOperatorDrop()
-	{	
-		$('.operatorAcceptor').droppable({
-			accept: '.operatorBlock',
-			drop: function( event, ui )
-			{
-				var operatorClone = ui.helper.clone();
-				operatorClone.data('dropped', true);
-				$(this).append(operatorClone);
+		$('.draggable').each(function(){
 			
-				checkIfConditionIsComplete($(this).parents('.condition'));
-				initializeOperatorDrag();
-			},
-		});
-	}
-
-
-	function initializeComplexOperatorDrag()
-	{
-		$('.and').each(function(){
-			if ($(this).data('dropped'))
-			{
-				$(this).draggable({
-					snap:   ".andAcceptor",	
-					cursor: "move",
-					containment: '#content',
-					revert: function(e)
-					{  
-						$(this).hide();
-						animatePoof();
-					
-						// This would be much, much cleaner/simpler if we could simply .remove() the old condition.
-						// Errors abound, however, so I'm left simply stripping all IDs and classes from it...
-						// 
-						// the user is (probably) trying to get rid of it now...
-						// fadeOut, remove .condition class, strip condition's ID, strip each child element's ID
-						$(this).parents('.condition').fadeOut().removeClass('condition').attr("id", "").find("*").attr("id", "");		
-						resortConditions();
-					
-					}		
-				});
-			} else {
-				$(this).draggable({	
-					snap: '.andAcceptor',
-					helper: "clone",
-					cursor: "move",
-					containment: '#content',
-					revert: "invalid"
-				});
-			}
-		});
-		
-		$('.or').each(function(){
-			if ($(this).data('dropped'))
-			{
-				$(this).draggable({
-					snap:   ".orAcceptor",	
-					cursor: "move",
-					containment: '#content',
-					revert: function(e)
-					{  
-						$(this).hide();
-						animatePoof();
-					
-						// This would be much, much cleaner/simpler if we could simply .remove() the old condition.
-						// Errors abound, however, so I'm left simply stripping all IDs and classes from it...
-						// 
-						// the user is (probably) trying to get rid of it now...
-						// fadeOut, remove .condition class, strip condition's ID, strip each child element's ID
-						$(this).parents('.condition').fadeOut().removeClass('condition').attr("id", "").find("*").attr("id", "");		
-						resortConditions();
-					
-					}		
-				});
-			} else {
-				$(this).draggable({	
-					snap: '.orAcceptor',
-					helper: "clone",
-					cursor: "move",
-					containment: '#content',
-					revert: "invalid"
-				});
-			}
-		});
-	}
-
-
-	function initializeComplexOperatorDrop()
-	{			
-		$('.orAcceptor').droppable({
-			accept: '.or',
-			tolerance: 'intersect',
-			drop: function( event, ui )
-			{	
-			
-				// handle block cloning
-				var complexOperatorClone = ui.helper.clone();
-				complexOperatorClone.data('dropped', true);
-				$(this).append(complexOperatorClone);
-						
-				if ($(this).data('dropped') === undefined)
-				{
-					// this is the first time it is dropped
-					$(this).data('dropped', true);
-					
-					// add margin-bottom: -20px;
-					$(this).parents(".condition").addClass("conditionWithOr");
+			$(this).draggable({
+				snap:   "." + $(this).data("blockType") + "Acceptor",
 				
-					initialize();
+				// if the draggable block has yet to be dropped, clone it
+				// if the draggable bloack has already been dropped, empty string (just drag it)
+				helper: $(this).data('dropped') ? "" : "clone",
 				
-				} else {
-					// this is for subsequent drops...
-				}
-			}
-		});
-		
-		$('.andAcceptor').droppable({
-			accept: '.and',
-			tolerance: 'intersect',
-			drop: function( event, ui )
-			{
-			
-				// handle block cloning
-				var complexOperatorClone = ui.helper.clone();
-				complexOperatorClone.data('dropped', true);
-				$(this).append(complexOperatorClone);
-						
-				if ($(this).data('dropped') === undefined)
-				{
-					// this is the first time it is dropped
-					$(this).data('dropped', true);
-					
-					// add margin-bottom: -57px;
-					$(this).parents(".condition").addClass("conditionWithAnd");
-					
-					initialize();
+				cursor: "move",
+				containment: '#content',
 				
-				} else {
-					// this is for subsequent drops...
-				}
-			
-				checkIfConditionIsComplete($(this).parents('.condition'));
-			}
+				revert: "invalid"
+					
+					// if ($(this).data('dropped'))
+					// {
+					// 	// the user is (probably) trying to get rid of it now...
+					// 	$(this).remove();
+					//  animatePoof();
+					//
+					// 	if ($(this).data("blockType") == "or" || $(this).data("blockType") == "and")
+					// 	{
+					// 		// the user is (probably) trying to get rid of an "and" or "or" now...
+					// 		// fadeOut, remove .condition class, strip condition's ID, strip each child element's ID
+					// 		$(this).parents('.condition').fadeOut().removeClass('condition').attr("id", "").find("*").attr("id", "");
+					// 		resortConditions();
+					// 	}
+					//
+					// } else {
+					// 	return "invalid"
+					// }
+			});
 		});
-		
+	}
+
+
+	function initializeDroppable()
+	{
+		 $('.dropHere').each(function(){
+			 
+	 		$(this).droppable({ 	
+	 			accept: "." + $(this).data("accepts"),
+	 			drop: function( event, ui )
+	 			{
+					ui.helper.data("dropped", true);
+					
+					// clear the absolute position jquery sets
+	 				ui.helper.attr("style", "");
+	 				
+					$(this).append(ui.helper.clone());
+					
+					
+					var droppedtype = ui.helper.context.dataset.blocktype;
+					
+	 				if (droppedtype == "or" || droppedtype == "and")
+	 				{	
+						if (droppedtype == "or")
+						{
+	 						// add margin-bottom: -20px;
+	 						$(this).parents(".condition").addClass("conditionWithOr");
+							
+							//we just dropped an "or" so remove the "and" from this condition
+							// $(this).parents(".condition").children(".andAcceptor").remove();
+							
+						} else if (droppedtype == "and") {
+							//we just dropped an "and" so remove the "or" (bottom)row from this condition
+							$(this).parents(".condition").children(".bottomrow").remove();
+							
+	 						// add margin-bottom: -57px;
+	 						$(this).parents(".condition").addClass("conditionWithAnd");		
+						}
+ 						newCondition();
+	 				}
+
+	 				checkIfConditionIsComplete();
+
+	 			}
+	 		});
+		 });
 	}
 
 		// if we are editing a query (as opposed to creating one) the hidden fields for
@@ -340,28 +200,17 @@ $(document).ready(function(){
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    
 	
 		// some sort of more "official" sorting algorithm needs to be implemented here...
-		function resortConditions(conditionBeingRemoved)
+		function resortConditions()
 		{		
 		
-			var i = 1;	
+			var i = 1;
+			
 			$('.condition').each(function(){		
-				$(this).find('.buildYourQuery > legend').text('Condition #' + i); 
-			
-				// $(this).attr('id', 'condition' + i); 
-				// 		
-				// 			var newCA	= 'columnAcceptor' + i;
-				// 			var newOA	= 'operatorAcceptor' + i;
-				// 			var newCOA	= 'complexOperatorAcceptor' + i;
-				// 			
-				// 			$(this).find('div.columnAcceptor').attr("id", newCA);
-				// 			$(this).find('div.operatorAcceptor').attr("id", newOA);
-				// 			$(this).find('div.complexOperatorAcceptor').attr("id", newCOA);
-			
+							
 				$(this).find('input:hidden').not("script").each(function(){
 					$(this).attr("id", $(this).attr("id").replace("_0_", "_" + i + "_"));
 				});
-
-			
+				
 				i++;
 			});	
 		}
