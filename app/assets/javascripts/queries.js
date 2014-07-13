@@ -135,18 +135,19 @@ $(document).ready(function(){
 	 				{	
 						if (droppedtype == "or")
 						{
-	 						// add margin-bottom: -20px;
-	 						$(this).parents(".condition").addClass("conditionWithOr");
+	 						// add margin-bottom: -10px;
+	 						$(this).parents(".condition").attr("style", "margin-bottom:-10px;");
 							
 							//we just dropped an "or" so remove the "and" from this condition
 							// $(this).parents(".condition").children(".andAcceptor").remove();
 							
-						} else if (droppedtype == "and") {
-							//we just dropped an "and" so remove the "or" (bottom)row from this condition
-							$(this).parents(".condition").children(".bottomrow").remove();
+						} else if (droppedtype == "and") {			
 							
-	 						// add margin-bottom: -57px;
-	 						$(this).parents(".condition").addClass("conditionWithAnd");		
+							//we just dropped an "and" so remove the "or" (bottom)row from this condition
+							$(this).parents(".container").children(".bottomrow").remove();
+							
+	 						// add margin-bottom: -42px;
+	 						$(this).parents(".condition").attr("style", "margin-bottom:-42px;");
 						}
  						newCondition();
 	 				}

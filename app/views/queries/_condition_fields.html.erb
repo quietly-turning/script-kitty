@@ -12,7 +12,9 @@
 				<div><%= form.hidden_field :operator_id, :class => 'operator' %></div>
 			</div>
 			<div class="small-3 columns">
-				<div><%= form.text_field :parameter, :placeholder => 'parameter' %></div>
+				<div class="parameterInput">
+					<%= form.text_field :parameter, :placeholder => 'parameter' %>
+				</div>
 			</div>
 			<div class="small-2 columns end">
 				<div class="dropHere andAcceptor" data-accepts="and-block"></div>

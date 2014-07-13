@@ -48,6 +48,7 @@
 				 	<legend>Operators</legend>
 					<% for op in @operators %>
 						<div oid="<%= op.id %>" class="draggable operator-block" data-blockType="operator">
+							<%= image_tag "visual-interface/operator.png" %>
 							<p class="<%= op.name %>"><%= raw op.html_representation %></p>
 						</div>
 					<% end %>
@@ -55,8 +56,14 @@
 	
 				<fieldset id="complexOperatorCorral" class="corral">
 				 	<legend>Extenders</legend>
-					<div class="draggable complexOperator-block and-block" data-blockType="and"><br><p>and</p></div>
-					<div class="draggable complexOperator-block or-block" data-blockType="or"><p>or</p></div>
+					<div class="draggable complexOperator-block and-block" data-blockType="and">
+						<%= image_tag "visual-interface/and.png" %>
+						<p>and</p>
+					</div>
+					<div class="draggable complexOperator-block or-block" data-blockType="or">
+						<%= image_tag "visual-interface/or.png" %>
+						<p>or</p>
+					</div>
 				</fieldset>
 				
 			</div> <!-- /corrals -->
