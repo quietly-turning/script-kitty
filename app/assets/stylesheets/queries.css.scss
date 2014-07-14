@@ -49,8 +49,22 @@
 /* ---------- QUERY BUILDER ELEMENTS LAYOUT -----------------*/
 /* --------------------------------------------------------- */
 
-.condition {
-	background :url('visual-interface/whereConditionBox-alt.png');
+.condition-with-both{
+	background :url('visual-interface/whereConditionBox_both.png');
+	background-size: contain;
+	background-repeat:no-repeat;
+	height:103px;
+}
+
+.condition-with-and{
+	background :url('visual-interface/whereConditionBox_and.png');
+	background-size: contain;
+	background-repeat:no-repeat;
+	height:103px;
+}
+
+.condition-with-or{
+	background :url('visual-interface/whereConditionBox_or.png');
 	background-size: contain;
 	background-repeat:no-repeat;
 	height:103px;
@@ -65,7 +79,7 @@
 }
 
 .operatorAcceptor {
-	padding:4px 0px 0px 14px;
+	padding:5px 0px 0px 16px;
 	height: 52px;
 }
 
@@ -73,20 +87,19 @@
 .andAcceptor{
 	height:52px;
 	width: 56px;
-	padding-left:12px;
+	padding-left:13px;
 }
 
 .orAcceptor{
 	height:40px;
 	margin:0px;
-	padding-left: 7px;
-	padding-top: 8px;
+	padding-left: 21px;
+	padding-top: 9px;
 }
 
 // the dropHere class is applied to all acceptors
 .dropHere {
 	text-align:center;
-//	border: 1px solid red;
 }
 
 div.parameterInput{
@@ -135,12 +148,12 @@ div.parameterInput input{
 }
 
 .or-block {
-	width: 80px;
-	height:44px;
+	width: 57px;
+	height: 30px;
 }
 
 .and-block p{
-	padding: 10px 0px 0px 8px;
+	padding: 14px 0px 0px 8px;
 	font-size: 1em;
 	position:relative;
 	bottom: 70px;
@@ -160,7 +173,7 @@ div.parameterInput input{
 
 
 .operator-block {
-	width: 68px;
+	width: 67px;
 	height:60px;
 }
 
