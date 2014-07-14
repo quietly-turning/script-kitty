@@ -26,6 +26,13 @@
 			<br>
 			<span class="visual-builder-footer-column">COLUMNS</span>
 			<div id="columnCorral" class="corral">
+				
+				<div class="draggable column-block" data-blockType="column">
+					<%= image_tag "visual-interface/column.png" %>
+					<span class="tablename">Schools</span>
+					<span class="columnname asterisk"> * </span>
+				</div><br>
+				
 				<% for col in School.column_names %>
 					<% if col != "created_at" and col != "updated_at" %>
 						<div class="draggable column-block" data-blockType="column">
@@ -35,6 +42,7 @@
 						</div><br>
 					<% end %>
 				<% end %>
+				
 			</div>
 		</div>
 		
@@ -47,7 +55,7 @@
 					<div oid="<%= op.id %>" class="draggable operator-block" data-blockType="operator">
 						<%= image_tag "visual-interface/operator.png" %>
 						<p class="<%= op.name %>"><%= raw op.html_representation %></p>
-					</div>
+					</div><br>
 				<% end %>
 			</div>
 		</div>
@@ -60,7 +68,7 @@
 				<div class="draggable complexOperator-block and-block" data-blockType="and">
 					<%= image_tag "visual-interface/and.png" %>
 					<p>and</p>
-				</div>
+				</div><br>
 				<div class="draggable complexOperator-block or-block" data-blockType="or">
 					<%= image_tag "visual-interface/or.png" %>
 					<p>or</p>

@@ -155,7 +155,14 @@ $(document).ready(function(){
 						}
  						newCondition();
 	 				}
-
+					
+					
+					if ($(this).hasClass("selectAcceptor"))
+					{
+						$("#select").append('<div class="dropHere columnAcceptor selectAcceptor" data-accepts="column-block"></div><br>');
+						initializeDroppable();
+					}
+					
 	 				checkIfConditionIsComplete();
 
 	 			}

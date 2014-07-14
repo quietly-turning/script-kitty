@@ -3,15 +3,16 @@
 	<div id="poof" style="display:none"></div>
 	
 	<div class="row">
-		<div class="small-2 columns select">
-			SELECT
+		<div id="select" class="small-3 columns">
+			<span>SELECT</span>
+			<div class="dropHere columnAcceptor selectAcceptor" data-accepts="column-block"></div><br>
 		</div>
 		
-		<div class="small-2 columns from">
-			FROM
+		<div id="from" class="small-3 columns">
+			<span>FROM</span>
 		</div>
 		
-		<div class="small-8 columns where">
+		<div id="where" class="small-6 columns">
 			<span>WHERE</span>
 			<%= form.fields_for :conditions do |condition_form| %>
 				<%= render :partial => 'queries/condition_fields', :locals => {:form => condition_form} %>

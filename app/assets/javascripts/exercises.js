@@ -17,11 +17,6 @@ $(function(){
 	    return window.innerHeight - $(this).offset().top;
 	});
 	
-	$( window ).resize(function() {
-		$('#exercise-footer').height(function(index, height) {
-		    return window.innerHeight - $(this).offset().top;
-		});
-	});
 	
 	$("input[name='table']").change(function(){
 		$(".table-block-active").removeClass("table-block-active");

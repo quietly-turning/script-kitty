@@ -27,22 +27,24 @@
 	clear: both;
 }
 
-.select, .from{
+#from{
+	text-align:center;
+	font-size: 1.3em;
+}
+
+#select {
 	text-align:center;
 	font-size: 1.3em;
 	min-height: 137px;
 	border-right: 4px solid #dfdfdf;
 }
 
-.where{
+#where{
 	text-align:center;
 	font-size: 1.3em;
+	border-left: 4px solid #dfdfdf;
 }
 
-.where span{
-	position:relative;
-	right: 50px;
-}
 
 
 /* --------------------------------------------------------- */
@@ -53,21 +55,21 @@
 	background: url('visual-interface/whereConditionBox_both.png');
 	background-size: contain;
 	background-repeat:no-repeat;
-	height:103px;
+	height:104px;
 }
 
 .condition-with-and{
 	background: url('visual-interface/whereConditionBox_and.png');
 	background-size: contain;
 	background-repeat:no-repeat;
-	height:103px;
+	height:104px;
 }
 
 .condition-with-or{
 	background:url('visual-interface/whereConditionBox_or.png');
 	background-size: contain;
 	background-repeat:no-repeat;
-	height:103px;
+	height:104px;
 }
 
 .container .toprow .columns{
@@ -80,22 +82,30 @@
 }
 
 .operatorAcceptor {
-	padding:5px 0px 0px 16px;
+	padding:5px 0px 0px 0px;
 	height: 52px;
 }
 
 
 .andAcceptor{
 	height:52px;
-	width: 56px;
-	padding-left:13px;
+	width: 86px;
+	padding-left:36px;
 }
 
 .orAcceptor{
 	height:40px;
 	margin:0px;
-	padding-left: 21px;
-	padding-top: 9px;
+	padding-left: 47px;
+	padding-top: 10px;
+}
+
+.selectAcceptor{
+	height:64px;
+	padding-left: 12px;
+	background: url('visual-interface/selectBox.png');
+	background-size: contain;
+	background-repeat:no-repeat;
 }
 
 // the dropHere class is applied to all acceptors
@@ -182,16 +192,20 @@ input[name="table"] {
 .column-block span.tablename{
 	position:relative;
 	left: 20px;
-	bottom: 26px;
+	bottom: 24px;
 	float:left;
 }
 
 .column-block span.columnname{
 	position:relative;
 	left: 30px;
-	bottom: 26px;
+	bottom: 24px;
 }
 
+//the asterisk
+span.columnname.asterisk{
+	font-size: 1.6em;
+};
 
 
 
@@ -227,7 +241,7 @@ span.visual-builder-footer-column{
 
 #columnCorral {
 	background-color:#7f7f80;
-	padding: 20px;
+	padding: 20px 0px 20px 50px;
 }
 
 #operatorCorral, #complexOperatorCorral{
