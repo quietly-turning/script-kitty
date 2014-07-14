@@ -1,4 +1,4 @@
-<div class="exercise-header">
+<div id="exercise-header">
 	<div class="row">
 		<div class="small-12 columns">
 			<h2>Exercise <%= @exercise.id %></h2>
@@ -15,6 +15,8 @@
 	<%= render 'layouts/messages' %>
 </div>
 
+
+
 <div class="row">
 	
 	<% if current_user.visual_interface? %>
@@ -28,45 +30,8 @@
 	</div>
 </div>
 
+
+
 <% if current_user.visual_interface? %>
-	<div class="exercise-footer">
-		<div class="row">
-			<div class="small-12 columns">
-			
-				<div id="corrals">
-				
-					<fieldset id="tableCorral" class="corral">
-						<legend>TABLES</legend>
-						<div class="table-block">Schools</div>
-						<div class="table-block">Locales</div>
-						<div class="table-block">Controls</div>
-					</fieldset>
-	
-					<fieldset id="operatorCorral" class="corral">
-					 	<legend>OPERATORS</legend>
-						<% for op in @operators %>
-							<div oid="<%= op.id %>" class="draggable operator-block" data-blockType="operator">
-								<%= image_tag "visual-interface/operator.png" %>
-								<p class="<%= op.name %>"><%= raw op.html_representation %></p>
-							</div>
-						<% end %>
-					</fieldset>
-	
-					<fieldset id="complexOperatorCorral" class="corral">
-					 	<legend>EXTENDERS</legend>
-						<div class="draggable complexOperator-block and-block" data-blockType="and">
-							<%= image_tag "visual-interface/and.png" %>
-							<p>and</p>
-						</div>
-						<div class="draggable complexOperator-block or-block" data-blockType="or">
-							<%= image_tag "visual-interface/or.png" %>
-							<p>or</p>
-						</div>
-					</fieldset>
-				
-				</div> <!-- /corrals -->
-			
-			</div>
-		</div>
-	</div>
+	<%= render :partial => 'queries/footer' %>
 <% end %>

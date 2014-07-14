@@ -1,0 +1,72 @@
+<div id="exercise-footer">
+	<div class="row collapse">
+		
+		
+		<div class="small-3 columns">
+			<br>
+			<span class="visual-builder-footer-column">TABLES</span>
+			<div id="tableCorral" class="corral">
+				<form>
+					<div class="table-block table-block-active">
+						<input type="radio" checked name="table" value="Schools">Schools
+					</div>
+					
+					<div class="table-block">
+						<input type="radio" name="table" value="Locales">Locales
+					</div>
+					
+					<div class="table-block">
+						<input type="radio" name="table" value="Controls">Controls				
+					</div>
+				</form>	
+			</div>
+		</div>
+		
+		<div class="small-4 columns">
+			<br>
+			<span class="visual-builder-footer-column">COLUMNS</span>
+			<div id="columnCorral" class="corral">
+				<% for col in School.column_names %>
+					<% if col != "created_at" and col != "updated_at" %>
+						<div class="draggable column-block" data-blockType="column">
+							<%= image_tag "visual-interface/column.png" %>
+							<span class="tablename">Schools</span>
+							<span class="columnname"><%= col %></span>
+						</div><br>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+		
+		
+		<div class="small-2 columns">
+			<br>
+			<span class="visual-builder-footer-column">OPERATORS</span>
+			<div id="operatorCorral" class="corral">
+				<% for op in @operators %>
+					<div oid="<%= op.id %>" class="draggable operator-block" data-blockType="operator">
+						<%= image_tag "visual-interface/operator.png" %>
+						<p class="<%= op.name %>"><%= raw op.html_representation %></p>
+					</div>
+				<% end %>
+			</div>
+		</div>
+		
+		<div class="small-2 columns end">
+			<br>
+			<span class="visual-builder-footer-column">EXTENDERS</span>
+			<div id="complexOperatorCorral" class="corral">
+
+				<div class="draggable complexOperator-block and-block" data-blockType="and">
+					<%= image_tag "visual-interface/and.png" %>
+					<p>and</p>
+				</div>
+				<div class="draggable complexOperator-block or-block" data-blockType="or">
+					<%= image_tag "visual-interface/or.png" %>
+					<p>or</p>
+				</div>
+			</div>
+		</div>
+		
+	</div><!-- row -->
+</div> <!-- footer -->

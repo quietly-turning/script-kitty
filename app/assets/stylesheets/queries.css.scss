@@ -50,32 +50,33 @@
 /* --------------------------------------------------------- */
 
 .condition-with-both{
-	background :url('visual-interface/whereConditionBox_both.png');
+	background: url('visual-interface/whereConditionBox_both.png');
 	background-size: contain;
 	background-repeat:no-repeat;
 	height:103px;
 }
 
 .condition-with-and{
-	background :url('visual-interface/whereConditionBox_and.png');
+	background: url('visual-interface/whereConditionBox_and.png');
 	background-size: contain;
 	background-repeat:no-repeat;
 	height:103px;
 }
 
 .condition-with-or{
-	background :url('visual-interface/whereConditionBox_or.png');
+	background:url('visual-interface/whereConditionBox_or.png');
 	background-size: contain;
 	background-repeat:no-repeat;
 	height:103px;
 }
 
-.condition .toprow{
-//	height:66px;
+.container .toprow .columns{
+	max-height:52px;
 }
 
 .columnAcceptor {
 	height: 52px;
+	padding: 14px 0px 0px 2px;
 }
 
 .operatorAcceptor {
@@ -125,22 +126,34 @@ div.parameterInput input{
 	font-size:0.8em;
 }
 
-.column-block {
-	font-size:18px;
-	padding:10px;
-	width: 160px;
-	background-color: #fff;
-	color: #000000;
-	border: 3px solid #f8941d;
-	background-color: #fff8dc;
-	border-radius:8px;
+
+
+
+.table-block {
+	padding: 14px 0px 0px 8px;
+	margin-bottom: 8px;
+	font-weight: bold;
+	font-size: 1.2em;
+	color: #fff;
+}
+
+.table-block-active{
+	color: #000;
+	background-color:#7f7f80;
 }
 
 
+input[name="table"] {
+	position:relative;
+	bottom:2px;
+	margin-right: 20px;
+}
 
-
-
-
+.column-block {
+	width: 218px;
+	height: 34px;
+	color: #000000;
+}
 
 .and-block {
 	width: 53px;
@@ -166,8 +179,18 @@ div.parameterInput input{
 	bottom: 48px;
 }
 
+.column-block span.tablename{
+	position:relative;
+	left: 20px;
+	bottom: 26px;
+	float:left;
+}
 
-
+.column-block span.columnname{
+	position:relative;
+	left: 30px;
+	bottom: 26px;
+}
 
 
 
@@ -187,49 +210,29 @@ p.equals, p.doesnotequal, p.greaterthan, p.lessthan {
 }
 
 p.like{
-	font-size:1em;
+	font-size:0.9em;
 }
 
 
 
 
 
-fieldset legend{
-	font-weight:normal;
-	background:transparent;
-	color: #FFF;
-}
-
-#corrals {
-	float:left;
-	width:90%;
-	margin-top:50px;
+span.visual-builder-footer-column{
+	color: #fff;
 }
 
 .corral{
-	border:0px;
+	margin-top:10px;
 }
 
-#columnCorral{
-	margin-right:20px;
-	width:190px;
-	height:100%;
-	float:left;
+#columnCorral {
+	background-color:#7f7f80;
+	padding: 20px;
 }
 
-#operatorCorral{
-	width:170px;
-	float:left;
+#operatorCorral, #complexOperatorCorral{
+	padding-left: 50px;
 }
-
-#complexOperatorCorral{
-	float:right;;
-	width: 100px;
-}
-
-
-
-
 
 
 

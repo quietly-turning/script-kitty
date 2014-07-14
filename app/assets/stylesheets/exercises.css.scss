@@ -2,30 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.exercise-header{
+#exercise-header{
 	background-color: #dfdfdf;
 	margin-bottom: 15px;
 }
 
-.exercise-footer{
+#exercise-footer{
 	background-color: #333333;
-	height: 100%;
 }
 
-ol li, ul li{
-	font-size:1.15em;
-	line-height: 2.5em;
-}
-
-ul li{
-	list-style:none;
-}
-
-ul li.right-align{
-	text-align: right;
-}
-
-.gray-border{
-	color: #fff;
-	background-color:#333;
+#exercise-footer .columns{
+	text-align: center;
 }
