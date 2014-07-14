@@ -108,7 +108,9 @@ div.parameterInput input{
 	text-align:center;
 }
 
-
+.dropped{
+	font-size:0.8em;
+}
 
 .column-block {
 	font-size:18px;
@@ -122,15 +124,9 @@ div.parameterInput input{
 }
 
 
-.operator-block {
-	width: 68px;
-	height:60px;
-}
 
-.operator-block p {
-	position:relative;
-	bottom: 60px;
-}
+
+
 
 
 .and-block {
@@ -141,14 +137,6 @@ div.parameterInput input{
 .or-block {
 	width: 80px;
 	height:44px;
-}
-
-p.equals, p.doesnotequal, p.greaterthan, p.lessthan {
-	font-size:1.3em;
-}
-
-p.like{
-	font-size:1em;
 }
 
 .and-block p{
@@ -164,6 +152,31 @@ p.like{
 	position:relative;
 	bottom: 48px;
 }
+
+
+
+
+
+
+
+.operator-block {
+	width: 68px;
+	height:60px;
+}
+
+.operator-block p {
+	position:relative;
+	bottom: 50px;
+}
+
+p.equals, p.doesnotequal, p.greaterthan, p.lessthan {
+	font-size:1.3em;
+}
+
+p.like{
+	font-size:1em;
+}
+
 
 
 

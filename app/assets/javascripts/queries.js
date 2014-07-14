@@ -124,7 +124,9 @@ $(document).ready(function(){
 					ui.helper.data("dropped", true);
 					
 					// clear the absolute position jquery sets
-	 				ui.helper.attr("style", "");
+					// and replace it with a font-size hack
+					// (I can't figure out what CSS is causing dropped blocks to grow in font-size...)
+	 				ui.helper.attr("style", "font-size:0.8em;");
 	 				
 					$(this).append(ui.helper.clone());
 					
@@ -135,8 +137,8 @@ $(document).ready(function(){
 	 				{	
 						if (droppedtype == "or")
 						{
-	 						// add margin-bottom: -10px;
-	 						$(this).parents(".condition").attr("style", "margin-bottom:-10px;");
+	 						// add margin-bottom: -11px;
+	 						$(this).parents(".condition").attr("style", "margin-bottom:-11px;");
 							
 							//we just dropped an "or" so remove the "and" from this condition
 							// $(this).parents(".condition").children(".andAcceptor").remove();
