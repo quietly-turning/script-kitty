@@ -136,12 +136,13 @@ $(document).ready(function(){
 	 				if (droppedtype == "or" || droppedtype == "and")
 	 				{	
 						if (droppedtype == "or")
-						{
+						{							
 	 						// add margin-bottom: -11px;
 	 						$(this).parents(".condition").attr("style", "margin-bottom:-11px;");
 							
 							//we just dropped an "or" so remove the "and" from this condition
-							// $(this).parents(".condition").children(".andAcceptor").remove();
+							$(this).parents(".container").children(".toprow").children(".end").children(".dropHere").remove();
+							$(this).parents(".condition").addClass("condition-with-or").removeClass("condition-with-both");
 							
 						} else if (droppedtype == "and") {			
 							
@@ -150,6 +151,7 @@ $(document).ready(function(){
 							
 	 						// add margin-bottom: -42px;
 	 						$(this).parents(".condition").attr("style", "margin-bottom:-42px;");
+							$(this).parents(".condition").addClass("condition-with-and").removeClass("condition-with-both");
 						}
  						newCondition();
 	 				}
