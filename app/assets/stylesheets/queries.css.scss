@@ -76,11 +76,6 @@
 	max-height:52px;
 }
 
-.columnAcceptor {
-	height: 52px;
-	padding: 14px 0px 0px 2px;
-}
-
 .operatorAcceptor {
 	padding:5px 0px 0px 0px;
 	height: 52px;
@@ -99,14 +94,29 @@
 	padding-left: 47px;
 	padding-top: 10px;
 }
-
-.selectAcceptor{
+.columnAcceptor, .condition-columnAcceptor{
 	height:64px;
-	padding-left: 12px;
+}
+
+.condition-columnAcceptor{
+	padding: 14px 0px 0px 4px;
+}
+
+.columnAcceptor{
+	padding: 14px 0px 0px 10px;
 	background: url('visual-interface/selectBox.png');
 	background-size: contain;
 	background-repeat:no-repeat;
 }
+
+.tableAcceptor{
+	height:64px;
+	padding: 0px 0px 0px 10px;
+	background: url('visual-interface/fromBox.png');
+	background-size: contain;
+	background-repeat:no-repeat;
+}
+
 
 // the dropHere class is applied to all acceptors
 .dropHere {
@@ -144,19 +154,17 @@ div.parameterInput input{
 	margin-bottom: 8px;
 	font-weight: bold;
 	font-size: 1.2em;
-	color: #fff;
-}
-
-.table-block-active{
-	color: #000;
-	background-color:#7f7f80;
-}
-
-
-input[name="table"] {
-	position:relative;
-	bottom:2px;
+	width: 160px;
 	margin-right: 20px;
+}
+
+.table-block-container{
+	padding:0px 0px 13px 0px;
+}
+
+.table-block-container-active{
+	width:300px;
+	background-color:#7f7f80;
 }
 
 .column-block {
@@ -189,7 +197,7 @@ input[name="table"] {
 	bottom: 48px;
 }
 
-.column-block span.tablename{
+.column-block span.tablename, .table-block span.tablename{
 	position:relative;
 	left: 20px;
 	bottom: 24px;
@@ -239,9 +247,11 @@ span.visual-builder-footer-column{
 	margin-top:10px;
 }
 
-#columnCorral {
+.columnCorral {
 	background-color:#7f7f80;
-	padding: 20px 0px 20px 50px;
+	padding: 20px 0px 19px 50px;
+	//	hide by default; show via JavaScript
+	display: none;
 }
 
 #operatorCorral, #complexOperatorCorral{

@@ -57,22 +57,15 @@ $(document).ready(function(){
 		});
 	}
 
+	// hard-coded intiilaization stuff that should only happen once, on page load
 	initialize();
-	
-	var poofX;
-	var poofY;
-	$(document).mousemove(function(e){
-		// where are these numerical offset values coming from?
-		// trial, error, and guesswork, my friend
-		poofX = e.pageX - 80;
-		poofY = e.pageY - 80;
-	}); 
+	$(".columnCorral[data-table='Schools']").show();
+	$(".table-block-container[data-table='Schools']").addClass("table-block-container-active")
 
 
-	function animatePoof(){
-		$('#poof').css({left:poofX , top:poofY});
-		$('#poof').sprite({fps:15, no_of_frame: 5, play_frames: 5}).show().delay(250).fadeOut(40);
-	}
+
+
+
 
 
 	function initializeDraggable()
@@ -84,30 +77,30 @@ $(document).ready(function(){
 				
 				// if the draggable block has yet to be dropped, clone it
 				// if the draggable bloack has already been dropped, empty string (just drag it)
-				helper: $(this).data('dropped') ? "" : "clone",
+				helper: $(this)[0].dropped_in_place ? "" : "clone",
 				
 				cursor: "move",
 				containment: '#content',
 				
-				revert: "invalid"
+				revert: function(dropzone) {
 					
-					// if ($(this).data('dropped'))
-					// {
-					// 	// the user is (probably) trying to get rid of it now...
-					// 	$(this).remove();
-					//  animatePoof();
-					//
-					// 	if ($(this).data("blockType") == "or" || $(this).data("blockType") == "and")
-					// 	{
-					// 		// the user is (probably) trying to get rid of an "and" or "or" now...
-					// 		// fadeOut, remove .condition class, strip condition's ID, strip each child element's ID
-					// 		$(this).parents('.condition').fadeOut().removeClass('condition').attr("id", "").find("*").attr("id", "");
-					// 		resortConditions();
-					// 	}
-					//
-					// } else {
-					// 	return "invalid"
-					// }
+					if ($(this)[0].dropped_in_place)
+					{						
+						// the user is (probably) trying to get rid of it now...
+						$(this).remove();
+						animatePoof();
+
+						if ($(this).data("blockType") == "or" || $(this).data("blockType") == "and")
+						{
+							// the user is (probably) trying to get rid of an "and" or "or" now...
+							// fadeOut, remove .condition class, strip condition's ID, strip each child element's ID
+							$(this).parents('.condition').fadeOut().removeClass('condition').attr("id", "").find("*").attr("id", "");
+							resortConditions();
+						}
+					}
+					
+					// return "invalid"
+				}
 			});
 		});
 	}
@@ -117,54 +110,61 @@ $(document).ready(function(){
 	{
 		 $('.dropHere').each(function(){
 			 
-	 		$(this).droppable({ 	
+	 		$(this).droppable({
+				create: function(event, ui) {
+					$(this)[0].occupied = false;	
+				},
 	 			accept: "." + $(this).data("accepts"),
-	 			drop: function( event, ui )
-	 			{
-					ui.helper.data("dropped", true);
-					
-					// clear the absolute position jquery sets
-					// and replace it with a font-size hack
-					// (I can't figure out what CSS is causing dropped blocks to grow in font-size...)
-	 				ui.helper.attr("style", "font-size:0.8em;");
-	 				
-					$(this).append(ui.helper.clone());
-					
-					
-					var droppedtype = ui.helper.context.dataset.blocktype;
-					
-	 				if (droppedtype == "or" || droppedtype == "and")
-	 				{	
-						if (droppedtype == "or")
-						{							
-	 						// add margin-bottom: -11px;
-	 						$(this).parents(".condition").attr("style", "margin-bottom:-11px;");
-							
-							//we just dropped an "or" so remove the "and" from this condition
-							$(this).parents(".container").children(".toprow").children(".end").children(".dropHere").remove();
-							$(this).parents(".condition").addClass("condition-with-or").removeClass("condition-with-both");
-							
-						} else if (droppedtype == "and") {			
-							
-							//we just dropped an "and" so remove the "or" (bottom)row from this condition
-							$(this).parents(".container").children(".bottomrow").remove();
-							
-	 						// add margin-bottom: -42px;
-	 						$(this).parents(".condition").attr("style", "margin-bottom:-42px;");
-							$(this).parents(".condition").addClass("condition-with-and").removeClass("condition-with-both");
-						}
- 						newCondition();
-	 				}
-					
-					
-					if ($(this).hasClass("selectAcceptor"))
+	 			drop: function( event, ui )	{
+										
+					if ( $(this)[0].occupied == true )
 					{
-						$("#select").append('<div class="dropHere columnAcceptor selectAcceptor" data-accepts="column-block"></div><br>');
-						initializeDroppable();
-					}
-					
-	 				checkIfConditionIsComplete();
 
+						// clear the absolute position jquery sets
+						// and replace it with a font-size hack
+						// (I can't figure out what CSS is causing dropped blocks to grow in font-size...)
+		 				ui.helper.attr("style", "font-size:0.8em;");
+		 				var clone = ui.helper.clone();
+						$(this).append( clone );
+						clone[0].dropped_in_place = true;
+					
+						var droppedtype = ui.helper.context.dataset.blocktype;
+					
+		 				if (droppedtype == "or" || droppedtype == "and")
+		 				{	
+							if (droppedtype == "or")
+							{							
+
+								//we just dropped an "or" so remove the "and" from this condition
+								$(this).parents(".container").children(".toprow").children(".end").children(".dropHere").remove();
+								$(this).parents(".condition").addClass("condition-with-or").removeClass("condition-with-both");
+							
+		 						// add margin-bottom: -11px;
+		 						$(this).parents(".condition").attr("style", "margin-bottom:-11px;");
+							
+							} else if (droppedtype == "and") {			
+							
+								//we just dropped an "and" so remove the "or" (bottom)row from this condition
+								$(this).parents(".container").children(".bottomrow").remove();
+							
+		 						// add margin-bottom: -42px;
+		 						$(this).parents(".condition").attr("style", "margin-bottom:-42px;");
+								$(this).parents(".condition").addClass("condition-with-and").removeClass("condition-with-both");
+							}
+	 						newCondition();
+		 				}
+					
+					
+						if ($(this).hasClass("columnAcceptor"))
+						{
+							$("#select").append('<div class="dropHere columnAcceptor" data-accepts="column-block"></div><br>');
+							initializeDroppable();
+						}
+					
+						initialize();
+		 				checkIfConditionIsComplete();
+						$(this)[0].occupied = true;
+					}
 	 			}
 	 		});
 		 });
@@ -238,5 +238,20 @@ $(document).ready(function(){
 		}
 	
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	
+	var poofX;
+	var poofY;
+	$(document).mousemove(function(e){
+		// where are these numerical offset values coming from?
+		// trial, error, and guesswork, my friend
+		poofX = e.pageX - 80;
+		poofY = e.pageY - 80;
+	}); 
+
+
+	function animatePoof(){
+		$('#poof').css({left:poofX , top:poofY});
+		$('#poof').sprite({fps:15, no_of_frame: 5, play_frames: 5}).show().delay(250).fadeOut(40);
+	}
 });

@@ -5,45 +5,48 @@
 		<div class="small-3 columns">
 			<br>
 			<span class="visual-builder-footer-column">TABLES</span>
+			
 			<div id="tableCorral" class="corral">
-				<form>
-					<div class="table-block table-block-active">
-						<input type="radio" checked name="table" value="Schools">Schools
-					</div>
+				<% for table in ["Schools", "Locales", "Controls"] %>
 					
-					<div class="table-block">
-						<input type="radio" name="table" value="Locales">Locales
-					</div>
+					<div class="table-block-container" data-table="<%= table %>">
+						<div class="draggable table-block" data-blockType="table" data-table="<%= table %>">
+							<%= image_tag "visual-interface/table.png" %>
+							<span class="tablename"><%= table %></span>
+						</div>
+					</div><br>
 					
-					<div class="table-block">
-						<input type="radio" name="table" value="Controls">Controls				
-					</div>
-				</form>	
+				<% end %>	
 			</div>
 		</div>
 		
 		<div class="small-4 columns">
 			<br>
 			<span class="visual-builder-footer-column">COLUMNS</span>
-			<div id="columnCorral" class="corral">
+
+			<% for table in ["Schools", "Locales", "Controls"] %>
+
+				<div class="corral columnCorral" data-table="<%= table %>" style="float:none;">
+	
+					<div class="draggable column-block" data-blockType="column" data-table="<%= table %>">
+						<%= image_tag "visual-interface/column.png" %>
+						<span class="tablename"><%= table %></span>
+						<span class="columnname asterisk"> * </span>
+					</div><br>
 				
-				<div class="draggable column-block" data-blockType="column">
-					<%= image_tag "visual-interface/column.png" %>
-					<span class="tablename">Schools</span>
-					<span class="columnname asterisk"> * </span>
-				</div><br>
-				
-				<% for col in School.column_names %>
-					<% if col != "created_at" and col != "updated_at" %>
-						<div class="draggable column-block" data-blockType="column">
-							<%= image_tag "visual-interface/column.png" %>
-							<span class="tablename">Schools</span>
-							<span class="columnname"><%= col %></span>
-						</div><br>
+					<% for col in table.singularize.constantize.column_names %>
+						<% if col != "created_at" and col != "updated_at" %>
+							<div class="draggable column-block" data-blockType="column" data-table="<%= table %>">
+								<%= image_tag "visual-interface/column.png" %>
+								<span class="tablename"><%= table %></span>
+								<span class="columnname"><%= col %></span>
+							</div><br>
+						<% end %>
 					<% end %>
-				<% end %>
+					
+				</div>
 				
-			</div>
+			<% end %>
 		</div>
 		
 		

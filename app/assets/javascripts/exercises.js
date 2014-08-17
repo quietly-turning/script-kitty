@@ -18,9 +18,12 @@ $(function(){
 	});
 	
 	
-	$("input[name='table']").change(function(){
-		$(".table-block-active").removeClass("table-block-active");
-		$(this).parents(".table-block").addClass("table-block-active");
+	$(".table-block-container").click(function(){
+		$(".table-block-container-active").removeClass("table-block-container-active");
+		$(".columnCorral").hide();
+		
+		$(this).addClass("table-block-container-active");
+		$(".columnCorral[data-table='" + $(this).attr("data-table") + "']").show();
 	});
 	
 });
