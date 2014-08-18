@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20140630134018) do
 
   create_table "exercises", force: true do |t|
     t.text     "question"
-    t.text     "answer"
+    t.string   "result_set_hash"
     t.text     "description"
     t.text     "lesson"
     t.text     "response_correct"

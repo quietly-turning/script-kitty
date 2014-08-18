@@ -2,7 +2,7 @@ class CreateExercises < ActiveRecord::Migration
   def change
     create_table :exercises do |t|
       t.text :question
-	  t.text :answer
+	  t.string :result_set_hash
 	  t.text :description
 	  t.text :lesson
 	  t.text :response_correct

@@ -5,6 +5,9 @@ class Query < ActiveRecord::Base
     has_many :operators, :through => :conditions
     accepts_nested_attributes_for :conditions
     
+	
+	require 'digest'
+	
 ########################################################  
 ########################################################
 
@@ -264,16 +267,9 @@ class Query < ActiveRecord::Base
 
 	def check_if_correct
 		
-		query_array = self.raw_sql.downcase.gsub('"', '').gsub("'", "").split.sort
-		query_string = ""
-		
-		for word in query_array
-			query_string += word + " "
-		end
-		
-		self.sorted_sql = query_string
-		
-		if query_string == self.exercise.answer
+		# SHA the resulting HTML table and compare against a verified hash
+		hash = Digest::SHA2.hexdigest(self.html_table)
+		if hash == self.exercise.result_set_hash
 			self.correct = 1
 		else
 			self.correct = 0
