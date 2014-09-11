@@ -19,13 +19,26 @@
 						
 			<li class="divider"></li>
 			<% if not current_user.nil? %>
-			
+
+
 				<li class="has-dropdown not-click">
-					<%= link_to "Exercises", exercises_path %>
+					<%= link_to "Lessons", lessons_path %>
+					
 					<ul class="dropdown">
-						<% for exercise in Exercise.all %>
-							<li><%= link_to "Exercise #{exercise.id}", exercise_path(exercise.id) %></li>
+						
+						<% for lesson in Lesson.all %>
+							<li class="has-dropdown not-click">
+								<%= link_to "Lesson #{lesson.id}", lesson_path(lesson.id) %>
+								
+								<ul class="dropdown">
+									<li><label><%= "Lesson #{lesson.id}" %></label></li>
+									<% for exercise in lesson.exercises %>
+										<li><%= link_to "Exercise #{exercise.id}", exercise_path(exercise.id) %></li>
+									<% end %>
+								</ul>
+							</l>
 						<% end %>
+						
 					</ul>
 				</li>
 			

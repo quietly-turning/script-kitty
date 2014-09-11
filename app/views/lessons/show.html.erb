@@ -1,0 +1,22 @@
+<div id="exercise-header">
+	<div class="row">
+		<div class="small-12 columns">
+			<h2>Lesson <%= @lesson.id %> - <%= raw @lesson.title %></h2>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<%= render 'layouts/messages' %>
+</div>
+
+<div class="row">
+	<h4><strong>Objective:</strong> <%= raw @lesson.objective %></h4>
+</div>
+
+<div class="row">
+	<p>
+	  <strong>Body:</strong>
+	  <%= raw @lesson.body %>
+	</p>
+</di

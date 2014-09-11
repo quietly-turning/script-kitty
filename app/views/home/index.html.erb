@@ -13,11 +13,15 @@
 <div class="row">
 	<div class="medium-offset-2 medium-6 small-8 columns">
 		<p>
-			Script Kitty is trying to gather information about universities she might attend.  One way to complete this task might be to go to a library, check out books on schools, and start reading.  This would take a while and would be inconvenient!
+			Script Kitty is trying to gather information about universities she might attend.
+			One way to complete this task might be to go to a library, check out books on schools, 
+			and start reading.  This would take a while and would be inconvenient!
 		</p>
 
 		<p>
-			We do have information on each school, such as its <em>name</em>, <em>city</em> and <em>state</em> in a list. This list has information on thousands of schools, so you can imagine finding one in particular would take some time!
+			We do have information on each school, such as its <em>name</em>, <em>city</em> and <em>state</em>
+			in a list. This list has information on thousands of schools, so you can imagine finding one
+			in particular would take some time!
 		</p>
 	</div>
 	<div class="medium-4 small-4 columns">
@@ -30,23 +34,30 @@
 	
 		<p>What if could we narrow down the list to just the information we are looking for?</p>
 
-		<p>We can do this!  We can ask the computer: "of all the schools in the list, can you show me only those from Pennsylvania?"</p>
+		<p>
+			We can do this!  We can ask the computer: "of all the schools in the list, can you show me 
+			only those from Pennsylvania?"
+		</p>
 
-		<p>To the computer, the list is a <strong>table</strong> and the question we asked it is a <strong>query</strong>.  A collection of multiple tables is called a <strong>database</strong>.</p>
+		<p>
+			To the computer, the list is a <strong>table</strong> and the question we asked it 
+			is a <strong>query</strong>. A collection of  tables is called a <strong>database</strong>.
+		</p>
 
-		<p>Today we'll be writing queries to get specific information out of a database containing information about higher education schools.   There are various concepts to learn along the way, so let's jump in!</p>
+		<p>
+			Today we'll be writing queries to get specific information out of a database containing
+			information about higher education schools.   There are various concepts to learn along the way, so let's jump in!
+		</p>
 
 		<hr>
 		
-		<% if !user_signed_in? %>
-			<p>
-				<%= link_to('Login', new_user_session_path)  %> | <%= link_to 'Sign Up', new_user_registration_path %>
-			</p>
+		<p>
+		<% if user_signed_in? %>
+			<h4><%= link_to "Begin Exercise 1", exercise_path(1) %></h4>
 		<% else %>
-			<p>
-				<h4><%= link_to "Begin Exercise 1", exercise_path(1) %></h4>
-			</p>
+			<%= link_to('Login', new_user_session_path)  %> | <%= link_to 'Sign Up', new_user_registration_path %>
 		<% end %>
-
+		</p>
+		
 	</div>
 </div>

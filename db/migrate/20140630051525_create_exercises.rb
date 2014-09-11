@@ -4,9 +4,9 @@ class CreateExercises < ActiveRecord::Migration
       t.text :question
 	  t.string :result_set_hash
 	  t.text :description
-	  t.text :lesson
 	  t.text :response_correct
 	  t.text :response_incorrect
+	  t.references :lesson, index: true
 	  
       t.timestamps
     end

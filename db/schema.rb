@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140630134018) do
+ActiveRecord::Schema.define(version: 20140911172619) do
 
   create_table "conditions", force: true do |t|
     t.string   "column"
@@ -37,9 +37,19 @@ ActiveRecord::Schema.define(version: 20140630134018) do
     t.text     "question"
     t.string   "result_set_hash"
     t.text     "description"
-    t.text     "lesson"
     t.text     "response_correct"
     t.text     "response_incorrect"
+    t.integer  "lesson_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "exercises", ["lesson_id"], name: "index_exercises_on_lesson_id", using: :btree
+
+  create_table "lessons", force: true do |t|
+    t.text     "title"
+    t.text     "objective"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
