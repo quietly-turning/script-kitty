@@ -51,7 +51,7 @@
 		
 		<p>
 		<% if user_signed_in? %>
-			<h4><%= link_to "Begin Exercise 1", exercise_path(1) %></h4>
+			<h4><%= link_to "Begin Lesson 1", lesson_path(1) %></h4>
 		<% else %>
 			<%= link_to('Login', new_user_session_path)  %> | <%= link_to 'Sign Up', new_user_registration_path %>
 		<% end %>
