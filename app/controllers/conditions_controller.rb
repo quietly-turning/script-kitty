@@ -1,4 +1,5 @@
 class ConditionsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_condition, only: [:show, :edit, :update, :destroy]
 
   # GET /conditions
