@@ -80,7 +80,7 @@ span.oops{
 	font-size: 1.8em;
 }
 
-span.raw-sql{
+span.raw-sql, pre{
 	font-family: courier;
 }
 

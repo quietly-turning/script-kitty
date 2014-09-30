@@ -6,7 +6,7 @@ Lesson.create( title: 'Equals is not the only operator', objective: 'Search thro
 
 Lesson.create( title: 'Compound Conditional Statements: Part 1', objective: 'Chain two conditions together with <em>or</em>.', body: '' )
 
-Lesson.create( title: 'Compound Conditional Statements: Part 1', objective: 'Chain two conditions together  <em>and</em>.', body: '' )
+Lesson.create( title: 'Compound Conditional Statements: Part 2', objective: 'Chain two conditions together  <em>and</em>.', body: '' )
 
 Lesson.create( title: 'Does Not Equal', objective: 'Filter your results using the <em>does not equal</em> operator.', body: '' )
 
