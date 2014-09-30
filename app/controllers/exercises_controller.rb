@@ -1,6 +1,7 @@
 class ExercisesController < ApplicationController
   
   before_filter :authenticate_user!
+  before_filter :verify_is_admin, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
 
   # GET /exercises

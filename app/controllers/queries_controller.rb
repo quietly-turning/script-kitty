@@ -1,6 +1,7 @@
 class QueriesController < ApplicationController
   
   before_filter :authenticate_user!
+  before_filter :verify_is_admin, only: [:destroy]
   before_action :set_query, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::StatementInvalid do |exception|
   	redirect_to exercise_path(params[:query][:exercise_id], {:raw_sql => params[:query][:raw_sql]} ),

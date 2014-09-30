@@ -1,4 +1,5 @@
 class OperatorsController < ApplicationController
+  before_filter :verify_is_admin
   before_action :set_operator, only: [:show, :edit, :update, :destroy]
 
   # GET /operators

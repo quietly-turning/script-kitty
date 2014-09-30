@@ -1,4 +1,5 @@
 class LocalesController < ApplicationController
+  before_filter :verify_is_admin, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_locale, only: [:show, :edit, :update, :destroy]
 
   # GET /locales

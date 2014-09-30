@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
       def record_not_found
         redirect_to root_path
       end
+	  
+	  def verify_is_admin
+	    (not current_user) ? (redirect_to root_path) : (redirect_to root_path unless current_user.admin?)
+	  end
 
 	protected
 		def layout_by_resource

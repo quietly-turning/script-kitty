@@ -1,5 +1,6 @@
 class LessonsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :verify_is_admin, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_lesson, only: [:show, :edit, :update, :destroy]
 
   # GET /lessons
