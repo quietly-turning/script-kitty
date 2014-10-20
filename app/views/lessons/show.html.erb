@@ -14,12 +14,16 @@
 </div>
 
 <div class="row">
-	<h4><strong>Objective:</strong> <%= raw @lesson.objective %></h4>
+	<div class="small-12 columns">
+		<h4><strong>Objective:</strong>
+		<%= raw @lesson.objective %></h4>
+		
+		<strong>Body:</strong>
+		<%= raw @lesson.body %>
+		
+		
+		<hr>
+		<h4><%= link_to "Try Exercise " + @lesson.exercises.first.id.to_s, exercise_path(@lesson.exercises.first) %></h4>
+		
+	</div>
 </div>
-
-<div class="row">
-	<p>
-	  <strong>Body:</strong>
-	  <%= raw @lesson.body %>
-	</p>
-</di
