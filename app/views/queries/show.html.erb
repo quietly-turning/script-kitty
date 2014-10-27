@@ -37,6 +37,7 @@
 
 		<hr>
 		
-		<%= link_to 'Try this exercise again', exercise_path(@query.exercise.id	) %>
+		<%= link_to 'Try this exercise again', exercise_path(@query.exercise.id	) %> or 
+		<%= link_to 'edit your answer', exercise_path( @query.exercise.id, {:raw_sql => @query.raw_sql} ) %>.
 	</div>
 </div>

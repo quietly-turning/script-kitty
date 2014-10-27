@@ -28,6 +28,8 @@ class QueriesController < ApplicationController
 
   # GET /queries/1/edit
   def edit
+	 @query = Query.find(params[:id])
+	 redirect_to exercise_path( @query.exercise.id, {:raw_sql => @query.raw_sql} )
   end
 
   # POST /queries
@@ -81,11 +83,10 @@ class QueriesController < ApplicationController
   	# don't actually ever edit a query, just create a new one!  In this way, mistakes
   	# are logged for later analysis.  This method is a effectively a copy/paste of create.
 	
-	
 	@query = Query.new(query_params)
 	@query.user_id = current_user.id
 	@query.dummy_id = current_user.queries.count + 1
-	
+
 	if current_user.visual_interface?
 	  # @query.processConditions
 	  # @query.constructFormattedQuery
@@ -94,21 +95,21 @@ class QueriesController < ApplicationController
 	  @query.constructHTMLtable_simple
 	end
 
-  	@query.check_if_correct  
-	
-    respond_to do |format|
-      if @query.save
+	  	@query.check_if_correct
+
+	    respond_to do |format|
+	      if @query.save
 		  if @query.correct
-        	  format.html { redirect_to @query, notice: 'correct' }
+	        	  format.html { redirect_to @query, notice: 'correct' }
 		  else
 			  format.html { redirect_to @query, notice: 'incorrect' }
 		  end
-        format.json { render :show, status: :ok, location: @query }
-      else
-        format.html { render :edit }
-        format.json { render json: @query.errors, status: :unprocessable_entity }
-      end
-    end
+	        format.json { render :show, status: :ok, location: @query }
+	      else
+	        format.html { render :edit }
+	        format.json { render json: @query.errors, status: :unprocessable_entity }
+	      end
+	    end
   end
 
   # DELETE /queries/1
