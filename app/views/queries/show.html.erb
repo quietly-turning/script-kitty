@@ -1,7 +1,7 @@
 <div class="exercise-header">
 	<div class="row">
 		<div class="small-12 columns">
-			<h2>Exercise <%= @query.exercise.id %></h2>
+			<h2>Exercise <%= @query.exercise.id %> Results</h2>
 	
 			<p>
 			  <strong>Question:</strong>
@@ -21,16 +21,14 @@
 	<div class="small-12 columns">
 
 		<p>
-			<strong>Query:</strong>
-		 	<span class="raw-sql">
-			  	<pre><%= @query.raw_sql %></pre>
-			<span>
+			<strong>Your Query:</strong>
+		 	<textarea id="raw-sql" style="height:1em"><%= @query.raw_sql %></textarea>
 		</p>
 
 		<hr>
 
 		<p>
-		  <strong>Results:</strong>
+		  <strong>Query Results:</strong>
 		  <%= raw @query.html_table %>
 		</p>
 

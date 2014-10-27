@@ -11,7 +11,6 @@
  * file per style scope.
  *
  *= require_tree .
- *= require_self
  *= require foundation_and_overrides
  *
  *= require codemirror
@@ -19,6 +18,9 @@
  *
  *= require jquery-ui/draggable
  *= require jquery-ui/resizable
+ *
+ *= require_self
+ *
  */
 
 table {
@@ -80,10 +82,15 @@ span.oops{
 	font-size: 1.8em;
 }
 
-span.raw-sql, pre{
+pre{
 	font-family: courier;
 }
 
 span.causing-the-error{
 	font-family:courier;
+}
+
+.CodeMirror {
+	border-radius:0.6em;
+	height: 150px;
 }
