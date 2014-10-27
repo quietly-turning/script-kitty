@@ -1,0 +1,32 @@
+MILESTONES:
+
+1. write 8 lessons
+
+2. make visual builder quasi-functional
+	blocks need to be droppable
+	queries need to be create-able
+	conditions need to be create-able? (does this matter any longer?)
+
+
+
+3. Test, test, test
+	simple interface
+		is it still possible to crash the app with malformed queries?
+		is it still possible to submit a devious query?
+
+	visual interface
+
+
+---
+Smaller Things
+
+1. Add lesson-path/progress-bar to top
+2. Write more exercises? Two per topic?
+3. Query review (simple + visual) should be stylized with markup to emphasize keywords.
+4. Simple query editor needs to work from every link that brings you there.
+
+---
+Nebulous Things
+
+1. Find a better way to present the datasets.  This may become more clear as lessons are written.
+2. Layout improvements.  This may become more clear as user testing is started.
