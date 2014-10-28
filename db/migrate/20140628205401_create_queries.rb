@@ -3,11 +3,11 @@ class CreateQueries < ActiveRecord::Migration
     create_table :queries do |t|
       t.integer :dummy_id
       t.text :raw_sql
-	  t.boolean :correct, :default => false
+	  t.integer :status, :limit => 1, :default => 0
       t.text :html_table, :limit => 4294967295
       t.references :user, index: true
       t.references :exercise, index: true
-      
+
       t.timestamps
     end
   end

@@ -25,6 +25,7 @@ Smaller Things
 3. Query review (simple + visual) should be stylized with markup to emphasize keywords.
 4. Simple query editor needs to work from every link that brings you there.
 5. Public-facing interface as a whole needs a review of flow.
+6. Suppress login notifications.
 
 ---
 Nebulous Things

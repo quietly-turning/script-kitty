@@ -56,7 +56,7 @@ class QueriesController < ApplicationController
 			
 			# then update the query entry
 			if @query.update(query_params)
-				if @query.correct
+				if @query.status == 2
 					format.html { redirect_to @query, notice: 'correct' }
 				else
 					format.html { redirect_to @query, notice: 'incorrect' }
@@ -99,7 +99,7 @@ class QueriesController < ApplicationController
 
 	    respond_to do |format|
 	      if @query.save
-		  if @query.correct
+		  if @query.status == 2
 	        	  format.html { redirect_to @query, notice: 'correct' }
 		  else
 			  format.html { redirect_to @query, notice: 'incorrect' }

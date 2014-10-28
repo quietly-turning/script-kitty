@@ -8,7 +8,7 @@
 			  <th>ID</th>
 		      <th>Dummy ID</th>
 		      <th>Raw SQL</th>
-			  <th>Correct?</th>
+			  <th>Status</th>
 		      <th>User Email</th>
 			  <th>Exercise ID</th>
 		      <th colspan="3">manage</th>
@@ -21,7 +21,7 @@
 				<td><%= query.id %></td>
 		        <td><%= query.dummy_id %></td>
 		        <td><%= query.raw_sql %></td>
-				<td><%= query.correct %></td>
+				<td><%= give_meaning_to(query.status) %></td>
 		        <td><%= query.user.email %></td>
 				<td><%= query.exercise.id %></td>
 		        <td><%= link_to 'Show', query %></td>

@@ -25,14 +25,21 @@
 		 	<textarea id="raw-sql" style="height:1em"><%= @query.raw_sql %></textarea>
 		</p>
 
+
+		<hr>
+		
+		<p>
+			<strong>Query Status:</strong>
+			<%= give_meaning_to( @query.status ) %>
+		</p>
+		
 		<hr>
 
 		<p>
 		  <strong>Query Results:</strong>
 		  <%= raw @query.html_table %>
 		</p>
-
-
+		
 		<hr>
 		
 		<%= link_to 'Try this exercise again', exercise_path(@query.exercise.id	) %> or 

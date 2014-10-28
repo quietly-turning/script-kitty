@@ -226,9 +226,9 @@ class Query < ActiveRecord::Base
 		# SHA the resulting HTML table and compare against a verified hash
 		hash = Digest::SHA2.hexdigest(self.html_table)
 		if hash == self.exercise.result_set_hash
-			self.correct = 1
+			self.status = 2
 		else
-			self.correct = 0
+			self.status = 1
 		end
 	end
 
