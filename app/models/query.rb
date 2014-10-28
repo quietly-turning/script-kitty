@@ -7,51 +7,6 @@ class Query < ActiveRecord::Base
     
 	
 	require 'digest'
-	
-########################################################  
-########################################################
-
-  # build an HTML-formatted query for the end-user to see
-  def constructFormattedQuery
-
-    query = self.raw_sql
-    # trim off the preliminary SQL that isn't a condition
-    q = query.split("WHERE\s")
-
-    # split the conglomerate condition into andGroups by searching for (" or ") via regex
-    andGroups = q[1].split(/\sor\s/)
-
-    # break each andGroup down further into distinct conditions by searching for (" and ")
-    parsedConditions = andGroups.map do |group|
-       group.split(/\sand\s/) 
-    end
-
-    # # # # # # # # # ## # #
-
-    html = "<div class='selectStatement'><em>select</em> * from <strong>animals</strong> <em>where</em> </div>\n\n<div style='padding-top:22px' id=\"subQuery0\" class='andGrouping'>"
-
-    parsedConditions.each_with_index do |conditionGroup, index|
-  
-      if index > 0
-        html += "\n\t<div class=\"orString\">or</div>"
-      end
-  
-      conditionGroup.each do |condition|
-        html += "\n\t<div class='conditionString'>#{condition}</div>"    
-      end
-      #close the previous .andGroup 
-      html += "\n</div>\n"     
-
-      # if this is NOT the last andGrouping
-      if index+1 < parsedConditions.size     
-        # open a new andGroup
-        html += "\n<div class=\"andGrouping\" id=\"subQuery#{index+1}\">"
-      end
-    end
-
-    self.formatted_sql = html
-
-  end
 
 
 ########################################################  
@@ -200,6 +155,7 @@ class Query < ActiveRecord::Base
 		unless @result.nil?
 			if @result.size >= 500
 				htmlTable += "<div data-alert class=\"alert-box info radius small-4\">\n"
+				htmlTable += "<strong>Please note:</strong><br>"
 				htmlTable += "There are #{@result.to_a.size} records in this result set!<br>"
 				htmlTable += "We're only showing the first 500.\n</div>\n\n"
 			end

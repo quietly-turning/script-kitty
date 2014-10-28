@@ -131,7 +131,7 @@ class QueriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def query_params
       params.require(:query)
-	  	.permit(:name, :dummy_id, :formatted_sql, :raw_sql, :html_table, :user_id, :exercise_id)
+	  	.permit(:raw_sql, :exercise_id)
     end
 	
 	def friendly_errors(error)
