@@ -1,12 +1,18 @@
 <div class="field">
-    <label for="query_raw_sql">Type your query here:</label><br>
+	
+	<% if params[:raw_sql] %>
+		<label for="query_raw_sql">Try again by entering your query here:</label>
+	<% else %>
+    	<label for="query_raw_sql">Type your query here:</label>
+	<% end %>
+	<br>
+	
     <%= form.text_area :raw_sql, :value => @raw_sql %>
 	
 	<% unless @exercise.nil? %>
 		<%= form.hidden_field :exercise_id, :value => @exercise.id %>
 	<% end %>
 </div>
-
 
 <div class="actions">
     <%= form.submit "Submit", :class => "radius button small" %>

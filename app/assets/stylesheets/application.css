@@ -39,6 +39,9 @@ thead tr th {
 	text-align:center;
 }
 
+.actions{
+	margin-top: 10px;
+}
 
 
 .kitty-image{
@@ -90,7 +93,13 @@ span.causing-the-error{
 	font-family:courier;
 }
 
-.CodeMirror {
+#new_query .field .CodeMirror {
+	border-radius:0.6em;
+	height: 210px;
+}
+
+#query-results .CodeMirror {
+	border: 1px solid #999;
 	border-radius:0.6em;
 	height: 150px;
 }
