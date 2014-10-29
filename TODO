@@ -22,13 +22,13 @@ Smaller Things
 
 1. Add lesson-path/progress-bar to top
 2. Write more exercises? Two per topic?
-3. Query review (simple + visual) should be stylized with markup to emphasize keywords.
-4. Simple query editor needs to work from every link that brings you there.
-5. Public-facing interface as a whole needs a review of flow.
-6. Suppress login notifications.
+3. Query review (simple + visual) should be stylized with markup to emphasize keywords. (DONE)
+4. Simple query editor needs to work from every link that brings you there. (DONE?)
+5. Suppress login notifications. (DONE)
 
 ---
 Nebulous Things
 
 1. Find a better way to present the datasets.  This may become more clear as lessons are written.
 2. Layout improvements.  This may become more clear as user testing is started.
+3. Public-facing interface as a whole needs a review of flow.

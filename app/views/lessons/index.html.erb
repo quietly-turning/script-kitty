@@ -1,35 +1,35 @@
 <div class="row">
 	<div class="small-12 columns">
 
-<h1>Lessons</h1>
+		<h1>Lessons</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Objective</th>
-      <th>Number of Exercises</th>
-	  <% if current_user and current_user.admin %>
-      	<th colspan="3">manage</th>
-	  <% end %>
-    </tr>
-  </thead>
+		<table>
+		  <thead>
+		    <tr>
+		      <th>Title</th>
+		      <th>Objective</th>
+		      <th>Number of Exercises</th>
+			  <% if current_user and current_user.admin %>
+		      	<th colspan="3">manage</th>
+			  <% end %>
+		    </tr>
+		  </thead>
 
-  <tbody>
-    <% @lessons.each do |lesson| %>
-      <tr>
-        <td><%= lesson.title %></td>
-        <td><%= raw lesson.objective %></td>
-        <td><%= lesson.exercises.size %></td>
-		<% if current_user and current_user.admin %>
-	        <td><%= link_to 'Show', lesson %></td>
-	        <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
-	        <td><%= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		<% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+		  <tbody>
+		    <% @lessons.each do |lesson| %>
+		      <tr>
+		        <td><%= lesson.title %></td>
+		        <td><%= raw lesson.objective %></td>
+		        <td><%= lesson.exercises.size %></td>
+				<% if current_user and current_user.admin %>
+			        <td><%= link_to 'Show', lesson %></td>
+			        <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
+			        <td><%= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				<% end %>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
 
-</div>
+	</div>
 </div>
