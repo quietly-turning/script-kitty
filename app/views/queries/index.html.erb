@@ -21,7 +21,7 @@
 				<td><%= query.id %></td>
 		        <td><%= query.dummy_id %></td>
 		        <td><%= query.raw_sql %></td>
-				<td><%= give_meaning_to(query.status) %></td>
+				<td><%= raw give_meaning_to(query.status) %></td>
 		        <td><%= query.user.email %></td>
 				<td><%= query.exercise.id %></td>
 		        <td><%= link_to 'Show', query %></td>

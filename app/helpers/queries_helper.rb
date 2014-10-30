@@ -1,11 +1,11 @@
 module QueriesHelper
 	def give_meaning_to(status)
 		if status == 0
-			return "Invalid"
+			return "<span class='invalid'>Invalid</span>"
 		elsif status == 1
-			return "Valid, but incorrect"
+			return "<span class='valid'>Valid, but incorrect</span>"
 		elsif status == 2
-			return "Correct"
+			return "<span class='correct'>Correct</span>"
 		end
 	end
 end
