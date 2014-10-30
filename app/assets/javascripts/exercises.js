@@ -1,7 +1,7 @@
 $(function(){
 	
-	var simple_editor = document.getElementById("query_raw_sql");
-	var raw_sql = $("#raw-sql")[0];
+	var simple_editor = $("#query_raw_sql")[0];
+	var raw_sql = $(".raw-sql")[0];
 	
 	// ensure that we found a textarea
 	// (participants using the visual builder will not)
@@ -19,6 +19,7 @@ $(function(){
 		var myCodeMirror = CodeMirror.fromTextArea(raw_sql, {
 			mode: "text/x-mariadb",
 			lineNumbers: true,
+			theme: "ambiance",
 			readOnly: "nocursor",
 		});
 	}

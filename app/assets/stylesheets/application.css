@@ -15,6 +15,7 @@
  *
  *= require codemirror
  *= require codemirror/themes/lesser-dark
+ *= require codemirror/themes/ambiance
  *
  *= require jquery-ui/draggable
  *= require jquery-ui/resizable
@@ -109,9 +110,8 @@ span.causing-the-error{
 	height: 210px;
 }
 
-#query-results .CodeMirror {
-	border: 1px solid #999;
+
+.CodeMirror.cm-s-ambiance {
 	border-radius:0.6em;
-	height: 150px;
-	background-color: #f0f0f0;
+	height: 100px;
 }
