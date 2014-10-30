@@ -36,8 +36,16 @@
 		<hr>
 
 		<p>
-		  <strong>Query Results:</strong>
-		  <%= raw @query.html_table %>
+			<strong>Query Results:</strong>
+			
+			<% if @query.truncated_results == 1 %>
+				<div data-alert class="alert-box info radius small-4">
+				<strong>Please note:</strong><br>
+				There are <%= @query.result_size %> records in this result set!<br>
+				We're only showing the first 500.</div>
+			<% end %>
+			
+			<%= raw @query.html_table %>
 		</p>
 		
 		<hr>

@@ -72,8 +72,10 @@ ActiveRecord::Schema.define(version: 20140911172619) do
   create_table "queries", force: true do |t|
     t.integer  "dummy_id"
     t.text     "raw_sql"
-    t.integer  "status",      limit: 1,          default: 0
-    t.text     "html_table",  limit: 2147483647
+    t.integer  "status",            limit: 1,          default: 0
+    t.integer  "truncated_results", limit: 1,          default: 0
+    t.integer  "result_size",       limit: 2
+    t.text     "html_table",        limit: 2147483647
     t.integer  "user_id"
     t.integer  "exercise_id"
     t.datetime "created_at"

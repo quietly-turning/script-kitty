@@ -1,5 +1,5 @@
 module QueriesHelper
-	def give_meaining_to(status)
+	def give_meaning_to(status)
 		if status == 0
 			return "Invalid"
 		elsif status == 1
