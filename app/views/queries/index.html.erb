@@ -1,7 +1,7 @@
 <div class="row">
 	<% if current_user.admin %>
 		<div class="small-12 columns">
-		
+
 			<h1>All Queries</h1>
 
 			<table>
@@ -34,23 +34,27 @@
 		</div>
 
 	<% else %>
-		<h1>My Progress</h1>
-		
-		
-		<div class="small-5 columns">
-		
+
+		<div class="row">
+			<div class="small-8 small-offset-1 end columns">
+				<h1>My Progress</h1>
+			</div>
+		</div>
+
+		<div class="small-5 small-offset-1 columns">
+
 			<% for lesson in @lessons_first_half %>
 				<h3>Lesson <%= lesson.id %></h3>
-				
+
 				<ul>
 			    <% for i in 0..lesson.exercises.size-1 %>
 					<li>
 					<% if @queries[lesson.id][i] %>
-						<%= link_to "Exercise " + @queries[lesson.id][i].exercise_id.to_s, query_path(@queries[lesson.id][i]) %> - 
+						<%= link_to "Exercise " + @queries[lesson.id][i].exercise_id.to_s, query_path(@queries[lesson.id][i]) %> -
 						<%= give_meaning_to(@queries[lesson.id][i].status).html_safe %>
 					<% else %>
 						<% exercise = Exercise.where(lesson_id: lesson.id)[i] %>
-						<%= link_to "Exercise " + exercise.id.to_s, exercise_path(exercise) %> - 
+						<%= link_to "Exercise " + exercise.id.to_s, exercise_path(exercise) %> -
 						<em>not attempted yet</em>
 				    <% end %>
 					</li>
@@ -59,22 +63,22 @@
 
 			<% end %>
 		</div>
-		
-		<div class="small-5 columns end">
-		
+
+		<div class="small-5 end columns">
+
 			<% for lesson in @lessons_second_half %>
 				<h3>Lesson <%= lesson.id %></h3>
-				
+
 				<ul>
 			    <% for i in 0..lesson.exercises.size-1 %>
 					<li>
 					<% if @queries[lesson.id][i] %>
-						<%= link_to "Exercise " + @queries[lesson.id][i].exercise_id.to_s, query_path(@queries[lesson.id][i]) %> - 
+						<%= link_to "Exercise " + @queries[lesson.id][i].exercise_id.to_s, query_path(@queries[lesson.id][i]) %> -
 						<%= give_meaning_to(@queries[lesson.id][i].status).html_safe %>
-					
+
 					<% else %>
 						<% exercise = Exercise.where(lesson_id: lesson.id)[i] %>
-						<%= link_to "Exercise " + exercise.id.to_s, exercise_path(exercise) %> - 
+						<%= link_to "Exercise " + exercise.id.to_s, exercise_path(exercise) %> -
 						<em>not attempted yet</em>
 				    <% end %>
 					</li>
@@ -83,11 +87,11 @@
 
 			<% end %>
 		</div>
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
 	<% end %>
 </div>
