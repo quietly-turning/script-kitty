@@ -88,8 +88,8 @@ ActiveRecord::Schema.define(version: 20140911172619) do
   create_table "schools", force: true do |t|
     t.string   "name"
     t.string   "city"
-    t.string   "state"
-    t.string   "zip"
+    t.string   "state",      limit: 2
+    t.string   "zip",        limit: 10
     t.string   "chief"
     t.integer  "control_id"
     t.integer  "locale_id"
