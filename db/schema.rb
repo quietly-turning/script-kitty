@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(version: 20140911172619) do
   end
 
   create_table "queries", force: true do |t|
-    t.integer  "dummy_id"
     t.text     "raw_sql"
     t.integer  "status",            limit: 1,          default: 0
     t.integer  "truncated_results", limit: 1,          default: 0

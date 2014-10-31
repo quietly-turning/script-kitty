@@ -47,6 +47,10 @@ class QueriesController < ApplicationController
     @query = Query.new
     @operators = Operator.all
     @condition = @query.conditions.build
+	
+	# mySQL doesn't allow default values for text columns
+	# so, we set this here, instead
+	@query.html_table = "<em>( no results returned )</em>"
   end
 
   # GET /queries/1/edit
@@ -60,7 +64,6 @@ class QueriesController < ApplicationController
   def create
     @query = Query.new(query_params)
     @query.user_id = current_user.id
-    @query.dummy_id = current_user.queries.count + 1
 
 	respond_to do |format|
 		# save the query data first
@@ -108,7 +111,6 @@ class QueriesController < ApplicationController
 	
 	@query = Query.new(query_params)
 	@query.user_id = current_user.id
-	@query.dummy_id = current_user.queries.count + 1
 
 	if current_user.visual_interface?
 	  # @query.processConditions
