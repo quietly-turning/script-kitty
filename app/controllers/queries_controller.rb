@@ -11,7 +11,19 @@ class QueriesController < ApplicationController
   # GET /queries
   # GET /queries.json
   def index
-    @queries = Query.all
+	  if current_user.admin
+		 @queries = Query.all
+	  else
+		 @queries = Array.new
+		 exercises = Exercise.all
+		 exercises.each do |exercise|
+			 query = Query.where(user_id: current_user.id, exercise_id: exercise.id).last
+			 if query
+				 @queries[exercise.id] = query 
+			 end
+		 end
+		 
+	  end
   end
 
   # GET /queries/1

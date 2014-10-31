@@ -16,20 +16,19 @@
 					  <li><%= link_to "Controls", controls_path %></li>
 				  </ul>
 			</li>
-						
+
 			<li class="divider"></li>
 			<% if current_user %>
 
-
 				<li class="has-dropdown not-click">
 					<%= link_to "Lessons", lessons_path %>
-					
+
 					<ul class="dropdown">
-						
+
 						<% for lesson in Lesson.all %>
 							<li class="has-dropdown not-click">
 								<%= link_to "Lesson #{lesson.id}", lesson_path(lesson.id) %>
-								
+
 								<ul class="dropdown">
 									<li><label><%= "Lesson #{lesson.id}" %></label></li>
 									<% for exercise in lesson.exercises %>
@@ -38,27 +37,20 @@
 								</ul>
 							</l>
 						<% end %>
-						
+
 					</ul>
 				</li>
-			
+
 				<li class="divider"></li>
-			
-				<% if current_user.admin %>
-			
-					<li class="has-dropdown not-click">
-					      <a href="#">Admin</a>
-					      <ul class="dropdown">
-					          <li><%= link_to "Queries", queries_path %></li>
-						  </ul>
-					</li>
-					<li class="divider"></li>
-			
-				<% end %>
+
+				<li><%= link_to "My Progress", queries_path %></li>
+
+				<li class="divider"></li>
+
 			<% end %>
-			
+
 		</ul>
-		
+
 		<!-- Right Nav Section -->
 		<ul class="right">
 			<% if user_signed_in? %>
