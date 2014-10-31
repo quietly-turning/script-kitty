@@ -160,7 +160,7 @@ body: "
 
 <p>
 	Databases typically contain lots (and lots) of data that would be cumbersome to sift through manually.
-	An SQL <strong>query</strong> is like a question we ask the database.  <em>Can you show me some specific
+	A SQL <strong>query</strong> is like a question we ask the database.  <em>Can you show me some specific
 	data based on these specific parameters I'll provide?</em>  Without further ado, let's look at a very simple
 	SQL query.
 </p>
@@ -205,7 +205,203 @@ FROM schools</textarea>
 
 " )
 
-Lesson.create( title: 'Introduction To Conditional Statements', objective: 'Filter your results with a single condition.', body: '' )
+Lesson.create( title: 'Introduction To Conditional Statements', objective: 'Filter your results with a single condition.',
+body: "
+<p>
+	As you saw, a little bit of SQL can give you a <em>lot</em> of results.  The first query you wrote returned
+	over seven thousand different schools!  If you're thinking <em>that doesn't seem very helpful...</em> you are
+	absolutely correct.
+</p>
+
+<p>
+	SQL's most powerful feature is its ability to filter results.  It's also the most fun!  Thinking creatively about
+	how to write the correct SQL statement to get the results you are interested in is like solving a puzzle.  Let's look
+	at an example:
+</p>
+
+<textarea class='raw-sql' style='height:1em'>SELECT *
+FROM schools
+WHERE city = 'University Park'</textarea>
+
+<p>
+	This query would return exactly one row:
+</p>
+
+<table>
+	<tbody>
+		<tr>
+			<td>3636</td>
+			<td>Pennsylvania State University-Main Campus</td>
+			<td>University Park</td>
+			<td>PA</td>
+			<td>16802-1589</td>
+			<td>Dr. Eric J. Barron</td>
+			<td>1</td>
+			<td>3</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+	The first two lines of this query are exactly the same as the first query we wrote.  The SELECT and FROM keywords
+	are still present.  As previously noted, they will appear in every query you ever write.   It is the third line
+	that made such a difference and caused the database to return one row instead of seven thousand.  
+	Let's inspect that line now.
+</p>
+
+<ul>
+	<li><strong>WHERE</strong> is like saying <em>I am only interested in the rows that meet this condition</em></li>
+	<li><em>zip</em> is one of the columns in schools table; it is an attribute of a school</li>
+	<li><strong>=</strong> is a SQL operator; it compares the attribute on its left to the value on its right</li>
+	<li><em>'16802-1589'</em> is a value that you have provided, in this case a zip code you are interested in</li>
+</ul>	
+
+<p>	
+	Note the quotation marks around the value; these are required for text values only.
+	Numerical values do not need quotation marks.
+</p>
+
+<p>
+	In plain English, the entire query would read: <em>please give me all the attributes of any schools in which the city exactly matches 'University Park'</em>.  Here's one more example:
+</p>
+
+<textarea class='raw-sql' style='height:1em'>SELECT *
+FROM schools
+WHERE state = 'AK'</textarea>
+
+<p>
+	In plain english, the query would read: <em>please give me all the attributes of any schools in which the state exactly matches 'AK'</em>.  This query returns the following twelve rows:
+</p>
+
+<table>
+	<tbody>
+		<tr>
+			<td>63</td>
+			<td>University of Alaska Anchorage</td>
+			<td>Anchorage</td>
+			<td>AK</td>
+			<td>99508</td>
+			<td>Fran Ulmer</td>
+			<td>1</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>64</td>
+			<td>Alaska Bible College</td>
+			<td>Glennallen</td>
+			<td>AK</td>
+			<td>99588</td>
+			<td>Nicholas Ringger</td>
+			<td>2</td>
+			<td>12</td>
+		</tr>
+		<tr>
+			<td>65</td>
+			<td>University of Alaska Fairbanks</td>
+			<td>Fairbanks</td>
+			<td>AK</td>
+			<td>99775-7500</td>
+			<td>Brian Rogers</td>
+			<td>1</td>
+			<td>6</td>
+		</tr>
+		<tr>
+			<td>66</td>
+			<td>University of Alaska Southeast</td>
+			<td>Juneau</td>
+			<td>AK</td>
+			<td>99801-8697</td>
+			<td>John Pugh</td>
+			<td>1</td>
+			<td>9</td>
+		</tr>
+		<tr>
+			<td>67</td>
+			<td>Alaska Pacific University</td>
+			<td>Anchorage</td>
+			<td>AK</td>
+			<td>99508</td>
+			<td>Don Bantz</td>
+			<td>2</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>68</td>
+			<td>AVTEC-Alaska's Institute of Technology</td>
+			<td>Seward</td>
+			<td>AK</td>
+			<td>99664-0889</td>
+			<td>Fred Esposito</td>
+			<td>1</td>
+			<td>12</td>
+		</tr>
+		<tr>
+			<td>69</td>
+			<td>Charter College-Anchorage</td>
+			<td>Anchorage</td>
+			<td>AK</td>
+			<td>99508</td>
+			<td>Terrance Harris</td>
+			<td>3</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>70</td>
+			<td>Prince William Sound Community College</td>
+			<td>Valdez</td>
+			<td>AK</td>
+			<td>99686-0097</td>
+			<td>Douglas A. Desorcie</td>
+			<td>1</td>
+			<td>12</td>
+		</tr>
+		<tr>
+			<td>71</td>
+			<td>Career Academy</td>
+			<td>Anchorage</td>
+			<td>AK</td>
+			<td>99507-1033</td>
+			<td>Jennifer Deitz</td>
+			<td>3</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>72</td>
+			<td>University of Alaska System of Higher Education</td>
+			<td>Fairbanks</td>
+			<td>AK</td>
+			<td>99775-5000</td>
+			<td>Patrick Gamble</td>
+			<td>1</td>
+			<td>6</td>
+		</tr>
+		<tr>
+			<td>5762</td>
+			<td>Ilisagvik College</td>
+			<td>Barrow</td>
+			<td>AK</td>
+			<td>99723</td>
+			<td>Beverly Patkotak Grinage</td>
+			<td>1</td>
+			<td>10</td>
+		</tr>
+		<tr>
+			<td>6095</td>
+			<td>Alaska Christian College</td>
+			<td>Soldotna</td>
+			<td>AK</td>
+			<td>99669</td>
+			<td>Dr. Keith J. Hamilton</td>
+			<td>2</td>
+			<td>10</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+	If you think you're ready, you can practice what you've learned in the next exercise.
+</p>
+" )
 
 Lesson.create( title: 'Equals is not the only operator', objective: 'Search through text using the <em>like</em> operator.', body: '' )
 
