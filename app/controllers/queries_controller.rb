@@ -11,15 +11,26 @@ class QueriesController < ApplicationController
   # GET /queries
   # GET /queries.json
   def index
+	  @lessons = Lesson.all
+	  @lessons_first_half = Lesson.where(id: 1..4)
+	  @lessons_second_half = Lesson.where(id: 5..8)
+	  
+	  
 	  if current_user.admin
 		 @queries = Query.all
 	  else
 		 @queries = Array.new
-		 exercises = Exercise.all
-		 exercises.each do |exercise|
-			 query = Query.where(user_id: current_user.id, exercise_id: exercise.id).last
-			 if query
-				 @queries[exercise.id] = query 
+		 
+		 @lessons.each do |lesson|
+			 @queries[lesson.id] = Array.new
+			 exercises = Exercise.where(lesson_id: lesson.id)
+			 
+			 exercises.each do |exercise|	
+				 query = Query.where(user_id: current_user.id, exercise_id: exercise.id).last
+				 
+				 if query
+					 @queries[exercise.lesson_id] << query
+				 end
 			 end
 		 end
 		 

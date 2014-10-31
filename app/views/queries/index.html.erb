@@ -1,7 +1,7 @@
 <div class="row">
-	<div class="small-12 columns">
-
-		<% if current_user.admin %>
+	<% if current_user.admin %>
+		<div class="small-12 columns">
+		
 			<h1>All Queries</h1>
 
 			<table>
@@ -31,44 +31,63 @@
 			    <% end %>
 			  </tbody>
 			</table>
+		</div>
 
-
-		<% else %>
-
+	<% else %>
 		<h1>My Progress</h1>
-
-			<table>
-			  <thead>
-			    <tr>
-				  <th>Exercise #</th>
-				  <th>Lesson #</th>
-			      <th>My Query</th>
-				  <th>Status</th>
-			    </tr>
-			  </thead>
-
-			  <tbody>
-			    <% for i in 1..Exercise.all.size %>
-				<% if @queries[i] %>
-			    	<tr>
-						<td><%= @queries[i].exercise.id %></td>
-						<td><%= @queries[i].exercise.lesson.id %></td>
-						<td><%= @queries[i].raw_sql %></td>
-						<td><%= give_meaning_to(@queries[i].status).html_safe %></td>
-			    	</tr>
-				<% else %>
-			    	<tr>
-						<td><%= i %></td>
-						<td><%= Exercise.find(i).lesson_id %></td>
-						<td></td>
-						<td><em>not completed yet!</em></td>
-			    	</tr>
-			    <% end %>
+		
+		
+		<div class="small-5 columns">
+		
+			<% for lesson in @lessons_first_half %>
+				<h3>Lesson <%= lesson.id %></h3>
+				
+				<ul>
+			    <% for i in 0..lesson.exercises.size-1 %>
+					<li>
+					<% if @queries[lesson.id][i] %>
+						<%= link_to "Exercise " + @queries[lesson.id][i].exercise_id.to_s, query_path(@queries[lesson.id][i]) %> - 
+						<%= give_meaning_to(@queries[lesson.id][i].status).html_safe %>
+					<% else %>
+						<% exercise = Exercise.where(lesson_id: lesson.id)[i] %>
+						<%= link_to "Exercise " + exercise.id.to_s, exercise_path(exercise) %> - 
+						<em>not attempted yet</em>
+				    <% end %>
+					</li>
 				<% end %>
-			  </tbody>
-			</table>
+				</ul>
 
+			<% end %>
+		</div>
+		
+		<div class="small-5 columns end">
+		
+			<% for lesson in @lessons_second_half %>
+				<h3>Lesson <%= lesson.id %></h3>
+				
+				<ul>
+			    <% for i in 0..lesson.exercises.size-1 %>
+					<li>
+					<% if @queries[lesson.id][i] %>
+						<%= link_to "Exercise " + @queries[lesson.id][i].exercise_id.to_s, query_path(@queries[lesson.id][i]) %> - 
+						<%= give_meaning_to(@queries[lesson.id][i].status).html_safe %>
+					
+					<% else %>
+						<% exercise = Exercise.where(lesson_id: lesson.id)[i] %>
+						<%= link_to "Exercise " + exercise.id.to_s, exercise_path(exercise) %> - 
+						<em>not attempted yet</em>
+				    <% end %>
+					</li>
+				<% end %>
+				</ul>
 
-		<% end %>
-	</div>
+			<% end %>
+		</div>
+		
+		
+		
+		
+		
+		
+	<% end %>
 </div>
