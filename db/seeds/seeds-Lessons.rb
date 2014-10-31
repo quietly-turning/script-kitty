@@ -682,10 +682,95 @@ OR chief LIKE '%Catherine%'</textarea>
 </p>
 " )
 
-Lesson.create( title: 'Compound Conditional Statements: Part 2', objective: 'Chain two conditions together <em>AND</em>.', body: '' )
+Lesson.create( title: 'Compound Conditional Statements: Part 2', objective: 'Chain two conditions together <em>AND</em>.', body: "
+<p>
+	In the <a href='./lessons/4'>previous lesson</a> we learned how to broaden the scope of our queries
+	by using OR to chain conditions together.  In this lesson, we'll cover the opposite idea -- a way to narrow
+	the scope of your queries and make them <em>more</em> specific.  We can do this using the <strong>AND</strong>
+	keyword.
+</p>
+
+<p>
+	Suppose we wanted to find some schools in the city of Harrisburg, Illinois.  If we wrote a query like this:
+</p>
+
+<textarea class='raw-sql' style='height:1em'>SELECT *
+FROM schools
+WHERE city LIKE '%Harrisburg%'</textarea>
+
+<p>
+	...we would primarily get results from Harrisburg, Pennsylvania!  It looks like we need to be more specifc.
+</p>
+
+<p>
+	In a situation like this, we could use an <strong>AND</strong> to chain more than one condition.  In this case,
+	<em>both</em> conditions must be true for the row to be returned.  (This is a significant difference from using
+	<strong>OR</strong>, where only one condition needed to be true.)  The query would look like this:
+<p>
+
+<textarea class='raw-sql' style='height:1em'>SELECT *
+FROM schools
+WHERE state = 'IL'
+AND city LIKE '%Harrisburg%'</textarea>
+
+<p>
+	It would return a single row:
+</p>
+
+<table>
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>name</th>
+			<th>city</th>
+			<th>state</th>
+			<th>zip</th>
+			<th>chief</th>
+			<th>control_id</th>
+			<th>locale_id</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>1257</td>
+			<td>Southeastern Illinois College</td>
+			<td>Harrisburg</td>
+			<td>IL</td>
+			<td>62946</td>
+			<td>Jonah Rice</td>
+			<td>1</td>
+			<td>11</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+	 Note that this row meets both conditions.  The state exactly matches 'IL' and the city contains
+	 the text 'Harrisburg.'
+</p>
+
+<p>
+	Some people find it helpful to think of <strong>AND</strong> in terms of a Venn Diagram.
+</p>
+
+<p>
+	<img src='/assets/logical-and.png'>
+</p>
+
+<p>
+	<strong>WHERE state = 'IL'</strong> is a single condition that would return its own set of results.<br>
+	<strong>WHERE city LIKE '%Harrisburg%'</strong> is also a single condition that would return its own set of results.
+</p>
+
+<p>
+	By chaining them together with an <strong>AND</strong> we let the database know that we are only interested in
+	the results that are common to both.
+</p>
+" )
 
 Lesson.create( title: 'Does Not Equal', objective: 'Filter your results using the <em>does not equal</em> operator.', body: '' )
 
-Lesson.create( title: 'Being more specific than <em>SELECT *</em>', objective: 'Limit results to specific columns from the databse table.', body: '' )
+Lesson.create( title: 'Being more specific than <em>SELECT *</em>', objective: 'Limit results to specific columns from the database table.', body: '' )
 
 Lesson.create( title: 'Using More Than One Table', objective: 'Write a complex query that pulls data from more than one table.', body: '' )
