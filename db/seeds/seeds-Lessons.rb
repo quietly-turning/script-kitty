@@ -5,7 +5,7 @@ body: "
 	It is likely that you interact with databases on a daily basis but don't realize it.
 	Popular websites like Google, Facebook, and YouTube all rely on databases. 	Databases contain data in a way that makes them easily searched, filtered, and retrieved.  That searching, filtering, and retrieval is done using a language called SQL or <strong>S</strong>tructured <strong>Q</strong>uery <strong>L</strong>anguage.
 </p>
-	
+
 <p>
 	Before we jump into learning SQL, there is some foundational terminology that is important to learn first.
 </p>
@@ -102,7 +102,7 @@ body: "
 	This simple example contains information about schools and demonstrates many
 	key attribtues of database structure.  Each horizontal <strong>row</strong> represents
 	one school.  For example:
-	
+
 	<table>
 		<tbody>
 			<tr>
@@ -117,10 +117,10 @@ body: "
 			</tr>
 		</tbody>
 	</table>
-	
+
 	is a single row containing data about Alabama State University.
 </p>
-<p>	
+<p>
 	Each cell gives us information about a particular attribute of that school.
 	For example, the <em>Name</em> of a school is an attribute of it, and contained
 	in the second column in this example.  Indeed, these attributes are commonly
@@ -134,7 +134,7 @@ body: "
 </p>
 
 <p>
-	Finally, a collection of multiple tables is referred to as a <strong>database</strong>.  
+	Finally, a collection of multiple tables is referred to as a <strong>database</strong>.
 	Through out the upcoming exercises, we'll be working with three different tables: <em>schools</em>,
 	<em>locales</em>, and <em>controls</em>.  Feel free to explore these tables by clicking on
 	<em>Datasets</em> at the top of the page.
@@ -147,14 +147,14 @@ body: "
 <p>
 	SQL (<strong>S</strong>tructured <strong>Q</strong>uery <strong>L</strong>anguage) is a language used
 	to interact with databases.  These interactions are often summarized (humerously) with the
-	acronym CRUD, which stands for:     
-	<ul>                                
+	acronym CRUD, which stands for:
+	<ul>
 		<li><strong>C</strong>reate</li>
-		<li><strong>R</strong>etrieve</li>  
+		<li><strong>R</strong>etrieve</li>
 		<li><strong>U</strong>pdate</li>
 		<li><strong>D</strong>elete</li>
 	</ul>
-	
+
 	Those four actions neatly encapsulate essentially everything databases can do.  In these lessons, we will be focusing on <em>Retrieving</em> data using SQL queries.
 </p>
 
@@ -184,7 +184,7 @@ FROM schools</textarea>
 	<li>The asterisk is a <em>wildcard</em> character that means <em>everything available</em>.</li>
 </ul>
 
-<p>	
+<p>
 	So, the statement <strong>SELECT *</strong> is like saying <em>please find for me everything available</em>
 </p>
 
@@ -200,7 +200,6 @@ FROM schools</textarea>
 <p>
 	Let's try it out!
 </p>
-
 " )
 
 Lesson.create( title: 'Introduction To Conditional Statements', objective: 'Filter your results with a single condition.',
@@ -243,7 +242,7 @@ WHERE city = 'University Park'</textarea>
 <p>
 	The first two lines of this query are exactly the same as the first query we wrote.  The SELECT and FROM keywords
 	are still present.  As previously noted, they will appear in every query you ever write.   It is the third line
-	that made such a difference and caused the database to return one row instead of seven thousand.  
+	that made such a difference and caused the database to return one row instead of seven thousand.
 	Let's inspect that line now.
 </p>
 
@@ -252,9 +251,9 @@ WHERE city = 'University Park'</textarea>
 	<li><em>city</em> is one of the columns in schools table; it is an attribute of a school</li>
 	<li><strong>=</strong> is a SQL operator; it compares the attribute on its left to the value on its right</li>
 	<li><em>'University Park'</em> is a value that you have provided, in this case a city you are interested in</li>
-</ul>	
+</ul>
 
-<p>	
+<p>
 	Note the quotation marks around the value; these are required for text values only.
 	Numerical values do not need quotation marks.
 </p>
@@ -401,7 +400,116 @@ WHERE state = 'AK'</textarea>
 </p>
 " )
 
-Lesson.create( title: 'Equals is not the only operator', objective: 'Search through text using the <em>like</em> operator.', body: '' )
+Lesson.create( title: 'Equals is not the only operator', objective: 'Search through text using the <em>like</em> operator.', body: "
+<p>
+	In the <a href='./lessons/2/'>previous lesson</a>, we learned how to limit the results of our query by adding a condition.
+	The <strong>WHERE</strong> keyword signifies that you want to limit your results by comparing some value to some table attribute
+	using an operator.  We learned how to use the <strong>=</strong> operator to perform an exact match.
+</p>
+
+<p>
+	It was pretty cool, and it can definitely be helpful in some situations, but because it looks for exact matches only, it is somewhat constraining.
+	For example, this query
+</p>
+
+<textarea class='raw-sql' style='height:1em'>SELECT *
+FROM schools
+WHERE name = 'Yale'</textarea>
+
+<p>
+	would return no rows from this database.  While many universities <em>contain</em> the text 'Yale' in their name,
+	none are exactly that.
+</p>
+<p>
+	  Is there a way to see if a field contains a bit of text?  There is!
+</p>
+
+<textarea class='raw-sql' style='height:1em'>SELECT *
+FROM schools
+WHERE name like '%Yale%'</textarea>
+
+<p>
+	Most of this query is the same as the previous example.  There are two important differences, however.
+	<ul>
+		<li>the operator is <strong>LIKE</strong> ( instead of = )</li>
+		<li>the text is now wrapped inside both quotations marks and % symbols</li>
+	</ul>
+
+	There are many different operators available in SQL that each perform a unique action.  The <strong>LIKE</strong> operator
+	checks an attribute to see if contains some text you provide.
+</p>
+
+<p>
+	The <strong>%</strong> symbols are a way of denoting that there is an unknown number of characters before and after your text.  It doesn't
+	matter what they are.  What matters is whether the attribute contains the text between the two <strong>%</strong> symbols.  If it does,
+	it will show up in your results.
+</p>
+
+<p>
+	So, in plain english, the SQL query above would read:
+</p>
+
+<p>
+	<em>
+		please find all the attributes<br>
+		of all the schools in the Schools table<br>
+		in which the name of the school contains the text 'Yale'
+	</em>
+</p>
+
+<p>
+	Let's see what results we get:
+</p>
+
+<table>
+	<thead>
+		<th>ID</th>
+		<th>Name</th>
+		<th>City</th>
+		<th>State</th>
+		<th>Zip Code</th>
+		<th>Chief</th>
+		<th>Control ID</th>
+		<th>Locale ID</th>
+	</thead>
+	<tbody>
+		<tr>
+			<td>760</td>
+			<td>Yale-New Haven Hospital Dietetic Internship</td>
+			<td>New Haven</td>
+			<td>CT</td>
+			<td>06510</td>
+			<td>Stephen Merz</td>
+			<td>2</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>761</td>
+			<td>Yale University</td>
+			<td>New Haven</td>
+			<td>CT</td>
+			<td>06520</td>
+			<td>Richard C Levin</td>
+			<td>2</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>5102</td>
+			<td>Royale College of Beauty</td>
+			<td>Temecula</td>
+			<td>CA</td>
+			<td>92590</td>
+			<td>Barbara Kruis</td>
+			<td>3</td>
+			<td>10</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+	If you think you're ready, you can practice what you've learned in the next exercise.
+</p>
+" )
 
 Lesson.create( title: 'Compound Conditional Statements: Part 1', objective: 'Chain two conditions together with <em>or</em>.', body: '' )
 
