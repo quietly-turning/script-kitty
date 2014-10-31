@@ -1,7 +1,7 @@
 <div class="exercise-header">
 	<div class="row">
 		<div class="small-12 columns">
-			<h2>Exercise <%= @query.exercise.id %> Results</h2>
+			<h2>Exercise <%= @query.exercise.lesson.id.to_s+ "." + @query.exercise.dummy_id.to_s %> Results</h2>
 	
 			<p>
 			  <strong>Question:</strong>
@@ -50,7 +50,7 @@
 		
 		<hr>
 		
-		<%= link_to 'Try this exercise again', exercise_path(@query.exercise.id	) %> or 
-		<%= link_to 'edit your answer', exercise_path( @query.exercise.id, {:raw_sql => @query.raw_sql} ) %>.
+		<%= link_to 'Try this exercise again', lesson_exercise_path(@query.exercise.lesson, @query.exercise) %> or 
+		<%= link_to 'edit your answer', lesson_exercise_path( @query.exercise.lesson, @query.exercise, {:raw_sql => @query.raw_sql} ) %>.
 	</div>
 </div>

@@ -13,6 +13,7 @@ class ExercisesController < ApplicationController
   # GET /exercises/1
   # GET /exercises/1.json
   def show
+	  @exercise = Exercise.where(lesson_id: params[:lesson_id], dummy_id: params[:id]).take
       @query = Query.new
 	  @raw_sql = ""
 	  

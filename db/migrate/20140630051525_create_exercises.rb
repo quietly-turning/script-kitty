@@ -7,6 +7,7 @@ class CreateExercises < ActiveRecord::Migration
 	  t.text :response_correct
 	  t.text :response_incorrect
 	  t.references :lesson, index: true
+	  t.integer :dummy_id
 	  
       t.timestamps
     end

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :lessons
+  resources :lessons do
+	  resources :exercises
+  end
 
-  resources :exercises
+  # resources :exercises
 
   resources :conditions
 

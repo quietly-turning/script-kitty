@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140911172619) do
     t.text     "response_correct"
     t.text     "response_incorrect"
     t.integer  "lesson_id"
+    t.integer  "dummy_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

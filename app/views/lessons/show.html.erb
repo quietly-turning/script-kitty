@@ -23,7 +23,7 @@
 		
 		
 		<hr>
-		<h4><%= link_to "Try Exercise " + @lesson.exercises.first.id.to_s, exercise_path(@lesson.exercises.first) %></h4>
+		<h4><%= link_to "Try Exercise " + @lesson.id.to_s + "." + @lesson.exercises.first.dummy_id.to_s, lesson_exercise_path(@lesson, @lesson.exercises.first) %></h4>
 		<br><br><br>
 	</div>
 </div>

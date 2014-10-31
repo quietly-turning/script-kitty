@@ -682,7 +682,7 @@ OR chief LIKE '%Catherine%'</textarea>
 </p>
 " )
 
-Lesson.create( title: 'Compound Conditional Statements: Part 2', objective: 'Chain two conditions together  <em>and</em>.', body: '' )
+Lesson.create( title: 'Compound Conditional Statements: Part 2', objective: 'Chain two conditions together <em>AND</em>.', body: '' )
 
 Lesson.create( title: 'Does Not Equal', objective: 'Filter your results using the <em>does not equal</em> operator.', body: '' )
 
