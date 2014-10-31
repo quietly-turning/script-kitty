@@ -400,7 +400,7 @@ WHERE state = 'AK'</textarea>
 </p>
 " )
 
-Lesson.create( title: 'Equals is not the only operator', objective: 'Search through text using the <em>like</em> operator.', body: "
+Lesson.create( title: '<em>Equals</em> is not the only operator', objective: 'Search through text using the <em>like</em> operator.', body: "
 <p>
 	In the <a href='./lessons/2/'>previous lesson</a>, we learned how to limit the results of our query by adding a condition.
 	The <strong>WHERE</strong> keyword signifies that you want to limit your results by comparing some value to some table attribute
@@ -408,8 +408,8 @@ Lesson.create( title: 'Equals is not the only operator', objective: 'Search thro
 </p>
 
 <p>
-	It was pretty cool, and it can definitely be helpful in some situations, but because it looks for exact matches only, it is somewhat constraining.
-	For example, this query
+	It was pretty cool, and it can definitely be helpful in some situations, but because it looks
+	for exact matches only, it is somewhat constraining. For example, this query
 </p>
 
 <textarea class='raw-sql' style='height:1em'>SELECT *
@@ -418,15 +418,16 @@ WHERE name = 'Yale'</textarea>
 
 <p>
 	would return no rows from this database.  While many universities <em>contain</em> the text 'Yale' in their name,
-	none are exactly that.
+	none are exactly that.  There is one school with the name 'Yale University' but that is not an exact match for 'Yale'.
 </p>
+
 <p>
 	  Is there a way to see if a field contains a bit of text?  There is!
 </p>
 
 <textarea class='raw-sql' style='height:1em'>SELECT *
 FROM schools
-WHERE name like '%Yale%'</textarea>
+WHERE name LIKE '%Yale%'</textarea>
 
 <p>
 	Most of this query is the same as the previous example.  There are two important differences, however.
@@ -434,31 +435,6 @@ WHERE name like '%Yale%'</textarea>
 		<li>the operator is <strong>LIKE</strong> ( instead of = )</li>
 		<li>the text is now wrapped inside both quotations marks and % symbols</li>
 	</ul>
-
-	There are many different operators available in SQL that each perform a unique action.  The <strong>LIKE</strong> operator
-	checks an attribute to see if contains some text you provide.
-</p>
-
-<p>
-	The <strong>%</strong> symbols are a way of denoting that there is an unknown number of characters before and after your text.  It doesn't
-	matter what they are.  What matters is whether the attribute contains the text between the two <strong>%</strong> symbols.  If it does,
-	it will show up in your results.
-</p>
-
-<p>
-	So, in plain english, the SQL query above would read:
-</p>
-
-<p>
-	<em>
-		please find all the attributes<br>
-		of all the schools in the Schools table<br>
-		in which the name of the school contains the text 'Yale'
-	</em>
-</p>
-
-<p>
-	Let's see what results we get:
 </p>
 
 <table>
@@ -505,6 +481,29 @@ WHERE name like '%Yale%'</textarea>
 		</tr>
 	</tbody>
 </table>
+
+<p>
+	There are many different operators available in SQL that each perform a unique action.
+	The <strong>LIKE</strong> operator checks an attribute to see if it contains some text you provide.
+</p>
+
+<p>
+	The <strong>%</strong> symbols are a way of denoting that there is an unknown number of characters
+	before and after your text.  It doesn't matter what they are.  What matters is whether the attribute
+	contains the text between the two <strong>%</strong> symbols.  If it does, it will show up in your results.
+</p>
+
+<p>
+	So, in plain english, the SQL query above would read:
+</p>
+
+<p>
+	<em>
+		please find all the attributes<br>
+		of all the schools in the Schools table<br>
+		in which the name of the school contains the text 'Yale'
+	</em>
+</p>
 
 <p>
 	If you think you're ready, you can practice what you've learned in the next exercise.
