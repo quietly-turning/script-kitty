@@ -3633,7 +3633,7 @@ School.create( name: "Pennsylvania State University-Brandywine", city: "Media", 
 School.create( name: "Pennsylvania State University-Penn State Dubois", city: "Dubois", state: "PA", zip: "15801-2597", chief: "Anita D. McDonald", control_id: 1, locale_id: 9 )
 School.create( name: "Pennsylvania State University-Penn State Fayette- Eberly Campus", city: "Uniontown", state: "PA", zip: "15401-0519", chief: "Francis K. Achampong (Interim)", control_id: 1, locale_id: 6 )
 School.create( name: "Pennsylvania State University-Penn State Hazleton", city: "Hazleton", state: "PA", zip: "18202-8025", chief: "Gary M. Lawler", control_id: 1, locale_id: 6 )
-School.create( name: "Pennsylvania State University-Main Campus", city: "University Park", state: "PA", zip: "16802-1589", chief: "Dr. Graham B. Spanier", control_id: 1, locale_id: 3 )
+School.create( name: "Pennsylvania State University-Main Campus", city: "University Park", state: "PA", zip: "16802-1589", chief: "Dr. Eric J. Barron", control_id: 1, locale_id: 3 )
 School.create( name: "Pennsylvania State University-Penn State Greater Allegheny", city: "McKeesport", state: "PA", zip: "15131-7644", chief: "Curtiss E. Porter", control_id: 1, locale_id: 4 )
 School.create( name: "Pennsylvania State University-Penn State Mont Alto", city: "Mont Alto", state: "PA", zip: "17237-9700", chief: "David C. Gnage", control_id: 1, locale_id: 8 )
 School.create( name: "Pennsylvania State University-Penn State Abington", city: "Abington", state: "PA", zip: "19001-3918", chief: "Karen Wiley Sandler", control_id: 1, locale_id: 4 )
