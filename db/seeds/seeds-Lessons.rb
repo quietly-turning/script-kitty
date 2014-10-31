@@ -197,8 +197,6 @@ FROM schools</textarea>
 	So, in plain English, this query might read <em>please find everything available from the schools table</em>.
 </p>
 
-<hr>
-
 <p>
 	Let's try it out!
 </p>
@@ -251,9 +249,9 @@ WHERE city = 'University Park'</textarea>
 
 <ul>
 	<li><strong>WHERE</strong> is like saying <em>I am only interested in the rows that meet this condition</em></li>
-	<li><em>zip</em> is one of the columns in schools table; it is an attribute of a school</li>
+	<li><em>city</em> is one of the columns in schools table; it is an attribute of a school</li>
 	<li><strong>=</strong> is a SQL operator; it compares the attribute on its left to the value on its right</li>
-	<li><em>'16802-1589'</em> is a value that you have provided, in this case a zip code you are interested in</li>
+	<li><em>'University Park'</em> is a value that you have provided, in this case a city you are interested in</li>
 </ul>	
 
 <p>	
