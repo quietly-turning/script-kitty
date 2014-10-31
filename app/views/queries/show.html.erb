@@ -5,7 +5,7 @@
 	
 			<p>
 			  <strong>Question:</strong>
-			  <%= raw @query.exercise.question %>
+			  <%= @query.exercise.question.html_safe %>
 			</p>
 		</div>
 	</div>
@@ -30,7 +30,7 @@
 		
 		<p>
 			<strong>Query Status:</strong>
-			<%= raw give_meaning_to( @query.status ) %>
+			<%= give_meaning_to( @query.status ).html_safe %>
 		</p>
 		
 		<hr>
@@ -45,7 +45,7 @@
 				We're only showing the first 500.</div>
 			<% end %>
 			
-			<%= raw @query.html_table %>
+			<%= @query.html_table.html_safe %>
 		</p>
 		
 		<hr>

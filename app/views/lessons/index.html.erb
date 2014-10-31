@@ -19,7 +19,7 @@
 		    <% @lessons.each do |lesson| %>
 		      <tr>
 		        <td><%= lesson.title %></td>
-		        <td><%= raw lesson.objective %></td>
+		        <td><%= lesson.objective.html_safe %></td>
 		        <td><%= lesson.exercises.size %></td>
 				<% if current_user and current_user.admin %>
 			        <td><%= link_to 'Show', lesson %></td>

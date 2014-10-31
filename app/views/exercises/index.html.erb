@@ -11,7 +11,7 @@
 	<div class="medium-offset-1 medium-11	 small-12 columns">	
 		<ul>
 		<% @exercises.each do |exercise| %>
-			<li> <%= link_to "Exercise #{exercise.id}", exercise_path(exercise) %> - <%= raw exercise.description %></li>
+			<li> <%= link_to "Exercise #{exercise.id}", exercise_path(exercise) %> - <%= exercise.description.html_safe %></li>
 		<% end %>
 		</ul>
 	</div>

@@ -7,7 +7,7 @@
 			
 	    		<div class="small-10 columns kitty-bubble bubbletype-success">
 					<div class="message">
-						<%= raw @query.exercise.response_correct %>
+						<%= @query.exercise.response_correct.html_safe %>
 					</div>
 				</div>
 				
@@ -19,7 +19,7 @@
 			
 	    		<div class="small-10 columns kitty-bubble bubbletype-notice">
 					<div class="message">
-						<%= raw @query.exercise.response_incorrect %>
+						<%= @query.exercise.response_incorrect.html_safe %>
 					</div>
 				</div>
 				

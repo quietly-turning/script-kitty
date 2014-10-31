@@ -57,7 +57,7 @@
 				<% for op in @operators %>
 					<div oid="<%= op.id %>" class="draggable operator-block" data-blockType="operator">
 						<%= image_tag "visual-interface/operator.png" %>
-						<p class="<%= op.name %>"><%= raw op.html_representation %></p>
+						<p class="<%= op.name %>"><%= op.html_representation.html_safe %></p>
 					</div><br>
 				<% end %>
 			</div>

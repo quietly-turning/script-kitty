@@ -5,7 +5,7 @@
 	
 			<p>
 			  <strong>Question:</strong>
-			  <%= raw @exercise.question %>
+			  <%= @exercise.question.html_safe %>
 			</p>
 		</div>
 	</div>
