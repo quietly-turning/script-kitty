@@ -1,7 +1,7 @@
 $(function(){
 	
 	var simple_editor = $("#query_raw_sql")[0];
-	var raw_sql = $(".raw-sql")[0];
+	var raw_sql = $(".raw-sql");
 	
 	// ensure that we found a textarea
 	// (participants using the visual builder will not)
@@ -16,12 +16,18 @@ $(function(){
 	
 	if (raw_sql != null)
 	{
-		var myCodeMirror = CodeMirror.fromTextArea(raw_sql, {
-			mode: "text/x-mariadb",
-			lineNumbers: true,
-			theme: "ambiance",
-			readOnly: "nocursor",
-		});
+		
+		// a page can have multiple instances of these		
+		for (i=0; i < raw_sql.length; i++ ) {
+			
+			var myCodeMirror = CodeMirror.fromTextArea( raw_sql[i], {
+				mode: "text/x-mariadb",
+				lineNumbers: true,
+				theme: "ambiance",
+				readOnly: "nocursor",
+			});
+			
+		}
 	}
 	
 	
