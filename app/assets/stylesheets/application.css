@@ -15,7 +15,7 @@
  *
  *= require codemirror
  *= require codemirror/themes/lesser-dark
- *= require codemirror/themes/eclipse
+ *= require codemirror/themes/xq-light
  *
  *= require jquery-ui/draggable
  *= require jquery-ui/resizable
@@ -111,7 +111,7 @@ span.causing-the-error{
 }
 
 
-.CodeMirror.cm-s-eclipse {
+.CodeMirror.cm-s-xq-light {
 	font-size: 1.25em;
 	border-radius:0em;
 	border: 1px solid #999;
@@ -119,10 +119,10 @@ span.causing-the-error{
 	height: auto;
 }
 
-.CodeMirror.cm-s-eclipse .CodeMirror-gutters {
-	background-color: #3B0022;
+.CodeMirror.cm-s-xq-light .CodeMirror-gutters {
+	background-color: #222;
 }
 
-.CodeMirror.cm-s-eclipse .CodeMirror-linenumber{
+.CodeMirror.cm-s-xq-light .CodeMirror-linenumber{
 	color: #ccc;
 }

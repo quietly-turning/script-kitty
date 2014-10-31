@@ -56,7 +56,7 @@
 						<%= give_meaning_to(@queries[lesson.id][i].status).html_safe %>
 					<% else %>
 						<% exercise = Exercise.where(lesson_id: lesson.id)[i] %>
-						<%= link_to "Exercise " + lesson.id.to_s + "." + (i+1).to_s, lesson_exercises_path(exercise) %> -
+						<%= link_to "Exercise " + lesson.id.to_s + "." + (i+1).to_s, lesson_exercise_path(lesson, exercise) %> -
 						<em>not attempted yet</em>
 				    <% end %>
 					</li>
@@ -80,7 +80,7 @@
 
 					<% else %>
 						<% exercise = Exercise.where(lesson_id: lesson.id)[i] %>
-						<%= link_to "Exercise " + lesson.id.to_s + "." + (i+1).to_s, lesson_exercises_path(exercise) %> -
+						<%= link_to "Exercise " + lesson.id.to_s + "." + (i+1).to_s, lesson_exercise_path(lesson, exercise) %> -
 						<em>not attempted yet</em>
 				    <% end %>
 					</li>
