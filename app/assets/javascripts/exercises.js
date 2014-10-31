@@ -23,7 +23,7 @@ $(function(){
 			var myCodeMirror = CodeMirror.fromTextArea( raw_sql[i], {
 				mode: "text/x-mariadb",
 				lineNumbers: true,
-				theme: "ambiance",
+				theme: "eclipse",
 				readOnly: "nocursor",
 			});
 			
