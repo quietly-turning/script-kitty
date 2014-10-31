@@ -417,8 +417,8 @@ FROM schools
 WHERE name = 'Yale'</textarea>
 
 <p>
-	would return no rows from this database.  While many universities <em>contain</em> the text 'Yale' in their name,
-	none are exactly that.  There is one school with the name 'Yale University' but that is not an exact match for 'Yale'.
+	would return no rows from this database.  While several schools <em>contain</em> the text 'Yale' in their name,
+	none are <em>exactly</em< that.  There is one school with the name 'Yale University' but that is not an exact match for 'Yale'.
 </p>
 
 <p>
@@ -510,12 +510,182 @@ WHERE name LIKE '%Yale%'</textarea>
 </p>
 " )
 
-Lesson.create( title: 'Compound Conditional Statements: Part 1', objective: 'Chain two conditions together with <em>or</em>.', body: '' )
+Lesson.create( title: 'Compound Conditional Statements: Part 1', objective: 'Chain two conditions together with <em>OR</em>.', body: "
+<p>
+	We're starting to pick up some steam now!  We've learned how to search for exact matches using <strong>=</strong>
+	and how to sift through text using <strong>LIKE</strong>.  Remember that those are both called operators.  There
+	are a few more handy operators that we'll cover eventually, but we'll get to those later.  This lesson will introduce
+	the idea of <em>compound conditions</em>.
+</p>
+
+<p>
+	Suppose we wanted to look for schools where the chief's name was Kate.  ...Or maybe it was Cate?  Hmm.  I heard the name out loud,
+	but I'm not sure how it was spelled (<em>Kate</em> or <em>Cate</em>).  I should probably query for both just to be thorough.
+</p>
+
+<p>
+	One way to approach this would be to write two different queries and examine the results of each seperately.
+</p>
+
+<textarea class='raw-sql' style='height:1em'>SELECT *
+FROM schools
+WHERE chief LIKE '%Kate%';
+
+SELECT *
+FROM schools
+WHERE chief LIKE '%Cate%'</textarea>
+
+<p>
+	While this does work, it would be inconvenient to have two seperate sets of results to look through.
+	Thankfully, we can combine those into a single query using <strong>OR</strong>:
+</p>
+
+<textarea class='raw-sql' style='height:1em'>SELECT *
+FROM schools
+WHERE chief LIKE '%Kate%'
+OR chief LIKE '%Cate%'</textarea>
+
+<p>
+	Using <strong>OR</strong> often broadens your result set.  If one condition is not true, perhaps the other one will be.
+	Neat!  Let's check our results:
+</p>
+
+<table>
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>name</th>
+			<th>city</th>
+			<th>state</th>
+			<th>zip</th>
+			<th>chief</th>
+			<th>control_id</th>
+			<th>locale_id</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>266</td>
+			<td>University of California-Davis</td>
+			<td>Davis</td>
+			<td>CA</td>
+			<td>95616-8678</td>
+			<td>Linda Katehi</td>
+			<td>1</td>
+			<td>6</td>
+		</tr>
+		<tr>
+			<td>1351</td>
+			<td>Brown Mackie College-Michigan City</td>
+			<td>Michigan City</td>
+			<td>IN</td>
+			<td>46360-7362</td>
+			<td>Kate Osio</td>
+			<td>3</td>
+			<td>10</td>
+		</tr>
+		<tr>
+			<td>1486</td>
+			<td>Cowley County Community College</td>
+			<td>Arkansas City</td>
+			<td>KS</td>
+			<td>67005</td>
+			<td>Patrick McAtee</td>
+			<td>1</td>
+			<td>8</td>
+		</tr>
+		<tr>
+			<td>3202</td>
+			<td>Ohio Business College-Sheffield</td>
+			<td>Sheffield Village</td>
+			<td>OH</td>
+			<td>44035-0701</td>
+			<td>Rosanne Catella</td>
+			<td>3</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>4678</td>
+			<td>Maricopa Skill Center</td>
+			<td>Phoenix</td>
+			<td>AZ</td>
+			<td>85034-4101</td>
+			<td>Sue Kater</td>
+			<td>1</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>6087</td>
+			<td>Vatterott College-Cleveland</td>
+			<td>Broadview Heights</td>
+			<td>OH</td>
+			<td>44147-3502</td>
+			<td>Kate Spies</td>
+			<td>3</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<td>6309</td>
+			<td>Kaplan University-Council Bluffs Campus</td>
+			<td>Council Bluffs</td>
+			<td>IA</td>
+			<td>51503-5289</td>
+			<td>Kate Packard</td>
+			<td>3</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>6823</td>
+			<td>Brown Mackie College-Indianapolis</td>
+			<td>Indianapolis</td>
+			<td>IN</td>
+			<td>46204</td>
+			<td>Kate Osio</td>
+			<td>3</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>7037</td>
+			<td>PC ProSchools</td>
+			<td>Brookfield</td>
+			<td>WI</td>
+			<td>53005-0000</td>
+			<td>Kate Pelchat</td>
+			<td>3</td>
+			<td>4</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+	You are not limited to using <strong>OR</strong> once in a query.  In 'real world' queries,
+	<strong>OR</strong> is commonly used to chain multiple conditions together, like this example:
+</p>
+
+<textarea class='raw-sql' style='height:1em'>SELECT *
+FROM schools
+WHERE chief LIKE '%Kate%'
+OR chief LIKE '%Cate%'
+OR chief LIKE '%Cait%'
+OR chief LIKE '%Catherine%'</textarea>
+
+<p>
+	That query returns an additional five rows because of the extra conditions.
+	Only one of the four conditions needed to be true, increasing the likelihood that the
+	chief's name would contain the text you supplied.
+</p>
+
+<p>
+	You're doing great!  Give yourself a pat on the back.  When you feel ready, you can try the
+	next exercise to practice these skills.
+</p>
+" )
 
 Lesson.create( title: 'Compound Conditional Statements: Part 2', objective: 'Chain two conditions together  <em>and</em>.', body: '' )
 
 Lesson.create( title: 'Does Not Equal', objective: 'Filter your results using the <em>does not equal</em> operator.', body: '' )
 
-Lesson.create( title: 'Being more specific than SELECT *', objective: 'Limit results to specific columns from the databse table.', body: '' )
+Lesson.create( title: 'Being more specific than <em>SELECT *</em>', objective: 'Limit results to specific columns from the databse table.', body: '' )
 
 Lesson.create( title: 'Using More Than One Table', objective: 'Write a complex query that pulls data from more than one table.', body: '' )
