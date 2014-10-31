@@ -113,5 +113,5 @@ span.causing-the-error{
 
 .CodeMirror.cm-s-ambiance {
 	border-radius:0.6em;
-	height: 100px;
+	height: auto;
 }
