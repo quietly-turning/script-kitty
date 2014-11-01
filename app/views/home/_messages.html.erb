@@ -1,0 +1,23 @@
+<% if not flash.empty? %>
+
+	<% flash.each do |name, msg| %>
+
+		<% if msg.is_a?(String) %>
+			<div class="small-offset-2 small-8 columns">
+	    		<div class="small-10 columns kitty-bubble bubbletype-success">
+					<div class="message">
+						<%=  msg %>
+					</div>
+				</div>
+
+				<div class="small-2 columns">
+					<%= image_tag "kitty-success.png", :class => "kitty-image" %>
+				</div>
+			</div>
+			<hr>
+		<% end %>
+
+	<% end %>
+<% else %>
+	<br><br>
+<% end %>
