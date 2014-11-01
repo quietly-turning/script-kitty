@@ -126,3 +126,14 @@ span.causing-the-error{
 .CodeMirror.cm-s-xq-light .CodeMirror-linenumber{
 	color: #ccc;
 }
+
+span.correct {
+	color:#3ea237;
+}
+span.invalid {
+	color:#b5403c;
+}
+
+span.valid {
+	color:#3197ee;
+}

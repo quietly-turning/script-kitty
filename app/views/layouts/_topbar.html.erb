@@ -32,7 +32,9 @@
 								<ul class="dropdown">
 									<li><label><%= "Lesson #{lesson.id}" %></label></li>
 									<% for exercise in lesson.exercises %>
-										<li><%= link_to "Exercise #{exercise.lesson_id}.#{exercise.dummy_id}", lesson_exercise_path(lesson, exercise) %></li>
+										<li class="exercise">
+											<%= link_to ("Exercise #{exercise.lesson_id}.#{exercise.dummy_id}  " + user_exercise_status(exercise)).html_safe, lesson_exercise_path(lesson, exercise) %>
+										</li>
 									<% end %>
 								</ul>
 							</l>
