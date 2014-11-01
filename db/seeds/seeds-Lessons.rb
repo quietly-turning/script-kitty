@@ -682,7 +682,7 @@ OR chief LIKE '%Catherine%'</textarea>
 </p>
 " )
 
-Lesson.create( title: 'Compound Conditional Statements: Part 2', objective: 'Chain two conditions together <em>AND</em>.', body: "
+Lesson.create( title: 'Compound Conditional Statements: Part 2', objective: 'Chain two conditions together with <em>AND</em>.', body: "
 <p>
 	In the <a href='./lessons/4'>previous lesson</a> we learned how to broaden the scope of our queries
 	by using OR to chain conditions together.  In this lesson, we'll cover the opposite idea -- a way to narrow
@@ -696,7 +696,7 @@ Lesson.create( title: 'Compound Conditional Statements: Part 2', objective: 'Cha
 
 <textarea class='raw-sql' style='height:1em'>SELECT *
 FROM schools
-WHERE city LIKE '%Harrisburg%'</textarea>
+WHERE city = 'Harrisburg'</textarea>
 
 <p>
 	...we would primarily get results from Harrisburg, Pennsylvania!  It looks like we need to be more specifc.
@@ -711,7 +711,7 @@ WHERE city LIKE '%Harrisburg%'</textarea>
 <textarea class='raw-sql' style='height:1em'>SELECT *
 FROM schools
 WHERE state = 'IL'
-AND city LIKE '%Harrisburg%'</textarea>
+AND city = 'Harrisburg'</textarea>
 
 <p>
 	It would return a single row:
@@ -746,8 +746,8 @@ AND city LIKE '%Harrisburg%'</textarea>
 </table>
 
 <p>
-	 Note that this row meets both conditions.  The state exactly matches 'IL' and the city contains
-	 the text 'Harrisburg.'
+	 Note that this row meets both conditions.  The state exactly matches 'IL' and the city matches
+	 the text 'Harrisburg'.
 </p>
 
 <p>
@@ -760,7 +760,7 @@ AND city LIKE '%Harrisburg%'</textarea>
 
 <p>
 	<strong>WHERE state = 'IL'</strong> is a single condition that would return its own set of results.<br>
-	<strong>WHERE city LIKE '%Harrisburg%'</strong> is also a single condition that would return its own set of results.
+	<strong>WHERE city = 'Harrisburg'</strong> is also a single condition that would return its own set of results.
 </p>
 
 <p>
