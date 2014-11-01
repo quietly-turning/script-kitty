@@ -1,5 +1,4 @@
-Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.',
-body: "
+Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: "
 <p>
 	<strong>Why do databases matter?</strong><br>
 	It is likely that you interact with databases on a daily basis but don't realize it.
@@ -202,8 +201,7 @@ FROM schools</textarea>
 </p>
 " )
 
-Lesson.create( title: 'Introduction To Conditional Statements', objective: 'Filter your results with a single condition.',
-body: "
+Lesson.create( title: 'Introduction To Conditional Statements', objective: 'Filter your results with a single condition.', body: "
 <p>
 	As you saw, a little bit of SQL can give you a <em>lot</em> of results.  The first query you wrote returned
 	over seven thousand different schools!  If you're thinking <em>that doesn't seem very helpful...</em> you are
@@ -769,7 +767,168 @@ AND city = 'Harrisburg'</textarea>
 </p>
 " )
 
-Lesson.create( title: 'Does Not Equal', objective: 'Filter your results using the <em>does not equal</em> operator.', body: '' )
+Lesson.create( title: 'Does Not Equal', objective: 'Filter your results using the <em>does not equal</em> operator.', body: "
+<p>
+	Now that we've learned how to chain multiple conditions together using <strong>AND</strong> and <strong>OR</strong>,
+	we can continue with operators.  This lesson will be short, but can be useful at times to limit results.  It
+	will introduce the idea of <em>does not equal</em>.
+</p>
+
+<p>
+	Let's say we live in the small town of Scranton, Pennsylvania where the most well-known school is the University
+	of Scranton.  We're interested in staying local, but are also interested in seeing what other schools are available!
+	In essence, we're asking <em>what schools are in Scranton that aren't the University of Scranton?</em>
+</p>
+
+<p>
+	In SQL form, that question would look like:
+</p>
+
+<textarea class='raw-sql' style='height:1em'>SELECT *
+FROM schools
+WHERE city = 'Scranton'
+AND name <> 'University of Scranton'</textarea>
+
+<p>
+	The SQL operator for <em>does not equal</em> here is represented as <strong>&lt;&gt;</strong> and the query returns
+	results like:
+</p>
+
+<table>
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>name</th>
+			<th>city</th>
+			<th>state</th>
+			<th>zip</th>
+			<th>chief</th>
+			<th>control_id</th>
+			<th>locale_id</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>3563</td>
+			<td>Johnson College</td>
+			<td>Scranton</td>
+			<td>PA</td>
+			<td>18508-1495</td>
+			<td>Ann L. Pipinski, Ed.D.</td>
+			<td>2</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>3572</td>
+			<td>Lackawanna College</td>
+			<td>Scranton</td>
+			<td>PA</td>
+			<td>18509-3206</td>
+			<td>Ray Angeli</td>
+			<td>2</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>3596</td>
+			<td>Marywood University</td>
+			<td>Scranton</td>
+			<td>PA</td>
+			<td>18509-1598</td>
+			<td>Sister Anne Munley</td>
+			<td>2</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>3735</td>
+			<td>Yeshivath Beth Moshe</td>
+			<td>Scranton</td>
+			<td>PA</td>
+			<td>18505</td>
+			<td>Avraham Pressman</td>
+			<td>2</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>4667</td>
+			<td>Career Technology Center of Lackawanna County</td>
+			<td>Scranton</td>
+			<td>PA</td>
+			<td>18508</td>
+			<td>Vincent P Nallo</td>
+			<td>1</td>
+			<td>10</td>
+		</tr>
+		<tr>
+			<td>5149</td>
+			<td>Fortis Institute-Scranton</td>
+			<td>Scranton</td>
+			<td>PA</td>
+			<td>18509-2903</td>
+			<td>Duncan Anderson</td>
+			<td>3</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>7132</td>
+			<td>The Commonwealth Medical College</td>
+			<td>Scranton</td>
+			<td>PA</td>
+			<td>18510</td>
+			<td>Robert M D'Alessandri M.D</td>
+			<td>2</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>7408</td>
+			<td>Commonwealth Medical College (The)</td>
+			<td>Scranton</td>
+			<td>PA</td>
+			<td>18503</td>
+			<td>Robert D'Alessandri, MD</td>
+			<td>4</td>
+			<td>3</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+	In plain english, it might be more natural to read the query as <em>find all information about schools where
+	the city is 'Scranton' <strong>but</strong> the name is not 'University of Scranton'</em>
+</p>
+
+<p>
+	Keep in mind that there is no <em>but</em> keyword in SQL; there is only <strong>AND</strong> and <strong>OR</strong>.
+<p>
+
+<p>
+	It is also worth noting that <em>does not equal</em> is usually written as <strong>&lt;&gt;</strong> 
+	but it is sometimes written as <strong>!=</strong>
+</p>
+
+This:
+<textarea class='raw-sql' style='height:1em'>SELECT *
+FROM schools
+WHERE city = 'Scranton'
+AND name != 'University of Scranton'</textarea>
+
+<p>
+	would return the same results as:
+</p>
+<textarea class='raw-sql' style='height:1em'>SELECT *
+FROM schools
+WHERE city = 'Scranton'
+AND name &lt;&gt; 'University of Scranton'</textarea>
+
+<p>
+	They are two ways of saying the same thing.  Both are equally valid, but <strong>&lt;&gt;</strong>
+	is more commonly seen and used.
+</p>
+
+<p>
+	That's really all there is to it; it's not too tough!  If you feel ready, you can try the next exercise.
+</p>
+" )
 
 Lesson.create( title: 'Being more specific than <em>SELECT *</em>', objective: 'Limit results to specific columns from the database table.', body: '' )
 
