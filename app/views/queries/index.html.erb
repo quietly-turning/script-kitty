@@ -23,7 +23,7 @@
 			        <td><%= query.raw_sql %></td>
 					<td><%= give_meaning_to(query.status).html_safe %></td>
 			        <td><%= query.user.email %></td>
-					<td><%= query.exercise.id %></td>
+					<td><%= query.exercise.lesson_id.to_s + "." + query.exercise.dummy_id.to_s %></td>
 			        <td><%= link_to 'Show', query %></td>
 			        <td><%= link_to 'Edit', edit_query_path(query) %></td>
 			        <td><%= link_to 'Destroy', query, method: :delete, data: { confirm: 'Are you sure?' } %></td>

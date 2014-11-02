@@ -904,7 +904,7 @@ AND name <> 'University of Scranton'</textarea>
 <p>
 
 <p>
-	It is also worth noting that <em>does not equal</em> is usually written as <strong>&lt;&gt;</strong> 
+	It is also worth noting that <em>does not equal</em> is usually written as <strong>&lt;&gt;</strong>
 	but it is sometimes written as <strong>!=</strong>
 </p>
 
@@ -935,7 +935,7 @@ AND name &lt;&gt; 'University of Scranton'</textarea>
 Lesson.create( title: 'Being more specific than <em>SELECT *</em>', objective: 'Limit results to specific columns from the database table.', body: "
 <p>
 	In all the exercises up to this point, we have always retrieved full rows from the database.  The <em>Schools</em>
-	table has eight columns, and each of our queries has returned all eight coluns per row.  For example, this query
+	table has eight columns, and each of our queries has returned all eight columns per row.  For example, this query
 	from <a href='/lessons/2'>Lesson 2</a>:
 </p>
 
@@ -1012,12 +1012,12 @@ WHERE city = 'University Park'</textarea>
 </p>
 
 <p>
-	We can retrieve two or three columns by seperating them with commas.  This query:
+	We can retrieve two or three columns by separating them with commas.  This query:
 </p>
 
 <textarea class='raw-sql' style='height:1em'>SELECT name, city, state, zip
 FROM schools
-WHERE zip like '%18515%'</textarea>
+WHERE zip like '%18509%'</textarea>
 
 <p>
 	returns three rows across four columns.
