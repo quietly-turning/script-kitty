@@ -3,12 +3,12 @@ class QueriesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :verify_is_admin, only: [:destroy]
   before_action :set_query, only: [:show, :edit, :update, :destroy]
-  
+
   rescue_from ActiveRecord::StatementInvalid do |exception|
 	  exercise = Exercise.find(params[:query][:exercise_id])
 	  lesson = Lesson.find(exercise.lesson_id)
 	  query = Query.where(user_id: current_user.id, exercise_id: exercise.id).last
-	  
+
 	  redirect_to lesson_exercise_path(lesson, exercise, {:raw_sql => params[:query][:raw_sql]} ),
 		 						alert: query.friendly_errors(exception.message)
   end
