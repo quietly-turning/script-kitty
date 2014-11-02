@@ -4,7 +4,10 @@ class QueriesController < ApplicationController
   before_filter :verify_is_admin, only: [:destroy]
   before_action :set_query, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::StatementInvalid do |exception|
-  	redirect_to exercise_path(params[:query][:exercise_id], {:raw_sql => params[:query][:raw_sql]} ),
+	  exercise = Exercise.find(params[:query][:exercise_id])
+	  lesson = Lesson.find(exercise.lesson_id)
+	  
+	  redirect_to lesson_exercise_path(lesson, exercise, {:raw_sql => params[:query][:raw_sql]} ),
 		 						alert: friendly_errors(exception.message)
   end
   
