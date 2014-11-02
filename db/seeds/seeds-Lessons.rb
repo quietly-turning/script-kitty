@@ -437,14 +437,16 @@ WHERE name LIKE '%Yale%'</textarea>
 
 <table>
 	<thead>
-		<th>ID</th>
-		<th>Name</th>
-		<th>City</th>
-		<th>State</th>
-		<th>Zip Code</th>
-		<th>Chief</th>
-		<th>Control ID</th>
-		<th>Locale ID</th>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>City</th>
+			<th>State</th>
+			<th>Zip Code</th>
+			<th>Chief</th>
+			<th>Control ID</th>
+			<th>Locale ID</th>
+		</tr>
 	</thead>
 	<tbody>
 		<tr>
@@ -930,6 +932,133 @@ AND name &lt;&gt; 'University of Scranton'</textarea>
 </p>
 " )
 
-Lesson.create( title: 'Being more specific than <em>SELECT *</em>', objective: 'Limit results to specific columns from the database table.', body: '' )
+Lesson.create( title: 'Being more specific than <em>SELECT *</em>', objective: 'Limit results to specific columns from the database table.', body: "
+<p>
+	In all the exercises up to this point, we have always retrieved full rows from the database.  The <em>Schools</em>
+	table has eight columns, and each of our queries has returned all eight coluns per row.  For example, this query
+	from <a href='/lessons/2'>Lesson 2</a>:
+</p>
+
+<textarea class='raw-sql' style='height:1em'>SELECT *
+FROM schools
+WHERE city = 'University Park'</textarea>
+
+<p>
+	returned a single row with all eight columns intact.
+</p>
+
+<table>
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>name</th>
+			<th>city</th>
+			<th>state</th>
+			<th>zip</th>
+			<th>chief</th>
+			<th>control_id</th>
+			<th>locale_id</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>3636</td>
+			<td>Pennsylvania State University-Main Campus</td>
+			<td>University Park</td>
+			<td>PA</td>
+			<td>16802-1589</td>
+			<td>Dr. Eric J. Barron</td>
+			<td>1</td>
+			<td>3</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+	This can be useful when we want to learn as much as possible about what we're querying for.
+	There are times, however, when we just need one thing, or when retreiving all the columns
+	would be overwhelming.  (It is not uncommon for 'real world' database tables to have thirty or forty
+	columns!)
+</p>
+
+<p>
+	So, there are situations when <strong>SELECT *</strong> is too broad.  In such cases, we can specify
+	exactly which columns we are interested in retrieving.  Let's take a look at this query:
+</p>
+
+<textarea class='raw-sql' style='height:1em'>SELECT chief
+FROM schools
+WHERE city = 'University Park'</textarea>
+
+<p>
+	This would return a result set like:
+</p>
+
+<table>
+	<thead>
+		<tr>
+			<th>chief</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Dr. Eric J. Barron</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+	Notice that instead of the usual <strong>SELECT *</strong>, we've specified a column.  <strong>SELECT chief</strong>
+</p>
+
+<p>
+	We can retrieve two or three columns by seperating them with commas.  This query:
+</p>
+
+<textarea class='raw-sql' style='height:1em'>SELECT name, city, state, zip
+FROM schools
+WHERE zip like '%18515%'</textarea>
+
+<p>
+	returns three rows across four columns.
+</p>
+
+<table>
+	<thead>
+		<tr>
+			<th>name</th>
+			<th>city</th>
+			<th>state</th>
+			<th>zip</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Lackawanna College</td>
+			<td>Scranton</td>
+			<td>PA</td>
+			<td>18509-3206</td>
+		</tr>
+		<tr>
+			<td>Marywood University</td>
+			<td>Scranton</td>
+			<td>PA</td>
+			<td>18509-1598</td>
+		</tr>
+		<tr>
+			<td>Fortis Institute-Scranton</td>
+			<td>Scranton</td>
+			<td>PA</td>
+			<td>18509-2903</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+	You're doing great and you're nearly done!  After you complete the exercises for this lesson,
+	there is only one lesson left!
+</p>
+" )
 
 Lesson.create( title: 'Using More Than One Table', objective: 'Write a complex query that pulls data from more than one table.', body: '' )
