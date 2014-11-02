@@ -1012,7 +1012,7 @@ WHERE city = 'University Park'</textarea>
 </p>
 
 <p>
-	We can retrieve two or three columns by separating them with commas.  This query:
+	We can retrieve two or more columns by separating them with commas.  This query:
 </p>
 
 <textarea class='raw-sql' style='height:1em'>SELECT name, city, state, zip
@@ -1238,7 +1238,11 @@ AND state &lt;&gt; 'CA'</textarea>
 
 <p>
 	How curious.  It appears as though one school was found in the state of Texas, but that it was
-	cross multiplied across each possible locale.  The problem arose because we did not place any conditions
+	cross multiplied across each possible locale.
+</p>
+
+<p>
+	The problem arose because we did not place any conditions
 	on how to limit the locales.  We asked for <strong>locales.name</strong> and we got all of them.
 	We are seeing a phenomenon known as <em>cartesian products</em>.
 </p>
@@ -1270,9 +1274,114 @@ AND state &lt;&gt; 'CA'</textarea>
 </p>
 
 <p>
+	You may have already noticed that the <em>Locales</em> table has an <em>id</em> column and that the <em>Schools</em>
+	table has a <em>locale_id</em> column.  Let's grab some rows of data and see if we can figure out what's going on.
+</p>
 
+<table width='100%'>
+	<caption>Schools</caption>
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>name</th>
+			<th>city</th>
+			<th>state</th>
+			<th>zip</th>
+			<th>chief</th>
+			<th>control_id</th>
+			<th>locale_id</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>4051</td>
+			<td>Lamar State College-Orange</td>
+			<td>Orange</td>
+			<td>TX</td>
+			<td>77630</td>
+			<td>Michael Shahan</td>
+			<td>1</td>
+			<td>8</td>
+		</tr>
+	</tbody>
+</table>
+
+<table>
+	<caption>Locales</caption>
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>name</th>
+			<th>description</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>7</td>
+			<td>Town, fringe</td>
+			<td>Territory inside an urban cluster that is less than or equal to 10 miles from an urbanized area.</td>
+		</tr>
+		<tr>
+			<td>8</td>
+			<td>Town, distant</td>
+			<td>Territory inside an urban cluster that is more than 10 miles and less than or equal to 35 miles from an urbanized area.</td>
+		</tr>
+		<tr>
+			<td>9</td>
+			<td>Town, remote</td>
+			<td>Territory inside an urban cluster that is more than 35 miles of an urbanized area.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+	Note that the school in Orange, TX has a <em>locale_id</em> of 8.  Additionally, the locale with an <em>id</em> of 8
+	has a name of <em>Town, distant</em>.  If you are thinking that database id fields are used to link tables, you are
+	absolutely correct!
 </p>
 
 
+<textarea class='raw-sql' style='height:1em'>SELECT schools.name, schools.state, locales.name,
+FROM schools, locales
+WHERE city = 'orange'
+AND state &lt;&gt; 'CA'
+AND schools.locale_id = locales.id</textarea>
+
+<p>
+	You can see that we've added another condition to the query.  This time around, we've limited the <em>locales</em>
+	to only those that match up with the school we're interested in.  Here are the results this query produces:
+</p>
+
+
+
+<table>
+	<thead>
+		<tr>
+			<th>name</th>
+			<th>state</th>
+			<th>name</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Lamar State College-Orange</td>
+			<td>TX</td>
+			<td>Town, distant</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+	Hey, that gets us what we need!  We have the name of the school and the name of the locale in one table.
+	Awesome!
+</p>
+
+<p>
+	This lesson covered a lot of ground, and the concepts were really quite tricky.  If you feel you need to read it over a few
+	times, don't worry.  You can try out the last few exercises to test your skills whenever you're ready.
+</p>
 ")
 
