@@ -1,42 +1,42 @@
 class QueriesController < ApplicationController
-  
+
   before_filter :authenticate_user!
   before_filter :verify_is_admin, only: [:destroy]
   before_action :set_query, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::StatementInvalid do |exception|
 	  exercise = Exercise.find(params[:query][:exercise_id])
 	  lesson = Lesson.find(exercise.lesson_id)
-	  
+
 	  redirect_to lesson_exercise_path(lesson, exercise, {:raw_sql => params[:query][:raw_sql]} ),
 		 						alert: friendly_errors(exception.message)
   end
-  
+
   # GET /queries
   # GET /queries.json
   def index
 	  @lessons = Lesson.all
 	  @lessons_first_half = Lesson.where(id: 1..4)
 	  @lessons_second_half = Lesson.where(id: 5..8)
-	  
-	  
+
+
 	  if current_user.admin
 		 @queries = Query.all
 	  else
 		 @queries = Array.new
-		 
+
 		 @lessons.each do |lesson|
 			 @queries[lesson.id] = Array.new
 			 exercises = Exercise.where(lesson_id: lesson.id)
-			 
-			 exercises.each do |exercise|	
+
+			 exercises.each do |exercise|
 				 query = Query.where(user_id: current_user.id, exercise_id: exercise.id).last
-				 
+
 				 if query
 					 @queries[exercise.lesson_id] << query
 				 end
 			 end
 		 end
-		 
+
 	  end
   end
 
@@ -63,7 +63,7 @@ class QueriesController < ApplicationController
   def create
     @query = Query.new(query_params)
     @query.user_id = current_user.id
-	
+
 	if not @query.html_table
 		# mySQL doesn't allow default values for text columns
 		# so, we set this here, instead
@@ -73,7 +73,7 @@ class QueriesController < ApplicationController
 	respond_to do |format|
 		# save the query data first
 		if @query.save
-			
+
 			# then attempt to run it and check its correctness
 			if current_user.visual_interface?
 				# @query.processConditions
@@ -84,7 +84,7 @@ class QueriesController < ApplicationController
 			end
 
 			@query.check_if_correct
-			
+
 			# then update the query entry
 			if @query.update(query_params)
 				if @query.status == 2
@@ -94,7 +94,7 @@ class QueriesController < ApplicationController
 				end
 				format.json { render :show, status: :created, location: @query }
 			else
-				
+
 		    	format.html { render :edit }
 		   	 	format.json { render json: @query.errors, status: :unprocessable_entity }
 			end
@@ -109,11 +109,11 @@ class QueriesController < ApplicationController
   # PATCH/PUT /queries/1
   # PATCH/PUT /queries/1.json
   def update
-	
+
   	# Because this is a study, and we are actually interested in incorrect answers,
   	# don't actually ever edit a query, just create a new one!  In this way, mistakes
   	# are logged for later analysis.  This method is a effectively a copy/paste of create.
-	
+
 	@query = Query.new(query_params)
 	@query.user_id = current_user.id
 
@@ -163,31 +163,43 @@ class QueriesController < ApplicationController
       params.require(:query)
 	  	.permit(:raw_sql, :exercise_id)
     end
-	
+
 	def friendly_errors(error)
 		message = "<span class='oops'>Oops!</span>  There is some sort of problem with your query!"
 
 		if error.include? "Mysql2::Error: You have an error in your SQL syntax;"
 			line_number = (/at line (\d+):/.match(error)).captures[0]
 			message = "<span class='oops'>Oops!</span>  You seem to have a syntax error near &nbsp;<span class='causing-the-error'>line #{line_number}</span>."
-		
+
 		elsif error.include? "Mysql2::Error: Query was empty:"
 			message = "<span class='oops'>Oops!</span>  It looks like your your query was empty."
-		
+
 		elsif error =~ /Mysql2::Error: Table 'thesis.(\w+)' doesn't exist:/
 			nonexistent_table = (/thesis.(\w+)/.match(error)).captures[0]
 			message = "<span class='oops'>Oops!</span>  It seems that the table <span class='causing-the-error'>#{nonexistent_table}</span> doesn't exist."
-		
+
 		elsif error =~ /Mysql2::Error: Unknown column '(\w+)' in 'where clause'/
 			unknown_colummn = (/Unknown column '(\w+)' in 'where clause'/.match(error)).captures[0]
 			message = "<span class='oops'>Oops!</span>  It seems that the column &nbsp;<span class='causing-the-error'>#{unknown_colummn}</span>&nbsp; in your<br>&nbsp;<span class='causing-the-error'>where clause</span>&nbsp; doesn't exist."
-		
+
 		elsif error =~ /Mysql2::Error: Unknown column '(\w+)' in 'field list': select/
 			unknown_colummn = (/Unknown column '(\w+)' in 'field list': select/.match(error)).captures[0]
-			message = "<span class='oops'>Oops!</span>  It seems that the column &nbsp;<span class='causing-the-error'>#{unknown_colummn}</span>&nbsp; in your<br>&nbsp;<span class='causing-the-error'>select statement</span>&nbsp; doesn't exist."	
-				
+			message = "<span class='oops'>Oops!</span>  It seems that the column &nbsp;<span class='causing-the-error'>#{unknown_colummn}</span>&nbsp; in your<br>&nbsp;<span class='causing-the-error'>select statement</span>&nbsp; doesn't exist."
+
+		elsif error =~ /Mysql2::Error: Column '\w+' in field list is ambiguous:/
+			ambiguous_column = (/Column '(\w+)' in field list is ambiguous:/.match(error)).captures[0]
+			table_str = ((/from (.+)where/m).match(error)).captures[0]
+			tables = table_str.gsub(/\s+/,"").split(',')
+			message = "<span class='oops'>Oops!</span> <span class='causing-the-error'>SELECT #{ambiguous_column}</span> is somewhat ambiguous.<br> Did you mean "
+			tables.each_with_index do |t,i|
+				message += "<span class='causing-the-error'>#{t}.#{ambiguous_column}</span>"
+				if i < tables.size - 1
+					message += " or "
+				end
+			end
+			message += " ?"
 		end
-		
+
 		return message
 	end
 end
