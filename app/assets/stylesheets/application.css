@@ -117,6 +117,7 @@ span.causing-the-error{
 	border: 1px solid #999;
 	background-color: #FFFFBB;
 	height: auto;
+	margin-bottom: 12px;
 }
 
 .CodeMirror.cm-s-xq-light .CodeMirror-gutters {
