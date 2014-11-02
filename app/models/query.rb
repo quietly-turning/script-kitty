@@ -8,67 +8,6 @@ class Query < ActiveRecord::Base
 	
 	require 'digest'
 
-
-########################################################  
-########################################################
-
-
-  def processConditions
-  
-    c = ""
-    andGroups = Array.new
-    conditions = Array.new
-    entireString = ""
-
-    self.conditions.each do |cond|
-  
-      parameter_is_numeric = false
-      # use regex to determine if the parameter is numeric
-      if (/^[\d]+(\.[\d]+){0,1}$/ === cond.parameter)
-        parameter_is_numeric = true
-      end
-
-      column_is_boolean = false
-      if cond.column == "nocturnal"
-        if cond.parameter == "true"
-          p = 1
-        else
-          p = 0
-        end
-        column_is_boolean = true
-      end
-
-      if column_is_boolean
-        c = cond.column + " " + cond.operator.sql_value + " " + p.to_s
-      else
-        if cond.operator.name == "like" and !parameter_is_numeric
-          c = cond.column + " " + cond.operator.sql_value + " '%" + cond.parameter + "%'"
-        elsif parameter_is_numeric && (cond.operator.name == "greaterthan" || cond.operator.name == "lessthan")
-          c = cond.column + " " + cond.operator.sql_value + " " +  cond.parameter
-        else
-          c = cond.column + " " + cond.operator.sql_value + " '" +  cond.parameter + "'"
-        end
-      end
-
-      if cond.complexOperator != nil
-        c += " " + cond.complexOperator + " "
-      end
-
-      conditions << c
-      entireString += c      
-   
-    
-      # if we're starting a new OR chunk of the sql string
-      if cond.complexOperator == "or"
-        andGroups << conditions 
-        conditions.drop(conditions.size)
-      end    
-  
-    end   # end of each-loop that handled all the conditions of this query
-
-    self.raw_sql       = "SELECT * FROM animals WHERE #{entireString}"
-  end
-
 ########################################################  
 ########################################################
 	
