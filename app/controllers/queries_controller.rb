@@ -188,7 +188,7 @@ class QueriesController < ApplicationController
 
 		elsif error =~ /Mysql2::Error: Column '\w+' in field list is ambiguous:/
 			ambiguous_column = (/Column '(\w+)' in field list is ambiguous:/.match(error)).captures[0]
-			table_str = ((/from (.+)where/m).match(error)).captures[0]
+			table_str = ((/from (.+)where/im).match(error)).captures[0]
 			tables = table_str.gsub(/\s+/,"").split(',')
 			message = "<span class='oops'>Oops!</span> <span class='causing-the-error'>SELECT #{ambiguous_column}</span> is somewhat ambiguous.<br> Did you mean "
 			tables.each_with_index do |t,i|
