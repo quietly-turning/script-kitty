@@ -265,7 +265,7 @@ FROM schools
 WHERE state = 'AK'</textarea>
 
 <p>
-	In plain english, the query would read: <em>please give me all the attributes of any schools in which the state exactly matches 'AK'</em>.  This query returns the following twelve rows:
+	In plain English, the query would read: <em>please give me all the attributes of any schools in which the state exactly matches 'AK'</em>.  This query returns the following twelve rows:
 </p>
 
 <table>
@@ -494,7 +494,7 @@ WHERE name LIKE '%Yale%'</textarea>
 </p>
 
 <p>
-	So, in plain english, the SQL query above would read:
+	So, in plain English, the SQL query above would read:
 </p>
 
 <p>
@@ -895,7 +895,7 @@ AND name <> 'University of Scranton'</textarea>
 </table>
 
 <p>
-	In plain english, it might be more natural to read the query as <em>find all information about schools where
+	In plain English, it might be more natural to read the query as <em>find all information about schools where
 	the city is 'Scranton' <strong>but</strong> the name is not 'University of Scranton'</em>
 </p>
 
@@ -1066,7 +1066,7 @@ Lesson.create( title: 'Using More Than One Table', objective: 'Write a complex q
 	You may have noticed that there are three different tables we can potentially query
 	(<em>Schools</em>, <em>Locales</em>, and <em>Controls</em>) but all of our queries
 	so far have only used the <em>Schools</em> table.  It's time to change that.
-	In this lesson we're going to write queries that retrieve data from <em>more than table</em>.
+	In this lesson we're going to write queries that retrieve data from <em>more than one table</em>.
 </p>
 
 <p>
@@ -1266,6 +1266,32 @@ AND state &lt;&gt; 'CA'</textarea>
 	What are they?  What do they even mean?  How do they help us here?
 </p>
 
+<aside>
+	<h4>A Brief Aside Concerning Underscores</h4>
+	<p>
+		The underscore in <em>locale<strong>_</strong>id</em> is a programming convention.
+		SQL, like virutally every programming language, uses spaces to signify the end of one thing
+		and the start of another.  If we were to write a query like:
+	</p>
+
+	<textarea class='raw-sql' style='height:1em'>SELECT name, city, locale id
+FROM schools
+WHERE city = 'university park'</textarea>
+
+	<p>
+		SQL would want to interpret <em>locale</em> and <em>id</em> as two separate columns,
+		and it would return a syntax error because there wasn't a commna between them. So,
+		while <em>locale id</em> is two words in plain English, we want to think of it as one unit
+		for the sake of SQL.
+	</p>
+	<p>
+		The two most common solutions to this problem are to simply remove
+		whitespace (<em>localeID</em> ) or to replace whitespace with underscores ( <em>locale_id</em> ).
+		This tutorial makes use of the underscore convention.
+	</p>
+</aside>
+
+
 <p>
 	The <em>id</em> column servers as a <em>unique identifier</em> for each row.  Some rows may have attributes in common,
 	(for example, Schools that contain the text 'Pennyslvania State University' in their name), but each row is guaranteed
@@ -1275,7 +1301,11 @@ AND state &lt;&gt; 'CA'</textarea>
 
 <p>
 	You may have already noticed that the <em>Locales</em> table has an <em>id</em> column and that the <em>Schools</em>
-	table has a <em>locale_id</em> column.  Let's grab some rows of data and see if we can figure out what's going on.
+	table has a <em>locale_id</em> column.
+</p>
+
+<p>
+	Let's grab some rows of data and see if we can figure out what's going on.
 </p>
 
 <table width='100%'>
@@ -1384,4 +1414,3 @@ AND schools.locale_id = locales.id</textarea>
 	times, don't worry.  You can try out the last few exercises to test your skills whenever you're ready.
 </p>
 ")
-
