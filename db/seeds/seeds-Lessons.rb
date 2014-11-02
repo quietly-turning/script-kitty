@@ -1082,7 +1082,7 @@ Lesson.create( title: 'Using More Than One Table', objective: 'Write a complex q
 </p>
 
 <p>
-	<em>Find the name and state of the schools and the name of the locale that school is located in for all schools
+	<em>Find the name and state of the schools and the name of the locale that each school is located in for all schools
 	where the city is named 'Orange' and the state is not 'CA'.</em>
 </p>
 

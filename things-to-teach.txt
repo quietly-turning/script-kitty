@@ -48,7 +48,7 @@ Answer: SELECT * FROM schools WHERE chief LIKE "%stan%"
 Objective: a query with two conditions chained by "or"
 Question: Find all available information about schools where the chief's name contains the text laura or the chief's name contains the text carroll.
 Notes: this returns 23 various rows
-Answer: 
+Answer:
 
 SELECT *
 FROM schools
@@ -83,7 +83,7 @@ AND schools.state != "TX"
 
 ------------------------------------
 
-## 7. 
+## 7.
 Objective: a simple query that only pulls specific columns into the results
 Question: Find the name, city, and state of the schools in which the chief's name contains the text victor.
 
@@ -94,7 +94,7 @@ WHERE chief LIKE "%Victor%"
 
 ------------------------------------
 
-## 8. 
+## 8.
 Objective: another query that only pulls specific columns into the results
 Question: Find the name, city, and state of schools from the state of <em>NY</em> in which the name of the school contains the text <em>medical</em>.
 Answer:
@@ -111,7 +111,7 @@ Objective: complex query that pulls from multiple tables (and how to avoid carte
 Question: Find the school name and the name of its locale schools whose name contains the text <em>Penn State</em>.
 Answer:
 
-SELECT schools.name, schools.state, locales.name
+SELECT schools.name, locales.name
 FROM schools, locales
 WHERE schools.name LIKE "%Penn State%"
 AND locales.id = schools.locale_id
@@ -119,9 +119,9 @@ AND locales.id = schools.locale_id
 ------------------------------------
 
 ## 10.
-Objective: another complex query that pulls from multiple tables 
+Objective: another complex query that pulls from multiple tables
 Question: Find the school name and state and the name of its control for schools whose city is <em>Sterling</em>.
-Notes: this returns four unique schools (coincidentally from four unique states) where the city is "Sterling" 
+Notes: this returns four unique schools (coincidentally from four unique states) where the city is "Sterling"
 Answer:
 
 SELECT schools.name, schools.state, controls.name

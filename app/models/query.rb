@@ -35,12 +35,37 @@ class Query < ActiveRecord::Base
 			message = "<span class='oops'>Oops!</span>  It seems that the table <span class='causing-the-error'>#{nonexistent_table}</span> doesn't exist."
 
 		elsif error =~ /Mysql2::Error: Unknown column '(\w+)' in 'where clause'/
-			unknown_colummn = (/Unknown column '(\w+)' in 'where clause'/.match(error)).captures[0]
-			message = "<span class='oops'>Oops!</span>  It seems that the column &nbsp;<span class='causing-the-error'>#{unknown_colummn}</span>&nbsp; in your<br>&nbsp;<span class='causing-the-error'>where clause</span>&nbsp; doesn't exist."
+			unknown_column = (/Unknown column '(\w+)' in 'where clause'/.match(error)).captures[0]
+			message = "<span class='oops'>Oops!</span>  It seems that the column &nbsp;<span class='causing-the-error'>#{unknown_column}</span>&nbsp; in your<br>&nbsp;<span class='causing-the-error'>where clause</span>&nbsp; doesn't exist."
 
-		elsif error =~ /Mysql2::Error: Unknown column '(\w+)' in 'field list': select/
-			unknown_colummn = (/Unknown column '(\w+)' in 'field list': select/.match(error)).captures[0]
-			message = "<span class='oops'>Oops!</span>  It seems that the column &nbsp;<span class='causing-the-error'>#{unknown_colummn}</span>&nbsp; in your<br>&nbsp;<span class='causing-the-error'>select statement</span>&nbsp; doesn't exist."
+		elsif error =~ /Mysql2::Error: Unknown column '(.+)' in 'field list':/
+			unknown_column = (/Unknown column '(.+)' in 'field list':/.match(error)).captures[0]
+			message = "<span class='oops'>Oops!</span>  It seems that the column &nbsp;<span class='causing-the-error'>#{unknown_column}</span>&nbsp; in your<br>&nbsp;<span class='causing-the-error'>select statement</span>&nbsp; doesn't exist."
+
+			if unknown_column.include?(".")
+				 temp = unknown_column.split(".")
+				 table = temp[0]
+				 column = temp[1]
+				 connection = ActiveRecord::Base.connection
+				 if not connection.table_exists? (table)
+					 message = "<span class='oops'>Oops!</span>  It seems that the table &nbsp;<span class='causing-the-error'>#{table}</span>&nbsp; in your<br> statement <span class='causing-the-error'>select #{unknown_column}</span>&nbsp; doesn't exist."
+				 elsif not connection.column_exists?(table, column)
+					 message = "<span class='oops'>Oops!</span>  It seems that the column &nbsp;<span class='causing-the-error'>#{column}</span>&nbsp; in your<br>statement <span class='causing-the-error'>select #{unknown_column}</span>&nbsp; doesn't exist."
+				 end
+			end
+
+		elsif error =~ /Mysql2::Error: Column '\w+' in where clause is ambiguous:/
+			ambiguous_column = (/Column '(\w+)' in where clause is ambiguous:/.match(error)).captures[0]
+			table_str = ((/from (.+)where/im).match(error)).captures[0]
+			tables = table_str.gsub(/\s+/,"").split(',')
+			message = "<span class='oops'>Oops!</span> The <span class='causing-the-error'>#{ambiguous_column}</span> in your <span class='causing-the-error'>WHERE #{ambiguous_column}</span> is somewhat ambiguous.<br> Did you mean "
+			tables.each_with_index do |t,i|
+				message += "<span class='causing-the-error'>#{t}.#{ambiguous_column}</span>"
+				if i < tables.size - 1
+					message += " or "
+				end
+			end
+			message += " ?"
 
 		elsif error =~ /Mysql2::Error: Column '\w+' in field list is ambiguous:/
 			ambiguous_column = (/Column '(\w+)' in field list is ambiguous:/.match(error)).captures[0]
