@@ -416,7 +416,7 @@ WHERE name = 'Yale'</textarea>
 
 <p>
 	would return no rows from this database.  While several schools <em>contain</em> the text 'Yale' in their name,
-	none are <em>exactly</em< that.  There is one school with the name 'Yale University' but that is not an exact match for 'Yale'.
+	none are <em>exactly</em> that.  There is one school with the name 'Yale University' but that is not an exact match for 'Yale'.
 </p>
 
 <p>
@@ -430,7 +430,7 @@ WHERE name LIKE '%Yale%'</textarea>
 <p>
 	Most of this query is the same as the previous example.  There are two important differences, however.
 	<ul>
-		<li>the operator is <strong>LIKE</strong> ( instead of = )</li>
+		<li>the operator is <strong>LIKE</strong> ( instead of <strong>=</strong> )</li>
 		<li>the text is now wrapped inside both quotations marks and % symbols</li>
 	</ul>
 </p>

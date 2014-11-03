@@ -53,7 +53,7 @@ class QueriesController < ApplicationController
 
 	  if exercise.dummy_id < num_exercises
 		 @next_exercise = Exercise.where(lesson_id: lesson.id, dummy_id: (exercise.dummy_id + 1)).take
-	  else
+	  elsif exercise.dummy_id == num_exercises and (lesson.id + 1 < Lesson.all.size)
 		 @next_lesson = Lesson.find(lesson.id + 1)
 	  end
   end
