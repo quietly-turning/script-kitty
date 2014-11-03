@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20141103034923) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",                  default: false
-    t.boolean  "visual_interface"
+    t.boolean  "visual_interface",       default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
