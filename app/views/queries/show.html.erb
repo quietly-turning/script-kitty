@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="small-12 columns">
 			<h2>Exercise <%= @query.exercise.lesson.id.to_s+ "." + @query.exercise.dummy_id.to_s %> Results</h2>
-	
+
 			<p>
 			  <strong>Question:</strong>
 			  <%= @query.exercise.question.html_safe %>
@@ -27,30 +27,50 @@
 
 
 		<hr>
-		
+
 		<p>
 			<strong>Query Status:</strong>
 			<%= give_meaning_to( @query.status ).html_safe %>
 		</p>
-		
+
 		<hr>
 
 		<p>
 			<strong>Query Results:</strong>
-			
+
 			<% if @query.truncated_results == 1 %>
 				<div data-alert class="alert-box info radius small-4">
 				<strong>Please note:</strong><br>
 				There are <%= @query.result_size %> records in this result set!<br>
 				We're only showing the first 500.</div>
 			<% end %>
-			
+
 			<%= @query.html_table.html_safe %>
 		</p>
-		
+
 		<hr>
-		
-		<%= link_to 'Try this exercise again', lesson_exercise_path(@query.exercise.lesson, @query.exercise) %> or 
-		<%= link_to 'edit your answer', lesson_exercise_path( @query.exercise.lesson, @query.exercise, {:raw_sql => @query.raw_sql} ) %>.
+
+		<% if @query.status == 2 %>
+			<h3>
+				<% if @next_exercise %>
+					<%= link_to "Try the next exercise!", lesson_exercise_path(@next_exercise.lesson, @next_exercise) %>
+				<% elsif @next_lesson %>
+					<%= link_to "Move on to the next Lesson!", lesson_path(@next_lesson) %>
+				<% end %>
+
+				<p>
+					Alternatively, you can
+					<%= link_to 'try this exercise again', lesson_exercise_path(@query.exercise.lesson, @query.exercise) %> or
+					<%= link_to 'edit your answer', lesson_exercise_path( @query.exercise.lesson, @query.exercise, {:raw_sql => @query.raw_sql} ) %>.
+				</p>
+			</h3>
+		<% else %>
+			<h4>
+				Why don't you try
+				<%= link_to 'editing your answer', lesson_exercise_path( @query.exercise.lesson, @query.exercise, {:raw_sql => @query.raw_sql} ) %>
+				?
+			</h4>
+		<% end %>
+
 	</div>
 </div>

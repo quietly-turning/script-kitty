@@ -45,6 +45,17 @@ class QueriesController < ApplicationController
   # GET /queries/1
   # GET /queries/1.json
   def show
+	  @query = Query.find(params[:id])
+	  exercise = @query.exercise
+	  lesson = exercise.lesson
+
+	  num_exercises = Exercise.where(lesson_id: lesson.id).size
+
+	  if exercise.dummy_id < num_exercises
+		 @next_exercise = Exercise.where(lesson_id: lesson.id, dummy_id: (exercise.dummy_id + 1)).take
+	  else
+		 @next_lesson = Lesson.find(lesson.id + 1)
+	  end
   end
 
   # GET /queries/new
