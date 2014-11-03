@@ -1070,8 +1070,8 @@ Lesson.create( title: 'Using More Than One Table', objective: 'Write a complex q
 </p>
 
 <p>
-	If you haven't explored the three tables yet, you should take a few minutes to do that now.
-	This lesson will be waiting for you when you get back!
+	If you haven't explored the three tables yet, you should take a few minutes to do that now, using the
+	<em>Tables</em> dropdown menu at the top of the page.  This lesson will be waiting for you when you get back!
 </p>
 
 <hr>
@@ -1082,8 +1082,10 @@ Lesson.create( title: 'Using More Than One Table', objective: 'Write a complex q
 </p>
 
 <p>
-	<em>Find the name and state of the schools and the name of the locale that each school is located in for all schools
-	where the city is named 'Orange' and the state is not 'CA'.</em>
+	<em>Find the name and state of the schools<br>
+	and the name of the locale that each school is located in<br>
+	for all schools where the city is named 'Orange'<br>
+	and the state is not 'CA'.</em>
 </p>
 
 <p>
@@ -1242,8 +1244,8 @@ AND state &lt;&gt; 'CA'</textarea>
 </p>
 
 <p>
-	The problem arose because we did not place any conditions
-	on how to limit the locales.  We asked for <strong>locales.name</strong> and we got all of them.
+	The problem arises because we did not place any conditions on how to limit the locales.
+	We ask for <strong>locales.name</strong> and we get all of them.
 	We are seeing a phenomenon known as <em>cartesian products</em>.
 </p>
 
@@ -1252,12 +1254,18 @@ AND state &lt;&gt; 'CA'</textarea>
 <p>
 	In <a href='/lessons/2'>Lesson 2</a> we learned to refine our results by applying a condition. In
 	<a href='/lessons/5'>Lesson 5</a> we learned to further refine our results by chaining multiple conditions
-	together using <srtong>AND</srtong>.  We saw above that by not limiting which locales we wanted to retrieve,
-	we got <em>all</em> of them, cross multiplied across the existing result set.
+	together using <srtong>AND</srtong>.  We see above that by not limiting which locales we wanted to retrieve,
+	we got <em>all</em> of them.
 </p>
 
 <p>
-	How can we fix this?  We just need to apply another condition.
+	The nature of <em>why</em> this occurs is complex enough to be outside the scope of this tutorial.
+	(You can refer to the <a href='/about'>About</a> page for additional educational resources.)
+	For now, we'll focus on fixing them when they do occur.
+</p>
+
+<p>
+	So, how do we fix this?  We need to apply another condition.
 </p>
 
 <p>
@@ -1370,6 +1378,12 @@ WHERE city = 'university park'</textarea>
 	Note that the school in Orange, TX has a <em>locale_id</em> of 8.  Additionally, the locale with an <em>id</em> of 8
 	has a name of <em>Town, distant</em>.  If you are thinking that database id fields are used to link tables, you are
 	absolutely correct!
+</p>
+
+<p>
+	How this is remedied in SQL may be less apparent.  It is natural to think that the existence of the <em>schools.locale_id</em>
+	field and the existence of the <em>locales.id</em> field should be enough.  Unfortunately, that is not the case.
+	We <strong>must</strong> explicitly link the two fields in our query.
 </p>
 
 
