@@ -34,9 +34,9 @@ class Query < ActiveRecord::Base
 			nonexistent_table = (/thesis.(\w+)/.match(error)).captures[0]
 			message = "<span class='oops'>Oops!</span>  It seems that the table <span class='causing-the-error'>#{nonexistent_table}</span> doesn't exist."
 
-		elsif error =~ /Mysql2::Error: Unknown column '(\w+)' in 'where clause'/
-			unknown_column = (/Unknown column '(\w+)' in 'where clause'/.match(error)).captures[0]
-			message = "<span class='oops'>Oops!</span>  It seems that the column &nbsp;<span class='causing-the-error'>#{unknown_column}</span>&nbsp; in your<br>&nbsp;<span class='causing-the-error'>where clause</span>&nbsp; doesn't exist."
+		elsif error =~ /Mysql2::Error: Unknown column '(.+)' in 'where clause'/
+			unknown_column = (/Unknown column '(.+)' in 'where clause'/.match(error)).captures[0]
+			message = "<span class='oops'>Oops!</span>  It seems that the column &nbsp;<span class='causing-the-error'>#{unknown_column}</span>&nbsp; in your <span class='causing-the-error'>where clause</span>&nbsp; doesn't exist."
 
 		elsif error =~ /Mysql2::Error: Unknown column '(.+)' in 'field list':/
 			unknown_column = (/Unknown column '(.+)' in 'field list':/.match(error)).captures[0]
