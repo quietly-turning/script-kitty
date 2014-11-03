@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :websites
+
   resources :lessons do
 	  resources :exercises
   end
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :locales
 
-  resources :controls
+  resources :statuses
 
   devise_for :users, controllers: { registrations: "registrations" }
   

@@ -171,9 +171,9 @@ class Query < ActiveRecord::Base
 		# SHA the resulting HTML table and compare against a verified hash
 		hash = Digest::SHA2.hexdigest(self.html_table)
 
-		# puts "\n\n\n\n\n\n\n"
-		# puts hash
-		# puts "\n\n\n\n\n\n\n"
+		puts "\n\n\n\n\n\n\n"
+		puts hash
+		puts "\n\n\n\n\n\n\n"
 
 		if hash == self.exercise.result_set_hash
 			self.status = 2

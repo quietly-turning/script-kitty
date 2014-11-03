@@ -135,7 +135,7 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 <p>
 	Finally, a collection of multiple tables is referred to as a <strong>database</strong>.
 	Through out the upcoming exercises, we'll be working with three different tables: <em>schools</em>,
-	<em>locales</em>, and <em>controls</em>.  Feel free to explore these tables by clicking on
+	<em>locales</em>, and <em>websites</em>.  Feel free to explore these tables by clicking on
 	<em>Datasets</em> at the top of the page.
 </p>
 
@@ -559,7 +559,7 @@ OR chief LIKE '%Cate%'</textarea>
 			<th>state</th>
 			<th>zip</th>
 			<th>chief</th>
-			<th>control_id</th>
+			<th>website_id</th>
 			<th>locale_id</th>
 		</tr>
 	</thead>
@@ -726,7 +726,7 @@ AND city = 'Harrisburg'</textarea>
 			<th>state</th>
 			<th>zip</th>
 			<th>chief</th>
-			<th>control_id</th>
+			<th>website_id</th>
 			<th>locale_id</th>
 		</tr>
 	</thead>
@@ -805,7 +805,7 @@ AND name <> 'University of Scranton'</textarea>
 			<th>state</th>
 			<th>zip</th>
 			<th>chief</th>
-			<th>control_id</th>
+			<th>website_id</th>
 			<th>locale_id</th>
 		</tr>
 	</thead>
@@ -956,7 +956,7 @@ WHERE city = 'University Park'</textarea>
 			<th>state</th>
 			<th>zip</th>
 			<th>chief</th>
-			<th>control_id</th>
+			<th>website_id</th>
 			<th>locale_id</th>
 		</tr>
 	</thead>
@@ -1270,7 +1270,7 @@ AND state &lt;&gt; 'CA'</textarea>
 
 <p>
 	Through the past seven lessons, we've written queries involving most of the columns from the <em>Schools</em>
-	table.  None of our queries, however, used <em>id</em>, <em>locale_id</em>, or <em>control_id</em>.
+	table.  None of our queries, however, used <em>id</em>, <em>locale_id</em>, or <em>website_id</em>.
 	What are they?  What do they even mean?  How do they help us here?
 </p>
 
@@ -1326,7 +1326,7 @@ WHERE city = 'university park'</textarea>
 			<th>state</th>
 			<th>zip</th>
 			<th>chief</th>
-			<th>control_id</th>
+			<th>website_id</th>
 			<th>locale_id</th>
 		</tr>
 	</thead>

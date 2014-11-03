@@ -1,5 +1,5 @@
 class School < ActiveRecord::Base
-  belongs_to :control
+  has_many :websites
   belongs_to :locale
   
   paginates_per 50

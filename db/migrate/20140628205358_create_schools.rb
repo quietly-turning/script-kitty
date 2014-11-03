@@ -6,7 +6,6 @@ class CreateSchools < ActiveRecord::Migration
       t.string :state, :limit => 2
       t.string :zip, :limit => 10
       t.string :chief
-      t.references :control, index: true
       t.references :locale, index: true
 
       t.timestamps

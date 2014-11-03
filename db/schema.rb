@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140911172619) do
+ActiveRecord::Schema.define(version: 20141103034923) do
 
   create_table "conditions", force: true do |t|
     t.string   "column"
@@ -25,13 +25,6 @@ ActiveRecord::Schema.define(version: 20140911172619) do
 
   add_index "conditions", ["operator_id"], name: "index_conditions_on_operator_id", using: :btree
   add_index "conditions", ["query_id"], name: "index_conditions_on_query_id", using: :btree
-
-  create_table "controls", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "exercises", force: true do |t|
     t.text     "question"
@@ -91,13 +84,11 @@ ActiveRecord::Schema.define(version: 20140911172619) do
     t.string   "state",      limit: 2
     t.string   "zip",        limit: 10
     t.string   "chief"
-    t.integer  "control_id"
     t.integer  "locale_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "schools", ["control_id"], name: "index_schools_on_control_id", using: :btree
   add_index "schools", ["locale_id"], name: "index_schools_on_locale_id", using: :btree
 
   create_table "users", force: true do |t|
@@ -119,5 +110,15 @@ ActiveRecord::Schema.define(version: 20140911172619) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "websites", force: true do |t|
+    t.string   "url"
+    t.string   "classification"
+    t.integer  "school_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "websites", ["school_id"], name: "index_websites_on_school_id", using: :btree
 
 end
