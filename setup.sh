@@ -9,9 +9,9 @@ rails g migration AddAdminToUsers admin:boolean
 rails g migration AddVisualInterfaceToUsers visual_interface:boolean
 
 # dataset stuff
-rails g scaffold website url:string
-rails g scaffold locale name description
-rails g scaffold school name city state zip chief website:references locale:references
+rails g scaffold website url:string classification:string school:references
+rails g scaffold locale name:string description:string
+rails g scaffold school name:string city:string state:string zip:string chief:string locale:references
 
 # query building stuff
 rails g scaffold datatype name
