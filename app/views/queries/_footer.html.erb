@@ -1,39 +1,39 @@
 <div id="exercise-footer">
 	<div class="row collapse">
-		
-		
+
+
 		<div class="small-3 columns">
 			<br>
 			<span class="visual-builder-footer-column">TABLES</span>
-			
+
 			<div id="tableCorral" class="corral">
-				<% for table in ["Schools", "Locales", "Controls"] %>
-					
+				<% for table in ["Schools", "Locales", "Websites"] %>
+
 					<div class="table-block-container" data-table="<%= table %>">
 						<div class="draggable table-block" data-blockType="table" data-table="<%= table %>">
 							<%= image_tag "visual-interface/table.png" %>
 							<span class="tablename"><%= table %></span>
 						</div>
 					</div><br>
-					
-				<% end %>	
+
+				<% end %>
 			</div>
 		</div>
-		
+
 		<div class="small-4 columns">
 			<br>
 			<span class="visual-builder-footer-column">COLUMNS</span>
 
-			<% for table in ["Schools", "Locales", "Controls"] %>
+			<% for table in ["Schools", "Locales", "Websites"] %>
 
 				<div class="corral columnCorral" data-table="<%= table %>" style="float:none;">
-	
+
 					<div class="draggable column-block" data-blockType="column" data-table="<%= table %>">
 						<%= image_tag "visual-interface/column.png" %>
 						<span class="tablename"><%= table %></span>
 						<span class="columnname asterisk"> * </span>
 					</div><br>
-				
+
 					<% for col in table.singularize.constantize.column_names %>
 						<% if col != "created_at" and col != "updated_at" %>
 							<div class="draggable column-block" data-blockType="column" data-table="<%= table %>">
@@ -43,13 +43,13 @@
 							</div><br>
 						<% end %>
 					<% end %>
-					
+
 				</div>
-				
+
 			<% end %>
 		</div>
-		
-		
+
+
 		<div class="small-2 columns">
 			<br>
 			<span class="visual-builder-footer-column">OPERATORS</span>
@@ -62,7 +62,7 @@
 				<% end %>
 			</div>
 		</div>
-		
+
 		<div class="small-2 columns end">
 			<br>
 			<span class="visual-builder-footer-column">EXTENDERS</span>
@@ -78,6 +78,6 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</div><!-- row -->
 </div> <!-- footer -->

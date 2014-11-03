@@ -22,14 +22,14 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 <table>
 	<thead>
 		<tr>
-			<th>ID</th>
-			<th>Name</th>
-			<th>City</th>
-			<th>State</th>
-			<th>Zip</th>
-			<th>Chief</th>
-			<th>Control ID</th>
-			<th>Locale ID</th>
+			<th>id</th>
+			<th>name</th>
+			<th>city</th>
+			<th>state</th>
+			<th>zip</th>
+			<th>chief</th>
+			<th>website_id</th>
+			<th>locale_id</th>
 		</tr>
 	</thead>
 
@@ -145,7 +145,7 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 
 <p>
 	SQL (<strong>S</strong>tructured <strong>Q</strong>uery <strong>L</strong>anguage) is a language used
-	to interact with databases.  These interactions are often summarized (humerously) with the
+	to interact with databases.  These interactions are often summarized (humorously) with the
 	acronym CRUD, which stands for:
 	<ul>
 		<li><strong>C</strong>reate</li>
@@ -160,7 +160,7 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 <p>
 	Databases typically contain lots (and lots) of data that would be cumbersome to sift through manually.
 	A SQL <strong>query</strong> is like a question we ask the database.  <em>Can you show me some specific
-	data based on these specific parameters I'll provide?</em>  Without further ado, let's look at a very simple
+	data based on these specific filters I'll provide?</em>  Without further ado, let's look at a very simple
 	SQL query.
 </p>
 
@@ -269,6 +269,18 @@ WHERE state = 'AK'</textarea>
 </p>
 
 <table>
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>name</th>
+			<th>city</th>
+			<th>state</th>
+			<th>zip</th>
+			<th>chief</th>
+			<th>website_id</th>
+			<th>locale_id</th>
+		</tr>
+	</thead>
 	<tbody>
 		<tr>
 			<td>63</td>
@@ -438,14 +450,14 @@ WHERE name LIKE '%Yale%'</textarea>
 <table>
 	<thead>
 		<tr>
-			<th>ID</th>
-			<th>Name</th>
-			<th>City</th>
-			<th>State</th>
-			<th>Zip Code</th>
-			<th>Chief</th>
-			<th>Control ID</th>
-			<th>Locale ID</th>
+			<th>id</th>
+			<th>name</th>
+			<th>cite</th>
+			<th>state</th>
+			<th>zip</th>
+			<th>chief</th>
+			<th>website_id</th>
+			<th>locale_id</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -524,7 +536,7 @@ Lesson.create( title: 'Compound Conditional Statements: Part 1', objective: 'Cha
 </p>
 
 <p>
-	One way to approach this would be to write two different queries and examine the results of each seperately.
+	One way to approach this would be to write two different queries and examine the results of each separately.
 </p>
 
 <textarea class='raw-sql' style='height:1em'>SELECT *
@@ -536,7 +548,7 @@ FROM schools
 WHERE chief LIKE '%Cate%'</textarea>
 
 <p>
-	While this does work, it would be inconvenient to have two seperate sets of results to look through.
+	While this does work, it would be inconvenient to have two separate sets of results to look through.
 	Thankfully, we can combine those into a single query using <strong>OR</strong>:
 </p>
 
@@ -1064,7 +1076,7 @@ WHERE zip like '%18509%'</textarea>
 Lesson.create( title: 'Using More Than One Table', objective: 'Write a complex query that pulls data from more than one table.', body: "
 <p>
 	You may have noticed that there are three different tables we can potentially query
-	(<em>Schools</em>, <em>Locales</em>, and <em>Controls</em>) but all of our queries
+	(<em>Schools</em>, <em>Locales</em>, and <em>Websites</em>) but all of our queries
 	so far have only used the <em>Schools</em> table.  It's time to change that.
 	In this lesson we're going to write queries that retrieve data from <em>more than one table</em>.
 </p>
@@ -1303,7 +1315,7 @@ WHERE city = 'university park'</textarea>
 <p>
 	The <em>id</em> column servers as a <em>unique identifier</em> for each row.  Some rows may have attributes in common,
 	(for example, Schools that contain the text 'Pennyslvania State University' in their name), but each row is guaranteed
-	to have a unique id.  This is true of the <em>Schools</em> table, and it holds true for <em>Locales</em> and <em>Controls</em>
+	to have a unique id.  This is true of the <em>Schools</em> table, and it holds true for <em>Locales</em> and <em>Websites</em>
 	as well.
 </p>
 
