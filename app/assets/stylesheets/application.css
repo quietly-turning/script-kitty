@@ -46,6 +46,10 @@ aside {
 	border-left: 3px dashed #444;
 }
 
+p.subtitle{
+	margin:-10px 0px 8px 0px;
+}
+
 .actions{
 	margin-top: 10px;
 }

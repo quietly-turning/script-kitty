@@ -45,6 +45,7 @@
 
 			<% for lesson in @lessons_first_half %>
 				<h3>Lesson <%= lesson.id %></h3>
+				<p class="subtitle"><%= lesson.title.html_safe %></p>
 
 				<ul>
 			    <% for i in 0..lesson.exercises.size-1 %>
@@ -68,6 +69,7 @@
 
 			<% for lesson in @lessons_second_half %>
 				<h3>Lesson <%= lesson.id %></h3>
+				<p class="subtitle"><%= lesson.title.html_safe %></p>
 
 				<ul>
 			    <% for i in 0..lesson.exercises.size-1 %>
