@@ -1,19 +1,70 @@
-<div class="field">
-	
-	<% if params[:raw_sql] %>
-		<label for="query_raw_sql">Try again by entering your query here:</label>
-	<% else %>
-    	<label for="query_raw_sql">Type your query here:</label>
-	<% end %>
-	<br>
-	
-    <%= form.text_area :raw_sql, :value => @raw_sql %>
-	
-	<% unless @exercise.nil? %>
-		<%= form.hidden_field :exercise_id, :value => @exercise.id %>
-	<% end %>
-</div>
+<div class="row">
+	<div class="small-6 columns">
 
-<div class="actions">
-    <%= form.submit "Submit", :class => "radius button small" %>
+		<div class="field">
+
+			<% if params[:raw_sql] %>
+				<label for="query_raw_sql">Try again by entering your query here:</label>
+			<% else %>
+		    	<label for="query_raw_sql">Type your query here:</label>
+			<% end %>
+			<br>
+
+		    <%= form.text_area :raw_sql, :value => @raw_sql %>
+
+			<% unless @exercise.nil? %>
+				<%= form.hidden_field :exercise_id, :value => @exercise.id %>
+			<% end %>
+		</div>
+
+		<div class="actions">
+		    <%= form.submit "Submit", :class => "radius button small" %>
+		</div>
+	</div>
+
+	<div id="simple-reference" class="small-6 columns">
+		<p>
+			<strong>Reference:</strong>
+			Remember that there are three tables, each with its own columns.
+		</p>
+
+		<table width="100%">
+			<caption>Schools</caption>
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>name</th>
+					<th>city</th>
+					<th>state</th>
+					<th>zip</th>
+					<th>chief</th>
+					<th>locale_id</th>
+				</tr>
+			</thead>
+		</table>
+
+		<table width="100%">
+			<caption>Locales</caption>
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>name</th>
+					<th>description</th>
+				</tr>
+			</thead>
+		</table>
+
+		<table width="100%">
+			<caption>Websites</caption>
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>url</th>
+					<th>classification</th>
+					<th>school_id</th>
+				</tr>
+			</thead>
+		</table>
+
+	<div>
 </div>

@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="small-12 columns">
 			<h2>Exercise <%= @exercise.lesson_id.to_s + "." + @exercise.dummy_id.to_s %></h2>
-	
+
 			<p>
 			  <strong>Question:</strong>
 			  <%= @exercise.question.html_safe %>
@@ -18,15 +18,8 @@
 
 
 <div class="row">
-	
-	<% if current_user.visual_interface? %>
-		<div class="small-12 columns">
-	<% else %>
-		<div class="small-9 small-centered columns">
-	<% end %>
-	
-
-		<%= render :partial => 'queries/form'  %> 
+	<div class="small-12 columns">
+		<%= render :partial => 'queries/form'  %>
 	</div>
 </div>
 
