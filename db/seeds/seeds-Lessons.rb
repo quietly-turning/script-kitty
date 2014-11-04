@@ -1195,7 +1195,7 @@ and schools.locale_id = locale.id</textarea>
 </table>
 
 <p>
-	Note that the school in Orange, TX has a <em>locale_id</em> of 8.  Additionally, the locale with an <em>id</em> of 8
+	Note that <em>Lamar State College-Orange</em> has a <em>locale_id</em> of 8.  Additionally, the locale with an <em>id</em> of 8
 	has a name of <em>Town, distant</em>.  If you are thinking that database id fields are used to link tables, you are
 	absolutely correct!
 </p>
@@ -1508,14 +1508,15 @@ WHERE city = 'university park'</textarea>
 
 <p>
 	Note that the University of Scranton has a <em>locale_id</em> of 3.  Additionally, the locale with an <em>id</em> of 3
-	has a name of <em>City, small</em>.  If you are thinking that database id fields are used to link tables, you are
-	absolutely correct!
+	has a name of <em>City, small</em>.    As discussed above, database <em>id</em> fields are used to link data between
+	related tables.  In this case, the University of Scranton has a locale of <em>City, small</em>.
 </p>
 
 <p>
-	How this is remedied in SQL may be less apparent.  It is natural to think that the existence of the <em>schools.locale_id</em>
-	field and the existence of the <em>locales.id</em> field should be enough.  Unfortunately, that is not the case.
-	We <strong>must</strong> explicitly link the two fields in our query.
+	How this is accomplished in SQL may be less apparent.  It is natural to think that the existence of the <em>schools.locale_id</em>
+	field and the existence of the <em>locales.id</em> field should be enough.  It is very natural to believe that
+	SQL should be smart enough to do the linking for us. Unfortunately, this is not the case. We <strong>must</strong>
+	explicitly link the two fields in our query.  Cartesian products result, otherwise.
 </p>
 
 
