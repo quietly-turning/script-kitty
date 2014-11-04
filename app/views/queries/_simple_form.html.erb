@@ -22,48 +22,61 @@
 	</div>
 
 	<div id="simple-reference" class="small-6 columns">
-		<p>
-			<strong>Reference:</strong>
-			Remember that there are three tables, each with its own columns.
-		</p>
+		<% if @exercise.lesson.id == 1 %>
+			<p>
+				<strong>Reference:</strong><br>
+				Remember that there are three tables:
+				<ul>
+					<li>Schools</li>
+					<li>Locales</li>
+					<li>Websites</li>
+				<ul>
+			</p><br><br><br>
 
-		<table width="100%">
-			<caption>Schools</caption>
-			<thead>
-				<tr>
-					<th>id</th>
-					<th>name</th>
-					<th>city</th>
-					<th>state</th>
-					<th>zip</th>
-					<th>chief</th>
-					<th>locale_id</th>
-				</tr>
-			</thead>
-		</table>
+		<% else %>
+			<p>
+				<strong>Reference:</strong>
+				Remember that there are three tables, each with its own columns.
+			</p>
 
-		<table width="100%">
-			<caption>Locales</caption>
-			<thead>
-				<tr>
-					<th>id</th>
-					<th>name</th>
-					<th>description</th>
-				</tr>
-			</thead>
-		</table>
+			<table width="100%">
+				<caption>Schools</caption>
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>name</th>
+						<th>city</th>
+						<th>state</th>
+						<th>zip</th>
+						<th>chief</th>
+						<th>locale_id</th>
+					</tr>
+				</thead>
+			</table>
 
-		<table width="100%">
-			<caption>Websites</caption>
-			<thead>
-				<tr>
-					<th>id</th>
-					<th>url</th>
-					<th>classification</th>
-					<th>school_id</th>
-				</tr>
-			</thead>
-		</table>
+			<table width="100%">
+				<caption>Locales</caption>
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>name</th>
+						<th>description</th>
+					</tr>
+				</thead>
+			</table>
 
+			<table width="100%">
+				<caption>Websites</caption>
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>url</th>
+						<th>classification</th>
+						<th>school_id</th>
+					</tr>
+				</thead>
+			</table>
+
+		<% end %>
 	<div>
 </div>
