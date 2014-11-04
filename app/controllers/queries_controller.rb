@@ -1,7 +1,7 @@
 class QueriesController < ApplicationController
 
   before_filter :authenticate_user!
-  before_filter :verify_is_admin, only: [:destroy]
+  before_filter :verify_is_admin, only: [:edit, :destroy]
   before_action :set_query, only: [:show, :edit, :update, :destroy]
 
   rescue_from ActiveRecord::StatementInvalid do |exception|
@@ -69,7 +69,7 @@ class QueriesController < ApplicationController
   # GET /queries/1/edit
   def edit
 	 @query = Query.find(params[:id])
-	 redirect_to exercise_path( @query.exercise.id, {:raw_sql => @query.raw_sql} )
+	 # redirect_to lesson_exercise_path(@query.exercise.lesson, @query.exercise.dummy_id, {:raw_sql => @query.raw_sql} )
   end
 
   # POST /queries

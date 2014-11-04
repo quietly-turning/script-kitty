@@ -1,7 +1,7 @@
 class ExercisesController < ApplicationController
-  
+
   before_filter :authenticate_user!
-  before_filter :verify_is_admin, only: [:new, :edit, :create, :update, :destroy]
+  before_filter :verify_is_admin, only: [:new, :create, :update, :destroy]
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
 
   # GET /exercises
@@ -16,13 +16,13 @@ class ExercisesController < ApplicationController
 	  @exercise = Exercise.where(lesson_id: params[:lesson_id], dummy_id: params[:id]).take
       @query = Query.new
 	  @raw_sql = ""
-	  
+
 	  # a paramter might exist if the user made a mistake typing the query
 	  # the last time around and we were just redirected here...
 	  unless params[:raw_sql].nil?
 	  	@raw_sql = params[:raw_sql]
 	  end
-	  
+
 	  if current_user.visual_interface?
 	      @operators = Operator.all
 	      @condition = @query.conditions.build
@@ -36,8 +36,10 @@ class ExercisesController < ApplicationController
 
   # GET /exercises/1/edit
   def edit
-	  @query = Query.where(user_id: current_user.id, exercise_id: @exercise.id).take
-	  @raw_sql = @query.raw_sql
+	  @exercise = Exercise.where(lesson_id: params[:lesson_id], dummy_id: params[:id]).last
+	  @lesson = Lesson.find(params[:lesson_id])
+	  @query = Query.where(user_id: current_user.id, exercise_id: @exercise.id).last
+	  redirect_to lesson_exercise_path(@lesson, @query.exercise.dummy_id, {:raw_sql => @query.raw_sql} )
   end
 
   # POST /exercises
