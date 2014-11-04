@@ -696,7 +696,7 @@ OR chief LIKE '%Catherine%'</textarea>
 
 Lesson.create( title: 'Compound Conditional Statements: Part 2', objective: 'Chain two conditions together with <em>AND</em>.', body: "
 <p>
-	In the <a href='./lessons/4'>previous lesson</a> we learned how to broaden the scope of our queries
+	In the <a href='/lessons/4'>previous lesson</a> we learned how to broaden the scope of our queries
 	by using OR to chain conditions together.  In this lesson, we'll cover the opposite idea -- a way to narrow
 	the scope of your queries and make them <em>more</em> specific.  We can do this using the <strong>AND</strong>
 	keyword.
@@ -1076,7 +1076,7 @@ WHERE zip like '%18509%'</textarea>
 Lesson.create( title: 'Using More Than One Table', objective: 'Write a complex query that pulls data from more than one table.', body: "
 <p>
 	While there are three different tables we can potentially query (<em>Schools</em>, <em>Locales</em>,
-	and <em>Websites</em>), all of our queries so far have only retrieved data a single table.  It's time
+	and <em>Websites</em>), all of our queries so far have only retrieved data from a single table.  It's time
 	to change that. In this lesson we're going to write queries that retrieve data from <em>more than one table</em>.
 </p>
 
@@ -1279,7 +1279,7 @@ WHERE name = 'Univerity of Scranton'</textarea>
 
 <textarea class='raw-sql' style='height:1em'>SELECT schools.name, state, locales.name
 FROM schools, locales
-WHERE name = 'Univerity of Scranton'</textarea>
+WHERE schools.name = 'Univerity of Scranton'</textarea>
 
 <p>
 	Notice how <strong>schools.name</strong> and <strong>locales.name</strong> have changed
