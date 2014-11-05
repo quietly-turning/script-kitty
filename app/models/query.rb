@@ -27,26 +27,52 @@ class Query < ActiveRecord::Base
 				message += "<br><em>Try writing your query using multiple lines for more specific error-reporting.</em>"
 			end
 
+
+		# handle empty queries; this is unlikely but here just in case...
 		elsif error.include? "Mysql2::Error: Query was empty:"
 			message = "<span class='oops'>Oops!</span>  It looks like your your query was empty."
 
+
+		# table doesn't exist
 		elsif error =~ /Mysql2::Error: Table 'thesis.(\w+)' doesn't exist:/
 			nonexistent_table = (/thesis.(\w+)/.match(error)).captures[0]
 			message = "<span class='oops'>Oops!</span>  It seems that the table <span class='causing-the-error'>#{nonexistent_table}</span> doesn't exist."
 
+
+		# column in where clause doesn't exist
 		elsif error =~ /Mysql2::Error: Unknown column '(.+)' in 'where clause'/
 			unknown_column = (/Unknown column '(.+)' in 'where clause'/.match(error)).captures[0]
 			message = "<span class='oops'>Oops!</span>  It seems that the column &nbsp;<span class='causing-the-error'>#{unknown_column}</span>&nbsp; in your <span class='causing-the-error'>where clause</span>&nbsp; doesn't exist."
 
+
+
+		# column in select clause doesn't exist
 		elsif error =~ /Mysql2::Error: Unknown column '(.+)' in 'field list':/
 			unknown_column = (/Unknown column '(.+)' in 'field list':/.match(error)).captures[0]
-			message = "<span class='oops'>Oops!</span>  It seems that the column &nbsp;<span class='causing-the-error'>#{unknown_column}</span>&nbsp; in your<br>&nbsp;<span class='causing-the-error'>select statement</span>&nbsp; doesn't exist."
 
+			# capture everything from "from" until the end of the query
+			temp = ((/from (.+)/im).match(error)).captures[0]
+
+			# temp might have a where statement, but might not; truncate either way
+			table_str = temp.sub((/where (.+)/im), "" )
+			tables = table_str.gsub(/\s+/,"").split(',')
+
+			# if only one table was queried, state that the column doesn't belong
+			# to that particular table
+			if tables.size == 1
+				message = "<span class='oops'>Oops!</span>  It seems that the column <span class='causing-the-error'>#{unknown_column}</span> in your<br> <span class='causing-the-error'>select statement</span> does not belong to the #{tables[0]} table."
+			else
+				message = "<span class='oops'>Oops!</span>  It seems that the column <span class='causing-the-error'>#{unknown_column}</span> in your<br> <span class='causing-the-error'>select statement</span> doesn't exist."
+			end
+
+			# the unknown column string contains a dot, so the table might not exist,
+			# or the column might not belong to that table; try to be helpful
 			if unknown_column.include?(".")
 				 temp = unknown_column.split(".")
 				 table = temp[0]
 				 column = temp[1]
 				 connection = ActiveRecord::Base.connection
+
 				 if not connection.table_exists? (table)
 					 message = "<span class='oops'>Oops!</span>  It seems that the table &nbsp;<span class='causing-the-error'>#{table}</span>&nbsp; in your<br> statement <span class='causing-the-error'>select #{unknown_column}</span>&nbsp; doesn't exist."
 				 elsif not connection.column_exists?(table, column)
@@ -54,6 +80,7 @@ class Query < ActiveRecord::Base
 				 end
 			end
 
+		# abiguous column in where clause
 		elsif error =~ /Mysql2::Error: Column '\w+' in where clause is ambiguous:/
 			ambiguous_column = (/Column '(\w+)' in where clause is ambiguous:/.match(error)).captures[0]
 			table_str = ((/from (.+)where/im).match(error)).captures[0]
@@ -67,6 +94,7 @@ class Query < ActiveRecord::Base
 			end
 			message += " ?"
 
+		# ambiguous column in select clause
 		elsif error =~ /Mysql2::Error: Column '\w+' in field list is ambiguous:/
 			ambiguous_column = (/Column '(\w+)' in field list is ambiguous:/.match(error)).captures[0]
 			table_str = ((/from (.+)where/im).match(error)).captures[0]
@@ -171,9 +199,9 @@ class Query < ActiveRecord::Base
 		# SHA the resulting HTML table and compare against a verified hash
 		hash = Digest::SHA2.hexdigest(self.html_table)
 
-		puts "\n\n\n\n\n\n\n"
-		puts hash
-		puts "\n\n\n\n\n\n\n"
+		# puts "\n\n\n\n\n\n\n"
+		# puts hash
+		# puts "\n\n\n\n\n\n\n"
 
 		if hash == self.exercise.result_set_hash
 			self.status = 2
