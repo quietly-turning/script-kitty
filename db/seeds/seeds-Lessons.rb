@@ -471,7 +471,7 @@ WHERE name LIKE '%Yale%'</textarea>
 	Most of this query is the same as the previous example.  There are two important differences, however.
 	<ul>
 		<li>the operator is <strong>LIKE</strong> ( instead of <strong>=</strong> )</li>
-		<li>the text is now wrapped inside both quotations marks and <strong>%</strong> symbols</li>
+		<li>the text is now wrapped inside both quotation marks and <strong>%</strong> symbols</li>
 	</ul>
 </p>
 

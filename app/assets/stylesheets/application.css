@@ -97,9 +97,6 @@ p.subtitle{
 
 a.message-anchor{
 	color: #333;
-}
-
-a.message-anchor:hover{
 	text-decoration:underline;
 }
 
