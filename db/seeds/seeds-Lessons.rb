@@ -1,8 +1,12 @@
 Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: "
+
+<h3>Why do databases matter?</h3>
 <p>
-	<strong>Why do databases matter?</strong><br>
 	It is likely that you interact with databases on a daily basis but don't realize it.
-	Popular websites like Google, Facebook, and YouTube all rely on databases. 	Databases contain data in a way that makes them easily searched, filtered, and retrieved.  That searching, filtering, and retrieval is done using a language called SQL or <strong>S</strong>tructured <strong>Q</strong>uery <strong>L</strong>anguage.
+	Popular websites like Google, Facebook, and YouTube all rely on databases.
+	Databases contain data in a way that makes them easily searched, filtered, and retrieved.
+	That searching, filtering, and retrieval is most often done using a language called SQL or
+	<strong>S</strong>tructured <strong>Q</strong>uery <strong>L</strong>anguage.
 </p>
 
 <p>
@@ -18,8 +22,8 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 <p>
 
 
-<h4>Schools</h4>
 <table>
+	<caption>Schools</caption>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -121,8 +125,8 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 </p>
 <p>
 	Each cell gives us information about a particular attribute of that school.
-	For example, the <em>Name</em> of a school is an attribute of it, and contained
-	in the second column in this example.  Indeed, these attributes are commonly
+	For example, the <em>name</em> of a school is an attribute of it, and contained
+	in the second column in this example.  These attributes are commonly
 	referred to as <strong>columns</strong> or <strong>fields</strong> in database
 	terminology.
 </p>
@@ -134,9 +138,9 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 
 <p>
 	Finally, a collection of multiple tables is referred to as a <strong>database</strong>.
-	Through out the upcoming exercises, we'll be working with three different tables: <em>schools</em>,
-	<em>locales</em>, and <em>websites</em>.  Feel free to explore these tables by clicking on
-	<em>Datasets</em> at the top of the page.
+	Through out the upcoming exercises, we'll be working with a database of three different tables:
+	<em>schools</em>, <em>locales</em>, and <em>websites</em>.  Feel free to explore these tables 
+	by clicking on <em>Tables</em> at the top of the page.
 </p>
 
 <hr>
@@ -443,7 +447,7 @@ WHERE name LIKE '%Yale%'</textarea>
 	Most of this query is the same as the previous example.  There are two important differences, however.
 	<ul>
 		<li>the operator is <strong>LIKE</strong> ( instead of <strong>=</strong> )</li>
-		<li>the text is now wrapped inside both quotations marks and % symbols</li>
+		<li>the text is now wrapped inside both quotations marks and <strong>%</strong> symbols</li>
 	</ul>
 </p>
 
