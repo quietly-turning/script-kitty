@@ -24,6 +24,11 @@
  *
  */
 
+
+/* --------------------------------------------- */
+
+/* Element styling */
+
 table {
     border-collapse: collapse;
 }
@@ -46,14 +51,19 @@ aside {
 	border-left: 3px dashed #444;
 }
 
+
+/* Subtitle is used on "My Progress" page */
 p.subtitle{
 	margin:-10px 0px 8px 0px;
 }
 
+/* .actions is the generic class for Rails' form submit buttons */
 .actions{
 	margin-top: 10px;
 }
 
+/* --------------------------------------------- */
+/* Styling for messages/alerts from Script Kitty */
 
 .kitty-image{
 	position:relative;
@@ -72,18 +82,24 @@ p.subtitle{
 	border-radius: 1em;
 }
 
-.bubbletype-alert{
-	background-color: #b5403c;
+span.oops{
+	font-size: 1.8em;
 }
 
-.bubbletype-success {
-	background-color: #3ea237;
+span.causing-the-error{
+	font-family:courier;
 }
 
-.bubbletype-notice {
-	background-color: #3197ee;
+a.message-anchor{
+	color: #333;
+	text-decoration:underline;
 }
 
+.bubbletype-alert{ background-color: #b5403c; }
+.bubbletype-success { background-color: #3ea237; }
+.bubbletype-notice { background-color: #3197ee; }
+
+/* --------------------------------------------- */
 
 
 .invalid{ color: #b5403c; font-weight:bold }
@@ -91,32 +107,20 @@ p.subtitle{
 .correct{ color: #3ea237; font-weight:bold}
 
 
-
-
-
-
-a.message-anchor{
-	color: #333;
-	text-decoration:underline;
-}
-
-span.oops{
-	font-size: 1.8em;
-}
-
-pre{
-	font-family: courier;
-}
-
-span.causing-the-error{
-	font-family:courier;
-}
+/* --------------------------------------------- */
+/* What learners type into */
 
 #new_query .field .CodeMirror {
 	border-radius:0.6em;
 	height: 210px;
 }
 
+#query_raw_sql {
+	display:none;
+}
+
+/* --------------------------------------------- */
+/* For demonstrating code */
 
 .CodeMirror.cm-s-xq-light {
 	font-size: 1.25em;
@@ -133,15 +137,4 @@ span.causing-the-error{
 
 .CodeMirror.cm-s-xq-light .CodeMirror-linenumber{
 	color: #ccc;
-}
-
-span.correct {
-	color:#3ea237;
-}
-span.invalid {
-	color:#b5403c;
-}
-
-span.valid {
-	color:#3197ee;
 }
