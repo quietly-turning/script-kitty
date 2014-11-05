@@ -139,7 +139,7 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 <p>
 	Finally, a collection of multiple tables is referred to as a <strong>database</strong>.
 	Through out the upcoming exercises, we'll be working with a database of three different tables:
-	<em>schools</em>, <em>locales</em>, and <em>websites</em>.  Feel free to explore these tables 
+	<em>schools</em>, <em>locales</em>, and <em>websites</em>.  Feel free to explore these tables
 	by clicking on <em>Tables</em> at the top of the page.
 </p>
 
@@ -261,7 +261,31 @@ WHERE city = 'University Park'</textarea>
 </p>
 
 <p>
-	In plain English, the entire query would read: <em>please give me all the attributes of any schools in which the city exactly matches 'University Park'</em>.  Here's one more example:
+	In plain English, the entire query would read: <em>please give me all the attributes of any schools in which the city exactly matches 'University Park'</em>.
+</p>
+
+<aside>
+	<h4>A Brief Aside Concerning Capitalization</h4>
+	<p>
+		SQL is not a case-sensitive language.  <em>SELECT</em> is effectively the same as <em>select</em>, which is effectively
+		the same as <em>SeLeCt</em>.  The following two queries are interchangeable:
+	</p>
+
+	<textarea class='raw-sql'>select *
+from schools
+where city = 'university park'</textarea>
+
+	<textarea class='raw-sql'>sElEcT *
+fRoM sChOoLs
+wHeRe cItY = 'uNiVeRsItY PaRk'</textarea>
+
+	<p>
+		The latter format might get you some strange looks from your peers, of course.  Use it at your own discretion!
+	</p>
+</aside>
+
+<p>
+	  Here's one more example:
 </p>
 
 <textarea class='raw-sql' style='height:1em'>SELECT *
@@ -553,6 +577,25 @@ WHERE chief LIKE '%Cate%'</textarea>
 
 <p>
 	While this does work, it would be inconvenient to have two separate sets of results to look through.
+</p>
+
+<aside>
+	<h4>A Brief Aside Concerning Semicolons</h4>
+	<p>
+		If you explore the Internet seeking other examples of SQL, you may see semicolons being used
+		to terminate queries, much like a punctuation denoting the end of a sentence.  Generally speaking,
+		this is optional, <strong>unless</strong> you are typing two queries back to back like above!
+	</p>
+
+	<p>
+		In such situations, the semicolon does serve to separate the end of one query from the beginning of
+		the next.  You will never need to write multiple queries simultaneously in these exercises, however.
+		Because of this, you won't see semicolons mixed in with SQL code often in these lessons.
+	</p>
+</aside>
+
+
+<p>
 	Thankfully, we can combine those into a single query using <strong>OR</strong>:
 </p>
 
