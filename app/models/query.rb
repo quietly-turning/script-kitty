@@ -42,20 +42,22 @@ class Query < ActiveRecord::Base
 		# column in where clause doesn't exist
 		elsif error =~ /Mysql2::Error: Unknown column '(.+)' in 'where clause'/
 			unknown_column = (/Unknown column '(.+)' in 'where clause'/.match(error)).captures[0]
-			message = "<span class='oops'>Oops!</span>  It seems that the column &nbsp;<span class='causing-the-error'>#{unknown_column}</span>&nbsp; in your <span class='causing-the-error'>where clause</span>&nbsp; doesn't exist."
+			message = "<span class='oops'>Oops!</span>  It seems that the column <span class='causing-the-error'>#{unknown_column}</span> in your <span class='causing-the-error'>where clause</span>&nbsp; doesn't exist."
 
+			tables = parse_out_tables(error)
+			if tables.size == 1
+				correction = check_for_misspelling( tables[0], unknown_column )
+				if correction
+					message += " Did you mean <span class='causing-the-error'>#{correction}</span>?"
+				end
+			end
 
 
 		# column in select clause doesn't exist
 		elsif error =~ /Mysql2::Error: Unknown column '(.+)' in 'field list':/
 			unknown_column = (/Unknown column '(.+)' in 'field list':/.match(error)).captures[0]
 
-			# capture everything from "from" until the end of the query
-			temp = ((/from (.+)/im).match(error)).captures[0]
-
-			# temp might have a where statement, but might not; truncate either way
-			table_str = temp.sub((/where (.+)/im), "" )
-			tables = table_str.gsub(/\s+/,"").split(',')
+			tables = parse_out_tables(error)
 
 			# if only one table was queried, state that the column doesn't belong
 			# to that particular table
@@ -74,11 +76,19 @@ class Query < ActiveRecord::Base
 				 connection = ActiveRecord::Base.connection
 
 				 if not connection.table_exists? (table)
-					 message = "<span class='oops'>Oops!</span>  It seems that the table &nbsp;<span class='causing-the-error'>#{table}</span>&nbsp; in your<br> statement <span class='causing-the-error'>select #{unknown_column}</span>&nbsp; doesn't exist."
+					 message = "<span class='oops'>Oops!</span>  It seems that the table <span class='causing-the-error'>#{table}</span> in your<br> statement <span class='causing-the-error'>select #{unknown_column}</span> doesn't exist."
 				 elsif not connection.column_exists?(table, column)
-					 message = "<span class='oops'>Oops!</span>  It seems that the column &nbsp;<span class='causing-the-error'>#{column}</span>&nbsp; in your<br>statement <span class='causing-the-error'>select #{unknown_column}</span>&nbsp; doesn't exist."
+					 message = "<span class='oops'>Oops!</span>  It seems that the column <span class='causing-the-error'>#{column}</span> in your<br> statement <span class='causing-the-error'>select #{unknown_column}</span> doesn't exist."
 				 end
 			end
+
+			if tables.size == 1
+				correction = check_for_misspelling( tables[0], unknown_column )
+				if correction
+					message += " Did you mean <span class='causing-the-error'>#{correction}</span>?"
+				end
+			end
+
 
 		# abiguous column in where clause
 		elsif error =~ /Mysql2::Error: Column '\w+' in where clause is ambiguous:/
@@ -110,6 +120,29 @@ class Query < ActiveRecord::Base
 		end
 
 		return message
+	end
+
+########################################################
+
+	def check_for_misspelling(tab, col)
+		letters = col.split(//).sort.join
+		columns = tab.singularize.camelize.constantize.column_names
+		columns.each do |column|
+			if letters == column.split(//).sort.join
+				return column
+			end
+		end
+		return nil
+	end
+
+	def parse_out_tables(error)
+		# capture everything from "from" until the end of the query
+		temp = ((/from (.+)/im).match(error)).captures[0]
+
+		# temp might have a where statement, but might not; truncate either way
+		table_str = temp.sub((/where (.+)/im), "" )
+		tables = table_str.gsub(/\s+/,"").split(',')
+		return tables
 	end
 
 ########################################################
