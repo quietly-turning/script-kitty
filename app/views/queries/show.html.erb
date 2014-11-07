@@ -59,7 +59,11 @@
 				<% end %>
 
 				<p>
-					Alternatively, you can
+          <% if @next_exercise or @next_lesson %>
+            Alternatively, you can
+          <% else %>
+            If you'd like, you can
+          <% end %>
 					<%= link_to 'try this exercise again', lesson_exercise_path(@query.exercise.lesson, @query.exercise) %> or
 					<%= link_to 'edit your answer', lesson_exercise_path( @query.exercise.lesson, @query.exercise, {:raw_sql => @query.raw_sql} ) %>.
 				</p>
