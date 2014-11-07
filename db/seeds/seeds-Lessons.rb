@@ -1477,7 +1477,7 @@ WHERE city = 'university park'</textarea>
 	</p>
 	<p>
 		The two most common solutions to this problem are to simply remove
-		whitespace (<em>localeID</em> ) or to replace whitespace with underscores ( <em>locale_id</em> ).
+		whitespace ( <em>localeID</em> ) or to replace whitespace with underscores ( <em>locale_id</em> ).
 		This tutorial makes use of the underscore convention.
 	</p>
 </aside>
