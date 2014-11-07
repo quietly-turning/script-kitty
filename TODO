@@ -2,15 +2,19 @@ MILESTONES:
 
 1. Test, test, test
 	is it still possible to crash the app with malformed queries?
-	is it still possible to submit a devious query?  Needs proper sandboxing.
+	is it still possible to submit a malicious query?  Needs proper sandboxing.
+
 
 ---
 Smaller Things
 
-1. Write more exercises.  At least two per lesson.
-2. Maybe add an aside concerning version of SQL?  That this one uses MariaDB?
-3. Investigate whether CodeMirror contents can be saved/cached in the event of the learner
+1. Write more exercises.  At LEAST two per lesson.
+2. Investigate whether CodeMirror contents can be saved/cached in the event of the learner
 	pressing the browser's back button.
+3. Wrap-up/Summary page after completing final exercise.
+4. Maybe add an aside concerning versions of SQL?  That this tutorial uses MariaDB?
+5. Share accomplishment to [social media platform]?
+
 
 ---
 Nebulous Things
