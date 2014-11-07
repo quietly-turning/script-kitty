@@ -7,7 +7,10 @@ MILESTONES:
 ---
 Smaller Things
 
-1. Write more exercises?  At least two per lesson?
+1. Write more exercises.  At least two per lesson.
+2. Maybe add an aside concerning version of SQL?  That this one uses MariaDB?
+3. Investigate whether CodeMirror contents can be saved/cached in the event of the learner
+	pressing the browser's back button.
 
 ---
 Nebulous Things
