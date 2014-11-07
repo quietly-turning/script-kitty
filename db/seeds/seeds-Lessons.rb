@@ -32,7 +32,6 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 			<th>state</th>
 			<th>zip</th>
 			<th>chief</th>
-			<th>website_id</th>
 			<th>locale_id</th>
 		</tr>
 	</thead>
@@ -45,7 +44,6 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 			<td>AL</td>
 			<td>36114-0011</td>
 			<td>Timothy W. Albrecht</td>
-			<td>1</td>
 			<td>2</td>
 		</tr>
 		<tr>
@@ -55,7 +53,6 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 			<td>AL</td>
 			<td>35762</td>
 			<td>Dr. Andrew Hugine, Jr.</td>
-			<td>1</td>
 			<td>2</td>
 		</tr>
 		<tr>
@@ -65,7 +62,6 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 			<td>AL</td>
 			<td>35294-0110</td>
 			<td>Carol Z. Garrison</td>
-			<td>1</td>
 			<td>2</td>
 		</tr>
 		<tr>
@@ -76,7 +72,6 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 			<td>36117-3553</td>
 			<td>Michael Turner</td>
 			<td>2</td>
-			<td>2</td>
 		</tr>
 		<tr>
 			<td>5</td>
@@ -85,7 +80,6 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 			<td>AL</td>
 			<td>35899</td>
 			<td>David B. Williams</td>
-			<td>1</td>
 			<td>2</td>
 		</tr>
 		<tr>
@@ -95,7 +89,6 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 			<td>AL</td>
 			<td>36101-0271</td>
 			<td>William H. Harris</td>
-			<td>1</td>
 			<td>2</td>
 		</tr>
 	</tbody>
@@ -305,7 +298,6 @@ WHERE state = 'AK'</textarea>
 			<th>state</th>
 			<th>zip</th>
 			<th>chief</th>
-			<th>website_id</th>
 			<th>locale_id</th>
 		</tr>
 	</thead>
@@ -318,7 +310,6 @@ WHERE state = 'AK'</textarea>
 			<td>99508</td>
 			<td>Fran Ulmer</td>
 			<td>1</td>
-			<td>1</td>
 		</tr>
 		<tr>
 			<td>64</td>
@@ -327,7 +318,6 @@ WHERE state = 'AK'</textarea>
 			<td>AK</td>
 			<td>99588</td>
 			<td>Nicholas Ringger</td>
-			<td>2</td>
 			<td>12</td>
 		</tr>
 		<tr>
@@ -337,7 +327,6 @@ WHERE state = 'AK'</textarea>
 			<td>AK</td>
 			<td>99775-7500</td>
 			<td>Brian Rogers</td>
-			<td>1</td>
 			<td>6</td>
 		</tr>
 		<tr>
@@ -347,7 +336,6 @@ WHERE state = 'AK'</textarea>
 			<td>AK</td>
 			<td>99801-8697</td>
 			<td>John Pugh</td>
-			<td>1</td>
 			<td>9</td>
 		</tr>
 		<tr>
@@ -357,7 +345,6 @@ WHERE state = 'AK'</textarea>
 			<td>AK</td>
 			<td>99508</td>
 			<td>Don Bantz</td>
-			<td>2</td>
 			<td>1</td>
 		</tr>
 		<tr>
@@ -367,7 +354,6 @@ WHERE state = 'AK'</textarea>
 			<td>AK</td>
 			<td>99664-0889</td>
 			<td>Fred Esposito</td>
-			<td>1</td>
 			<td>12</td>
 		</tr>
 		<tr>
@@ -377,7 +363,6 @@ WHERE state = 'AK'</textarea>
 			<td>AK</td>
 			<td>99508</td>
 			<td>Terrance Harris</td>
-			<td>3</td>
 			<td>1</td>
 		</tr>
 		<tr>
@@ -387,7 +372,6 @@ WHERE state = 'AK'</textarea>
 			<td>AK</td>
 			<td>99686-0097</td>
 			<td>Douglas A. Desorcie</td>
-			<td>1</td>
 			<td>12</td>
 		</tr>
 		<tr>
@@ -397,7 +381,6 @@ WHERE state = 'AK'</textarea>
 			<td>AK</td>
 			<td>99507-1033</td>
 			<td>Jennifer Deitz</td>
-			<td>3</td>
 			<td>1</td>
 		</tr>
 		<tr>
@@ -407,7 +390,6 @@ WHERE state = 'AK'</textarea>
 			<td>AK</td>
 			<td>99775-5000</td>
 			<td>Patrick Gamble</td>
-			<td>1</td>
 			<td>6</td>
 		</tr>
 		<tr>
@@ -417,7 +399,6 @@ WHERE state = 'AK'</textarea>
 			<td>AK</td>
 			<td>99723</td>
 			<td>Beverly Patkotak Grinage</td>
-			<td>1</td>
 			<td>10</td>
 		</tr>
 		<tr>
@@ -427,7 +408,6 @@ WHERE state = 'AK'</textarea>
 			<td>AK</td>
 			<td>99669</td>
 			<td>Dr. Keith J. Hamilton</td>
-			<td>2</td>
 			<td>10</td>
 		</tr>
 	</tbody>
@@ -484,7 +464,6 @@ WHERE name LIKE '%Yale%'</textarea>
 			<th>state</th>
 			<th>zip</th>
 			<th>chief</th>
-			<th>website_id</th>
 			<th>locale_id</th>
 		</tr>
 	</thead>
@@ -497,7 +476,6 @@ WHERE name LIKE '%Yale%'</textarea>
 			<td>06510</td>
 			<td>Stephen Merz</td>
 			<td>2</td>
-			<td>2</td>
 		</tr>
 		<tr>
 			<td>761</td>
@@ -507,7 +485,6 @@ WHERE name LIKE '%Yale%'</textarea>
 			<td>06520</td>
 			<td>Richard C Levin</td>
 			<td>2</td>
-			<td>2</td>
 		</tr>
 		<tr>
 			<td>5102</td>
@@ -516,7 +493,6 @@ WHERE name LIKE '%Yale%'</textarea>
 			<td>CA</td>
 			<td>92590</td>
 			<td>Barbara Kruis</td>
-			<td>3</td>
 			<td>10</td>
 		</tr>
 	</tbody>
@@ -618,7 +594,6 @@ OR chief LIKE '%Cate%'</textarea>
 			<th>state</th>
 			<th>zip</th>
 			<th>chief</th>
-			<th>website_id</th>
 			<th>locale_id</th>
 		</tr>
 	</thead>
@@ -631,7 +606,6 @@ OR chief LIKE '%Cate%'</textarea>
 			<td>CA</td>
 			<td>95616-8678</td>
 			<td>Linda Katehi</td>
-			<td>1</td>
 			<td>6</td>
 		</tr>
 		<tr>
@@ -641,7 +615,6 @@ OR chief LIKE '%Cate%'</textarea>
 			<td>IN</td>
 			<td>46360-7362</td>
 			<td>Kate Osio</td>
-			<td>3</td>
 			<td>10</td>
 		</tr>
 		<tr>
@@ -651,7 +624,6 @@ OR chief LIKE '%Cate%'</textarea>
 			<td>KS</td>
 			<td>67005</td>
 			<td>Patrick McAtee</td>
-			<td>1</td>
 			<td>8</td>
 		</tr>
 		<tr>
@@ -661,7 +633,6 @@ OR chief LIKE '%Cate%'</textarea>
 			<td>OH</td>
 			<td>44035-0701</td>
 			<td>Rosanne Catella</td>
-			<td>3</td>
 			<td>5</td>
 		</tr>
 		<tr>
@@ -672,7 +643,6 @@ OR chief LIKE '%Cate%'</textarea>
 			<td>85034-4101</td>
 			<td>Sue Kater</td>
 			<td>1</td>
-			<td>1</td>
 		</tr>
 		<tr>
 			<td>6087</td>
@@ -681,7 +651,6 @@ OR chief LIKE '%Cate%'</textarea>
 			<td>OH</td>
 			<td>44147-3502</td>
 			<td>Kate Spies</td>
-			<td>3</td>
 			<td>4</td>
 		</tr>
 		<tr>
@@ -692,7 +661,6 @@ OR chief LIKE '%Cate%'</textarea>
 			<td>51503-5289</td>
 			<td>Kate Packard</td>
 			<td>3</td>
-			<td>3</td>
 		</tr>
 		<tr>
 			<td>6823</td>
@@ -701,7 +669,6 @@ OR chief LIKE '%Cate%'</textarea>
 			<td>IN</td>
 			<td>46204</td>
 			<td>Kate Osio</td>
-			<td>3</td>
 			<td>1</td>
 		</tr>
 		<tr>
@@ -711,7 +678,6 @@ OR chief LIKE '%Cate%'</textarea>
 			<td>WI</td>
 			<td>53005-0000</td>
 			<td>Kate Pelchat</td>
-			<td>3</td>
 			<td>4</td>
 		</tr>
 	</tbody>
@@ -785,7 +751,6 @@ AND city = 'Harrisburg'</textarea>
 			<th>state</th>
 			<th>zip</th>
 			<th>chief</th>
-			<th>website_id</th>
 			<th>locale_id</th>
 		</tr>
 	</thead>
@@ -798,7 +763,6 @@ AND city = 'Harrisburg'</textarea>
 			<td>IL</td>
 			<td>62946</td>
 			<td>Jonah Rice</td>
-			<td>1</td>
 			<td>11</td>
 		</tr>
 	</tbody>
@@ -864,7 +828,6 @@ AND name <> 'University of Scranton'</textarea>
 			<th>state</th>
 			<th>zip</th>
 			<th>chief</th>
-			<th>website_id</th>
 			<th>locale_id</th>
 		</tr>
 	</thead>
@@ -877,7 +840,6 @@ AND name <> 'University of Scranton'</textarea>
 			<td>PA</td>
 			<td>18508-1495</td>
 			<td>Ann L. Pipinski, Ed.D.</td>
-			<td>2</td>
 			<td>3</td>
 		</tr>
 		<tr>
@@ -887,7 +849,6 @@ AND name <> 'University of Scranton'</textarea>
 			<td>PA</td>
 			<td>18509-3206</td>
 			<td>Ray Angeli</td>
-			<td>2</td>
 			<td>3</td>
 		</tr>
 		<tr>
@@ -897,7 +858,6 @@ AND name <> 'University of Scranton'</textarea>
 			<td>PA</td>
 			<td>18509-1598</td>
 			<td>Sister Anne Munley</td>
-			<td>2</td>
 			<td>3</td>
 		</tr>
 		<tr>
@@ -907,7 +867,6 @@ AND name <> 'University of Scranton'</textarea>
 			<td>PA</td>
 			<td>18505</td>
 			<td>Avraham Pressman</td>
-			<td>2</td>
 			<td>3</td>
 		</tr>
 		<tr>
@@ -917,7 +876,6 @@ AND name <> 'University of Scranton'</textarea>
 			<td>PA</td>
 			<td>18508</td>
 			<td>Vincent P Nallo</td>
-			<td>1</td>
 			<td>10</td>
 		</tr>
 		<tr>
@@ -928,7 +886,6 @@ AND name <> 'University of Scranton'</textarea>
 			<td>18509-2903</td>
 			<td>Duncan Anderson</td>
 			<td>3</td>
-			<td>3</td>
 		</tr>
 		<tr>
 			<td>7132</td>
@@ -937,7 +894,6 @@ AND name <> 'University of Scranton'</textarea>
 			<td>PA</td>
 			<td>18510</td>
 			<td>Robert M D'Alessandri M.D</td>
-			<td>2</td>
 			<td>3</td>
 		</tr>
 		<tr>
@@ -947,7 +903,6 @@ AND name <> 'University of Scranton'</textarea>
 			<td>PA</td>
 			<td>18503</td>
 			<td>Robert D'Alessandri, MD</td>
-			<td>4</td>
 			<td>3</td>
 		</tr>
 	</tbody>
@@ -1015,7 +970,6 @@ WHERE city = 'University Park'</textarea>
 			<th>state</th>
 			<th>zip</th>
 			<th>chief</th>
-			<th>website_id</th>
 			<th>locale_id</th>
 		</tr>
 	</thead>
@@ -1027,7 +981,6 @@ WHERE city = 'University Park'</textarea>
 			<td>PA</td>
 			<td>16802-1589</td>
 			<td>Dr. Eric J. Barron</td>
-			<td>1</td>
 			<td>3</td>
 		</tr>
 	</tbody>
@@ -1193,7 +1146,6 @@ and schools.locale_id = locale.id</textarea>
 			<th>state</th>
 			<th>zip</th>
 			<th>chief</th>
-			<th>website_id</th>
 			<th>locale_id</th>
 		</tr>
 	</thead>
@@ -1206,7 +1158,6 @@ and schools.locale_id = locale.id</textarea>
 			<td>TX</td>
 			<td>77630</td>
 			<td>Michael Shahan</td>
-			<td>1</td>
 			<td>8</td>
 		</tr>
 	</tbody>
@@ -1452,7 +1403,7 @@ WHERE schools.name = 'Univerity of Scranton'</textarea>
 
 <p>
 	Through the past seven lessons, we've written queries involving most of the columns from the <em>Schools</em>
-	table.  None of our queries, however, used <em>id</em>, <em>locale_id</em>, or <em>website_id</em>.
+	table.  None of our queries, however, used <em>id</em>, <em>locale_id</em>, or <em>school_id</em>.
 	What are they?  What do they even mean?  How do they help us here?
 </p>
 
