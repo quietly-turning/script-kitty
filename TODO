@@ -8,12 +8,11 @@ MILESTONES:
 ---
 Smaller Things
 
-1. Write more exercises.  At LEAST two per lesson.
-2. Investigate whether CodeMirror contents can be saved/cached in the event of the learner
+1. Investigate whether CodeMirror contents can be saved/cached in the event of the learner
 	pressing the browser's back button.
-3. Wrap-up/Summary page after completing final exercise.
-4. Maybe add an aside concerning versions of SQL?  That this tutorial uses MariaDB?
-5. Share accomplishment to [social media platform]?
+2. Wrap-up/Summary page after completing final exercise.
+3. Maybe add an aside concerning versions of SQL?  That this tutorial uses MariaDB?
+4. Share accomplishment to [social media platform]?
 
 
 ---
