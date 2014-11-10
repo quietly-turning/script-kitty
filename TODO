@@ -8,11 +8,11 @@ MILESTONES:
 ---
 Smaller Things
 
-1. Investigate whether CodeMirror contents can be saved/cached in the event of the learner
-	pressing the browser's back button.
-2. Wrap-up/Summary page after completing final exercise.
+1. Wrap-up/Summary page after completing final exercise.
+2. Add a proper README documenting how to setup the app from scratch and where to find things within the code.
 3. Maybe add an aside concerning versions of SQL?  That this tutorial uses MariaDB?
-4. Share accomplishment to [social media platform]?
+4. Have home page direct learner toward the next lesson s/he should work on.
+5. Share accomplishment to [social media platform]?  (This should probably coincide with the wrap-up page.)
 
 
 ---
