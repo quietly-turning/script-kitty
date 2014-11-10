@@ -5,13 +5,26 @@
 
 $(document).ready(function(){
 
+	$('#exercise-footer').height(function(index, height) {
+	    return window.innerHeight - $(this).offset().top;
+	});
+
+
+	$(".table-block-container").click(function(){
+		$(".table-block-container-active").removeClass("table-block-container-active");
+		$(".columnCorral").hide();
+
+		$(this).addClass("table-block-container-active");
+		$(".columnCorral[data-table='" + $(this).attr("data-table") + "']").show();
+	});
+
 	$('#new_query').on("submit", function()
 	{
-	
+
 		$('.condition').each(function()
 		{
 			var i = 1;
-		
+
 			// for each of the hidden inputs in that this condition
 			$(this).find('input:hidden').not("script").each(function(){
 				// the first iteration SHOULD be the column
@@ -39,9 +52,9 @@ $(document).ready(function(){
 	//  Query Builder
 	// ----------------------------------------------------------------------------
 
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    
-	// - - - - - - - - - - - - - - INITIALZE DRAG & DROP - - - - - - - - - - - - - - - 
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -   
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	// - - - - - - - - - - - - - - INITIALZE DRAG & DROP - - - - - - - - - - - - - - -
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 	function initialize()
 	{
@@ -71,21 +84,21 @@ $(document).ready(function(){
 	function initializeDraggable()
 	{
 		$('.draggable').each(function(){
-			
+
 			$(this).draggable({
 				snap:   "." + $(this).data("blockType") + "Acceptor",
-				
+
 				// if the draggable block has yet to be dropped, clone it
 				// if the draggable bloack has already been dropped, empty string (just drag it)
 				helper: $(this)[0].dropped_in_place ? "" : "clone",
-				
+
 				cursor: "move",
 				containment: '#content',
-				
+
 				revert: function(dropzone) {
-					
+
 					if ($(this)[0].dropped_in_place)
-					{						
+					{
 						// the user is (probably) trying to get rid of it now...
 						$(this).remove();
 						animatePoof();
@@ -98,7 +111,7 @@ $(document).ready(function(){
 							resortConditions();
 						}
 					}
-					
+
 					// return "invalid"
 				}
 			});
@@ -109,14 +122,14 @@ $(document).ready(function(){
 	function initializeDroppable()
 	{
 		 $('.dropHere').each(function(){
-			 
+
 	 		$(this).droppable({
 				create: function(event, ui) {
-					$(this)[0].occupied = false;	
+					$(this)[0].occupied = false;
 				},
 	 			accept: "." + $(this).data("accepts"),
 	 			drop: function( event, ui )	{
-										
+
 					if ( $(this)[0].occupied == true )
 					{
 
@@ -127,40 +140,40 @@ $(document).ready(function(){
 		 				var clone = ui.helper.clone();
 						$(this).append( clone );
 						clone[0].dropped_in_place = true;
-					
+
 						var droppedtype = ui.helper.context.dataset.blocktype;
-					
+
 		 				if (droppedtype == "or" || droppedtype == "and")
-		 				{	
+		 				{
 							if (droppedtype == "or")
-							{							
+							{
 
 								//we just dropped an "or" so remove the "and" from this condition
 								$(this).parents(".container").children(".toprow").children(".end").children(".dropHere").remove();
 								$(this).parents(".condition").addClass("condition-with-or").removeClass("condition-with-both");
-							
+
 		 						// add margin-bottom: -11px;
 		 						$(this).parents(".condition").attr("style", "margin-bottom:-11px;");
-							
-							} else if (droppedtype == "and") {			
-							
+
+							} else if (droppedtype == "and") {
+
 								//we just dropped an "and" so remove the "or" (bottom)row from this condition
 								$(this).parents(".container").children(".bottomrow").remove();
-							
+
 		 						// add margin-bottom: -42px;
 		 						$(this).parents(".condition").attr("style", "margin-bottom:-42px;");
 								$(this).parents(".condition").addClass("condition-with-and").removeClass("condition-with-both");
 							}
 	 						newCondition();
 		 				}
-					
-					
+
+
 						if ($(this).hasClass("columnAcceptor"))
 						{
 							$("#select").append('<div class="dropHere columnAcceptor" data-accepts="column-block"></div><br>');
 							initializeDroppable();
 						}
-					
+
 						initialize();
 		 				checkIfConditionIsComplete();
 						$(this)[0].occupied = true;
@@ -173,15 +186,15 @@ $(document).ready(function(){
 		// if we are editing a query (as opposed to creating one) the hidden fields for
 		// col_id and operator will already have values, so grab them, and use each in
 		// visually initializing the edit page, with blocks placed appropriately
-		// 
+		//
 		// these two if-statements need to be declared beneath the draggable/droppable declarations (above)
 		// which would otherwise nullify any selective disabling we might be attempting here
-		// 
-		// 
+		//
+		//
 		// if ($('#query_condition_animal_attr').val() != "" && $('#query_condition_animal_attr').val() != undefined)
 		// {
 		// 	var coff = $("#columnAcceptor").offset();
-		// 		
+		//
 		// 	$('.columnBlock').each(function(){
 		// 		if ($(this).attr('cid')==$('#query_condition_animal_attr').val())
 		// 		{
@@ -191,11 +204,11 @@ $(document).ready(function(){
 		// 		}
 		// 	});
 		// }
-		// 
+		//
 		// if ($('#query_condition_operator_id').val() != "" && $('#query_condition_operator_id').val() != undefined)
-		// {	
+		// {
 		// 	var ooff = $("#operatorAcceptor").offset();
-		// 	
+		//
 		// 	$('.operatorBlock').each(function(){
 		// 		if ($(this).attr('oid') == $('#query_condition_operator_id').val())
 		// 		{
@@ -204,31 +217,31 @@ $(document).ready(function(){
 		// 			$(this).draggable('disable');
 		// 		}
 		// 	});
-		// 
+		//
 		// }
-	
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    
+
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	// - - - - - - - - - functions for recycling blocks  - - - - - - - - - - - - - - -
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    
-	
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 		// some sort of more "official" sorting algorithm needs to be implemented here...
 		function resortConditions()
-		{		
-		
+		{
+
 			var i = 1;
-			
-			$('.condition').each(function(){		
-							
+
+			$('.condition').each(function(){
+
 				$(this).find('input:hidden').not("script").each(function(){
 					$(this).attr("id", $(this).attr("id").replace("_0_", "_" + i + "_"));
 				});
-				
+
 				i++;
-			});	
+			});
 		}
-	
+
 		function checkIfConditionIsComplete(condition)
-		{		
+		{
 			if ($(condition).children('.columnAcceptor').children('.columnBlock').length > 0 && $(condition).children('operatorAcceptor').children('operatorBlock').length > 0)
 			{
 				$(condition).children('.buildYourQuery').addClass('completedCondition');
@@ -236,10 +249,10 @@ $(document).ready(function(){
 				$(condition).children('.buildYourQuery').removeClass('completedCondition');
 			}
 		}
-	
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    
+
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 	var poofX;
 	var poofY;
 	$(document).mousemove(function(e){
@@ -247,7 +260,7 @@ $(document).ready(function(){
 		// trial, error, and guesswork, my friend
 		poofX = e.pageX - 80;
 		poofY = e.pageY - 80;
-	}); 
+	});
 
 
 	function animatePoof(){
