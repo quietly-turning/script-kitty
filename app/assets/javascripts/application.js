@@ -12,16 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
-// 
+//
 //= require jquery-ui
 //
 //= require foundation
-//= require turbolinks
 //= require_tree .
-// 
+//
 //= require codemirror
 //= require codemirror/modes/sql
+//
+//= require turbolinks
 
-$(function(){ 
-	$(document).foundation();
-});
+$(document).foundation();
