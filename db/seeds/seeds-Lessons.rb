@@ -1129,7 +1129,8 @@ and schools.locale_id = locale.id</textarea>
 <p>
 	The first two conditions are thankfully straightforward.  We've seen these concepts before,
 	in <a href='/lessons/2'>Lesson 2</a> and <a href='/lessons/6'>Lesson 6</a>, respectively.
-	The third condition uses a familiar operator, but it may unclear at first what it is actually doing.
+	The third condition (line 5) uses a familiar operator, but it may unclear at first what
+	it is actually doing.
 </p>
 
 <p>
