@@ -8,20 +8,18 @@
 	
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
+	<%= javascript_include_tag "application" %>
 	
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
-	
-	<%= render 'layouts/topbar' %>
-	
-	<div class="row">
-		<div class="small-12 columns">
-			<%= yield %>
+	<body>
+		<%= render 'layouts/topbar' %>
+
+		<div class="row">
+			<div class="small-6 small-offset-2 columns">
+				<%= yield %>
+			</div>
 		</div>
-	</div>
-	
-	<%= javascript_include_tag "application" %>
-  </body>
+	</body>
 </html>
