@@ -100,7 +100,7 @@ class QueriesController < ApplicationController
 			@query.check_if_correct
 
 			# then update the query entry
-			if @query.update(query_params)
+			if @query.save
 				if @query.status == 2
 					format.html { redirect_to @query, notice: 'correct' }
 				else
@@ -120,41 +120,41 @@ class QueriesController < ApplicationController
   end
 
 
-  # PATCH/PUT /queries/1
-  # PATCH/PUT /queries/1.json
-  def update
+ 	# PATCH/PUT /queries/1
+  	# PATCH/PUT /queries/1.json
+ 	 def update
 
-  	# Because this is a study, and we are actually interested in incorrect answers,
-  	# don't actually ever edit a query, just create a new one!  In this way, mistakes
-  	# are logged for later analysis.  This method is a effectively a copy/paste of create.
+		# Because this is a study, and we are actually interested in incorrect answers,
+		# don't actually ever edit a query, just create a new one!  In this way, mistakes
+		# are logged for later analysis.  This method is a effectively a copy/paste of create.
 
-	@query = Query.new(query_params)
-	@query.user_id = current_user.id
+		@query = Query.new(query_params)
+		@query.user_id = current_user.id
 
-	if current_user.visual_interface?
-	  # @query.processConditions
-	  # @query.constructFormattedQuery
-	  # @query.constructHTMLtable
-	else
-	  @query.constructHTMLtable_simple
+		if current_user.visual_interface?
+		  # @query.processConditions
+		  # @query.constructFormattedQuery
+		  # @query.constructHTMLtable
+		else
+		  @query.constructHTMLtable_simple
+		end
+
+		@query.check_if_correct
+
+		respond_to do |format|
+			if @query.save
+				if @query.status == 2
+					format.html { redirect_to @query, notice: 'correct' }
+				else
+					format.html { redirect_to @query, notice: 'incorrect' }
+				end
+				format.json { render :show, status: :ok, location: @query }
+		    else
+				format.html { render :edit }
+				format.json { render json: @query.errors, status: :unprocessable_entity }
+		    end
+		end
 	end
-
-	  	@query.check_if_correct
-
-	    respond_to do |format|
-	      if @query.save
-		  if @query.status == 2
-	        	  format.html { redirect_to @query, notice: 'correct' }
-		  else
-			  format.html { redirect_to @query, notice: 'incorrect' }
-		  end
-	        format.json { render :show, status: :ok, location: @query }
-	      else
-	        format.html { render :edit }
-	        format.json { render json: @query.errors, status: :unprocessable_entity }
-	      end
-	    end
-  end
 
   # DELETE /queries/1
   # DELETE /queries/1.json

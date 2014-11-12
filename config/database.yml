@@ -13,14 +13,18 @@
 #   <<: *default
 #   database: db/development.sqlite3
 
-development:
-    adapter: mysql2
-    database: thesis
-    username: root
-    password: root
-    host: 127.0.0.1
-    port: 3306
+development: &development
+  database: ScriptKitty
+  adapter: mysql2
+  username: root
+  password: root
+  host: 127.0.0.1
+  port: 3306
 
+development_learner:
+  <<: *development
+  username: thesis_learner
+  password: moomoo
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
