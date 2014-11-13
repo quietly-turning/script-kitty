@@ -73,7 +73,7 @@ class Query < ActiveRecord::Base
 				 temp = unknown_column.split(".")
 				 table = temp[0]
 				 column = temp[1]
-				 connection = ActiveRecord::Base.establish_connection("#{Rails.env}".intern)
+				 connection = ActiveRecord::Base.establish_connection("#{Rails.env}".intern).connection
 
 				 if not connection.table_exists? (table)
 					 message = "<span class='oops'>Oops!</span>  It seems that the table <span class='causing-the-error'>#{table}</span> in your<br> statement <span class='causing-the-error'>select #{unknown_column}</span> doesn't exist."
