@@ -18,7 +18,7 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 <h3>Terminology</h3>
 
 <p>
-	Here is a very simple database consisting of a single table that contains eight columns and six rows (don't include the header row in your count).
+	Here is a very simple database consisting of a single table that contains seven columns and six rows (don't include the header row in your count).
 <p>
 
 
@@ -109,7 +109,6 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 				<td>36101-0271</td>
 				<td>William H. Harris</td>
 				<td>1</td>
-				<td>2</td>
 			</tr>
 		</tbody>
 	</table>
@@ -161,7 +160,7 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 	SQL query.
 </p>
 
-<textarea class='raw-sql' style='height:1em'>SELECT *
+<textarea class='raw-sql'>SELECT *
 FROM schools</textarea>
 
 <p>
@@ -211,7 +210,7 @@ Lesson.create( title: 'Introduction To Conditional Statements', objective: 'Filt
 	at an example:
 </p>
 
-<textarea class='raw-sql' style='height:1em'>SELECT *
+<textarea class='raw-sql'>SELECT *
 FROM schools
 WHERE city = 'University Park'</textarea>
 
@@ -281,7 +280,7 @@ wHeRe cItY = 'uNiVeRsItY PaRk'</textarea>
 	  Here's one more example:
 </p>
 
-<textarea class='raw-sql' style='height:1em'>SELECT *
+<textarea class='raw-sql'>SELECT *
 FROM schools
 WHERE state = 'AK'</textarea>
 
@@ -430,7 +429,7 @@ Lesson.create( title: '<em>Equals</em> is not the only operator', objective: 'Se
 	for exact matches only, it is somewhat constraining. For example, this query
 </p>
 
-<textarea class='raw-sql' style='height:1em'>SELECT *
+<textarea class='raw-sql'>SELECT *
 FROM schools
 WHERE name = 'Yale'</textarea>
 
@@ -443,7 +442,7 @@ WHERE name = 'Yale'</textarea>
 	  Is there a way to see if a field contains a bit of text?  There is!
 </p>
 
-<textarea class='raw-sql' style='height:1em'>SELECT *
+<textarea class='raw-sql'>SELECT *
 FROM schools
 WHERE name LIKE '%Yale%'</textarea>
 
@@ -543,7 +542,7 @@ Lesson.create( title: 'Compound Conditional Statements: Part 1', objective: 'Cha
 	One way to approach this would be to write two different queries and examine the results of each separately.
 </p>
 
-<textarea class='raw-sql' style='height:1em'>SELECT *
+<textarea class='raw-sql'>SELECT *
 FROM schools
 WHERE chief LIKE '%Kate%';
 
@@ -575,7 +574,7 @@ WHERE chief LIKE '%Cate%'</textarea>
 	Thankfully, we can combine those into a single query using <strong>OR</strong>:
 </p>
 
-<textarea class='raw-sql' style='height:1em'>SELECT *
+<textarea class='raw-sql'>SELECT *
 FROM schools
 WHERE chief LIKE '%Kate%'
 OR chief LIKE '%Cate%'</textarea>
@@ -688,7 +687,7 @@ OR chief LIKE '%Cate%'</textarea>
 	<strong>OR</strong> is commonly used to chain multiple conditions together, like this example:
 </p>
 
-<textarea class='raw-sql' style='height:1em'>SELECT *
+<textarea class='raw-sql'>SELECT *
 FROM schools
 WHERE chief LIKE '%Kate%'
 OR chief LIKE '%Cate%'
@@ -719,7 +718,7 @@ Lesson.create( title: 'Compound Conditional Statements: Part 2', objective: 'Cha
 	Suppose we wanted to find some schools in the city of Harrisburg, Illinois.  If we wrote a query like this:
 </p>
 
-<textarea class='raw-sql' style='height:1em'>SELECT *
+<textarea class='raw-sql'>SELECT *
 FROM schools
 WHERE city = 'Harrisburg'</textarea>
 
@@ -733,7 +732,7 @@ WHERE city = 'Harrisburg'</textarea>
 	<strong>OR</strong>, where only one condition needed to be true.)  The query would look like this:
 <p>
 
-<textarea class='raw-sql' style='height:1em'>SELECT *
+<textarea class='raw-sql'>SELECT *
 FROM schools
 WHERE state = 'IL'
 AND city = 'Harrisburg'</textarea>
@@ -809,7 +808,7 @@ Lesson.create( title: 'Does Not Equal', objective: 'Filter your results using th
 	In SQL form, that question would look like:
 </p>
 
-<textarea class='raw-sql' style='height:1em'>SELECT *
+<textarea class='raw-sql'>SELECT *
 FROM schools
 WHERE city = 'Scranton'
 AND name <> 'University of Scranton'</textarea>
@@ -923,7 +922,7 @@ AND name <> 'University of Scranton'</textarea>
 </p>
 
 This:
-<textarea class='raw-sql' style='height:1em'>SELECT *
+<textarea class='raw-sql'>SELECT *
 FROM schools
 WHERE city = 'Scranton'
 AND name != 'University of Scranton'</textarea>
@@ -931,7 +930,7 @@ AND name != 'University of Scranton'</textarea>
 <p>
 	would return the same results as:
 </p>
-<textarea class='raw-sql' style='height:1em'>SELECT *
+<textarea class='raw-sql'>SELECT *
 FROM schools
 WHERE city = 'Scranton'
 AND name &lt;&gt; 'University of Scranton'</textarea>
@@ -949,11 +948,11 @@ AND name &lt;&gt; 'University of Scranton'</textarea>
 Lesson.create( title: 'Being more specific than <em>SELECT *</em>', objective: 'Limit results to specific columns from the database table.', body: "
 <p>
 	In all the exercises up to this point, we have always retrieved full rows from the database.  The <em>Schools</em>
-	table has eight columns, and each of our queries has returned all eight columns per row.  For example, this query
+	table has seven columns, and each of our queries has returned all eight columns per row.  For example, this query
 	from <a href='/lessons/2'>Lesson 2</a>:
 </p>
 
-<textarea class='raw-sql' style='height:1em'>SELECT *
+<textarea class='raw-sql'>SELECT *
 FROM schools
 WHERE city = 'University Park'</textarea>
 
@@ -998,7 +997,7 @@ WHERE city = 'University Park'</textarea>
 	exactly which columns we are interested in retrieving.  Let's take a look at this query:
 </p>
 
-<textarea class='raw-sql' style='height:1em'>SELECT chief
+<textarea class='raw-sql'>SELECT chief
 FROM schools
 WHERE city = 'University Park'</textarea>
 
@@ -1027,7 +1026,7 @@ WHERE city = 'University Park'</textarea>
 	We can retrieve two or more columns by separating them with commas.  This query:
 </p>
 
-<textarea class='raw-sql' style='height:1em'>SELECT name, city, state, zip
+<textarea class='raw-sql'>SELECT name, city, state, zip
 FROM schools
 WHERE zip like '%18509%'</textarea>
 
@@ -1103,7 +1102,7 @@ Lesson.create( title: 'Using More Than One Table', objective: 'Write a complex q
 	encountered so far.
 </p>
 
-<textarea class='raw-sql' style='height:1em'>SELECT schools.name, schools.state, locales.name
+<textarea class='raw-sql'>SELECT schools.name, schools.state, locales.name
 FROM schools, locales
 WHERE schools.city = 'Orange'
 and schools.state <> 'CA'
@@ -1209,7 +1208,7 @@ and schools.locale_id = locale.id</textarea>
 	Once again, here's the full query that correctly answers the original question:
 </p>
 
-<textarea class='raw-sql' style='height:1em'>SELECT schools.name, schools.state, locales.name
+<textarea class='raw-sql'>SELECT schools.name, schools.state, locales.name
 FROM schools, locales
 WHERE schools.city = 'Orange'
 and schools.state <> 'CA'
@@ -1246,7 +1245,7 @@ and schools.locale_id = locale.id</textarea>
 	Consider the following query:
 </p>
 
-<textarea class='raw-sql' style='height:1em'>SELECT name, state, name
+<textarea class='raw-sql'>SELECT name, state, name
 FROM schools, locales
 WHERE name = 'Univerity of Scranton'</textarea>
 
@@ -1276,7 +1275,7 @@ WHERE name = 'Univerity of Scranton'</textarea>
 	You can specify which table a particular column belongs to by prefixing it with the name of that table and a period.
 </p>
 
-<textarea class='raw-sql' style='height:1em'>SELECT schools.name, state, locales.name
+<textarea class='raw-sql'>SELECT schools.name, state, locales.name
 FROM schools, locales
 WHERE schools.name = 'Univerity of Scranton'</textarea>
 
@@ -1291,7 +1290,7 @@ WHERE schools.name = 'Univerity of Scranton'</textarea>
 	unique or not.  It is equally valid to write:
 </p>
 
-<textarea class='raw-sql' style='height:1em'>SELECT schools.name, schools.state, locales.name
+<textarea class='raw-sql'>SELECT schools.name, schools.state, locales.name
 FROM schools, locales
 WHERE schools.name = 'Univerity of Scranton'</textarea>
 
@@ -1519,7 +1518,7 @@ WHERE city = 'university park'</textarea>
 </p>
 
 
-<textarea class='raw-sql' style='height:1em'>SELECT schools.name, schools.state, locales.name
+<textarea class='raw-sql'>SELECT schools.name, schools.state, locales.name
 FROM schools, locales
 WHERE schools.name = 'University of Scranton'
 AND schools.locale_id = locales.id</textarea>
