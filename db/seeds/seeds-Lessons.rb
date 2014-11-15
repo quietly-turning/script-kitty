@@ -228,7 +228,6 @@ WHERE city = 'University Park'</textarea>
 			<td>16802-1589</td>
 			<td>Dr. Eric J. Barron</td>
 			<td>1</td>
-			<td>3</td>
 		</tr>
 	</tbody>
 </table>
@@ -1422,7 +1421,7 @@ WHERE city = 'university park'</textarea>
 
 	<p>
 		SQL would want to interpret <em>locale</em> and <em>id</em> as two separate columns,
-		and it would return a syntax error because there wasn't a commna between them. So,
+		and it would return a syntax error because there wasn't a comma between them. So,
 		while <em>locale id</em> is two words in plain English, we want to think of it as one unit
 		for the sake of SQL.
 	</p>
