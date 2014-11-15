@@ -15,7 +15,8 @@ rails g scaffold school name:string city:string state:string zip:string chief:st
 
 # query building stuff
 rails g scaffold datatype name
-rails g scaffold exercise question:text answer:text response_correct:text response_incorrect:text result_set_hash:string lesson:references
+rails g scaffold exercise question:text answer:text response_correct:text response_incorrect:text lesson:references
+rails g model    answer result_set_hash:string exercise:references
 rails g scaffold query status:integer raw_sql:text html_table:text user:references exercise:references
 rails g scaffold operator name sql_value html_representation query:references
 rails g scaffold condition column parameter operator:references query:references complexOperator

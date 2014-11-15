@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103034923) do
+ActiveRecord::Schema.define(version: 20141114225625) do
+
+  create_table "answers", force: true do |t|
+    t.string   "result_set_hash"
+    t.integer  "exercise_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "answers", ["exercise_id"], name: "index_answers_on_exercise_id", using: :btree
 
   create_table "conditions", force: true do |t|
     t.string   "column"
@@ -28,7 +37,6 @@ ActiveRecord::Schema.define(version: 20141103034923) do
 
   create_table "exercises", force: true do |t|
     t.text     "question"
-    t.string   "result_set_hash"
     t.text     "description"
     t.text     "response_correct"
     t.text     "response_incorrect"

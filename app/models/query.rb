@@ -251,14 +251,24 @@ class Query < ActiveRecord::Base
 		# SHA the resulting HTML table and compare against a verified hash
 		hash = Digest::SHA2.hexdigest(self.html_table)
 
-		# puts "\n\n\n\n\n\n\n"
-		# puts hash
-		# puts "\n\n\n\n\n\n\n"
-
-		if hash == self.exercise.result_set_hash
-			self.status = 2
+		puts "\n\n\n\n\n\n\n"
+		puts hash
+		puts "\n\n\n\n\n\n\n"
+		
+		# valid but incorrect -- set this now as default
+		self.status = 1
+		
+		if self.exercise.answers.size > 1
+			self.exercise.answers.each do |answer|
+				if hash == answer.result_set_hash
+					self.status = 2
+					break
+				end
+			end
 		else
-			self.status = 1
+			if hash == self.exercise.answers.first.result_set_hash
+				self.status = 2
+			end
 		end
 	end
 
