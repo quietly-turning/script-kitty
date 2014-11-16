@@ -121,7 +121,7 @@ class Query < ActiveRecord::Base
 		# malicious query?
 		elsif error =~ /Mysql2::Error: \w+ command denied to user/
 			restricted_command = (/Mysql2::Error: (\w+) command denied to user/.match(error)).captures[0]
-			message = "<span class='oops'>Woah there.</span  You're not allowed to use <span class='causing-the-error'>#{restricted_command}</span> in this tutorial!  This is Script Kitty, not Script Kiddie..."
+			message = "<span class='oops'>Woah there.</span>  You're not allowed to use <span class='causing-the-error'>#{restricted_command}</span> in this tutorial!  This is Script Kitty, not Script Kiddie..."
 
 		# malicious query!
 		elsif error =~ /Access denied for user/
@@ -246,6 +246,8 @@ class Query < ActiveRecord::Base
         self.html_table = htmlTable
     end
 
+########################################################
+
 	def check_if_correct
 
 		# SHA the resulting HTML table and compare against a verified hash
@@ -254,10 +256,10 @@ class Query < ActiveRecord::Base
 		puts "\n\n\n\n\n\n\n"
 		puts hash
 		puts "\n\n\n\n\n\n\n"
-		
+
 		# valid but incorrect -- set this now as default
 		self.status = 1
-		
+
 		if self.exercise.answers.size > 1
 			self.exercise.answers.each do |answer|
 				if hash == answer.result_set_hash
