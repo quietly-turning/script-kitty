@@ -1,8 +1,6 @@
 class QueriesController < ApplicationController
 
 	before_filter :authenticate_user!
-	before_filter :verify_is_admin, only: [:edit, :destroy]
-	before_action :set_query, only: [:show, :edit, :update, :destroy]
 
 	rescue_from ActiveRecord::StatementInvalid do |exception|
 		# if we're in this resucue block, it means the query didn't execute
@@ -48,15 +46,16 @@ class QueriesController < ApplicationController
   # GET /queries/1
   # GET /queries/1.json
   def show
-	  exercise = @query.exercise
-	  lesson = exercise.lesson
+      @query = Query.find(params[:id])
+	  @exercise = @query.exercise
+	  lesson = @exercise.lesson
 
 	  num_exercises = Exercise.where(lesson_id: lesson.id).size
 
-	  if exercise.dummy_id < num_exercises
-		 @next_exercise = Exercise.where(lesson_id: lesson.id, dummy_id: (exercise.dummy_id + 1)).take
+	  if @exercise.dummy_id < num_exercises
+		 @next_exercise = Exercise.where(lesson_id: lesson.id, dummy_id: (@exercise.dummy_id + 1)).take
 
-	  elsif exercise.dummy_id == num_exercises and (lesson.id + 1 <= Lesson.all.size)
+	  elsif @exercise.dummy_id == num_exercises and (lesson.id + 1 <= Lesson.all.size)
 		 @next_lesson = Lesson.find(lesson.id + 1)
 	  end
   end
@@ -115,47 +114,10 @@ class QueriesController < ApplicationController
 	end
   end
 
-
- 	# PATCH/PUT /queries/1
-  	# PATCH/PUT /queries/1.json
- 	 def update
-
-		# Because this is a study, and we are actually interested in incorrect answers,
-		# don't actually ever edit a query, just create a new one!  In this way, mistakes
-		# are logged for later analysis.  This method is a effectively a copy/paste of create.
-
-		@query = Query.new(query_params)
-		@query.user_id = current_user.id
-
-		if current_user.visual_interface?
-		  # @query.processConditions
-		  # @query.constructFormattedQuery
-		  # @query.constructHTMLtable
-		else
-		  @query.constructHTMLtable_simple
-		end
-
-		@query.check_if_correct
-
-		respond_to do |format|
-			if @query.save
-				if @query.status == 2
-					format.html { redirect_to @query, notice: 'correct' }
-				else
-					format.html { redirect_to @query, notice: 'incorrect' }
-				end
-				format.json { render :show, status: :ok, location: @query }
-		    else
-				format.html { render :edit }
-				format.json { render json: @query.errors, status: :unprocessable_entity }
-		    end
-		end
-	end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_query
-      @query = Query.find(params[:id])
+      # @query = Query.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

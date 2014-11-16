@@ -19,7 +19,10 @@
 			
 	    		<div class="small-10 columns kitty-bubble bubbletype-notice">
 					<div class="message">
-						<%= @query.exercise.response_incorrect.html_safe %>
+						Hmm.  The query you wrote ran successfully,
+						but it didn't find the information I was looking for.
+						 Would you like to
+						 <%= link_to "try again", lesson_exercise_path(@exercise, @exercise.lesson, {:raw_sql => @query.raw_sql}), :class => "message-anchor"  %>?
 					</div>
 				</div>
 				

@@ -4,7 +4,6 @@ class CreateExercises < ActiveRecord::Migration
       t.text :question
 	  t.text :description
 	  t.text :response_correct
-	  t.text :response_incorrect
 	  t.references :lesson, index: true
 	  t.integer :dummy_id
 	  
