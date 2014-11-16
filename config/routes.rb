@@ -1,25 +1,14 @@
 Rails.application.routes.draw do
-  resources :websites
 
   resources :lessons do
 	  resources :exercises
   end
 
-  # resources :exercises
+  resources :queries, except: [:edit, :destroy]
 
-  resources :conditions
-
-  resources :queries
-
-  resources :operators
-
-  resources :datatypes
-
+  resources :websites
   resources :schools
-
   resources :locales
-
-  resources :statuses
 
   devise_for :users, controllers: { registrations: "registrations" }
   

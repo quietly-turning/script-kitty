@@ -10,7 +10,6 @@ Security Things
 
 1. Prevent XSS Attacks
 2. Users should not be able to view other users' queries
-3. Limit tables the learner can SELECT on
 
 ---
 Smaller Things

@@ -22,9 +22,8 @@ class QueriesController < ApplicationController
   # GET /queries.json
   def index
 	  @lessons = Lesson.all
-	  @lessons_first_half = Lesson.where(id: 1..4)
-	  @lessons_second_half = Lesson.where(id: 5..8)
-
+	  @lessons_first_half =  @lessons[0..3]
+	  @lessons_second_half = @lessons[4..7]
 
 	  if current_user.admin
 		 @queries = Query.all
@@ -43,14 +42,12 @@ class QueriesController < ApplicationController
 				 end
 			 end
 		 end
-
 	  end
   end
 
   # GET /queries/1
   # GET /queries/1.json
   def show
-	  @query = Query.find(params[:id])
 	  exercise = @query.exercise
 	  lesson = exercise.lesson
 
@@ -69,12 +66,6 @@ class QueriesController < ApplicationController
     @query = Query.new
     @operators = Operator.all
     @condition = @query.conditions.build
-  end
-
-  # GET /queries/1/edit
-  def edit
-	 @query = Query.find(params[:id])
-	 # redirect_to lesson_exercise_path(@query.exercise.lesson, @query.exercise.dummy_id, {:raw_sql => @query.raw_sql} )
   end
 
   # POST /queries
@@ -160,16 +151,6 @@ class QueriesController < ApplicationController
 		    end
 		end
 	end
-
-  # DELETE /queries/1
-  # DELETE /queries/1.json
-  def destroy
-    @query.destroy
-    respond_to do |format|
-      format.html { redirect_to queries_url, notice: 'Query was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
