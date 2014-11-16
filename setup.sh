@@ -28,9 +28,8 @@ rake db:seed
 
 
 # misc. notes
-# need to create a DB user with limited permissions (insert, select):  thesis_user
+# need to create a DB user (thesis_learner) with limited permissions (SELECT)
 
-# GRANT SELECT ON thesis.* TO 'thesis_user'@'localhost' IDENTIFIED BY 'moomoo';
-# GRANT INSERT, UPDATE ON thesis.queries TO 'thesis_user'@'localhost' IDENTIFIED BY 'moomoo';
-# GRANT INSERT, UPDATE ON thesis.conditions TO 'thesis_user'@'localhost' IDENTIFIED BY 'moomoo';
-# GRANT INSERT, UPDATE ON thesis.users TO 'thesis_user'@'localhost' IDENTIFIED BY 'moomoo';
+# GRANT SELECT ON ScriptKitty.schools TO 'thesis_learner'@'localhost' IDENTIFIED BY 'moomoo';
+# GRANT SELECT ON ScriptKitty.locales TO 'thesis_learner'@'localhost' IDENTIFIED BY 'moomoo';
+# GRANT SELECT ON ScriptKitty.websites TO 'thesis_learner'@'localhost' IDENTIFIED BY 'moomoo';

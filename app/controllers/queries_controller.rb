@@ -1,17 +1,22 @@
 class QueriesController < ApplicationController
 
-  before_filter :authenticate_user!
-  before_filter :verify_is_admin, only: [:edit, :destroy]
-  before_action :set_query, only: [:show, :edit, :update, :destroy]
+	before_filter :authenticate_user!
+	before_filter :verify_is_admin, only: [:edit, :destroy]
+	before_action :set_query, only: [:show, :edit, :update, :destroy]
 
-  rescue_from ActiveRecord::StatementInvalid do |exception|
-	  exercise = Exercise.find(params[:query][:exercise_id])
-	  lesson = Lesson.find(exercise.lesson_id)
-	  query = Query.where(user_id: current_user.id, exercise_id: exercise.id).last
+	rescue_from ActiveRecord::StatementInvalid do |exception|
+		# if we're in this resucue block, it means the query didn't execute
+		# and we're still on the learner db connection
+		# switch the app back to using the primary db connection now
+		ActiveRecord::Base.establish_connection("#{Rails.env}".intern)
 
-	  redirect_to lesson_exercise_path(lesson, exercise, {:raw_sql => params[:query][:raw_sql]} ),
+		exercise = Exercise.find(params[:query][:exercise_id])
+		lesson = Lesson.find(exercise.lesson_id)
+		query = Query.where(user_id: current_user.id, exercise_id: exercise.id).last
+
+	  	redirect_to lesson_exercise_path(lesson, exercise, {:raw_sql => params[:query][:raw_sql]} ),
 		 						alert: query.friendly_errors(exception.message)
-  end
+	end
 
   # GET /queries
   # GET /queries.json

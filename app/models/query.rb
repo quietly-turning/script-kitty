@@ -120,19 +120,13 @@ class Query < ActiveRecord::Base
 
 		# malicious query?
 		elsif error =~ /Mysql2::Error: \w+ command denied to user/
-			restricted_command = (/Mysql2::Error: (\w+) command denied to user/.match(error)).captures[0]
-			message = "<span class='oops'>Woah there.</span>  You're not allowed to use <span class='causing-the-error'>#{restricted_command}</span> in this tutorial!  This is Script Kitty, not Script Kiddie..."
+			message = "<span class='oops'>Woah there.</span>  This is Script Kitty, not Script Kiddie..."
 
 		# malicious query!
 		elsif error =~ /Access denied for user/
 			message = "<span class='oops'>Woah there.</span>  This is Script Kitty, not Script Kiddie..."
 
 		end
-
-		# if we're in this resucue block, it means the query didn't execute
-		# and we're still on the learner db connection
-		# switch the app back to using the primary db connection now
-		ActiveRecord::Base.establish_connection("#{Rails.env}".intern)
 
 		return message
 	end
