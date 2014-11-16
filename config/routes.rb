@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
 
-  resources :lessons do
-	  resources :exercises
+  resources :lessons, only: [:index, :show ] do
+	  resources :exercises, only: [:index, :show]
   end
 
-  resources :queries, except: [:edit, :destroy]
+  resources :queries, except: [:edit, :destroy, :update]
 
-  resources :websites
-  resources :schools
-  resources :locales
+  resources :websites, only: [:index]
+  resources :schools, only: [:index]
+  resources :locales, only: [:index]
 
   devise_for :users, controllers: { registrations: "registrations" }
-  
+
   root :to => "home#index"
   get ':action' => 'home#:about'
   get ':action' => 'home#:wrap-up'
