@@ -47,6 +47,12 @@ class QueriesController < ApplicationController
   # GET /queries/1.json
   def show
       @query = Query.find(params[:id])
+
+	  # don't allow learners to peek at each others' work!
+	  if @query.user_id != current_user.id
+		  redirect_to root_path
+	  end
+
 	  @exercise = @query.exercise
 	  lesson = @exercise.lesson
 

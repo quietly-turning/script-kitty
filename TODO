@@ -9,7 +9,6 @@ MILESTONES:
 Security Things
 
 1. Prevent XSS Attacks
-2. Users should not be able to view other users' queries
 
 ---
 Smaller Things
