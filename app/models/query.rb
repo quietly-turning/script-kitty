@@ -3,7 +3,7 @@ class Query < ActiveRecord::Base
     belongs_to  :user
 
 	require 'digest'
-	
+
 ########################################################
 ########################################################
 
@@ -181,7 +181,7 @@ class Query < ActiveRecord::Base
 		# http://rubydoc.info/gems/mysql2/0.2.6/Mysql2/Result#fields-instance_method
 		for field in @result.fields
 			if field != "created_at" and field != "updated_at"
-				htmlTable += "\n\t\t\t<th>" + field + "</th>"
+				htmlTable += "\n\t\t\t<th>" + CGI::escapeHTML(field) + "</th>"
 			end
 		end
 
@@ -201,11 +201,11 @@ class Query < ActiveRecord::Base
 				htmlTable += "\n\t\t<tr>"
 				if includes_created_at and includes_updated_at
 					for j in 0...(@result[i].size-2)
-						htmlTable += "\n\t\t\t<td>" + @result[i][j].to_s + "</td>"
+						htmlTable += "\n\t\t\t<td>" + CGI::escapeHTML(@result[i][j].to_s) + "</td>"
 					end
 				else
 		            @result[i].each do |value|
-		                htmlTable += "\n\t\t\t<td>" + value.to_s + "</td>"
+		                htmlTable += "\n\t\t\t<td>" + CGI::escapeHTML(value.to_s) + "</td>"
 		            end
 				end
 				htmlTable += "\n\t\t</tr>"
@@ -218,11 +218,11 @@ class Query < ActiveRecord::Base
 				htmlTable += "\n\t\t<tr>"
 				if includes_created_at and includes_updated_at
 					for i in 0...(row.size-2)
-						htmlTable += "\n\t\t\t<td>" + row[i].to_s + "</td>"
+						htmlTable += "\n\t\t\t<td>" + CGI::escapeHTML(row[i].to_s) + "</td>"
 					end
 				else
 		            row.each do |value|
-		                htmlTable += "\n\t\t\t<td>" + value.to_s + "</td>"
+		                htmlTable += "\n\t\t\t<td>" + CGI::escapeHTML(value.to_s) + "</td>"
 		            end
 				end
 				htmlTable += "\n\t\t</tr>"
