@@ -4,7 +4,8 @@ class CreateWebsites < ActiveRecord::Migration
       t.string :url
 	  t.string :classification
       t.references :school, index: true
-      t.timestamps
+
+	  # t.timestamps
     end
   end
 end

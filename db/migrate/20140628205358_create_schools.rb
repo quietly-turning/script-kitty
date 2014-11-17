@@ -8,7 +8,7 @@ class CreateSchools < ActiveRecord::Migration
       t.string :chief
       t.references :locale, index: true
 
-      t.timestamps
+      # t.timestamps
     end
   end
 end

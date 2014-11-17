@@ -4,7 +4,7 @@ class CreateLocales < ActiveRecord::Migration
       t.string :name
       t.string :description
 
-      t.timestamps
+      # t.timestamps
     end
   end
 end
