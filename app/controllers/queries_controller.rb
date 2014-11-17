@@ -13,7 +13,7 @@ class QueriesController < ApplicationController
 		query = Query.where(user_id: current_user.id, exercise_id: exercise.id).last
 
 	  	redirect_to lesson_exercise_path(lesson, exercise, {:raw_sql => params[:query][:raw_sql]} ),
-		 						alert: query.friendly_errors(exception.message)
+		 						alert: query.friendly_errors(exception.message) and return
 	end
 
   # GET /queries
@@ -50,7 +50,7 @@ class QueriesController < ApplicationController
 
 	  # don't allow learners to peek at each others' work!
 	  if @query.user_id != current_user.id
-		  redirect_to root_path
+		  redirect_to root_path and return
 	  end
 
 	  @exercise = @query.exercise
