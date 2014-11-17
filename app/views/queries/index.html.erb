@@ -1,4 +1,8 @@
 <div class="row">
+	<%= render 'home/messages' %>
+</div>
+
+<div class="row">
 	<% if current_user.admin %>
 		<div class="small-12 columns">
 
@@ -48,7 +52,7 @@
 				<p class="subtitle"><%= lesson.title.html_safe %></p>
 
 				<ul>
-			    <% for i in 0..lesson.exercises.size-1 %>
+			    <% for i in 0...lesson.exercises.size %>
 					<li>
 					<% if @queries[lesson.id][i] %>
 						<%= link_to "Exercise " + lesson.id.to_s + "." + (i+1).to_s, query_path(@queries[lesson.id][i]) %> -
@@ -72,7 +76,7 @@
 				<p class="subtitle"><%= lesson.title.html_safe %></p>
 
 				<ul>
-			    <% for i in 0..lesson.exercises.size-1 %>
+			    <% for i in 0...lesson.exercises.size %>
 					<li>
 					<% if @queries[lesson.id][i] %>
 						<%= link_to "Exercise " + lesson.id.to_s + "." + (i+1).to_s, query_path(@queries[lesson.id][i]) %> -

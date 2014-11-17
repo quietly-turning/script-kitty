@@ -22,6 +22,8 @@ class QueriesController < ApplicationController
 	  @lessons = Lesson.all
 	  @lessons_first_half =  @lessons[0..3]
 	  @lessons_second_half = @lessons[4..7]
+	  @next_lesson_to_try = 1
+	  continue_searching_for_next_lesson = true
 
 	  if current_user.admin
 		 @queries = Query.all
@@ -37,6 +39,18 @@ class QueriesController < ApplicationController
 
 				 if query
 					 @queries[exercise.lesson_id] << query
+				 end
+
+				 if continue_searching_for_next_lesson
+					 if query and query.status == 2
+						 if exercise.dummy_id == exercises.size
+							 # when the learner is 100% done, this will evaluate to lessons.size + 1
+							 # we'll check for that and handle it in the _messages partial
+							 @next_lesson_to_try += 1
+						 end
+					 else
+						 continue_searching_for_next_lesson = false
+					 end
 				 end
 			 end
 		 end
