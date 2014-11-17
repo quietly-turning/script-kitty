@@ -22,24 +22,10 @@ ActiveRecord::Schema.define(version: 20141114225625) do
 
   add_index "answers", ["exercise_id"], name: "index_answers_on_exercise_id", using: :btree
 
-  create_table "conditions", force: true do |t|
-    t.string   "column"
-    t.string   "parameter"
-    t.integer  "operator_id"
-    t.integer  "query_id"
-    t.string   "complexOperator"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "conditions", ["operator_id"], name: "index_conditions_on_operator_id", using: :btree
-  add_index "conditions", ["query_id"], name: "index_conditions_on_query_id", using: :btree
-
   create_table "exercises", force: true do |t|
     t.text     "question"
     t.text     "description"
     t.text     "response_correct"
-    t.text     "response_incorrect"
     t.integer  "lesson_id"
     t.integer  "dummy_id"
     t.datetime "created_at"
@@ -57,18 +43,8 @@ ActiveRecord::Schema.define(version: 20141114225625) do
   end
 
   create_table "locales", force: true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "operators", force: true do |t|
-    t.string   "name"
-    t.string   "sql_value"
-    t.string   "html_representation"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "name"
+    t.string "description"
   end
 
   create_table "queries", force: true do |t|
@@ -87,14 +63,12 @@ ActiveRecord::Schema.define(version: 20141114225625) do
   add_index "queries", ["user_id"], name: "index_queries_on_user_id", using: :btree
 
   create_table "schools", force: true do |t|
-    t.string   "name"
-    t.string   "city"
-    t.string   "state",      limit: 2
-    t.string   "zip",        limit: 10
-    t.string   "chief"
-    t.integer  "locale_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "name"
+    t.string  "city"
+    t.string  "state",     limit: 2
+    t.string  "zip",       limit: 10
+    t.string  "chief"
+    t.integer "locale_id"
   end
 
   add_index "schools", ["locale_id"], name: "index_schools_on_locale_id", using: :btree
@@ -120,11 +94,9 @@ ActiveRecord::Schema.define(version: 20141114225625) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "websites", force: true do |t|
-    t.string   "url"
-    t.string   "classification"
-    t.integer  "school_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "url"
+    t.string  "classification"
+    t.integer "school_id"
   end
 
   add_index "websites", ["school_id"], name: "index_websites_on_school_id", using: :btree

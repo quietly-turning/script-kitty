@@ -11,7 +11,8 @@
 						<% if @next_lesson_to_try and @next_lesson_to_try < @lessons.size %>
 							<br>
 							You should continue with
-							<%=link_to "Lesson " + @next_lesson_to_try.to_s + ".", lesson_path( Lesson.find(@next_lesson_to_try) ), :class => "message-anchor" %>
+							<%=link_to "Lesson " + @next_lesson_to_try.to_s, lesson_path( Lesson.find(@next_lesson_to_try) ), :class => "message-anchor" %>
+							.
 						<% end %>
 					</div>
 				</div>

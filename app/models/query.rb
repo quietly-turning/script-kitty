@@ -167,11 +167,6 @@ class Query < ActiveRecord::Base
 			return
 		end
 
-		# we don't really want created_at and updated_at attributes showing up in results
-		# these are flags
-		includes_created_at = @result.fields.include? "created_at"
-		includes_updated_at = @result.fields.include? "updated_at"
-
 		# store the true size of the result set now
 		self.result_size = @result.size
 
@@ -199,15 +194,10 @@ class Query < ActiveRecord::Base
 	        for i in 0...500
 
 				htmlTable += "\n\t\t<tr>"
-				if includes_created_at and includes_updated_at
-					for j in 0...(@result[i].size-2)
-						htmlTable += "\n\t\t\t<td>" + CGI::escapeHTML(@result[i][j].to_s) + "</td>"
-					end
-				else
-		            @result[i].each do |value|
-		                htmlTable += "\n\t\t\t<td>" + CGI::escapeHTML(value.to_s) + "</td>"
-		            end
-				end
+
+		        @result[i].each do |value|
+		            htmlTable += "\n\t\t\t<td>" + CGI::escapeHTML(value.to_s) + "</td>"
+		        end
 				htmlTable += "\n\t\t</tr>"
 	        end
 
@@ -216,15 +206,10 @@ class Query < ActiveRecord::Base
 	        for row in @result
 
 				htmlTable += "\n\t\t<tr>"
-				if includes_created_at and includes_updated_at
-					for i in 0...(row.size-2)
-						htmlTable += "\n\t\t\t<td>" + CGI::escapeHTML(row[i].to_s) + "</td>"
-					end
-				else
-		            row.each do |value|
-		                htmlTable += "\n\t\t\t<td>" + CGI::escapeHTML(value.to_s) + "</td>"
-		            end
-				end
+
+	            row.each do |value|
+	                htmlTable += "\n\t\t\t<td>" + CGI::escapeHTML(value.to_s) + "</td>"
+	            end
 				htmlTable += "\n\t\t</tr>"
 	        end
 		end
@@ -243,9 +228,9 @@ class Query < ActiveRecord::Base
 		# SHA the resulting HTML table and compare against a verified hash
 		hash = Digest::SHA2.hexdigest(self.html_table)
 
-		puts "\n\n\n\n\n\n\n"
-		puts hash
-		puts "\n\n\n\n\n\n\n"
+		# puts "\n\n\n\n\n\n\n"
+		# puts hash
+		# puts "\n\n\n\n\n\n\n"
 
 		# valid but incorrect -- set this now as default
 		self.status = 1
