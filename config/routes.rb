@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :lessons, only: [:index, :show ] do
+  resources :lessons, only: [:show] do
 	  resources :exercises, only: [:index, :show]
   end
 
