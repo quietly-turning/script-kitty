@@ -2,13 +2,13 @@ MILESTONES:
 
 1. Test, test, test
 	is it still possible to crash the app with malformed queries?
+		yes, by using the sleep() function
 	is it still possible to submit a malicious query?  Needs proper sandboxing.
-
+		it doesn't seem so!
 
 ---
 Security Things
 
-1. Prevent XSS Attacks
 
 ---
 Smaller Things
@@ -16,6 +16,7 @@ Smaller Things
 1. Add a proper README documenting how to setup the app from scratch and where to find things within the code.
 2. Maybe add an aside concerning versions of SQL?  That this tutorial uses MariaDB?
 3. Share accomplishment to [social media platform]?  (This should probably coincide with the wrap-up page.)
+4. Fix Foundation's TopBar to work for mobile/very-narrow-browsers.
 
 ---
 Nebulous Things
