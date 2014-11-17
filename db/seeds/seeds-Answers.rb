@@ -1,5 +1,5 @@
 # 1.1
-Answer.create( result_set_hash: "2acdeb39312427c9e853c3f10356565a41fd91edddce6aacf9dd53b5807afb30", exercise_id: 1 )
+Answer.create( result_set_hash: "979d6ad21a984b4f119326405052b00e78498059c6312e62d40e05a8c4a3a8cc", exercise_id: 1 )
 # 1.2
 Answer.create( result_set_hash: "74bb695a25eccdd5ebaf072b5a077a9c7eab69b4af86bfbd440ae33c02b06a03", exercise_id: 2 )
 
