@@ -1,7 +1,7 @@
 ####################################
 #          Seed A User
 ####################################
-User.create(admin: 1, visual_interface: 0, email: 'test@test.com', password: 'topsecret', password_confirmation: 'topsecret');
+User.create(admin: 1, visual_interface: 0, email: 'djg270@psu.edu', password: 'topsecret', password_confirmation: 'topsecret');
 
 
 ####################################
@@ -12,4 +12,4 @@ User.create(admin: 1, visual_interface: 0, email: 'test@test.com', password: 'to
 # Operator.create( name: 'like',          sql_value: ' like ',	html_representation: 'contains')
 # Operator.create( name: 'greaterthan',   sql_value: ' > ',		html_representation: '&gt;')
 # Operator.create( name: 'lessthan',      sql_value: ' < ',		html_representation: '&lt;')
-# Operator.create( name: 'doesnotequal',  sql_value: ' != ',		html_representation: '&ne;')
+# Operator.create( name: 'doesnotequal',  sql_value: ' != ',	html_representation: '&ne;')
