@@ -1,6 +1,6 @@
 <div id="exercise-header">
 	<div class="row">
-		<div class="small-9 small-centered columns">
+		<div class="small-10 small-centered medium-9 columns">
 			<h2>Lesson <%= @lesson.id %></h2>
 			<p>
 				<%= @lesson.title.html_safe %>
@@ -14,16 +14,17 @@
 </div>
 
 <div class="row">
-	<div class="small-9 small-centered columns">
+	<div class="small-12 small-centered medium-9 columns">
 		<h4><strong>Objective:</strong>
 		<%= @lesson.objective.html_safe %></h4>
 		<hr>
 
 		<%= @lesson.body.html_safe %>
-		
-		
+
 		<hr>
-		<h4><%= link_to "Try Exercise " + @lesson.id.to_s + "." + @lesson.exercises.first.dummy_id.to_s, lesson_exercise_path(@lesson, @lesson.exercises.first) %></h4>
+		<h4>
+			<%= link_to "Try Exercise " + @lesson.id.to_s + "." + @lesson.exercises.first.dummy_id.to_s, lesson_exercise_path(@lesson, @lesson.exercises.first) %>
+		</h4>
 		<br><br><br>
 	</div>
 </div>

@@ -1,4 +1,4 @@
-<div class="exercise-header">
+<div id="exercise-header">
 	<div class="row">
 		<div class="small-12 columns">
 			<h2>Exercise <%= @query.exercise.lesson.id.to_s+ "." + @query.exercise.dummy_id.to_s %> Results</h2>
@@ -39,7 +39,7 @@
 			<strong>Query Results:</strong>
 
 			<% if @query.truncated_results == 1 %>
-				<div data-alert class="alert-box info radius small-4">
+				<div data-alert class="alert-box info radius small-12 medium-6 large-4">
 				<strong>Please note:</strong><br>
 				There are <%= @query.result_size %> records in this result set!<br>
 				We're only showing the first 500.</div>
@@ -59,11 +59,11 @@
 				<% end %>
 
 				<p>
-          <% if @next_exercise or @next_lesson %>
-            Alternatively, you can
-          <% else %>
-            If you'd like, you can
-          <% end %>
+				<% if @next_exercise or @next_lesson %>
+					Alternatively, you can
+				<% else %>
+					If you'd like, you can
+				<% end %>
 					<%= link_to 'try this exercise again', lesson_exercise_path(@query.exercise.lesson, @query.exercise) %> or
 					<%= link_to 'edit your answer', lesson_exercise_path( @query.exercise.lesson, @query.exercise, {:raw_sql => @query.raw_sql} ) %>.
 				</p>

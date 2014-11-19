@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="small-6 columns">
+	<div class="small-12 medium-6 columns">
 
 		<div class="field">
 
@@ -11,7 +11,7 @@
 
 		    <%= form.text_area :raw_sql, :value => @raw_sql %>
 
-			<% unless @exercise.nil? %>
+			<% if @exercise %>
 				<%= form.hidden_field :exercise_id, :value => @exercise.id %>
 			<% end %>
 		</div>
@@ -21,7 +21,7 @@
 		</div>
 	</div>
 
-	<div id="simple-reference" class="small-6 columns">
+	<div id="simple-reference" class="small-12 medium-6 columns">
 		<% if @exercise.lesson.id == 1 %>
 			<p>
 				<strong>Reference:</strong><br>
