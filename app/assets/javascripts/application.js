@@ -15,12 +15,13 @@
 //
 //= require jquery-ui
 //
-//= require foundation
+//= require foundation/foundation
+//= require foundation/foundation.dropdown
+//= require foundation/foundation.topbar
+//
 //= require_tree .
 //
 //= require codemirror
 //= require codemirror/modes/sql
 //
 //= require turbolinks
-
-$(document).foundation();
