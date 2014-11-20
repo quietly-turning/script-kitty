@@ -31,24 +31,24 @@ Answer.create( result_set_hash: "7c4c1e46916c36a44ad0a3403b0ae279b6d5ce3c6714926
 # 6.1
 Answer.create( result_set_hash: "61e62c5c19ad48eeb3546acdbfb384f4e24bb8cd9837f9e427aefb1bbc2cf2aa", exercise_id: 11)
 # 6.2
-Answer.create( result_set_hash: "914eb24dea894f4c6a70f17585e0d5bd26180d2dc67761bce48394b15ea71fe0", exercise_id: 12)
+Answer.create( result_set_hash: "e54e5dcf7e92190cf80503545ca1e50458d7c8f9504445c9b63fc1645d7e52a7", exercise_id: 12)
 
 
 # 7.1
-Answer.create( result_set_hash: "27936c07191e0f0a2cf21561ccb23da9431f668260b9a7d64ab18bccd3e2b925", exercise_id: 13)
-Answer.create( result_set_hash: "c59013777e97cdcc682dab0f946f95d2df332ffef4127956d1313753804c9665", exercise_id: 13)
-Answer.create( result_set_hash: "9919932c8c2c952bb9a62860c35f2ef6d185b3eec614b4f31d5b5a8915bc30c5", exercise_id: 13)
-Answer.create( result_set_hash: "ae6ad4b4194f83e8aafc0503e422b3c9d7f78dd687deee5b643d2ea01705c797", exercise_id: 13)
-Answer.create( result_set_hash: "cdf89622f339c64e5a247e0c73e766b459095d7baa6e74067ab5d3031e062fd9", exercise_id: 13)
-Answer.create( result_set_hash: "96a7e3b7a323d89785b86bf66b7f9950ce0bcb81212f07d1e4220997d5b5df4f", exercise_id: 13)
+Answer.create( result_set_hash: "8bf925e742e6392fa550a192ef7f1210f37a462d47cf32ed981a7513aba39abd", exercise_id: 13)
+Answer.create( result_set_hash: "ef1ce76ae286034d1b4246e182af66a8fcfabd5f921117de16aa353e68b90947", exercise_id: 13)
+Answer.create( result_set_hash: "059db970ea50ce0a90909aed14a9febf835a7dd1f4af3ab0e7c383eae6c5768a", exercise_id: 13)
+Answer.create( result_set_hash: "9a011769b8dd512aeedcdbe082608be66f6d9ccf226ec77ac686f05a879b0f5a", exercise_id: 13)
+Answer.create( result_set_hash: "c7de47f4f8b0f7b5dd832758ca50b564530dd0ce759211e37b3915bbb1a2952a", exercise_id: 13)
+Answer.create( result_set_hash: "b1919adc082bf597e368fd5febafaecdf55aef2330f9089b06883559a4757d28", exercise_id: 13)
 
 # 7.2
-Answer.create( result_set_hash: "15fec4f8c191068f227721d3cdf5dda3c79adc3a57e01f5f97f8ce6f5eb81ae9", exercise_id: 14)
-Answer.create( result_set_hash: "7dbf7ef8606afd0709facb7480c368b6a1939250bd3617e68f978cf4c9961d1e", exercise_id: 14)
-Answer.create( result_set_hash: "c58df99b2e8153201ca0c3112911789a38fff48a224cc245feae5146fdbf9d99", exercise_id: 14)
-Answer.create( result_set_hash: "8db9bd74dd9cd0dd3ae179009b074ccfee372a5ccd3eab3e082ffe26d654fd65", exercise_id: 14)
-Answer.create( result_set_hash: "566bc79c5cb1b7d9d310cc14a86a679cba655f6ddc626779e6160085bf612082", exercise_id: 14)
-Answer.create( result_set_hash: "a9593831ef50fb6bb15fabb8bb0da0d04f6e6939c3ae445b5951b473abaf3600", exercise_id: 14)
+Answer.create( result_set_hash: "cae8adad8dc4cee2c8f75ad79a9841da53fe842417764ff7027a56a8b7684aa5", exercise_id: 14)
+Answer.create( result_set_hash: "0775c3ab16bf98bc6d15265ffad6e84bb673f396bb32bafecf6bc7d1d7a8837d", exercise_id: 14)
+Answer.create( result_set_hash: "2c273a438612476c6748ce5114f7e07d89abfb82872c56cd20f10e0eefce0271", exercise_id: 14)
+Answer.create( result_set_hash: "1864d31f5b68e04ade555e620a684a3b6f9f2f0c3e0f7a3786f0e911a875b419", exercise_id: 14)
+Answer.create( result_set_hash: "9c8b6c55967216971355d4085b672ec616470855958402c67157ebd4ae6e3834", exercise_id: 14)
+Answer.create( result_set_hash: "2e29e52ba1c1eaa76ce4776d534dc30fc4b5df231399389268175ea7dd2a61f9", exercise_id: 14)
 
 
 # 8.1
