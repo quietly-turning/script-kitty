@@ -33,7 +33,7 @@ $(document).ready(function() {
 		copy.wrap("<div class='pinned' />");
 		original.wrap("<div class='scrollable' />");
 
-    setCellHeights(original, copy);
+    // setCellHeights(original, copy);
 	}
 	
 	function unsplitTable(original) {
