@@ -1,12 +1,12 @@
 <% flash.each do |name, msg| %>
 
 	<% if msg.is_a?(String) and not msg.blank? %>
-		<div class="small-9 small-centered medium-8 columns">
-    		<div class="small-10 columns kitty-bubble bubbletype-<%= name.to_s == 'notice' ? 'success' : 'alert' %>">
+		<div class="small-12 small-centered columns">
+    		<div class="small-9 medium-6 medium-offset-3 columns kitty-bubble bubbletype-<%= name.to_s == 'notice' ? 'success' : 'alert' %>">
 				<div class="message"><%= msg.html_safe %></div>
 			</div>
 			
-			<div class="small-2 small-centered columns">
+			<div class="small-3 end columns">
 				<%= image_tag "kitty-#{name.to_s == 'notice' ? 'success' : 'alert'}.png", :class => "kitty-image" %>
 			</div>
 		</div>
