@@ -2,38 +2,38 @@
 
 	<% if msg.is_a?(String) %>
 		<div class="small-offset-2 small-8 columns">
-			
+
 			<% if msg == "correct" %>
-			
+
 	    		<div class="small-10 columns kitty-bubble bubbletype-success">
 					<div class="message">
 						<%= @query.exercise.response_correct.html_safe %>
 					</div>
 				</div>
-				
+
 				<div class="small-2 columns">
 					<%= image_tag "kitty-success.png", :class => "kitty-image" %>
 				</div>
-				
+
 			<% else %>
-			
+
 	    		<div class="small-10 columns kitty-bubble bubbletype-notice">
 					<div class="message">
 						Hmm.  The query you wrote ran successfully,
 						but it didn't find the information I was looking for.
 						 Would you like to
-						 <%= link_to "try again", lesson_exercise_path(@exercise, @exercise.lesson, {:raw_sql => @query.raw_sql}), :class => "message-anchor"  %>?
+						 <%= link_to "try again", lesson_exercise_path(@exercise.lesson, @exercise, {:raw_sql => @query.raw_sql}), :class => "message-anchor"  %>?
 					</div>
 				</div>
-				
+
 				<div class="small-2 columns">
 					<%= image_tag "kitty-question.png", :class => "kitty-image" %>
 				</div>
-				
+
 			<% end %>
-			
+
 		</div>
 		<hr>
 	<% end %>
-	
+
 <% end %>
