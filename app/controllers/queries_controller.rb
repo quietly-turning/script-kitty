@@ -13,7 +13,7 @@ class QueriesController < ApplicationController
 		query = Query.where(user_id: current_user.id, exercise_id: exercise.id).last
 
 	  	redirect_to lesson_exercise_path(lesson, exercise, {:raw_sql => params[:query][:raw_sql]} ),
-		 						alert: query.friendly_errors(exception.message) and return
+		 						alert: query.friendly_errors(exception.message)
 	end
 
   # GET /queries
@@ -113,6 +113,9 @@ class QueriesController < ApplicationController
 			end
 
 			@query.check_if_correct
+			if @query.status == 2
+				check_if_done()
+			end
 
 			# then update the query entry
 			if @query.save
@@ -139,6 +142,20 @@ class QueriesController < ApplicationController
     def set_query
       # @query = Query.find(params[:id])
     end
+
+	def check_if_done
+		exercises = Exercise.all
+		exercises.each do |exercise|
+			query = Query.where(user_id: current_user.id, exercise_id: exercise.id, status: 2)
+
+			if query.empty?
+				return
+			end
+			if exercise.id == exercises.size
+				current_user.update!(done: 1)
+			end
+		end
+	end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def query_params

@@ -235,6 +235,7 @@ class Query < ActiveRecord::Base
 		# valid but incorrect -- set this now as default
 		self.status = 1
 
+		# do we need to check against multiple possible permutations?
 		if self.exercise.answers.size > 1
 			self.exercise.answers.each do |answer|
 				if hash == answer.result_set_hash
@@ -242,11 +243,12 @@ class Query < ActiveRecord::Base
 					break
 				end
 			end
+
+		# otherwise, there is only one possible correct answer
 		else
 			if hash == self.exercise.answers.first.result_set_hash
 				self.status = 2
 			end
 		end
 	end
-
 end

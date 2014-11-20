@@ -55,7 +55,12 @@
 					</li>
 
 				<li class="divider"></li>
-
+				<% if current_user.done %>
+					<li>
+						<a href="/wrap-up">Wrap-Up</a>
+					</li>
+					<li class="divider"></li>
+				<% end %>
 			<% end %>
 			
 			<li>
