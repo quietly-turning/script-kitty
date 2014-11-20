@@ -22,7 +22,7 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 <p>
 
 
-<table>
+<table class='responsive'>
 	<caption>Schools</caption>
 	<thead>
 		<tr>
@@ -99,7 +99,7 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 	key attribtues of database structure.  Each horizontal <strong>row</strong> represents
 	one school.  For example:
 
-	<table>
+	<table class='responsive'>
 		<tbody>
 			<tr>
 				<td>6</td>
@@ -218,7 +218,7 @@ WHERE city = 'University Park'</textarea>
 	This query would return exactly one row:
 </p>
 
-<table>
+<table class='responsive'>
 	<tbody>
 		<tr>
 			<td>3636</td>
@@ -287,7 +287,7 @@ WHERE state = 'AK'</textarea>
 	In plain English, the query would read: <em>please give me all the attributes of any schools in which the state exactly matches 'AK'</em>.  This query returns the following twelve rows:
 </p>
 
-<table>
+<table class='responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -453,7 +453,7 @@ WHERE name LIKE '%Yale%'</textarea>
 	</ul>
 </p>
 
-<table>
+<table class='responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -583,7 +583,7 @@ OR chief LIKE '%Cate%'</textarea>
 	Neat!  Let's check our results:
 </p>
 
-<table>
+<table class='responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -740,7 +740,7 @@ AND city = 'Harrisburg'</textarea>
 	It would return a single row:
 </p>
 
-<table>
+<table class='responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -817,7 +817,7 @@ AND name <> 'University of Scranton'</textarea>
 	results like:
 </p>
 
-<table>
+<table class='responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -959,7 +959,7 @@ WHERE city = 'University Park'</textarea>
 	returned a single row with all eight columns intact.
 </p>
 
-<table>
+<table class='responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -1004,7 +1004,7 @@ WHERE city = 'University Park'</textarea>
 	This would return a result set like:
 </p>
 
-<table>
+<table class='responsive'>
 	<thead>
 		<tr>
 			<th>chief</th>
@@ -1033,7 +1033,7 @@ WHERE zip like '%18509%'</textarea>
 	returns three rows across four columns.
 </p>
 
-<table>
+<table class='responsive'>
 	<thead>
 		<tr>
 			<th>name</th>
@@ -1135,7 +1135,7 @@ and schools.locale_id = locale.id</textarea>
 	It may become more clear if we examine the orginal rows of data.
 </p>
 
-<table width='100%'>
+<table class='responsive' width='100%'>
 	<caption>Schools</caption>
 	<thead>
 		<tr>
@@ -1162,7 +1162,7 @@ and schools.locale_id = locale.id</textarea>
 	</tbody>
 </table>
 
-<table>
+<table class='responsive'>
 	<caption>Locales</caption>
 	<thead>
 		<tr>
@@ -1297,7 +1297,7 @@ WHERE schools.name = 'Univerity of Scranton'</textarea>
 	Now, this query will actually run successfully, but it returns quite an unexpected result set:
 </p>
 
-<table>
+<table class='responsive'>
 	<thead>
 		<tr>
 			<th>name</th>
@@ -1449,7 +1449,7 @@ WHERE city = 'university park'</textarea>
 	Let's grab some rows of data and see if we can figure out what's going on.
 </p>
 
-<table>
+<table class='responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -1475,7 +1475,7 @@ WHERE city = 'university park'</textarea>
 	</tbody>
 </table>
 
-<table>
+<table class='responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -1527,7 +1527,7 @@ AND schools.locale_id = locales.id</textarea>
 	to only those that match up with the school we're interested in.  Here are the results this query produces:
 </p>
 
-<table>
+<table class='responsive'>
 	<thead>
 		<tr>
 			<th>name</th>
