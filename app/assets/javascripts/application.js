@@ -18,6 +18,7 @@
 //= require foundation/foundation
 //= require foundation/foundation.dropdown
 //= require foundation/foundation.topbar
+//= require foundation/responsive-tables
 //
 //= require_tree .
 //
