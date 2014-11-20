@@ -70,6 +70,10 @@ p.subtitle{
 /* --------------------------------------------- */
 /* Styling for messages/alerts from Script Kitty */
 
+.kitty-grad{
+	max-height: 160px;
+}
+
 .kitty-image{
 	position:relative;
 	right:18px;
