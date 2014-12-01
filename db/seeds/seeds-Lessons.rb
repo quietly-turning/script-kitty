@@ -1105,7 +1105,7 @@ Lesson.create( title: 'Using More Than One Table', objective: 'Write a complex q
 FROM schools, locales
 WHERE schools.city = 'Orange'
 and schools.state <> 'CA'
-and schools.locale_id = locale.id</textarea>
+and schools.locale_id = locales.id</textarea>
 
 <p>
 	Just like we did in Lesson 1, let's examine this query line by line.
@@ -1211,7 +1211,7 @@ and schools.locale_id = locale.id</textarea>
 FROM schools, locales
 WHERE schools.city = 'Orange'
 and schools.state <> 'CA'
-and schools.locale_id = locale.id</textarea>
+and schools.locale_id = locales.id</textarea>
 
 <p>
 	This lesson covered a lot of ground, and the concepts were really quite tricky.
