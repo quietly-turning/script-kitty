@@ -2,7 +2,13 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails'
+gem 'rails', '~> 4.2.0.rc1'
+
+# gems required for rails 4.2
+gem 'web-console', '~> 2.0',	group: :development
+gem 'responders', '~> 2.0'
+
+
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 
@@ -32,8 +38,6 @@ gem 'foundation-rails'
 gem 'kaminari'
 # a web-based text editor
 gem 'codemirror-rails'
-
-
 
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
