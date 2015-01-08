@@ -12,8 +12,11 @@
 			<li class="has-dropdown not-click">
 			      <a href="#">Tables</a>
 			      <ul class="dropdown">
+					  <li class="divider"></li>
 			          <li><%= link_to "Schools", schools_path %></li>
+					  <li class="divider"></li>
 					  <li><%= link_to "Locales", locales_path %></li>
+					  <li class="divider"></li>
 					  <li><%= link_to "Websites", websites_path %></li>
 				  </ul>
 			</li>
@@ -27,6 +30,7 @@
 					<ul class="dropdown">
 
 						<% for lesson in Lesson.all %>
+							<li class="divider"></li>
 							<li class="has-dropdown not-click">
 								<%= link_to "Lesson #{lesson.id}", lesson_path(lesson.id) %>
 
@@ -38,7 +42,7 @@
 										</li>
 									<% end %>
 								</ul>
-							</l>
+							</li>
 						<% end %>
 
 					</ul>
@@ -55,18 +59,20 @@
 					</li>
 
 				<li class="divider"></li>
+
 				<% if current_user.done %>
 					<li>
 						<a href="/wrap-up">Wrap-Up</a>
 					</li>
 					<li class="divider"></li>
 				<% end %>
+
 			<% end %>
-			
+
 			<li>
 				<a href="/about">About</a>
 			</li>
-			
+
 			<li class="divider"></li>
 
 		</ul>
