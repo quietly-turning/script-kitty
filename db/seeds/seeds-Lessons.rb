@@ -241,7 +241,7 @@ WHERE city = 'University Park'</textarea>
 
 <ul>
 	<li><strong>WHERE</strong> is like saying <em>I am only interested in the rows that meet this condition</em></li>
-	<li><em>city</em> is one of the columns in schools table; it is an attribute of a school</li>
+	<li><em>city</em> is one of the columns in the schools table; it is an attribute of a school</li>
 	<li><strong>=</strong> is a SQL operator; it compares the attribute on its left to the value on its right</li>
 	<li><em>'University Park'</em> is a value that you have provided, in this case a city you are interested in</li>
 </ul>
@@ -557,7 +557,7 @@ WHERE chief LIKE '%Cate%'</textarea>
 	<h4>A Brief Aside Concerning Semicolons</h4>
 	<p>
 		If you explore the Internet seeking other examples of SQL, you may see semicolons being used
-		to terminate queries, much like a punctuation denoting the end of a sentence.  Generally speaking,
+		to terminate queries, much like a punctuation mark denoting the end of a sentence.  Generally speaking,
 		this is optional, <strong>unless</strong> you are typing two queries back to back like above!
 	</p>
 
@@ -947,7 +947,7 @@ AND name &lt;&gt; 'University of Scranton'</textarea>
 Lesson.create( title: 'Being more specific than <em>SELECT *</em>', objective: 'Limit results to specific columns from the database table.', body: "
 <p>
 	In all the exercises up to this point, we have always retrieved full rows from the database.  The <em>Schools</em>
-	table has seven columns, and each of our queries has returned all eight columns per row.  For example, this query
+	table has seven columns, and each of our queries has returned all seven columns per row.  For example, this query
 	from <a href='/lessons/2'>Lesson 2</a>:
 </p>
 
@@ -956,7 +956,7 @@ FROM schools
 WHERE city = 'University Park'</textarea>
 
 <p>
-	returned a single row with all eight columns intact.
+	returned a single row with all seven columns intact.
 </p>
 
 <table class='responsive'>
