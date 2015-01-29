@@ -80,7 +80,7 @@ p.subtitle{
 	max-width: none;
 }
 
-.kitty-bubble{
+.kitty-bubble, #error_explanation{
 	margin-top:50px;
 	margin-bottom:20px;
 	padding: 20px;
@@ -104,9 +104,20 @@ a.message-anchor{
 	text-decoration:underline;
 }
 
-.bubbletype-alert{ background-color: #b5403c; }
+.bubbletype-alert, #error_explanation { background-color: #b5403c; }
 .bubbletype-success { background-color: #3ea237; }
 .bubbletype-notice { background-color: #3197ee; }
+
+#error_explanation h2{
+	font-size: 1.15em;
+	color: #fff;
+}
+
+#error_explanation ul{
+	list-style-type: none;
+	margin-left: 10%;
+	text-align: left;
+}
 
 /* --------------------------------------------- */
 
