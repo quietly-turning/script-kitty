@@ -4,6 +4,10 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.0'
 
+# dotenv-rails helps pass ENV variables to Rails
+# necessary for production keys
+gem 'dotenv-rails'
+
 # gems required for rails 4.2
 gem 'web-console',	group: :development
 gem 'responders'
