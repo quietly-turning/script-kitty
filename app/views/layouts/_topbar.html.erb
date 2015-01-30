@@ -62,7 +62,7 @@
 
 				<% if current_user.done %>
 					<li>
-						<a href="/wrap-up">Wrap-Up</a>
+						<%= link_to "Wrap-Up", "wrap-up"%>
 					</li>
 					<li class="divider"></li>
 				<% end %>
@@ -70,7 +70,7 @@
 			<% end %>
 
 			<li>
-				<a href="/about">About</a>
+				<%= link_to "About", "about" %>
 			</li>
 
 			<li class="divider"></li>
