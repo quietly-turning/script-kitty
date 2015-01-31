@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  root :to => "home#index"
+
+
   resources :lessons, only: [:show] do
 	  resources :exercises, only: [:index, :show]
   end
@@ -12,9 +15,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "registrations" }
 
-  root :to => "home#index"
-  get ':action' => 'home#:about'
-  get ':action' => 'home#:wrap-up'
+  get 'about', to: 'home#about', as: :about
+  get 'wrap-up', to: 'home#wrap-up', as: :wrap_up
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
