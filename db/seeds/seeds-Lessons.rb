@@ -258,8 +258,10 @@ WHERE city = 'University Park'</textarea>
 <aside>
 	<h4>A Brief Aside Concerning Capitalization</h4>
 	<p>
-		SQL is not a case-sensitive language.  <em>SELECT</em> is effectively the same as <em>select</em>, which is effectively
-		the same as <em>SeLeCt</em>.  The following two queries are interchangeable:
+		Throughout these lessons, you will not need to worry about capitalization when typing your SQL.
+		This means that <em>SELECT</em> will effectively be the same as <em>select</em>,
+		which will effectively be the same as <em>SeLeCt</em>. In ScriptKitty the following
+		two queries are interchangeable:
 	</p>
 
 	<textarea class='raw-sql'>select *
@@ -269,9 +271,17 @@ where city = 'university park'</textarea>
 	<textarea class='raw-sql'>sElEcT *
 fRoM sChOoLs
 wHeRe cItY = 'uNiVeRsItY PaRk'</textarea>
-
+	
 	<p>
-		The latter format might get you some strange looks from your peers, of course.  Use it at your own discretion!
+		It is worth noting that this does not <em>always</em> hold true \"in the real world.\"
+		SQL itself is not a case-sensitive language, but sometimes the computer that interprets it <em>is</em>.
+		This has nothing to do with the computer you are using right now, but rather the web-server
+		that is running ScriptKitty and interpretting your SQL for you.
+	</p>
+	
+	<p>
+		While ScriptKitty will interpret your queries in a case-insensitive manner, it is good practice
+		to pay attention to how tables and columns are capitalized and mimic this in the SQL you type.
 	</p>
 </aside>
 
