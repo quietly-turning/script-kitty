@@ -271,14 +271,14 @@ where city = 'university park'</textarea>
 	<textarea class='raw-sql'>sElEcT *
 fRoM sChOoLs
 wHeRe cItY = 'uNiVeRsItY PaRk'</textarea>
-	
+
 	<p>
 		It is worth noting that this does not <em>always</em> hold true \"in the real world.\"
 		SQL itself is not a case-sensitive language, but sometimes the computer that interprets it <em>is</em>.
 		This has nothing to do with the computer you are using right now, but rather the web-server
 		that is running ScriptKitty and interpretting your SQL for you.
 	</p>
-	
+
 	<p>
 		While ScriptKitty will interpret your queries in a case-insensitive manner, it is good practice
 		to pay attention to how tables and columns are capitalized and mimic this in the SQL you type.
@@ -428,7 +428,7 @@ WHERE state = 'AK'</textarea>
 
 Lesson.create( title: '<em>Equals</em> is not the only operator', objective: 'Search through text using the <em>like</em> operator.', body: "
 <p>
-	In the <a href='./lessons/2/'>previous lesson</a>, we learned how to limit the results of our query by adding a condition.
+	In the <a href='./2/'>previous lesson</a>, we learned how to limit the results of our query by adding a condition.
 	The <strong>WHERE</strong> keyword signifies that you want to limit your results by comparing some value to some table attribute
 	using an operator.  We learned how to use the <strong>=</strong> operator to perform an exact match.
 </p>
@@ -717,7 +717,7 @@ OR chief LIKE '%Catherine%'</textarea>
 
 Lesson.create( title: 'Compound Conditional Statements: Part 2', objective: 'Chain two conditions together with <em>AND</em>.', body: "
 <p>
-	In the <a href='/lessons/4'>previous lesson</a> we learned how to broaden the scope of our queries
+	In the <a href='./4'>previous lesson</a> we learned how to broaden the scope of our queries
 	by using OR to chain conditions together.  In this lesson, we'll cover the opposite idea -- a way to narrow
 	the scope of your queries and make them <em>more</em> specific.  We can do this using the <strong>AND</strong>
 	keyword.
@@ -958,7 +958,7 @@ Lesson.create( title: 'Being more specific than <em>SELECT *</em>', objective: '
 <p>
 	In all the exercises up to this point, we have always retrieved full rows from the database.  The <em>Schools</em>
 	table has seven columns, and each of our queries has returned all seven columns per row.  For example, this query
-	from <a href='/lessons/2'>Lesson 2</a>:
+	from <a href='./2'>Lesson 2</a>:
 </p>
 
 <textarea class='raw-sql'>SELECT *
@@ -1136,7 +1136,7 @@ and schools.locale_id = locales.id</textarea>
 
 <p>
 	The first two conditions are thankfully straightforward.  We've seen these concepts before,
-	in <a href='/lessons/2'>Lesson 2</a> and <a href='/lessons/6'>Lesson 6</a>, respectively.
+	in <a href='./2'>Lesson 2</a> and <a href='./6'>Lesson 6</a>, respectively.
 	The third condition (line 5) uses a familiar operator, but it may unclear at first what
 	it is actually doing.
 </p>
@@ -1230,7 +1230,7 @@ and schools.locale_id = locales.id</textarea>
 </p>
 
 <hr>
-<h4><a href='/lessons/8/exercises/1'>Try Exercise 8.1</a></h4>
+<h4><a href='./8/exercises/1'>Try Exercise 8.1</a></h4>
 <hr>
 
 
@@ -1394,15 +1394,15 @@ WHERE schools.name = 'Univerity of Scranton'</textarea>
 <h2>Avoiding Cartesian Products</h2>
 
 <p>
-	In <a href='/lessons/2'>Lesson 2</a> we learned to refine our results by applying a condition. In
-	<a href='/lessons/5'>Lesson 5</a> we learned to further refine our results by chaining multiple conditions
+	In <a href='./2'>Lesson 2</a> we learned to refine our results by applying a condition. In
+	<a href='./5'>Lesson 5</a> we learned to further refine our results by chaining multiple conditions
 	together using <srtong>AND</srtong>.  We see above that by not limiting which locales we wanted to retrieve,
 	we got <em>all</em> of them.
 </p>
 
 <p>
 	The nature of <em>why</em> this occurs is complex enough to be outside the scope of this tutorial.
-	(You can refer to the <a href='/about'>About</a> page for additional educational resources.)
+	(You can refer to the <a href='../about'>About</a> page for additional educational resources.)
 	For now, we'll focus on fixing them when they do occur.
 </p>
 

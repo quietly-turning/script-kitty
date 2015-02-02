@@ -19,7 +19,7 @@
 				<span class="wrap-up-bullet">1</span>
 			</div>
 			<div class="medium-9 small-11 columns end">
-				In <a href="/lessons/1">Lesson 1</a> we learned to retrieve all the information available for
+				In <%= link_to "Lesson 1", lesson_path(1) %> we learned to retrieve all the information available for
 				a table with a simple four word query.
 <textarea class='raw-sql' style='height:1em'>SELECT *
 FROM schools</textarea>
@@ -31,7 +31,7 @@ FROM schools</textarea>
 				<span class="wrap-up-bullet">2</span>
 			</div>
 			<div class="medium-9 small-11 columns end">
-				In <a href="/lessons/2">Lesson 2</a> we started to learn how to filter results
+				In <%= link_to "Lesson 2", lesson_path(2) %> we started to learn how to filter results
 				by performing direct matching using the <strong>=</strong> operator.
 <textarea class='raw-sql' style='height:1em'>SELECT *
 FROM schools
@@ -44,7 +44,7 @@ WHERE city = 'Houston'</textarea>
 				<span class="wrap-up-bullet">3</span>
 			</div>
 			<div class="medium-9  small-11 columns end">
-				In <a href="/lessons/3">Lesson 3</a> we refined our ability to filter results by searching through
+				In <%= link_to "Lesson 3", lesson_path(3) %> we refined our ability to filter results by searching through
 				segments of text using the <strong>LIKE</strong> operator.
 <textarea class='raw-sql' style='height:1em'>SELECT *
 FROM websites
@@ -58,7 +58,7 @@ WHERE url LIKE '%commonapp%'</textarea>
 			</div>
 			<div class="medium-9 small-11 columns end">
 				We were introduced to the idea of a query with more than one condition in
-				<a href="/lessons/4">Lesson 4</a> when we learned about the <strong>OR</strong>
+				<%= link_to "Lesson 4", lesson_path(4) %> when we learned about the <strong>OR</strong>
 				keyword.  Using <strong>OR</strong> tends to expand result sets.
 <textarea class='raw-sql' style='height:1em'>SELECT *
 FROM schools
@@ -74,7 +74,7 @@ OR chief like '%Mary%'</textarea>
 			</div>
 			<div class="medium-9 small-11 columns end">
 				We realized that queries could be <em>really</em> refined by chaining conditions
-				together with the <strong>AND</strong> keyword in <a href="/lessons/5">Lesson 5</a>.
+				together with the <strong>AND</strong> keyword in <%= link_to "Lesson 5", lesson_path(5) %>.
 				Using <strong>AND</strong> tends to shrink result sets.
 <textarea class='raw-sql' style='height:1em'>SELECT *
 FROM schools
@@ -88,7 +88,7 @@ AND state = 'PA'</textarea>
 				<span class="wrap-up-bullet">6</span>
 			</div>
 			<div class="medium-9 small-11 columns end">
-				In <a href="/lessons/6">Lesson 6</a> we discovered how to filter using the
+				In <%= link_to "Lesson 6", lesson_path(6) %> we discovered how to filter using the
 				<em>does not equal</em> operator, represented in SQL as <strong>&lt;&gt;</strong>
 <textarea class='raw-sql' style='height:1em'>SELECT *
 FROM schools
@@ -102,7 +102,7 @@ AND STATE &lt;&gt; 'TX'</textarea>
 				<span class="wrap-up-bullet">7</span>
 			</div>
 			<div class="medium-9 small-11 columns end">
-				<a href="/lessons/7">Lesson 7</a> showed us how to retrieve specific columns from
+				<%= link_to "Lesson 7", lesson_path(7) %> showed us how to retrieve specific columns from
 				database tables.  This can be helpful when writing queries for tables with lots of
 				possible columns.
 <textarea class='raw-sql' style='height:1em'>SELECT city, state, name
@@ -116,7 +116,7 @@ WHERE chief like '%Graham%'</textarea>
 				<span class="wrap-up-bullet">8</span>
 			</div>
 			<div class="medium-9 small-11 columns end">
-				Finally, <a href="/lessons/8">Lesson 8</a> was a doozy.  We learned how to retrieve
+				Finally, <%= link_to "Lesson 8", lesson_path(8) %> was a doozy.  We learned how to retrieve
 				results from more than a single table at a time.  Along the way, we learned how to avoid
 				column names and cartesian products.
 <textarea class='raw-sql' style='height:1em'>SELECT schools.name, website.url
@@ -133,7 +133,7 @@ AND websites.school_id = school.id</textarea>
 
 		<p>
 			If you're looking to learn more about SQL or how databases work, you should
-			check out the <a href="/about">About</a> page for additional educational resources.
+			check out the <%= link_to "About", about_url %> page for additional educational resources.
 		</p>
 
 		<h2>Thank you!</h2>
