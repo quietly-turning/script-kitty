@@ -32,7 +32,7 @@ class Query < ActiveRecord::Base
 
 		# table doesn't exist
 		elsif error =~ /Mysql2::Error: Table '\w+.(\w+)' doesn't exist:/
-			nonexistent_table = (/\w+.(\w+)/.match(error)).captures[0]
+			nonexistent_table = (/Mysql2::Error: Table '\w+.(\w+)' doesn't exist:/.match(error)).captures[0]
 			message = "<span class='oops'>Oops!</span>  It seems that the table <span class='causing-the-error'>#{nonexistent_table}</span> doesn't exist."
 
 
