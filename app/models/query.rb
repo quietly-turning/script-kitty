@@ -8,6 +8,7 @@ class Query < ActiveRecord::Base
 ########################################################
 
 	def friendly_errors(error)
+
 		message = "<span class='oops'>Oops!</span>  There is some sort of problem with your query!"
 
 		if error.include? "Mysql2::Error: You have an error in your SQL syntax;"
@@ -30,7 +31,7 @@ class Query < ActiveRecord::Base
 
 
 		# table doesn't exist
-		elsif error =~ /Mysql2::Error: Table 'thesis.(\w+)' doesn't exist:/
+		elsif error =~ /Mysql2::Error: Table '\w+.(\w+)' doesn't exist:/
 			nonexistent_table = (/thesis.(\w+)/.match(error)).captures[0]
 			message = "<span class='oops'>Oops!</span>  It seems that the table <span class='causing-the-error'>#{nonexistent_table}</span> doesn't exist."
 
@@ -116,7 +117,14 @@ class Query < ActiveRecord::Base
 
 		# malicious query?
 		elsif error =~ /Mysql2::Error: \w+ command denied to user/
-			message = "<span class='oops'>Woah there.</span>  This is Script Kitty, not Script Kiddie..."
+			denied_command = (/Error: (\w+) command denied to user/.match(error)).captures[0]
+			if denied_command == "SELECT"
+				nonexistent_table = (/for table '(\w+)':/.match(error)).captures[0]
+				message = "<span class='oops'>Oops!</span>  It seems that the table <span class='causing-the-error'>#{nonexistent_table}</span> doesn't exist."
+
+			else
+				message = "<span class='oops'>Woah there.</span>  This is Script Kitty, not Script Kiddie..."
+			end
 
 		# malicious query!
 		elsif error =~ /Access denied for user/
