@@ -38,7 +38,7 @@ class QueriesController < ApplicationController
 				 query = Query.where(user_id: current_user.id, exercise_id: exercise.id).last
 
 				 if query
-					 @queries[exercise.lesson_id] << query
+					 @queries[exercise.lesson_id][exercise.dummy_id] = query
 				 end
 
 				 if continue_searching_for_next_lesson

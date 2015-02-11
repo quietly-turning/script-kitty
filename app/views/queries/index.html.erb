@@ -49,19 +49,18 @@
 		<div class="small-11 small-centered columns">
 			<div class="medium-5 medium-offset-1 columns">
 
-				<% for lesson in @lessons_first_half %>
+				<% @lessons_first_half.each do |lesson| %>
 					<h3>Lesson <%= lesson.id %></h3>
 					<p class="subtitle"><%= lesson.title.html_safe %></p>
 
 					<ul>
-				    <% for i in 0...lesson.exercises.size %>
+				    <% lesson.exercises.each do |exercise| %>
 						<li>
-						<% if @queries[lesson.id][i] %>
-							<%= link_to "Exercise " + lesson.id.to_s + "." + (i+1).to_s, query_path(@queries[lesson.id][i]) %> -
-							<%= give_meaning_to(@queries[lesson.id][i].status).html_safe %>
+						<% if @queries[lesson.id][exercise.dummy_id] %>
+							<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", query_path(@queries[lesson.id][exercise.dummy_id]) %> -
+							<%= give_meaning_to(@queries[lesson.id][exercise.dummy_id].status).html_safe %>
 						<% else %>
-							<% exercise = Exercise.where(lesson_id: lesson.id)[i] %>
-							<%= link_to "Exercise " + lesson.id.to_s + "." + (i+1).to_s, lesson_exercise_path(lesson, exercise) %> -
+							<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", lesson_exercise_path(lesson, exercise) %> -
 							<em>not attempted yet</em>
 					    <% end %>
 						</li>
@@ -73,20 +72,19 @@
 
 			<div class="medium-5 columns">
 
-				<% for lesson in @lessons_second_half %>
+				<% @lessons_second_half.each do |lesson| %>
 					<h3>Lesson <%= lesson.id %></h3>
 					<p class="subtitle"><%= lesson.title.html_safe %></p>
 
 					<ul>
-				    <% for i in 0...lesson.exercises.size %>
+				    <% lesson.exercises.each do |exercise| %>
 						<li>
-						<% if @queries[lesson.id][i] %>
-							<%= link_to "Exercise " + lesson.id.to_s + "." + (i+1).to_s, query_path(@queries[lesson.id][i]) %> -
-							<%= give_meaning_to(@queries[lesson.id][i].status).html_safe %>
+						<% if @queries[lesson.id][exercise.dummy_id] %>
+							<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", query_path(@queries[lesson.id][exercise.dummy_id]) %> -
+							<%= give_meaning_to(@queries[lesson.id][exercise.dummy_id].status).html_safe %>
 
 						<% else %>
-							<% exercise = Exercise.where(lesson_id: lesson.id)[i] %>
-							<%= link_to "Exercise " + lesson.id.to_s + "." + (i+1).to_s, lesson_exercise_path(lesson, exercise) %> -
+							<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", lesson_exercise_path(lesson, exercise) %> -
 							<em>not attempted yet</em>
 					    <% end %>
 						</li>
