@@ -114,12 +114,17 @@ class QueriesController < ApplicationController
 
 			@query.check_if_correct
 			if @query.status == 2
-				check_if_done()
+
 			end
 
 			# then update the query entry
 			if @query.save
 				if @query.status == 2
+
+					# if the query saved AND it was correct, it's possible that
+					# the learner is not done, so check!  This check must be done
+					# AFTER saving otherwise we can't take this query into consideration!
+					check_if_done()
 					format.html { redirect_to @query, notice: 'correct' }
 				else
 					format.html { redirect_to @query, notice: 'incorrect' }
@@ -146,12 +151,11 @@ class QueriesController < ApplicationController
 	def check_if_done
 		exercises = Exercise.all
 		exercises.each do |exercise|
-			query = Query.where(user_id: current_user.id, exercise_id: exercise.id, status: 2)
+			query = Query.where(user_id: current_user.id, exercise_id: exercise.id, status: 2).take
 
-			if query.empty?
+			if not query
 				return
-			end
-			if exercise.id == exercises.size
+			elsif exercise.id == exercises.size
 				current_user.update!(done: 1)
 			end
 		end
