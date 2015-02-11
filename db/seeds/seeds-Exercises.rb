@@ -35,7 +35,7 @@ Exercise.create( question: "Find the name, city, and state of schools from the s
 
 
 ### lesson 8
-Exercise.create( question: "Find the school name and the name of its locale for all schools whose name contains the text <em>Penn State</em> .", response_correct: "Exactly right!  There's not much left to go!  Try the <a class=\"message-anchor\" href=\"../lessons/8/exercises/2\">next exercise</a>!", description: "Write a complex query that pulls data from multiple tables.  Learn how to avoid <em>cartesian products</em>.", lesson_id: 8)
+Exercise.create( question: "Find the school name and the name of its locale for all schools whose name contains the text <em>Penn State</em>.", response_correct: "Exactly right!  There's not much left to go!  Try the <a class=\"message-anchor\" href=\"../lessons/8/exercises/2\">next exercise</a>!", description: "Write a complex query that pulls data from multiple tables.  Learn how to avoid <em>cartesian products</em>.", lesson_id: 8)
 
 Exercise.create( question: "Find the school name and the url and classification of its websites for any schools where the city matches <em>University Park</em> .", response_correct: "Wonderful!  You're almost done!  There's only the <a class=\"message-anchor\" href=\"../lessons/8/exercises/3\">next exercise</a> left!", description: "Write another complex query that pulls data from multiple tables.", lesson_id: 8)
 
