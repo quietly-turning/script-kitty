@@ -6,6 +6,8 @@ MILESTONES:
 	is it still possible to submit a malicious query?  Needs proper sandboxing.
 		it doesn't seem so!
 
+2. Rewrite Lesson 8 to feature JOIN statement.
+
 ---
 Security Things
 
@@ -16,7 +18,7 @@ Smaller Things
 1. Add a proper README documenting how to setup the app from scratch and where to find things within the code.
 2. Maybe add an aside concerning versions of SQL?  That this tutorial uses MariaDB?
 3. Share accomplishment to [social media platform]?  (This should probably coincide with the wrap-up page.)
-4. Fix Foundation's TopBar to work for mobile/very-narrow-browsers.
+4. Alt-Text (on hover) for Exercises
 
 ---
 Nebulous Things
