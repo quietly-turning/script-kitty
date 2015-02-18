@@ -57,10 +57,10 @@
 				    <% lesson.exercises.each do |exercise| %>
 						<li>
 						<% if @queries[lesson.id][exercise.dummy_id] %>
-							<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", query_path(@queries[lesson.id][exercise.dummy_id]) %> -
+							<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", query_path(@queries[lesson.id][exercise.dummy_id]), :title => exercise.description %> -
 							<%= give_meaning_to(@queries[lesson.id][exercise.dummy_id].status).html_safe %>
 						<% else %>
-							<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", lesson_exercise_path(lesson, exercise) %> -
+							<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", lesson_exercise_path(lesson, exercise), :title => exercise.description %> -
 							<em>not attempted yet</em>
 					    <% end %>
 						</li>
@@ -80,11 +80,11 @@
 				    <% lesson.exercises.each do |exercise| %>
 						<li>
 						<% if @queries[lesson.id][exercise.dummy_id] %>
-							<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", query_path(@queries[lesson.id][exercise.dummy_id]) %> -
+							<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", query_path(@queries[lesson.id][exercise.dummy_id]), :title => exercise.description %> -
 							<%= give_meaning_to(@queries[lesson.id][exercise.dummy_id].status).html_safe %>
 
 						<% else %>
-							<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", lesson_exercise_path(lesson, exercise) %> -
+							<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", lesson_exercise_path(lesson, exercise), :title => exercise.description %> -
 							<em>not attempted yet</em>
 					    <% end %>
 						</li>
