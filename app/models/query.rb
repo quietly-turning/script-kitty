@@ -151,14 +151,20 @@ class Query < ActiveRecord::Base
 	def parse_out_tables(error)
 
 		tables = Array.new
-		# capture everything from "from" until the end of the query
-		temp = ((/from(.+)/im).match(error)).captures[0]
+		temp = ""
+
+		if (/from(.+)/im).match(error)
+			# capture everything from "from" until the end of the query
+			temp = (/from(.+)/im).match(error).captures[0]
+		end
 
 		# temp might have a where statement, but might not; truncate either way
 		temp = temp.sub((/where.+/im), "" )
 
 		# we might need to parse table names out of (maybe multiple) JOIN statements
-		tables += (/join\s*(\w+)\s*on\s*/im).match(temp).captures
+		if (/join\s*(\w+)\s*on\s*/im).match(temp)
+			tables += (/join\s*(\w+)\s*on\s*/im).match(temp).captures
+		end
 
 		# there might be more than one table listed in the FROM clause
 		table_str = temp.sub((/join\s+(\w+)\s+on.+/im), "" ).sub((/from/im), "")
