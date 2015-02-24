@@ -1178,7 +1178,7 @@ WHERE city = 'university park'</textarea>
 	In ScriptKitty, and in most real-world scenarios, the database tables will be properly set up by an
 	experienced database administrator to allow easy <strong>JOIN</strong>ing through thoughtfully named
 	columns.  While relational database design is a worthy and engaging topic of its own, it is outside
-	the scope of these lessons.  There are additional educational resources listed on the <a href='../About'>About</a>
+	the scope of these lessons.  There are additional educational resources listed on the <a href='../about'>About</a>
 	page if you are still curious later.
 </p>
 
