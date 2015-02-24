@@ -1115,8 +1115,7 @@ Lesson.create( title: 'Using More Than One Table', objective: 'Write a complex q
 FROM schools
 JOIN locales ON locales.id = schools.locale_id
 WHERE schools.city = 'Orange'
-AND schools.state &lt;&gt; 'CA'
-</textarea>
+AND schools.state &lt;&gt; 'CA'</textarea>
 
 <p>
 	Just like we did in Lesson 1, let's examine this query line by line.
@@ -1144,9 +1143,9 @@ AND schools.state &lt;&gt; 'CA'
 
 <p>
 	A <strong>JOIN</strong> statement will always be followed by a meaningful <strong>ON</strong> statement,
-	which might look similar to the simple <strong>WHERE</strong> statements we learned in <a hre='./2'>Lesson 2</a>.
+	which might look similar to the simple <strong>WHERE</strong> statements we learned in <a href='./2'>Lesson 2</a>.
 	<strong>ON</strong> is different, however, in that it must utilize the <strong>=</strong> operator to link
-	two related columns from two different tables, which are typically numerical IDs. Here, we are linking locales.id and schools.locale_id.
+	two related columns from two different tables which are typically numerical IDs. Here, we are linking <em>locales.id</em> and <em>schools.locale_id</em>.
 </p>
 
 <aside>
