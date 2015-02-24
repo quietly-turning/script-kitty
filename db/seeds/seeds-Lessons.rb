@@ -1112,10 +1112,11 @@ Lesson.create( title: 'Using More Than One Table', objective: 'Write a complex q
 </p>
 
 <textarea class='raw-sql'>SELECT schools.name, schools.state, locales.name
-FROM schools, locales
+FROM schools
+JOIN locales ON locales.id = schools.locale_id
 WHERE schools.city = 'Orange'
-and schools.state <> 'CA'
-and schools.locale_id = locales.id</textarea>
+and schools.state &lt;&gt; 'CA'
+</textarea>
 
 <p>
 	Just like we did in Lesson 1, let's examine this query line by line.
@@ -1130,292 +1131,23 @@ and schools.locale_id = locales.id</textarea>
 </p>
 
 <p>
-	On the second line, notice that we are asking for data from two tables, separated by commas.
-	The remaining three lines are conditions chained by <strong>AND</strong>.
+	The second line is familiar, (we are retrieving data <strong>FROM</strong> <em>schools</em>),
+	but perhaps it is also confusing.  What about <em>locales</em>?  Shouldn't we also retrieve
+	data <strong>FROM</strong> <em>locales</em>?
 </p>
 
 <p>
-	The first two conditions are thankfully straightforward.  We've seen these concepts before,
-	in <a href='./2'>Lesson 2</a> and <a href='./6'>Lesson 6</a>, respectively.
-	The third condition (line 5) uses a familiar operator, but it may unclear at first what
-	it is actually doing.
+	Well, we do!  With each additional table we want to query, we'll need an additional line of SQL
+	explicitly <strong>JOIN</strong>ing that table to the original in a meaningful way.  In this example,
+	the third line of the query serves to <strong>JOIN</strong> the second table to the first.
 </p>
 
 <p>
-	It may become more clear if we examine the orginal rows of data.
+	A <strong>JOIN</strong> statement will always be followed by a meaningful <strong>ON</strong> statement,
+	which might look similar to the simple <strong>WHERE</strong> statements we learned in <a hre="./2">Lesson 2</a>.
+	<strong>ON</strong> is different, however, in that it must utilize the <strong>=</strong> operator to link
+	two related columns from two different tables, which are typically numerical IDs. Here, we are linking locales.id and schools.locale_id.
 </p>
-
-<table class='responsive' width='100%'>
-	<caption>Schools</caption>
-	<thead>
-		<tr>
-			<th>id</th>
-			<th>name</th>
-			<th>city</th>
-			<th>state</th>
-			<th>zip</th>
-			<th>chief</th>
-			<th>locale_id</th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<tr>
-			<td>4051</td>
-			<td>Lamar State College-Orange</td>
-			<td>Orange</td>
-			<td>TX</td>
-			<td>77630</td>
-			<td>Michael Shahan</td>
-			<td>8</td>
-		</tr>
-	</tbody>
-</table>
-
-<table class='responsive'>
-	<caption>Locales</caption>
-	<thead>
-		<tr>
-			<th>id</th>
-			<th>name</th>
-			<th>description</th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<tr>
-			<td>7</td>
-			<td>Town, fringe</td>
-			<td>Territory inside an urban cluster that is less than or equal to 10 miles from an urbanized area.</td>
-		</tr>
-		<tr>
-			<td>8</td>
-			<td>Town, distant</td>
-			<td>Territory inside an urban cluster that is more than 10 miles and less than or equal to 35 miles from an urbanized area.</td>
-		</tr>
-		<tr>
-			<td>9</td>
-			<td>Town, remote</td>
-			<td>Territory inside an urban cluster that is more than 35 miles of an urbanized area.</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>
-	Note that <em>Lamar State College-Orange</em> has a <em>locale_id</em> of 8.  Additionally, the locale with an <em>id</em> of 8
-	has a name of <em>Town, distant</em>.  If you are thinking that database id fields are used to link tables, you are
-	absolutely correct!
-</p>
-
-<p>
-	How this is remedied in SQL may be less apparent.  It is natural to think that the existence of the <em>schools.locale_id</em>
-	field and the existence of the <em>locales.id</em> field should be enough.  Unfortunately, that is not the case.
-	We <strong>must</strong> explicitly link the two fields in our query.
-</p>
-
-<p>
-	Once again, here's the full query that correctly answers the original question:
-</p>
-
-<textarea class='raw-sql'>SELECT schools.name, schools.state, locales.name
-FROM schools, locales
-WHERE schools.city = 'Orange'
-and schools.state <> 'CA'
-and schools.locale_id = locales.id</textarea>
-
-<p>
-	This lesson covered a lot of ground, and the concepts were really quite tricky.
-	If you feel you need to read it over a few times, don't worry.  You can try out
-	the last few exercises to test your skills whenever you're ready.
-</p>
-
-<hr>
-<h4><a href='./8/exercises/1'>Try Exercise 8.1</a></h4>
-<hr>
-
-
-<p>
-	Lesson 8 is more complex and abstract than any of the preceding lessons.  Students new to SQL often struggle
-	with these concepts, so this lesson will devote extra time to overcoming common pitfalls:
-</p>
-
-<ol>
-	<li>ambiguous column names</li>
-	<li>cartesian products</li>
-</ol>
-
-<p>
-	We'll use this section to understand what those pitfalls are and how to avoid them.
-</p>
-
-<h2>Avoiding Ambiguous Column Names</h2>
-
-<p>
-	Consider the following query:
-</p>
-
-<textarea class='raw-sql'>SELECT name, state, name
-FROM schools, locales
-WHERE name = 'Univerity of Scranton'</textarea>
-
-<p>
-	If you ran this query as it stands, you would receive the following error:
-</p>
-
-<div class='row'>
-	<div class='small-10 columns'>
-		<div class='small-10 columns kitty-bubble bubbletype-alert'>
-			<div class='message'><span class='oops'>Oops!</span> <span class='causing-the-error'>SELECT name</span> is somewhat ambiguous.<br> Did you mean <span class='causing-the-error'>schools.name</span> or <span class='causing-the-error'>locales.name</span> ?</div>
-		</div>
-
-		<div class='small-2 columns'>
-			<img alt='Kitty alert' class='kitty-image' src='/assets/kitty-alert.png'>
-		</div>
-	</div>
-</div>
-
-<p>
-	This error actually makes sense.  It is true that both <em>Schools</em> and <em>Locales</em>
-	have a <em>name</em> column.  Since we didn't specify, SQL is asking us which one we want to retrieve.
-	In our case, we want to retrieve both.
-</p>
-
-<p>
-	You can specify which table a particular column belongs to by prefixing it with the name of that table and a period.
-</p>
-
-<textarea class='raw-sql'>SELECT schools.name, state, locales.name
-FROM schools, locales
-WHERE schools.name = 'Univerity of Scranton'</textarea>
-
-<p>
-	Notice how <strong>schools.name</strong> and <strong>locales.name</strong> have changed
-	but <strong>state</strong> has not. Out of both tables, only one has a <em>state</em> column,
-	so there is no ambiguity about which table it belongs to.
-</p>
-
-<p>
-	You can always prefix a column with its appropriate table if you are unsure whether it is
-	unique or not.  It is equally valid to write:
-</p>
-
-<textarea class='raw-sql'>SELECT schools.name, schools.state, locales.name
-FROM schools, locales
-WHERE schools.name = 'Univerity of Scranton'</textarea>
-
-<p>
-	Now, this query will actually run successfully, but it returns quite an unexpected result set:
-</p>
-
-<table class='responsive'>
-	<thead>
-		<tr>
-			<th>name</th>
-			<th>state</th>
-			<th>name</th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<tr>
-			<td>University of Scranton</td>
-			<td>PA</td>
-			<td>City, large</td>
-		</tr>
-		<tr>
-			<td>University of Scranton</td>
-			<td>PA</td>
-			<td>City, midsize</td>
-		</tr>
-		<tr>
-			<td>University of Scranton</td>
-			<td>PA</td>
-			<td>City, small</td>
-		</tr>
-		<tr>
-			<td>University of Scranton</td>
-			<td>PA</td>
-			<td>Suburb, large</td>
-		</tr>
-		<tr>
-			<td>University of Scranton</td>
-			<td>PA</td>
-			<td>Suburb, midsize</td>
-		</tr>
-		<tr>
-			<td>University of Scranton</td>
-			<td>PA</td>
-			<td>Suburb, small</td>
-		</tr>
-		<tr>
-			<td>University of Scranton</td>
-			<td>PA</td>
-			<td>Town, fringe</td>
-		</tr>
-		<tr>
-			<td>University of Scranton</td>
-			<td>PA</td>
-			<td>Town, distant</td>
-		</tr>
-		<tr>
-			<td>University of Scranton</td>
-			<td>PA</td>
-			<td>Town, remote</td>
-		</tr>
-		<tr>
-			<td>University of Scranton</td>
-			<td>PA</td>
-			<td>Rural, fringe</td>
-		</tr>
-		<tr>
-			<td>University of Scranton</td>
-			<td>PA</td>
-			<td>Rural, distant</td>
-		</tr>
-		<tr>
-			<td>University of Scranton</td>
-			<td>PA</td>
-			<td>Rural, remote</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>
-	How curious.  It appears as though the University of Scranton was found, but that it was
-	cross multiplied with each possible locale.
-</p>
-
-<p>
-	The problem arises because we did not place any conditions on how to limit the locales.
-	We ask for <strong>locales.name</strong> and we get all of them.
-	We are seeing a phenomenon known as <em>cartesian products</em>.
-</p>
-
-<h2>Avoiding Cartesian Products</h2>
-
-<p>
-	In <a href='./2'>Lesson 2</a> we learned to refine our results by applying a condition. In
-	<a href='./5'>Lesson 5</a> we learned to further refine our results by chaining multiple conditions
-	together using <srtong>AND</srtong>.  We see above that by not limiting which locales we wanted to retrieve,
-	we got <em>all</em> of them.
-</p>
-
-<p>
-	The nature of <em>why</em> this occurs is complex enough to be outside the scope of this tutorial.
-	(You can refer to the <a href='../about'>About</a> page for additional educational resources.)
-	For now, we'll focus on fixing them when they do occur.
-</p>
-
-<p>
-	So, how do we fix this?  We need to apply another condition.
-</p>
-
-<p>
-	Through the past seven lessons, we've written queries involving most of the columns from the <em>Schools</em>
-	table.  None of our queries, however, used <em>id</em>, <em>locale_id</em>, or <em>school_id</em>.
-	What are they?  What do they even mean?  How do they help us here?
-</p>
-
 
 <aside>
 	<h4>A Brief Aside Concerning Underscores</h4>
@@ -1438,106 +1170,29 @@ WHERE city = 'university park'</textarea>
 	<p>
 		The two most common solutions to this problem are to simply remove
 		whitespace ( <em>localeID</em> ) or to replace whitespace with underscores ( <em>locale_id</em> ).
-		This tutorial makes use of the underscore convention.
+		These lessons make use of the underscore convention.
 	</p>
 </aside>
 
-
 <p>
-	The <em>id</em> column servers as a <em>unique identifier</em> for each row.  Some rows may have attributes in common,
-	(for example, Schools that contain the text 'Pennyslvania State University' in their name), but each row is guaranteed
-	to have a unique id.  This is true of the <em>Schools</em> table, and it holds true for <em>Locales</em> and <em>Websites</em>
-	as well.
+	In ScriptKitty, and in most real-world scenarios, the database tables will be properly set up by an
+	experienced database administrator to allow easy <strong>JOIN</strong>ing through thoughtfully named
+	columns.  While relational database design is a worthy and engaging topic of its own, it is outside
+	the scope of these lessons.  There are additional educational resources listed on the <a href="../About">About</a>
+	page if you are still curious later.
 </p>
 
 <p>
-	You may have already noticed that the <em>Locales</em> table has an <em>id</em> column and that the <em>Schools</em>
-	table has a <em>locale_id</em> column.
+	Finally, the query has two conditions that are thankfully straightforward.  We've seen these
+	concepts before, in <a href='./2'>Lesson 2</a> and <a href='./6'>Lesson 6</a>, respectively.
 </p>
+
 
 <p>
-	Let's grab some rows of data and see if we can figure out what's going on.
+	The query will return exactly one row:
 </p>
 
-<table class='responsive'>
-	<thead>
-		<tr>
-			<th>id</th>
-			<th>name</th>
-			<th>city</th>
-			<th>state</th>
-			<th>zip</th>
-			<th>chief</th>
-			<th>locale_id</th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<tr>
-			<td>3687</td>
-			<td>University of Scranton</td>
-			<td>Scranton</td>
-			<td>PA</td>
-			<td>18510-4629</td>
-			<td>Scott R. Pilarz, S.J.</td>
-			<td>3</td>
-		</tr>
-	</tbody>
-</table>
-
-<table class='responsive'>
-	<thead>
-		<tr>
-			<th>id</th>
-			<th>name</th>
-			<th>description</th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<tr>
-			<td>2</td>
-			<td>City, midsize</td>
-			<td>Territory inside an urbanized area and inside a principal city with population less than 250,000 and greater than or equal to 100,000.</td>
-		</tr>
-		<tr>
-			<td>3</td>
-			<td>City, small</td>
-			<td>Territory inside an urbanized area and inside a principal city with population less than 100,000.</td>
-		</tr>
-		<tr>
-			<td>4</td>
-			<td>Suburb, large</td>
-			<td>Territory outside a principal city and inside an urbanized area with population of 250,000 or more.</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>
-	Note that the University of Scranton has a <em>locale_id</em> of 3.  Additionally, the locale with an <em>id</em> of 3
-	has a name of <em>City, small</em>.    As discussed above, database <em>id</em> fields are used to link data between
-	related tables.  In this case, the University of Scranton has a locale of <em>City, small</em>.
-</p>
-
-<p>
-	How this is accomplished in SQL may be less apparent.  It is natural to think that the existence of the <em>schools.locale_id</em>
-	field and the existence of the <em>locales.id</em> field should be enough.  It is very natural to believe that
-	SQL should be smart enough to do the linking for us. Unfortunately, this is not the case. We <strong>must</strong>
-	explicitly link the two fields in our query.  Cartesian products result, otherwise.
-</p>
-
-
-<textarea class='raw-sql'>SELECT schools.name, schools.state, locales.name
-FROM schools, locales
-WHERE schools.name = 'University of Scranton'
-AND schools.locale_id = locales.id</textarea>
-
-<p>
-	You can see that we've added another condition to the query.  This time around, we've limited the <em>locales</em>
-	to only those that match up with the school we're interested in.  Here are the results this query produces:
-</p>
-
-<table class='responsive'>
+<table class='responsive' width='100%'>
 	<thead>
 		<tr>
 			<th>name</th>
@@ -1548,16 +1203,19 @@ AND schools.locale_id = locales.id</textarea>
 
 	<tbody>
 		<tr>
-			<td>University of Scranton</td>
-			<td>PA</td>
-			<td>City, small</td>
+			<td>Lamar State College-Orange</td>
+			<td>TX</td>
+			<td>Town, distant</td>
 		</tr>
 	</tbody>
-
 </table>
 
 <p>
-	Hey, that gets us what we need!  We have the name and state of the school and the name of the locale in one table.
-	Awesome!
+	This lesson covered a lot of ground, and the concepts were really quite tricky.
+	If you feel you need to read it over a few times, don't worry.  You can try out
+	the last few exercises to test your skills whenever you're ready.
 </p>
+
+<hr>
+<h4><a href='./8/exercises/1'>Try Exercise 8.1</a></h4>
 ")
