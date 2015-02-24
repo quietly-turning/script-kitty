@@ -1144,7 +1144,7 @@ AND schools.state &lt;&gt; 'CA'
 
 <p>
 	A <strong>JOIN</strong> statement will always be followed by a meaningful <strong>ON</strong> statement,
-	which might look similar to the simple <strong>WHERE</strong> statements we learned in <a hre="./2">Lesson 2</a>.
+	which might look similar to the simple <strong>WHERE</strong> statements we learned in <a hre='./2'>Lesson 2</a>.
 	<strong>ON</strong> is different, however, in that it must utilize the <strong>=</strong> operator to link
 	two related columns from two different tables, which are typically numerical IDs. Here, we are linking locales.id and schools.locale_id.
 </p>
@@ -1178,7 +1178,7 @@ WHERE city = 'university park'</textarea>
 	In ScriptKitty, and in most real-world scenarios, the database tables will be properly set up by an
 	experienced database administrator to allow easy <strong>JOIN</strong>ing through thoughtfully named
 	columns.  While relational database design is a worthy and engaging topic of its own, it is outside
-	the scope of these lessons.  There are additional educational resources listed on the <a href="../About">About</a>
+	the scope of these lessons.  There are additional educational resources listed on the <a href='../About'>About</a>
 	page if you are still curious later.
 </p>
 
