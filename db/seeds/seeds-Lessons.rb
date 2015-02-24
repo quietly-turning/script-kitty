@@ -1115,7 +1115,7 @@ Lesson.create( title: 'Using More Than One Table', objective: 'Write a complex q
 FROM schools
 JOIN locales ON locales.id = schools.locale_id
 WHERE schools.city = 'Orange'
-and schools.state &lt;&gt; 'CA'
+AND schools.state &lt;&gt; 'CA'
 </textarea>
 
 <p>
@@ -1215,7 +1215,4 @@ WHERE city = 'university park'</textarea>
 	If you feel you need to read it over a few times, don't worry.  You can try out
 	the last few exercises to test your skills whenever you're ready.
 </p>
-
-<hr>
-<h4><a href='./8/exercises/1'>Try Exercise 8.1</a></h4>
 ")
