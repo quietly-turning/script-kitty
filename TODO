@@ -6,7 +6,23 @@ MILESTONES:
 	is it still possible to submit a malicious query?  Needs proper sandboxing.
 		it doesn't seem so!
 
-2. Rewrite Lesson 8 to feature JOIN statement.
+2. More exercises per lesson (10+) in order to facilitate randomization?
+	this will require the "My Progress" page to be reworked
+	(the least of my worries here, really!)
+
+3. Admin panel
+	manage users
+		delete obvious spam accounts
+		designate new admins/educators, etc.
+
+4. Educator panel
+	manage content
+		new exercises (provided a question + answer, the rest can be procedurally handled)
+	metrics
+		by lesson
+		by exercise
+		by learner
+
 
 ---
 Security Things
@@ -18,7 +34,6 @@ Smaller Things
 1. Add a proper README documenting how to setup the app from scratch and where to find things within the code.
 2. Maybe add an aside concerning versions of SQL?  That this tutorial uses MariaDB?
 3. Share accomplishment to [social media platform]?  (This should probably coincide with the wrap-up page.)
-4. Alt-Text (on hover) for Exercises
 
 ---
 Nebulous Things
