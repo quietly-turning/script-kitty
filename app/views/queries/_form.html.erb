@@ -12,7 +12,7 @@
   <% end %>
 
 	<% if current_user.visual_interface? %>
-		<%= render :partial => 'queries/visual_form', :locals => {:form => f} %>
+		<%= render :partial => 'queries/visual/visual_form', :locals => {:form => f} %>
 	<% else %>
 		<%= render :partial => 'queries/simple_form', :locals => {:form => f} %>
 	<% end %>
