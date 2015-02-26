@@ -1,28 +1,28 @@
 <div id="buildYourQuery">
-	
+
 	<div id="poof" style="display:none"></div>
-	
+
 	<div class="row">
 		<div id="select" class="small-3 columns">
 			<span>SELECT</span>
 			<div class="dropHere columnAcceptor" data-accepts="column-block"></div><br>
 		</div>
-		
+
 		<div id="from" class="small-3 columns">
 			<span>FROM</span>
 			<div class="dropHere tableAcceptor" data-accepts="table-block"></div><br>
 		</div>
-		
+
 		<div id="where" class="small-6 columns">
 			<span>WHERE</span>
 			<%= form.fields_for :conditions do |condition_form| %>
 				<%= render :partial => 'queries/condition_fields', :locals => {:form => condition_form} %>
 			<% end %>
 		</div>
-		
+
 	</div>
-	
-	
+
+
 
 </div> <!-- /buildYourQuery -->
 
