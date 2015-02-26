@@ -56,12 +56,6 @@ span.wrap-up-bullet{
   font-size:3em;
 }
 
-
-/* Subtitle is used on "My Progress" page */
-p.subtitle{
-	margin:-10px 0px 8px 0px;
-}
-
 /* .actions is the generic class for Rails' form submit buttons */
 .actions{
 	margin-top: 10px;
@@ -120,12 +114,16 @@ a.message-anchor{
 }
 
 /* --------------------------------------------- */
-
+/* Text styling for "My Progress" page */
 
 .invalid{ color: #b5403c; font-weight:bold }
 .valid{ color: #3197ee; font-weight:bold }
 .correct{ color: #3ea237; font-weight:bold}
 
+/* Lesson subtitles used on "My Progress" page */
+p.subtitle{
+	margin:-10px 0px 8px 0px;
+}
 
 /* --------------------------------------------- */
 /* What learners type into */
@@ -153,4 +151,132 @@ a.message-anchor{
 
 .CodeMirror.cm-s-xq-light .CodeMirror-linenumber{
 	color: #ccc;
+}
+
+/* --------------------------------------------- */
+/* Topbar styling */
+
+/* script-kitty (home) link*/
+#topbar-script-kitty, #topbar-script-kitty a{
+    background: #333;
+    -webkit-transition: background 0.133s ease-in; /*safari and chrome */
+    -moz-transition: background 0.133s ease-in; /* firefox */
+    -o-transition: background 0.133s ease-in; /* opera */
+
+    color: #fff;
+    -webkit-transition: color 0.133s ease-in; /*safari and chrome */
+    -moz-transition: color 0.133s ease-in; /* firefox */
+    -o-transition: color 0.133s ease-in; /* opera */
+}
+
+#topbar-script-kitty:hover, #topbar-script-kitty a:hover{
+    background: #82aff9;
+    -webkit-transition: background 0.133s ease-in; /*safari and chrome */
+    -moz-transition: background 0.133s ease-in; /* firefox */
+    -o-transition: background 0.133s ease-in; /* opera */
+
+    color: #333;
+    -webkit-transition: color 0.05s ease-in; /*safari and chrome */
+    -moz-transition: color 0.05s ease-in; /* firefox */
+    -o-transition: color 0.05s ease-in; /* opera */
+}
+
+/* tables dropdown */
+#topbar-tables, #topbar-tables a{
+    background: #333;
+    -webkit-transition: background 0.133s ease-in; /*safari and chrome */
+    -moz-transition: background 0.133s ease-in; /* firefox */
+    -o-transition: background 0.133s ease-in; /* opera */
+
+    color: #fff;
+    -webkit-transition: color 0.133s ease-in; /*safari and chrome */
+    -moz-transition: color 0.133s ease-in; /* firefox */
+    -o-transition: color 0.133s ease-in; /* opera */
+}
+
+#topbar-tables:hover, #topbar-tables a:hover{
+    background: #9881f5;
+    -webkit-transition: background 0.133s ease-in; /*safari and chrome */
+    -moz-transition: background 0.133s ease-in; /* firefox */
+    -o-transition: background 0.133s ease-in; /* opera */
+
+    color: #333;
+    -webkit-transition: color 0.05s ease-in; /*safari and chrome */
+    -moz-transition: color 0.05s ease-in; /* firefox */
+    -o-transition: color 0.05s ease-in; /* opera */
+}
+
+/* lessons dropdown */
+#topbar-lessons, #topbar-lessons a{
+    background: #333;
+    -webkit-transition: background 0.133s ease-in; /*safari and chrome */
+    -moz-transition: background 0.133s ease-in; /* firefox */
+    -o-transition: background 0.133s ease-in; /* opera */
+
+    color: #fff;
+    -webkit-transition: color 0.133s ease-in; /*safari and chrome */
+    -moz-transition: color 0.133s ease-in; /* firefox */
+    -o-transition: color 0.133s ease-in; /* opera */
+}
+
+#topbar-lessons:hover, #topbar-lessons a:hover{
+    background: #F97D81;
+    -webkit-transition: background 0.133s ease-in; /*safari and chrome */
+    -moz-transition: background 0.133s ease-in; /* firefox */
+    -o-transition: background 0.133s ease-in; /* opera */
+
+    color: #333;
+    -webkit-transition: color 0.05s ease-in; /*safari and chrome */
+    -moz-transition: color 0.05s ease-in; /* firefox */
+    -o-transition: color 0.05s ease-in; /* opera */
+}
+
+/* my progress link */
+#topbar-my-progress, #topbar-my-progress a{
+    background: #333;
+    -webkit-transition: background 0.133s ease-in; /*safari and chrome */
+    -moz-transition: background 0.133s ease-in; /* firefox */
+    -o-transition: background 0.133s ease-in; /* opera */
+
+    color: #fff;
+    -webkit-transition: color 0.133s ease-in; /*safari and chrome */
+    -moz-transition: color 0.133s ease-in; /* firefox */
+    -o-transition: color 0.133s ease-in; /* opera */
+}
+
+#topbar-my-progress:hover, #topbar-my-progress a:hover{
+    background: #f9d08b;
+    -webkit-transition: background 0.133s ease-in; /*safari and chrome */
+    -moz-transition: background 0.133s ease-in; /* firefox */
+    -o-transition: background 0.133s ease-in; /* opera */
+
+    color: #333;
+    -webkit-transition: color 0.05s ease-in; /*safari and chrome */
+    -moz-transition: color 0.05s ease-in; /* firefox */
+    -o-transition: color 0.05s ease-in; /* opera */
+}
+
+/* about link */
+#topbar-about, #topbar-about a{
+    background: #333;
+    -webkit-transition: background 0.133s ease-in; /*safari and chrome */
+    -moz-transition: background 0.133s ease-in; /* firefox */
+    -o-transition: background 0.133s ease-in; /* opera */
+
+    color: #fff;
+    -webkit-transition: color 0.133s ease-in; /*safari and chrome */
+    -moz-transition: color 0.133s ease-in; /* firefox */
+    -o-transition: color 0.133s ease-in; /* opera */
+}
+
+#topbar-about:hover, #topbar-about a:hover{
+    background: #ef7351;
+    -webkit-transition: background 0.133s ease-in; /*safari and chrome */
+    -moz-transition: background 0.133s ease-in; /* firefox */
+    -o-transition: background 0.133s ease-in; /* opera */
+
+    color: #333;
+    -webkit-transition: color 0.05s ease-in; /*safari and chrome */
+    -moz-transition: color 0.05s ease-in; /* firefox */
+    -o-transition: color 0.05s ease-in; /* opera */
 }

@@ -1,6 +1,6 @@
 <nav class="top-bar" data-topbar role="navigation">
 	<ul class="title-area">
-		<li class="name">
+		<li id="topbar-script-kitty" class="name">
 			<h1><%= link_to "Script Kitty", root_path %></h1>
 		</li>
 		<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -9,7 +9,7 @@
 		<!-- Left Nav Section -->
 	  	<ul class="left">
 			<li class="divider"></li>
-			<li class="has-dropdown not-click">
+			<li id="topbar-tables" class="has-dropdown not-click">
 			      <a href="#">Tables</a>
 			      <ul class="dropdown">
 					  <li class="divider"></li>
@@ -24,7 +24,7 @@
 			<li class="divider"></li>
 			<% if current_user %>
 
-				<li class="has-dropdown not-click">
+				<li id="topbar-lessons" class="has-dropdown not-click">
 					 <a href="#">Lessons</a>
 
 					<ul class="dropdown">
@@ -50,18 +50,14 @@
 
 				<li class="divider"></li>
 
-					<li>
-						<% if current_user.admin %>
-							<%= link_to "All Queries", queries_path %>
-						<% else %>
-							<%= link_to "My Progress", queries_path %>
-						<% end %>
+					<li id="topbar-my-progress">
+						<%= link_to "My Progress", queries_path %>
 					</li>
 
 				<li class="divider"></li>
 
 				<% if current_user.done %>
-					<li>
+					<li id="topbar-wrap-up">
 						<%= link_to "Wrap-Up", wrap_up_url %>
 					</li>
 					<li class="divider"></li>
@@ -69,7 +65,7 @@
 
 			<% end %>
 
-			<li>
+			<li id="topbar-about">
 				<%= link_to "About", about_url %>
 			</li>
 
@@ -80,6 +76,12 @@
 		<!-- Right Nav Section -->
 		<ul class="right">
 			<% if user_signed_in? %>
+
+				<% if current_user.admin %>
+					<li class="divider"></li>
+					<li id="admin_panel"><%= link_to "Admin Panel", edit_user_registration_path %></li>
+				<% end %>
+
 				<li class="divider"></li>
 				<li><%= link_to "My Account", edit_user_registration_path %></li>
 				<li class="divider"></li>
