@@ -116,14 +116,13 @@ WHERE chief like '%Graham%'</textarea>
 				<span class="wrap-up-bullet">8</span>
 			</div>
 			<div class="medium-9 small-11 columns end">
-				Finally, <%= link_to "Lesson 8", lesson_path(8) %> was a doozy.  We learned how to retrieve
-				results from more than a single table at a time.  Along the way, we learned how to avoid
-				column names and cartesian products.
+				Finally, we finished with <%= link_to "Lesson 8", lesson_path(8) %>  and learned how to retrieve
+				results from more than a single table at a time.
 <textarea class='raw-sql' style='height:1em'>SELECT schools.name, website.url
-FROM schools, websites
+FROM schools
+JOIN websites ON school.id = websites.school_id
 WHERE schools.city = 'University Park'
-AND websites.classification = 'general'
-AND websites.school_id = school.id</textarea>
+AND websites.classification = 'general'</textarea>
 			</div>
 		</div>
 		<hr>

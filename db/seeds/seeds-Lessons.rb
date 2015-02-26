@@ -820,7 +820,7 @@ Lesson.create( title: 'Does Not Equal', objective: 'Filter your results using th
 <textarea class='raw-sql'>SELECT *
 FROM schools
 WHERE city = 'Scranton'
-AND name <> 'University of Scranton'</textarea>
+AND name &lt;&gt; 'University of Scranton'</textarea>
 
 <p>
 	The SQL operator for <em>does not equal</em> here is represented as <strong>&lt;&gt;</strong> and the query returns
@@ -1113,7 +1113,7 @@ Lesson.create( title: 'Using More Than One Table', objective: 'Write a complex q
 
 <textarea class='raw-sql'>SELECT schools.name, schools.state, locales.name
 FROM schools
-JOIN locales ON locales.id = schools.locale_id
+JOIN locales ON schools.locale_id = locales.id
 WHERE schools.city = 'Orange'
 AND schools.state &lt;&gt; 'CA'</textarea>
 
