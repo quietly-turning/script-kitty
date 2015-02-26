@@ -35,11 +35,16 @@ table {
 }
 
 table, th, td {
-   border: 1px solid black;
+   border: 1px solid #777;
 }
 
-td {
-	padding:4px;
+tbody td a {
+	display:block;
+	text-align:center;
+}
+
+td, td a {
+/*	padding:4px; */
 }
 
 thead tr th {

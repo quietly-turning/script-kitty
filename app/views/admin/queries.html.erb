@@ -1,0 +1,36 @@
+<div class="row">
+
+	<div class="small-12 columns">
+		<h3>Admin / Manage Queries</h3>
+
+		<p><%= paginate @queries %></p>
+		
+		<table>
+		  <thead>
+		    <tr>
+			  <th>ID</th>
+		      <th>Raw SQL</th>
+			  <th>Status</th>
+		      <th>User Email</th>
+			  <th>Exercise</th>
+			  <th>Created At</th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+		    <% @queries.each do |query| %>
+				<tr>
+					<td>
+						<a href="<%= query_path(query) %>"><%= query.id %></a>
+					</td>
+					<td><%= query.raw_sql %></td>
+					<td><%= give_meaning_to(query.status).html_safe %></td>
+					<td><%= query.user.email %></td>
+					<td><%= query.exercise.lesson_id.to_s + "." + query.exercise.dummy_id.to_s %></td>
+					<td><%= query.created_at.strftime("%b %e, %Y")%></td>
+				</tr>
+		    <% end %>
+		  </tbody>
+		</table>
+	</div>
+</div>

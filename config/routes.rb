@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   root :to => "home#index"
 
-
   resources :lessons, only: [:show] do
 	  resources :exercises, only: [:index, :show]
   end
@@ -13,8 +12,15 @@ Rails.application.routes.draw do
   resources :schools, only: [:index]
   resources :locales, only: [:index]
 
+  # admin pages
+  resources :admin, only: [:index]
+  get 'admin/users' => 'admin#users', as: :admin_users
+  get 'admin/queries' => 'admin#queries', as: :admin_queries
+
+
   devise_for :users, controllers: { registrations: "registrations" }
 
+  # get 'admin', to: 'home#admin', as: :admin
   get 'about', to: 'home#about', as: :about
   get 'wrap-up', to: 'home#wrap-up', as: :wrap_up
 

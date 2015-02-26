@@ -2,99 +2,59 @@
 	<%= render 'home/messages' %>
 </div>
 
-<% if current_user.admin %>
-	<div class="row">
-
-		<div class="small-12 columns">
-
-			<h1>All Queries</h1>
-
-			<table>
-			  <thead>
-			    <tr>
-				  <th>ID</th>
-			      <th>Raw SQL</th>
-				  <th>Status</th>
-			      <th>User Email</th>
-				  <th>Exercise</th>
-			      <th>manage</th>
-			    </tr>
-			  </thead>
-
-			  <tbody>
-			    <% @queries.each do |query| %>
-			      <tr>
-					<td><%= query.id %></td>
-			        <td><%= query.raw_sql %></td>
-					<td><%= give_meaning_to(query.status).html_safe %></td>
-			        <td><%= query.user.email %></td>
-					<td><%= query.exercise.lesson_id.to_s + "." + query.exercise.dummy_id.to_s %></td>
-			        <td><%= link_to 'Show', query %></td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
-		</div>
+<div class="row">
+	<div class="small-8 small-offset-1 end columns">
+		<h1>My Progress</h1>
 	</div>
-
-<% else %>
-
-	<div class="row">
-		<div class="small-8 small-offset-1 end columns">
-			<h1>My Progress</h1>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="small-11 small-centered columns">
-			<div class="medium-5 medium-offset-1 columns">
-
-				<% @lessons_first_half.each do |lesson| %>
-					<h3>Lesson <%= lesson.id %></h3>
-					<p class="subtitle"><%= lesson.title.html_safe %></p>
-
-					<ul>
-				    <% lesson.exercises.each do |exercise| %>
-						<li>
-						<% if @queries[lesson.id][exercise.dummy_id] %>
-							<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", query_path(@queries[lesson.id][exercise.dummy_id]), :title => exercise.description %> -
-							<%= give_meaning_to(@queries[lesson.id][exercise.dummy_id].status).html_safe %>
-						<% else %>
-							<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", lesson_exercise_path(lesson, exercise), :title => exercise.description %> -
-							<em>not attempted yet</em>
-					    <% end %>
-						</li>
-					<% end %>
-					</ul>
-
-				<% end %>
-			</div><!-- medium-5 -->
-
-			<div class="medium-5 columns">
-
-				<% @lessons_second_half.each do |lesson| %>
-					<h3>Lesson <%= lesson.id %></h3>
-					<p class="subtitle"><%= lesson.title.html_safe %></p>
-
-					<ul>
-				    <% lesson.exercises.each do |exercise| %>
-						<li>
-						<% if @queries[lesson.id][exercise.dummy_id] %>
-							<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", query_path(@queries[lesson.id][exercise.dummy_id]), :title => exercise.description %> -
-							<%= give_meaning_to(@queries[lesson.id][exercise.dummy_id].status).html_safe %>
-
-						<% else %>
-							<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", lesson_exercise_path(lesson, exercise), :title => exercise.description %> -
-							<em>not attempted yet</em>
-					    <% end %>
-						</li>
-					<% end %>
-					</ul>
-
-				<% end %>
-			</div><!-- medium-5 -->
-		</div><!-- small-11 -->
-	</div><!-- row -->
-
-<% end %>
 </div>
+
+<div class="row">
+	<div class="small-11 small-centered columns">
+		<div class="medium-5 medium-offset-1 columns">
+
+			<% @lessons_first_half.each do |lesson| %>
+				<h3>Lesson <%= lesson.id %></h3>
+				<p class="subtitle"><%= lesson.title.html_safe %></p>
+
+				<ul>
+			    <% lesson.exercises.each do |exercise| %>
+					<li>
+					<% if @queries[lesson.id][exercise.dummy_id] %>
+						<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", query_path(@queries[lesson.id][exercise.dummy_id]), :title => exercise.description %> -
+						<%= give_meaning_to(@queries[lesson.id][exercise.dummy_id].status).html_safe %>
+					<% else %>
+						<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", lesson_exercise_path(lesson, exercise), :title => exercise.description %> -
+						<em>not attempted yet</em>
+				    <% end %>
+					</li>
+				<% end %>
+				</ul>
+
+			<% end %>
+		</div><!-- medium-5 -->
+
+		<div class="medium-5 columns">
+
+			<% @lessons_second_half.each do |lesson| %>
+				<h3>Lesson <%= lesson.id %></h3>
+				<p class="subtitle"><%= lesson.title.html_safe %></p>
+
+				<ul>
+			    <% lesson.exercises.each do |exercise| %>
+					<li>
+					<% if @queries[lesson.id][exercise.dummy_id] %>
+						<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", query_path(@queries[lesson.id][exercise.dummy_id]), :title => exercise.description %> -
+						<%= give_meaning_to(@queries[lesson.id][exercise.dummy_id].status).html_safe %>
+
+					<% else %>
+						<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", lesson_exercise_path(lesson, exercise), :title => exercise.description %> -
+						<em>not attempted yet</em>
+				    <% end %>
+					</li>
+				<% end %>
+				</ul>
+
+			<% end %>
+		</div><!-- medium-5 -->
+	</div><!-- small-11 -->
+</div><!-- row -->

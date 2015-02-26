@@ -19,42 +19,38 @@ class QueriesController < ApplicationController
   # GET /queries
   # GET /queries.json
   def index
-	  @lessons = Lesson.all
-	  @lessons_first_half =  @lessons[0..3]
-	  @lessons_second_half = @lessons[4..7]
-	  @next_lesson_to_try = 1
-	  continue_searching_for_next_lesson = true
+	 @lessons = Lesson.all
+	 @lessons_first_half =  @lessons[0..3]
+	 @lessons_second_half = @lessons[4..7]
+	 @next_lesson_to_try = 1
+	 continue_searching_for_next_lesson = true
 
-	  if current_user.admin
-		 @queries = Query.all
-	  else
-		 @queries = Array.new
+	 @queries = Array.new
 
-		 @lessons.each do |lesson|
-			 @queries[lesson.id] = Array.new
-			 exercises = Exercise.where(lesson_id: lesson.id)
+	 @lessons.each do |lesson|
+		 @queries[lesson.id] = Array.new
+		 exercises = Exercise.where(lesson_id: lesson.id)
 
-			 exercises.each do |exercise|
-				 query = Query.where(user_id: current_user.id, exercise_id: exercise.id).last
+		 exercises.each do |exercise|
+			 query = Query.where(user_id: current_user.id, exercise_id: exercise.id).last
 
-				 if query
-					 @queries[exercise.lesson_id][exercise.dummy_id] = query
-				 end
+			 if query
+				 @queries[exercise.lesson_id][exercise.dummy_id] = query
+			 end
 
-				 if continue_searching_for_next_lesson
-					 if query and query.status == 2
-						 if exercise.dummy_id == exercises.size
-							 # when the learner is 100% done, this will evaluate to lessons.size + 1
-							 # we'll check for that and handle it in the _messages partial
-							 @next_lesson_to_try += 1
-						 end
-					 else
-						 continue_searching_for_next_lesson = false
+			 if continue_searching_for_next_lesson
+				 if query and query.status == 2
+					 if exercise.dummy_id == exercises.size
+						 # when the learner is 100% done, this will evaluate to lessons.size + 1
+						 # we'll check for that and handle it in the _messages partial
+						 @next_lesson_to_try += 1
 					 end
+				 else
+					 continue_searching_for_next_lesson = false
 				 end
 			 end
 		 end
-	  end
+	 end
   end
 
   # GET /queries/1
@@ -113,9 +109,6 @@ class QueriesController < ApplicationController
 			end
 
 			@query.check_if_correct
-			if @query.status == 2
-
-			end
 
 			# then update the query entry
 			if @query.save

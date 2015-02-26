@@ -11,13 +11,21 @@ class ApplicationController < ActionController::Base
 	    	(not current_user) ? (redirect_to root_path and return) : (redirect_to root_path and return unless current_user.admin?)
 		end
 
-	  def after_sign_in_path_for(resource)
-  		if current_user and Query.where(user_id: current_user.id).size > 0
-  			queries_path
-		else
-			root_path
+		# routes users appropriately after login
+		def after_sign_in_path_for(resource)
+			# admin
+			if current_user and current_user.admin
+				admin_index_path
+
+			# non-admin with some queries completed
+			elsif current_user and Query.where(user_id: current_user.id).size > 0
+				queries_path
+
+			# non-admin with no queries completed
+			else
+				root_path
+			end
 		end
-	  end
 
 	protected
 

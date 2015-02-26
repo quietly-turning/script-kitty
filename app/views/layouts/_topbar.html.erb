@@ -79,7 +79,7 @@
 
 				<% if current_user.admin %>
 					<li class="divider"></li>
-					<li id="admin_panel"><%= link_to "Admin Panel", edit_user_registration_path %></li>
+					<li id="admin_panel"><%= link_to "Admin Panel", admin_index_path %></li>
 				<% end %>
 
 				<li class="divider"></li>
@@ -88,9 +88,9 @@
 				<li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
 			<% else %>
 				<li class="divider"></li>
-				<li><%= link_to "Login", new_user_session_path  %></li>
-				<li class="divider"></li>
 				<li><%= link_to "Create An Account", new_user_registration_path %></li>
+				<li class="divider"></li>
+				<li><%= link_to "Login", new_user_session_path  %></li>
 			<% end %>
 		</ul>
 	</section>

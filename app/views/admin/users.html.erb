@@ -1,0 +1,40 @@
+<div class="row">
+
+	<div class="small-12 columns">
+		<h3>Admin / Manage Users</h3>
+
+		<p><%= paginate @users %></p>
+
+		<table>
+		  <thead>
+		    <tr>
+			  <th>ID</th>
+		      <th>Email</th>
+			  <th>Sign Up Date</th>
+		      <th>Done?</th>
+			  <th>Admin?</th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+		    <% @users.each do |user| %>
+				<tr>
+					<td><%= user.id %></td>
+					<td><%= user.email %></td>
+					<td><%= user.created_at.strftime("%b %e, %Y")%></td>
+					<td>
+						<% if user.done %>
+							<span class="correct">
+								<strong><%= user.done %></strong>
+							</span>
+						<% else %>
+							<%= user.done %>
+						<% end %>
+					</td>
+					<td><%= user.admin %></td>
+				</tr>
+		    <% end %>
+		  </tbody>
+		</table>
+	</div>
+</div>
