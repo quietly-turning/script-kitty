@@ -12,17 +12,25 @@ Rails.application.routes.draw do
   resources :schools, only: [:index]
   resources :locales, only: [:index]
 
-  # admin pages
+  devise_for :users, controllers: { registrations: "registrations" }
+
+  # admin
   resources :admin, only: [:index]
+
+  # admin page(s) for managing users
   get 'admin/users' => 'admin#users', as: :admin_users
+  get 'admin/users/:id/edit' => "admin#edit_user",  as: :admin_edit_user
+  patch 'admin/users/:id' => "admin#update_user", as: :admin_update_user
+
+  # admin pages(s) for managing queries
   get 'admin/queries' => 'admin#queries', as: :admin_queries
 
 
-  devise_for :users, controllers: { registrations: "registrations" }
-
-  # get 'admin', to: 'home#admin', as: :admin
+  # static pages that are always publicly accessible
   get 'about', to: 'home#about', as: :about
   get 'wrap-up', to: 'home#wrap-up', as: :wrap_up
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

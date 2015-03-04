@@ -2,8 +2,8 @@ class AdminController < ApplicationController
 	before_filter :verify_is_admin
 
 	def index
+		# don't bother showing admins the flash-notification about having logged in
 		flash.discard(:notice)
-		@thing = "hello world"
 	end
 
 	def users
@@ -12,5 +12,16 @@ class AdminController < ApplicationController
 
 	def queries
 		@queries = Query.order(:id).page params[:page]
+	end
+
+	def edit_user
+		@user = User.find(params[:id])
+	end
+
+
+	def update_user
+		@user = User.find(params[:id])
+		@user.update(admin: params[:user][:admin])
+		redirect_to admin_users_path
 	end
 end
