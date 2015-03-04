@@ -59,7 +59,8 @@ class QueriesController < ApplicationController
       @query = Query.find(params[:id])
 
 	  # don't allow learners to peek at each others' work!
-	  if @query.user_id != current_user.id
+	  # (but do allow admins to see everything)
+	  if not (@query.user_id == current_user.id or current_user.admin)
 		  redirect_to root_path and return
 	  end
 
