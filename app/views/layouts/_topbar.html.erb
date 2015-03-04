@@ -79,7 +79,12 @@
 
 				<% if current_user.admin %>
 					<li class="divider"></li>
-					<li id="admin_panel"><%= link_to "Admin Panel", admin_index_path %></li>
+					<li id="topbar-admin-panel"><%= link_to "Admin Panel", admin_index_path %></li>
+				<% end %>
+
+				<% if current_user.educator %>
+					<li class="divider"></li>
+					<li id="topbar-educator-panel"><%= link_to "Educator Panel", educator_index_path %></li>
 				<% end %>
 
 				<li class="divider"></li>

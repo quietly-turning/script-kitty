@@ -10,6 +10,9 @@ class ApplicationController < ActionController::Base
 		def verify_is_admin
 	    	(not current_user) ? (redirect_to root_path and return) : (redirect_to root_path and return unless current_user.admin?)
 		end
+		def verify_is_educator
+	    	(not current_user) ? (redirect_to root_path and return) : (redirect_to root_path and return unless current_user.educator?)
+		end
 
 		# routes users appropriately after login
 		def after_sign_in_path_for(resource)

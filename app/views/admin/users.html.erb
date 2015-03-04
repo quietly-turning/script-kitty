@@ -13,6 +13,7 @@
 			  <th>Sign Up Date</th>
 		      <th>Done</th>
 			  <th>Admin</th>
+			  <th>Educator</th>
 			  <th>Manage</th>
 		    </tr>
 		  </thead>
@@ -32,7 +33,22 @@
 							<%= user.done %>
 						<% end %>
 					</td>
-					<td><%= user.admin %></td>
+
+					<td>
+						<% if user.admin %>
+							<strong> true </strong>
+						<% else %>
+							false
+						<% end %>
+					</td>
+					<td>
+						<% if user.educator %>
+							<strong> true </strong>
+						<% else %>
+							false
+						<% end %>
+					</td>
+
 					<td><%= link_to "Edit", admin_edit_user_path(user) %></td>
 				</tr>
 		    <% end %>
