@@ -4,9 +4,12 @@
 
 <div class="row">
 	<div class="small-8 medium-6 small-centered medium-centered columns">
+
 		<h2>Edit Your Account Details</h2>
 
+
 		<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
 			<%= devise_error_messages! %>
 
 			<div class="field">
@@ -19,13 +22,13 @@
 			<% end %>
 
 			<div class="field">
-			<label for"user_password">New Password</label>
-			<em>(leave blank if you don't want to change it)</em>
+				<label for"user_password">New Password</label>
+				<em>(leave blank if you don't want to change it)</em>
 				<%= f.password_field :password, autocomplete: "off" %>
 			</div>
 
 			<div class="field">
-			<label for="user_password_confirmation">New Password Confirmation</label>
+				<label for="user_password_confirmation">New Password Confirmation</label>
 				<%= f.password_field :password_confirmation, autocomplete: "off" %>
 			</div>
 
