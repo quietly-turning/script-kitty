@@ -103,9 +103,9 @@ a.message-anchor{
 	text-decoration:underline;
 }
 
-.bubbletype-alert, #error_explanation { background-color: #b5403c; }
-.bubbletype-success { background-color: #3ea237; }
-.bubbletype-notice { background-color: #3197ee; }
+.bubbletype-alert, #error_explanation { background-color: #f1656a; }
+.bubbletype-notice { background-color: #60a1f4; }
+.bubbletype-success { background-color: #54be5e; }
 
 #error_explanation h2{
 	font-size: 1.15em;
@@ -121,9 +121,9 @@ a.message-anchor{
 /* --------------------------------------------- */
 /* Text styling for "My Progress" page */
 
-.invalid{ color: #b5403c; font-weight:bold }
-.valid{ color: #3197ee; font-weight:bold }
-.correct{ color: #3ea237; font-weight:bold}
+.invalid{ color: #f1656a; font-weight:bold }
+.valid{ color: #60a1f4; font-weight:bold }
+.correct{ color: #54be5e; font-weight:bold}
 
 /* Lesson subtitles used on "My Progress" page */
 p.subtitle{
@@ -145,7 +145,7 @@ p.subtitle{
 	font-size: 1.25em;
 	border-radius:0em;
 	border: 1px solid #999;
-	background-color: #FFFFBB;
+	background-color: #ffb;
 	height: auto;
 	margin-bottom: 12px;
 }
@@ -175,7 +175,7 @@ p.subtitle{
 }
 
 #topbar-script-kitty:hover, #topbar-script-kitty a:hover{
-    background: #82aff9;
+    background: #60a1f4;
     -webkit-transition: background 0.133s ease-in; /*safari and chrome */
     -moz-transition: background 0.133s ease-in; /* firefox */
     -o-transition: background 0.133s ease-in; /* opera */
@@ -212,7 +212,7 @@ p.subtitle{
 }
 
 /* lessons dropdown */
-#topbar-lessons, #topbar-lessons a{
+#topbar-lessons, #topbar-lessons a, #topbar-create-an-account, #topbar-create-an-account a{
     background: #333;
     -webkit-transition: background 0.133s ease-in; /*safari and chrome */
     -moz-transition: background 0.133s ease-in; /* firefox */
@@ -224,8 +224,8 @@ p.subtitle{
     -o-transition: color 0.133s ease-in; /* opera */
 }
 
-#topbar-lessons:hover, #topbar-lessons a:hover{
-    background: #F97D81;
+#topbar-lessons:hover, #topbar-lessons a:hover, #topbar-create-an-account:hover, #topbar-create-an-account a:hover{
+    background: #ec814d;
     -webkit-transition: background 0.133s ease-in; /*safari and chrome */
     -moz-transition: background 0.133s ease-in; /* firefox */
     -o-transition: background 0.133s ease-in; /* opera */
@@ -236,8 +236,8 @@ p.subtitle{
     -o-transition: color 0.05s ease-in; /* opera */
 }
 
-/* my progress link */
-#topbar-my-progress, #topbar-my-progress a{
+/* my-progress link, my-account link */
+#topbar-my-progress, #topbar-my-progress a, #topbar-my-account, #topbar-my-account a, #topbar-login, #topbar-login a{
     background: #333;
     -webkit-transition: background 0.133s ease-in; /*safari and chrome */
     -moz-transition: background 0.133s ease-in; /* firefox */
@@ -249,8 +249,8 @@ p.subtitle{
     -o-transition: color 0.133s ease-in; /* opera */
 }
 
-#topbar-my-progress:hover, #topbar-my-progress a:hover{
-    background: #f9d08b;
+#topbar-my-progress:hover, #topbar-my-progress a:hover, #topbar-my-account:hover, #topbar-my-account a:hover, #topbar-login:hover, #topbar-login a:hover{
+    background: #54be5e;
     -webkit-transition: background 0.133s ease-in; /*safari and chrome */
     -moz-transition: background 0.133s ease-in; /* firefox */
     -o-transition: background 0.133s ease-in; /* opera */
@@ -275,7 +275,32 @@ p.subtitle{
 }
 
 #topbar-about:hover, #topbar-about a:hover{
-    background: #ef7351;
+    background: #f9cb7f;
+    -webkit-transition: background 0.133s ease-in; /*safari and chrome */
+    -moz-transition: background 0.133s ease-in; /* firefox */
+    -o-transition: background 0.133s ease-in; /* opera */
+
+    color: #333;
+    -webkit-transition: color 0.05s ease-in; /*safari and chrome */
+    -moz-transition: color 0.05s ease-in; /* firefox */
+    -o-transition: color 0.05s ease-in; /* opera */
+}
+
+/* logout link */
+#topbar-about, #topbar-about a{
+    background: #333;
+    -webkit-transition: background 0.133s ease-in; /*safari and chrome */
+    -moz-transition: background 0.133s ease-in; /* firefox */
+    -o-transition: background 0.133s ease-in; /* opera */
+
+    color: #fff;
+    -webkit-transition: color 0.133s ease-in; /*safari and chrome */
+    -moz-transition: color 0.133s ease-in; /* firefox */
+    -o-transition: color 0.133s ease-in; /* opera */
+}
+
+#topbar-logout:hover, #topbar-logout a:hover{
+    background: #f1656a;
     -webkit-transition: background 0.133s ease-in; /*safari and chrome */
     -moz-transition: background 0.133s ease-in; /* firefox */
     -o-transition: background 0.133s ease-in; /* opera */
