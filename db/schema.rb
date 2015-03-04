@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20141114225625) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",                  limit: 1,   default: false
+    t.boolean  "educator",               limit: 1,   default: false
     t.boolean  "done",                   limit: 1,   default: false
     t.boolean  "visual_interface",       limit: 1,   default: false
   end

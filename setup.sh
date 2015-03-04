@@ -6,6 +6,7 @@
 rails g devise:install
 rails g devise user
 rails g migration AddAdminToUsers admin:boolean
+rails g migration AddEducatorToUsers educator:boolean
 rails g migration AddVisualInterfaceToUsers visual_interface:boolean
 
 # dataset stuff
