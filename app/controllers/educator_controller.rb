@@ -6,7 +6,15 @@ class EducatorController < ApplicationController
 		flash.discard(:notice)
 	end
 
-	def users
+	def learners
 		@users = User.order(:id).page params[:page]
+	end
+
+	def exercises
+		@exercises = Exercise.order(:id).page params[:page]
+	end
+
+	def lessons
+		@lessons = Lesson.order(:id).page params[:page]
 	end
 end

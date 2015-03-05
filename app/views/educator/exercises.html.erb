@@ -1,0 +1,55 @@
+<div class="row">
+
+	<div class="medium-8 small-11 small-centered columns">
+		<h3><%= link_to "Educator Panel", educator_index_path %> / Exercises </h3>
+
+		<p><%= paginate @exercises %></p>
+
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Total Attempts</th>
+
+					<th><span class="correct">Correct</span></th>
+					<th><span class="valid">Valid</span></th>
+					<th><span class="invalid">Invalid</span></th>
+
+					<th>Unique Learners</th>
+				</tr>
+			</thead>
+
+			<tbody>
+			    <% @exercises.each do |exercise| %>
+					<tr>
+						<td><%= exercise.lesson_id %>.<%= exercise.dummy_id %></td>
+						<td><%= exercise.queries.size %></td>
+
+						<%
+							@correct	= exercise.queries.where(status: 2)
+							@valid		= exercise.queries.where(status: 1)
+							@invalid	= exercise.queries.where(status: 0)
+						%>
+
+						<td>
+							<span class="bigger"><%= @correct.size %> </span>
+							<span class="smaller"> (<%= ((@correct.size / exercise.queries.size.to_f)*100).round(1) %>%) </span>
+						</td>
+						<td>
+							<span class="bigger"><%= @valid.size %> </span>
+							<span class="smaller"> (<%= ((@valid.size / exercise.queries.size.to_f)*100).round(1) %>%) </span>
+						</td>
+						<td>
+							<span class="bigger"><%= @invalid.size %> </span>
+							<span class="smaller"> (<%= ((@invalid.size / exercise.queries.size.to_f)*100).round(1) %>%) </span>
+						</td>
+
+						<td>
+							<%= exercise.queries.select(:user_id).distinct.count %>
+						</td>
+					</tr>
+			    <% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

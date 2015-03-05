@@ -66,6 +66,13 @@ span.wrap-up-bullet{
 	margin-top: 10px;
 }
 
+.bigger{
+	zoom: 125%;
+}
+.smaller{
+	zoom: 75%;
+}
+
 /* --------------------------------------------- */
 /* Styling for messages/alerts from Script Kitty */
 

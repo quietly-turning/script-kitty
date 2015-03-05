@@ -1,0 +1,36 @@
+<div class="row">
+
+	<div class="medium-8 small-11 small-centered columns">
+		<h3><%= link_to "Educator Panel", educator_index_path %> / Lessons </h3>
+
+		<p><%= paginate @lessons %></p>
+
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Total Exercise Attempts</th>
+					<th><span class="correct">Correct</span></th>
+					<th><span class="valid">Valid</span></th>
+					<th><span class="invalid">Invalid</span></th>
+					<th>Unique Learners</th>
+				</tr>
+			</thead>
+
+			<tbody>
+			    <% @lessons.each do |lesson| %>
+					<tr>
+						<td><%= lesson.id %></td>
+						<td><%= Lesson.joins(exercises: :queries).where(id: lesson.id).count %></td>
+                        <td><%= Lesson.joins(exercises: :queries).where(id: lesson.id, queries: {status: 2}).count %></td>
+                        <td><%= Lesson.joins(exercises: :queries).where(id: lesson.id, queries: {status: 1}).count %></td>
+						<td><%= Lesson.joins(exercises: :queries).where(id: lesson.id, queries: {status: 0}).count %></td>
+						<td>
+							<%= Lesson.joins(exercises: {queries: :user}).where(id: lesson.id).select(:user_id).distinct.count %>
+						</td>
+					</tr>
+			    <% end %>
+			</tbody>
+		</table>
+	</div>
+</iv>
