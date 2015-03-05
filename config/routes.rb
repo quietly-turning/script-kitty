@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   # educator
   resources :educator, only: [:index]
 
+  get 'educator/exercises' => 'educator#exercises', as: :educator_exercises
+  get 'educator/lessons' => 'educator#lessons', as: :educator_lessons
 
   #######################################################
   # static pages that are always publicly accessible
