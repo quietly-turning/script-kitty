@@ -12,7 +12,7 @@
 		// google object
 		var master_chart = new google.charts.Bar(document.getElementById('master_chart'));
 		// Set chart options
-		var master_options = {'title': 'Learner Metrics', 'width': 800, 'height': 600 };
+		var master_options = {chart: {title: 'Basic Learner Metrics by Lesson'}, 'width': 800, 'height': 500 };
 		master_options.colors = [colors["Correct Attempts"], colors["Valid Attempts"], colors["Invalid Attempts"]]
 		// unified chart data
 		var master_data = <%= @master_table_data.to_json.html_safe %>
@@ -33,7 +33,7 @@
 			// google object
 			var barchart = new google.charts.Bar(document.getElementById('chart_div_' + key));
 			// Set chart options
-			var options = { 'title': key + ' by Exercise', 'width': 800, 'height': 600, colors: [colors[key]] };
+			var options = { chart: {title: key + ' by Exercise'}, 'width': 800, 'height': 500, colors: [colors[key]] };
 			// generate a google dataTable object
 			var dataTable = google.visualization.arrayToDataTable(data[key]);
 
@@ -98,13 +98,14 @@
 		</table>
 	</div>
 
+	<br><br>
 	<div class="medium-8 small-11 small-centered columns">
 		<div id="master_chart"></div>
 	</div>
 
 
 	<% @columns.each do |column| %>
-		<br><br><br><br><br>
+		<br><br><br>
 		<div class="medium-8 small-11 small-centered columns">
 			<div id="chart_div_<%= column %>"></div>
 		</div>
