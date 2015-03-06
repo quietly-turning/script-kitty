@@ -1,28 +1,21 @@
 <script>
-	google.load("visualization", "1", {packages:["table"]});
-	google.load("visualization", "1.1", {packages:["bar"]});
 
-	google.setOnLoadCallback(drawTable);
+	// see: http://stackoverflow.com/questions/18801062/ruby-on-rails-javascript-not-loading-on-link-to
+	google.load("visualization", "1.1", {packages:["bar"], callback: drawTable});
 
-	var colors1 = ["#54be5e", "#60a1f4", "#f1656a"]
-	var colors2 = {
-		"Invalid Attempts": "#f1656a",
-		"Valid Attempts": "#60a1f4",
-		"Correct Attempts": "#54be5e",
-		"Total Attempts": "#ec814d",
-		"Unique Learners": "#9881f5"
-	}
+	var colors = <%= @colors.to_json.html_safe %>
 
     function drawTable() {
 		//------------------------------------------------------------------------------
 		// unified chart
 
 		// google object
-        var master_chart = new google.charts.Bar(document.getElementById('master_chart'));
+		var master_chart = new google.charts.Bar(document.getElementById('master_chart'));
 		// Set chart options
-		var master_options = {'title': 'Learner Metrics', 'width': 800, 'height': 600, colors: colors1};
+		var master_options = {'title': 'Learner Metrics', 'width': 800, 'height': 600 };
+		master_options.colors = [colors["Correct Attempts"], colors["Valid Attempts"], colors["Invalid Attempts"]]
 		// unified chart data
-		var master_data = <%= @unified_table_data.to_json.html_safe %>
+		var master_data = <%= @master_table_data.to_json.html_safe %>
 		// generate a google dataTable object
 		var master_dataTable = google.visualization.arrayToDataTable(master_data);
 
@@ -35,13 +28,12 @@
 
 		// individual chart data (JSON)
 		var data = <%= @table_data.to_json.html_safe %>
-		var i = 0;
 		for (key in data)
 		{
 			// google object
 			var barchart = new google.charts.Bar(document.getElementById('chart_div_' + key));
 			// Set chart options
-			var options = { 'title': key + ' by Exercise', 'width': 800, 'height': 600, colors: [colors2[key]] };
+			var options = { 'title': key + ' by Exercise', 'width': 800, 'height': 600, colors: [colors[key]] };
 			// generate a google dataTable object
 			var dataTable = google.visualization.arrayToDataTable(data[key]);
 

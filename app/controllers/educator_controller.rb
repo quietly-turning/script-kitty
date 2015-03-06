@@ -12,9 +12,10 @@ class EducatorController < ApplicationController
 
 	def exercises
 		@lessons = Lesson.all
-		@unified_table_data = [["Lesson", "Correct Attempts", "Valid Attempts", "Invalid Attempts"]]
+		@master_table_data = [["Lesson", "Correct Attempts", "Valid Attempts", "Invalid Attempts"]]
+
 		@lessons.each do |lesson|
-			@unified_table_data << [
+			@master_table_data << [
 				lesson.id.to_s,
 				Lesson.joins(exercises: :queries).where(id: lesson.id, queries: {status: 2}).count,
 				Lesson.joins(exercises: :queries).where(id: lesson.id, queries: {status: 1}).count,
@@ -23,11 +24,19 @@ class EducatorController < ApplicationController
 		end
 
 
+		# --------------------------------------------------------------------------------
 		@exercises = Exercise.order(:id).page params[:page]
-		@columns = ["Invalid Attempts", "Valid Attempts", "Correct Attempts",  "Total Attempts" , "Unique Learners"]
+		@columns = ["Correct Attempts", "Valid Attempts", "Invalid Attempts",  "Total Attempts" , "Unique Learners"]
+		@colors = {
+			"Invalid Attempts"	=> "#f1656a",
+			"Valid Attempts" 	=> "#60a1f4",
+			"Correct Attempts" 	=> "#54be5e",
+			"Total Attempts" 	=> "#ec814d",
+			"Unique Learners" 	=> "#9881f5"
+		}
 		@table_data = {}
 
-		@columns.each_with_index do |column, i|
+		@columns.each do |column|
 
 			@table_data[column] = []
 			@table_data[column] << ['Exercise ID', column]
@@ -39,16 +48,25 @@ class EducatorController < ApplicationController
 					exercise.lesson_id.to_s +  "." + exercise.dummy_id.to_s,
 
 					# total attempts column
-					if i == 3
+					if column == "Total Attempts"
 						exercise.queries.size
 
 					# unique learners column
-					elsif i == 4
+					elsif column == "Unique Learners"
 						exercise.queries.select(:user_id).distinct.count
 
-					# [invalid, valid, correct] attempts column
-					elsif i >= 0 and i < 3
-						exercise.queries.where(status: i).size
+					# correct attempts column
+					elsif column == "Correct Attempts"
+						exercise.queries.where(status: 2).size
+
+					# valid attempts column
+					elsif column == "Valid Attempts"
+						exercise.queries.where(status: 1).size
+
+					# invalid attempts column
+					elsif column == "Invalid Attempts"
+						exercise.queries.where(status: 0).size
+
 					end
 				]
 			end
