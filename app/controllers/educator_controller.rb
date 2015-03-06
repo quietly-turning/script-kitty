@@ -11,7 +11,17 @@ class EducatorController < ApplicationController
 	end
 
 	def exercises
+		@lessons = Lesson.all
 		@exercises = Exercise.order(:id).page params[:page]
+
+		@columns = 	[
+						{type: "number", name:  "Total Attempts" },
+						{type: "number", name:  "Correct Attempts" },
+			 			{type: "number", name:  "Valid Attempts" },
+						{type: "number", name:  "Invalid Attempts" },
+						{type: "number", name:  "Unique Learners" },
+					]
+
 	end
 
 	def lessons
