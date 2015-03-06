@@ -1,10 +1,17 @@
 $(document).on("page:change", function(){
 
-	// this seems hackish...
-	var code_mirror = document.getElementsByClassName("CodeMirror");
-	var raw_sql = document.getElementsByClassName("raw-sql");
 	var myCodeMirror;
 
+	// find all instances of CodeMirror that already exist on the page (due to Turbolinks?)
+	// if a CodeMirror instance already exists, don't add another!
+	var code_mirror = document.getElementsByClassName("CodeMirror");
+
+	// raw_sql is the class identifier used for CodeMirrors which display static code
+	// there can be multiple of these on a single page
+	var raw_sql = document.getElementsByClassName("raw-sql");
+
+	// simple_editor is the identifier used for live, editable CodeMirror instances
+	// there should only ever be one on a single page
 	var simple_editor = document.getElementById("query_raw_sql");
 
 	// ensure that we've found an editable textarea
