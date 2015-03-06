@@ -1,82 +1,53 @@
-<script type="text/javascript">
+<script>
 	google.load("visualization", "1", {packages:["table"]});
-    google.load("visualization", "1.1", {packages:["bar"]});
+	google.load("visualization", "1.1", {packages:["bar"]});
 
 	google.setOnLoadCallback(drawTable);
 
 	var colors1 = ["#54be5e", "#60a1f4", "#f1656a"]
-	var colors2 = ["#ec814d", "#54be5e", "#60a1f4", "#f1656a", "#9881f5"]
+	var colors2 = {
+		"Invalid Attempts": "#f1656a",
+		"Valid Attempts": "#60a1f4",
+		"Correct Attempts": "#54be5e",
+		"Total Attempts": "#ec814d",
+		"Unique Learners": "#9881f5"
+	}
 
     function drawTable() {
-
 		//------------------------------------------------------------------------------
 		// unified chart
-		// var data = [["Lesson ID", "Total Attempts", "Correct Attempts", "Valid Attempts", "Invalid Attempts", "Unique Learners"]]
-		var data = [["Lesson", "Correct Attempts", "Valid Attempts", "Invalid Attempts", {role: 'annotation'}]]
 
 		// google object
         var master_chart = new google.charts.Bar(document.getElementById('master_chart'));
 		// Set chart options
-		var options = {'title': 'Learner Metrics', 'width': 800, 'height': 600, colors: colors1};
+		var master_options = {'title': 'Learner Metrics', 'width': 800, 'height': 600, colors: colors1};
+		// unified chart data
+		var master_data = <%= @unified_table_data.to_json.html_safe %>
+		// generate a google dataTable object
+		var master_dataTable = google.visualization.arrayToDataTable(master_data);
 
-		<% @lessons.each do |lesson| %>
-			var temp = [];
-			temp.push(  <%= lesson.id %> );
-			// temp.push(  <%= Lesson.joins(exercises: :queries).where(id: lesson.id).count %> );
-			temp.push( 	<%= Lesson.joins(exercises: :queries).where(id: lesson.id, queries: {status: 2}).count %> );
-			temp.push( 	<%= Lesson.joins(exercises: :queries).where(id: lesson.id, queries: {status: 1}).count %> );
-			temp.push( 	<%= Lesson.joins(exercises: :queries).where(id: lesson.id, queries: {status: 0}).count %> );
-			temp.push( "Lesson <%= lesson.id %>")
-			// temp.push(  <%= Lesson.joins(exercises: {queries: :user}).where(id: lesson.id).select(:user_id).distinct.count %> );
-
-			data.push(temp)
-		<% end %>
-
-		var master_dataTable = google.visualization.arrayToDataTable(data);
-
-		// draw the single-data chart
-	    master_chart.draw(master_dataTable, options);
-
+		// draw the chart
+	    master_chart.draw(master_dataTable, master_options);
 
 
 		//------------------------------------------------------------------------------
-		// chart by chart
-		<% @columns.each_with_index do |column, i| %>
+		// individual charts
 
-			var data = new google.visualization.DataTable();
-
-			data.addColumn( 'string', 'Exercise ID');
-			data.addColumn('<%= column[:type] %>', '<%= column[:name] %>');
-
-			data.addRows([
-				<% @exercises.each do |exercise| %>
-				[
-					'<%= exercise.lesson_id %>.<%= exercise.dummy_id %>',
-
-					<% if i == 0 %>
-						<%= exercise.queries.size %>,
-					<% elsif i == 1 %>
-						<%= exercise.queries.where(status: 2).size %>,
-					<% elsif i == 2 %>
-						<%= exercise.queries.where(status: 1).size %>,
-					<% elsif i == 3 %>
-						<%= exercise.queries.where(status: 0).size %>,
-					<% elsif i == 4 %>
-						<%= exercise.queries.select(:user_id).distinct.count %>,
-					<% end %>
-				],
-				<% end %>
-			]);
-
+		// individual chart data (JSON)
+		var data = <%= @table_data.to_json.html_safe %>
+		var i = 0;
+		for (key in data)
+		{
 			// google object
-	        var barchart = new google.charts.Bar(document.getElementById('chart_div_<%= column[:name] %>'));
+			var barchart = new google.charts.Bar(document.getElementById('chart_div_' + key));
 			// Set chart options
-			var options = {'title': '<%= column[:name] %> by Exercise', 'width': 800, 'height': 600, colors: [colors2[<%=i%>]] };
+			var options = { 'title': key + ' by Exercise', 'width': 800, 'height': 600, colors: [colors2[key]] };
+			// generate a google dataTable object
+			var dataTable = google.visualization.arrayToDataTable(data[key]);
 
 			// draw the single-data chart
-			barchart.draw(data, options);
-
-		<% end %>
+			barchart.draw(dataTable, options);
+		}
     }
 </script>
 
@@ -143,7 +114,7 @@
 	<% @columns.each do |column| %>
 		<br><br><br><br><br>
 		<div class="medium-8 small-11 small-centered columns">
-			<div id="chart_div_<%= column[:name] %>"></div>
+			<div id="chart_div_<%= column %>"></div>
 		</div>
 	<% end %>
 
