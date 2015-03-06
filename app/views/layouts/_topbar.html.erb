@@ -1,102 +1,104 @@
-<nav class="top-bar" data-topbar role="navigation">
-	<ul class="title-area">
-		<li id="topbar-script-kitty" class="name">
-			<h1><%= link_to "Script Kitty", root_path %></h1>
-		</li>
-		<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-	</ul>
-	<section class="top-bar-section">
-		<!-- Left Nav Section -->
-	  	<ul class="left">
-			<li class="divider"></li>
-			<li id="topbar-tables" class="has-dropdown not-click">
-			      <a href="#">Tables</a>
-			      <ul class="dropdown">
-					  <li class="divider"></li>
-			          <li><%= link_to "Schools", schools_path %></li>
-					  <li class="divider"></li>
-					  <li><%= link_to "Locales", locales_path %></li>
-					  <li class="divider"></li>
-					  <li><%= link_to "Websites", websites_path %></li>
-				  </ul>
+<div class="sticky">
+	<nav class="top-bar" data-topbar role="navigation">
+		<ul class="title-area">
+			<li id="topbar-script-kitty" class="name">
+				<h1><%= link_to "Script Kitty", root_path %></h1>
 			</li>
+			<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+		</ul>
+		<section class="top-bar-section">
+			<!-- Left Nav Section -->
+		  	<ul class="left">
+				<li class="divider"></li>
+				<li id="topbar-tables" class="has-dropdown not-click">
+				      <a href="#">Tables</a>
+				      <ul class="dropdown">
+						  <li class="divider"></li>
+				          <li><%= link_to "Schools", schools_path %></li>
+						  <li class="divider"></li>
+						  <li><%= link_to "Locales", locales_path %></li>
+						  <li class="divider"></li>
+						  <li><%= link_to "Websites", websites_path %></li>
+					  </ul>
+				</li>
 
-			<li class="divider"></li>
-			<% if current_user %>
+				<li class="divider"></li>
+				<% if current_user %>
 
-				<li id="topbar-lessons" class="has-dropdown not-click">
-					 <a href="#">Lessons</a>
+					<li id="topbar-lessons" class="has-dropdown not-click">
+						 <a href="#">Lessons</a>
 
-					<ul class="dropdown">
+						<ul class="dropdown">
 
-						<% for lesson in Lesson.all %>
-							<li class="divider"></li>
-							<li class="has-dropdown not-click">
-								<%= link_to "Lesson #{lesson.id}", lesson_path(lesson.id) %>
+							<% for lesson in Lesson.all %>
+								<li class="divider"></li>
+								<li class="has-dropdown not-click">
+									<%= link_to "Lesson #{lesson.id}", lesson_path(lesson.id) %>
 
-								<ul class="dropdown">
-									<li><label><%= "Lesson #{lesson.id}" %></label></li>
-									<% for exercise in lesson.exercises %>
-										<li class="exercise">
-											<%= link_to ("Exercise #{exercise.lesson_id}.#{exercise.dummy_id}  " + user_exercise_status(exercise)).html_safe, lesson_exercise_path(lesson, exercise) %>
-										</li>
-									<% end %>
-								</ul>
-							</li>
-						<% end %>
+									<ul class="dropdown">
+										<li><label><%= "Lesson #{lesson.id}" %></label></li>
+										<% for exercise in lesson.exercises %>
+											<li class="exercise">
+												<%= link_to ("Exercise #{exercise.lesson_id}.#{exercise.dummy_id}  " + user_exercise_status(exercise)).html_safe, lesson_exercise_path(lesson, exercise) %>
+											</li>
+										<% end %>
+									</ul>
+								</li>
+							<% end %>
 
-					</ul>
+						</ul>
+					</li>
+
+					<li class="divider"></li>
+
+						<li id="topbar-my-progress">
+							<%= link_to "My Progress", queries_path %>
+						</li>
+
+					<li class="divider"></li>
+
+					<% if current_user.done %>
+						<li id="topbar-wrap-up">
+							<%= link_to "Wrap-Up", wrap_up_url %>
+						</li>
+						<li class="divider"></li>
+					<% end %>
+
+				<% end %>
+
+				<li id="topbar-about">
+					<%= link_to "About", about_url %>
 				</li>
 
 				<li class="divider"></li>
 
-					<li id="topbar-my-progress">
-						<%= link_to "My Progress", queries_path %>
-					</li>
+			</ul>
 
-				<li class="divider"></li>
+			<!-- Right Nav Section -->
+			<ul class="right">
+				<% if user_signed_in? %>
 
-				<% if current_user.done %>
-					<li id="topbar-wrap-up">
-						<%= link_to "Wrap-Up", wrap_up_url %>
-					</li>
+					<% if current_user.admin %>
+						<li class="divider"></li>
+						<li id="topbar-admin-panel"><%= link_to "Admin Panel", admin_index_path %></li>
+					<% end %>
+
+					<% if current_user.educator %>
+						<li class="divider"></li>
+						<li id="topbar-educator-panel"><%= link_to "Educator Panel", educator_index_path %></li>
+					<% end %>
+
 					<li class="divider"></li>
-				<% end %>
-
-			<% end %>
-
-			<li id="topbar-about">
-				<%= link_to "About", about_url %>
-			</li>
-
-			<li class="divider"></li>
-
-		</ul>
-
-		<!-- Right Nav Section -->
-		<ul class="right">
-			<% if user_signed_in? %>
-
-				<% if current_user.admin %>
+					<li id="topbar-my-account"><%= link_to "My Account", edit_user_registration_path %></li>
 					<li class="divider"></li>
-					<li id="topbar-admin-panel"><%= link_to "Admin Panel", admin_index_path %></li>
-				<% end %>
-
-				<% if current_user.educator %>
+					<li id="topbar-logout"><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+				<% else %>
 					<li class="divider"></li>
-					<li id="topbar-educator-panel"><%= link_to "Educator Panel", educator_index_path %></li>
+					<li id="topbar-create-an-account"><%= link_to "Create An Account", new_user_registration_path %></li>
+					<li class="divider"></li>
+					<li id="topbar-login"><%= link_to "Login", new_user_session_path  %></li>
 				<% end %>
-
-				<li class="divider"></li>
-				<li id="topbar-my-account"><%= link_to "My Account", edit_user_registration_path %></li>
-				<li class="divider"></li>
-				<li id="topbar-logout"><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
-			<% else %>
-				<li class="divider"></li>
-				<li id="topbar-create-an-account"><%= link_to "Create An Account", new_user_registration_path %></li>
-				<li class="divider"></li>
-				<li id="topbar-login"><%= link_to "Login", new_user_session_path  %></li>
-			<% end %>
-		</ul>
-	</section>
-</nav>
+			</ul>
+		</section>
+	</nav>
+</div>
