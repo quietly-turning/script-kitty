@@ -4,26 +4,30 @@
 
 	google.setOnLoadCallback(drawTable);
 
-	var colors = ["#ec814d", "#54be5e", "#60a1f4", "#f1656a", "#9881f5"]
+	var colors1 = ["#54be5e", "#60a1f4", "#f1656a"]
+	var colors2 = ["#ec814d", "#54be5e", "#60a1f4", "#f1656a", "#9881f5"]
 
     function drawTable() {
 
 		//------------------------------------------------------------------------------
 		// unified chart
-		var data = [["Lesson ID", "Total Attempts", "Correct Attempts", "Valid Attempts", "Invalid Attempts", "Unique Learners"]]
+		// var data = [["Lesson ID", "Total Attempts", "Correct Attempts", "Valid Attempts", "Invalid Attempts", "Unique Learners"]]
+		var data = [["Lesson", "Correct Attempts", "Valid Attempts", "Invalid Attempts", {role: 'annotation'}]]
+
 		// google object
         var master_chart = new google.charts.Bar(document.getElementById('master_chart'));
 		// Set chart options
-		var options = {'title': 'Learner Metrics', 'width': 800, 'height': 600, colors: colors};
+		var options = {'title': 'Learner Metrics', 'width': 800, 'height': 600, colors: colors1};
 
 		<% @lessons.each do |lesson| %>
 			var temp = [];
 			temp.push(  <%= lesson.id %> );
-			temp.push(  <%= Lesson.joins(exercises: :queries).where(id: lesson.id).count %> );
+			// temp.push(  <%= Lesson.joins(exercises: :queries).where(id: lesson.id).count %> );
 			temp.push( 	<%= Lesson.joins(exercises: :queries).where(id: lesson.id, queries: {status: 2}).count %> );
 			temp.push( 	<%= Lesson.joins(exercises: :queries).where(id: lesson.id, queries: {status: 1}).count %> );
 			temp.push( 	<%= Lesson.joins(exercises: :queries).where(id: lesson.id, queries: {status: 0}).count %> );
-			temp.push(  <%= Lesson.joins(exercises: {queries: :user}).where(id: lesson.id).select(:user_id).distinct.count %> );
+			temp.push( "Lesson <%= lesson.id %>")
+			// temp.push(  <%= Lesson.joins(exercises: {queries: :user}).where(id: lesson.id).select(:user_id).distinct.count %> );
 
 			data.push(temp)
 		<% end %>
@@ -67,7 +71,7 @@
 			// google object
 	        var barchart = new google.charts.Bar(document.getElementById('chart_div_<%= column[:name] %>'));
 			// Set chart options
-			var options = {'title': '<%= column[:name] %> by Exercise', 'width': 800, 'height': 600, colors: [colors[<%=i%>]] };
+			var options = {'title': '<%= column[:name] %> by Exercise', 'width': 800, 'height': 600, colors: [colors2[<%=i%>]] };
 
 			// draw the single-data chart
 			barchart.draw(data, options);
