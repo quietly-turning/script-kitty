@@ -1,11 +1,20 @@
 <script>
 
 	// see: http://stackoverflow.com/questions/18801062/ruby-on-rails-javascript-not-loading-on-link-to
-	google.load("visualization", "1.1", {packages:["bar"], callback: drawTable});
+	google.load("visualization", "1.1", {packages:["bar"], callback: drawCharts});
+	google.load("visualization", "1", {packages:["table"], callback: drawTable});
 
 	var colors = <%= @colors.to_json.html_safe %>
 
-    function drawTable() {
+	function drawTable() {
+		// google table
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+        var data = <%= @table_data.to_json.html_safe %>
+		var dataTable = google.visualization.arrayToDataTable(data);
+		table.draw(dataTable);
+	}
+
+    function drawCharts() {
 		//------------------------------------------------------------------------------
 		// unified chart
 
@@ -15,7 +24,7 @@
 		var master_options = {chart: {title: 'Basic Learner Metrics by Lesson'}, 'width': 800, 'height': 500 };
 		master_options.colors = [colors["Correct Attempts"], colors["Valid Attempts"], colors["Invalid Attempts"]]
 		// unified chart data
-		var master_data = <%= @master_table_data.to_json.html_safe %>
+		var master_data = <%= @master_chart_data.to_json.html_safe %>
 		// generate a google dataTable object
 		var master_dataTable = google.visualization.arrayToDataTable(master_data);
 
@@ -27,7 +36,7 @@
 		// individual charts
 
 		// individual chart data (JSON)
-		var data = <%= @table_data.to_json.html_safe %>
+		var data = <%= @chart_data.to_json.html_safe %>
 		for (key in data)
 		{
 			// google object
@@ -49,53 +58,10 @@
 		<h3><%= link_to "Educator Panel", educator_index_path %> / Exercises </h3>
 
 		<p><%= paginate @exercises %></p>
+	</div>
 
-		<table>
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Total Attempts</th>
-
-					<th><span class="correct">Correct</span></th>
-					<th><span class="valid">Valid</span></th>
-					<th><span class="invalid">Invalid</span></th>
-
-					<th>Unique Learners</th>
-				</tr>
-			</thead>
-
-			<tbody>
-			    <% @exercises.each do |exercise| %>
-					<tr>
-						<td><%= exercise.lesson_id %>.<%= exercise.dummy_id %></td>
-						<td><%= exercise.queries.size %></td>
-
-						<%
-							@correct	= exercise.queries.where(status: 2)
-							@valid		= exercise.queries.where(status: 1)
-							@invalid	= exercise.queries.where(status: 0)
-						%>
-
-						<td>
-							<span class="bigger"><%= @correct.size %> </span>
-							<span class="smaller"> (<%= ((@correct.size / exercise.queries.size.to_f)*100).round(1) %>%) </span>
-						</td>
-						<td>
-							<span class="bigger"><%= @valid.size %> </span>
-							<span class="smaller"> (<%= ((@valid.size / exercise.queries.size.to_f)*100).round(1) %>%) </span>
-						</td>
-						<td>
-							<span class="bigger"><%= @invalid.size %> </span>
-							<span class="smaller"> (<%= ((@invalid.size / exercise.queries.size.to_f)*100).round(1) %>%) </span>
-						</td>
-
-						<td>
-							<%= exercise.queries.select(:user_id).distinct.count %>
-						</td>
-					</tr>
-			    <% end %>
-			</tbody>
-		</table>
+	<div class="medium-8 small-11 small-centered columns">
+		<div id="table_div"></div>
 	</div>
 
 	<br><br>

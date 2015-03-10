@@ -1,0 +1,27 @@
+/* cell elements */
+.google-visualization-table-tr-head th,
+.google-visualization-table-tr-even td,
+.google-visualization-table-tr-odd td {
+	font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+	padding: 0.5625rem;
+	border: 1px solid #777;
+	font-size: 1.1em;
+	line-height: 1.125rem;
+}
+
+/* row elements */
+tr.google-visualization-table-tr-even:hover,
+tr.google-visualization-table-tr-odd:hover {
+	background: #faeafa;
+	font-weight: bold;
+}
+
+tr.google-visualization-table-tr-sel {
+	font-weight: bold;
+}
+
+/* header row background color */
+tr.google-visualization-table-tr-head th.gradient {
+	background: #ddd;
+	font-size: 1.2em;
+}
