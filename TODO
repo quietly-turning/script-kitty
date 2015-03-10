@@ -10,18 +10,16 @@ MILESTONES:
 	this will require the "My Progress" page to be reworked
 	(the least of my worries here, really!)
 
-3. Admin panel
-	manage users
-		delete obvious spam accounts
-		designate new admins/educators, etc.
-
-4. Educator panel
+3. Educator panel
 	manage content
 		new exercises (provided a question + answer, the rest can be procedurally handled)
 	metrics
 		by lesson
 		by exercise
 		by learner
+
+4. Certificate of Completion™ page
+	This would coincide nicely with the "Share your accomplishment to [social media platform]!"
 
 
 ---
