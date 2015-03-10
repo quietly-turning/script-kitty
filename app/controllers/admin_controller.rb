@@ -21,8 +21,7 @@ class AdminController < ApplicationController
 
 	def update_user
 		@user = User.find(params[:id])
-		@user.update(educator: params[:user][:educator])
-		@user.update(admin: params[:user][:admin])
+		@user.update(educator: params[:user][:educator], admin: params[:user][:admin], active: params[:user][:active])
 
 		redirect_to admin_users_path
 	end
