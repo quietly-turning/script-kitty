@@ -8,7 +8,7 @@
 		<table>
 			<thead>
 				<tr>
-					<th>ID</th>
+					<th>Lesson ID</th>
 					<th>Total Exercise Attempts</th>
 					<th><span class="correct">Correct</span></th>
 					<th><span class="valid">Valid</span></th>
@@ -22,8 +22,8 @@
 					<tr>
 						<td><%= lesson.id %></td>
 						<td><%= Lesson.joins(exercises: :queries).where(id: lesson.id).count %></td>
-                        <td><%= Lesson.joins(exercises: :queries).where(id: lesson.id, queries: {status: 2}).count %></td>
-                        <td><%= Lesson.joins(exercises: :queries).where(id: lesson.id, queries: {status: 1}).count %></td>
+                  <td><%= Lesson.joins(exercises: :queries).where(id: lesson.id, queries: {status: 2}).count %></td>
+                  <td><%= Lesson.joins(exercises: :queries).where(id: lesson.id, queries: {status: 1}).count %></td>
 						<td><%= Lesson.joins(exercises: :queries).where(id: lesson.id, queries: {status: 0}).count %></td>
 						<td>
 							<%= Lesson.joins(exercises: {queries: :user}).where(id: lesson.id).select(:user_id).distinct.count %>

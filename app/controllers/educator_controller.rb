@@ -1,5 +1,5 @@
 class EducatorController < ApplicationController
-	before_filter :verify_is_educator
+	before_action :verify_is_educator
 
 	def index
 		# don't bother showing educators the flash-notification about having logged in

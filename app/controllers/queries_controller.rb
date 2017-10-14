@@ -1,6 +1,6 @@
 class QueriesController < ApplicationController
 
-	before_filter :authenticate_user!
+	before_action :authenticate_user!
 
 	rescue_from ActiveRecord::StatementInvalid do |exception|
 		# if we're in this resucue block, it means the query didn't execute

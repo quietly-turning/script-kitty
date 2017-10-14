@@ -1,5 +1,5 @@
 class LessonsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   # GET /lessons/1
   # GET /lessons/1.json

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.0'
+gem 'rails'
 
 # dotenv-rails helps pass ENV variables to Rails
 # necessary for production keys
@@ -37,7 +37,7 @@ gem 'jquery-ui-rails'
 # login/authentication
 gem 'devise'
 # flexible layout
-gem 'foundation-rails'
+gem 'foundation-rails', '5.5.2.1'
 # pagination
 gem 'kaminari'
 # a web-based text editor

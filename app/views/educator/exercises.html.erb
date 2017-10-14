@@ -1,20 +1,15 @@
 <script>
-
-	// see: http://stackoverflow.com/questions/18801062/ruby-on-rails-javascript-not-loading-on-link-to
-	google.load("visualization", "1.1", {packages:["bar"], callback: drawCharts});
-	google.load("visualization", "1", {packages:["table"], callback: drawTable});
-
 	var colors = <%= @colors.to_json.html_safe %>
 
 	function drawTable() {
 		// google table
-        var table = new google.visualization.Table(document.getElementById('table_div'));
-        var data = <%= @table_data.to_json.html_safe %>
+		var table = new google.visualization.Table(document.getElementById('table_div'));
+		var data = <%= @table_data.to_json.html_safe %>
 		var dataTable = google.visualization.arrayToDataTable(data);
 		table.draw(dataTable);
 	}
 
-    function drawCharts() {
+	function drawCharts() {
 		//------------------------------------------------------------------------------
 		// unified chart
 
@@ -29,7 +24,7 @@
 		var master_dataTable = google.visualization.arrayToDataTable(master_data);
 
 		// draw the chart
-	    master_chart.draw(master_dataTable, master_options);
+		master_chart.draw(master_dataTable, master_options);
 
 
 		//------------------------------------------------------------------------------
@@ -49,7 +44,13 @@
 			// draw the single-data chart
 			barchart.draw(dataTable, options);
 		}
-    }
+	}
+
+	$(document).on('turbolinks:load', function(){
+		// see: http://stackoverflow.com/questions/18801062/ruby-on-rails-javascript-not-loading-on-link-to
+		google.load("visualization", "1.1", {packages:["bar"], callback: drawCharts});
+		google.load("visualization", "1", {packages:["table"], callback: drawTable});
+	});
 </script>
 
 <div class="row">

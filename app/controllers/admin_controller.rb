@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-	before_filter :verify_is_admin
+	before_action :verify_is_admin
 
 	def index
 		# don't bother showing admins the flash-notification about having logged in
