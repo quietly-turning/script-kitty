@@ -22,7 +22,7 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 <p>
 
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<caption>Schools</caption>
 	<thead>
 		<tr>
@@ -99,7 +99,7 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 	key attribtues of database structure.  Each horizontal <strong>row</strong> represents
 	one school.  For example:
 
-	<table class='responsive'>
+	<table class='table table-responsive'>
 		<tbody>
 			<tr>
 				<td>6</td>
@@ -218,7 +218,7 @@ WHERE city = 'University Park'</textarea>
 	This query would return exactly one row:
 </p>
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<tbody>
 		<tr>
 			<td>3636</td>
@@ -297,7 +297,7 @@ WHERE state = 'AK'</textarea>
 	In plain English, the query would read: <em>please give me all the attributes of any schools in which the state exactly matches 'AK'</em>.  This query returns the following twelve rows:
 </p>
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -463,7 +463,7 @@ WHERE name LIKE '%Yale%'</textarea>
 	</ul>
 </p>
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -593,7 +593,7 @@ OR chief LIKE '%Cate%'</textarea>
 	Neat!  Let's check our results:
 </p>
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -750,7 +750,7 @@ AND city = 'Harrisburg'</textarea>
 	It would return a single row:
 </p>
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -827,7 +827,7 @@ AND name &lt;&gt; 'University of Scranton'</textarea>
 	results like:
 </p>
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -969,7 +969,7 @@ WHERE city = 'University Park'</textarea>
 	returned a single row with all seven columns intact.
 </p>
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -1014,7 +1014,7 @@ WHERE city = 'University Park'</textarea>
 	This would return a result set like:
 </p>
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<thead>
 		<tr>
 			<th>chief</th>
@@ -1043,7 +1043,7 @@ WHERE zip like '%18509%'</textarea>
 	returns three rows across four columns.
 </p>
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<thead>
 		<tr>
 			<th>name</th>

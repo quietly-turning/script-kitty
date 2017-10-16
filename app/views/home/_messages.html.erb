@@ -3,8 +3,8 @@
 	<% flash.each do |name, msg| %>
 
 		<% if msg.is_a?(String) %>
-			<div class="small-12 medium-offset-2 medium-8 columns">
-	    		<div class="small-8 medium-10 columns kitty-bubble bubbletype-success">
+			<div class="col-sm-12 col-md-8">
+	    		<div class="col-sm-8 col-md-10 columns kitty-bubble bubbletype-success">
 					<div class="message">
 						<%=  msg %>
 
@@ -17,7 +17,7 @@
 					</div>
 				</div>
 
-				<div class="small-4 medium-2 end columns">
+				<div class="col-sm-4 col-md-2">
 					<%= image_tag "kitty-success.png", :class => "kitty-image" %>
 				</div>
 			</div>

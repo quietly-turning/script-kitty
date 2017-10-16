@@ -13,12 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //
-//= require jquery-ui
+//= require popper
+//= require bootstrap-sprockets
 //
-//= require foundation/foundation
-//= require foundation/foundation.dropdown
-//= require foundation/foundation.topbar
-//= require foundation/responsive-tables
+//= require jquery-ui
 //
 //= require_tree .
 //

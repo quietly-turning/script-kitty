@@ -1,6 +1,6 @@
 <div id="exercise-header">
 	<div class="row">
-		<div class="small-12 columns">
+		<div class="col-sm-10 col-md-9 mx-auto">
 			<h2>Exercise <%= @exercise.lesson_id.to_s + "." + @exercise.dummy_id.to_s %></h2>
 
 			<p>
@@ -18,7 +18,7 @@
 
 
 <div class="row">
-	<div class="small-12 columns">
+	<div class="col-md-9 mx-auto">
 		<%= render :partial => 'queries/form'  %>
 	</div>
 </div>

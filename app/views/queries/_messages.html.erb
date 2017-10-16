@@ -1,23 +1,23 @@
 <% flash.each do |name, msg| %>
 
 	<% if msg.is_a?(String) %>
-		<div class="small-offset-2 small-8 columns">
 
 			<% if msg == "correct" %>
+				<div class="col-sm-3"></div>
 
-	    		<div class="small-10 columns kitty-bubble bubbletype-success">
+	    		<div class="col-sm-6 kitty-bubble bubbletype-success">
 					<div class="message">
 						<%= @query.exercise.response_correct.html_safe %>
 					</div>
 				</div>
 
-				<div class="small-2 columns">
+				<div class="col-sm-3">
 					<%= image_tag "kitty-success.png", :class => "kitty-image" %>
 				</div>
 
 			<% else %>
 
-	    		<div class="small-10 columns kitty-bubble bubbletype-notice">
+	    		<div class="col-sm-10 mx-auto kitty-bubble bubbletype-notice">
 					<div class="message">
 						Hmm.  The query you wrote ran successfully,
 						but it didn't find the information I was looking for.
@@ -26,13 +26,12 @@
 					</div>
 				</div>
 
-				<div class="small-2 columns">
+				<div class="col-sm-2">
 					<%= image_tag "kitty-question.png", :class => "kitty-image" %>
 				</div>
 
 			<% end %>
 
-		</div>
 		<hr>
 	<% end %>
 
