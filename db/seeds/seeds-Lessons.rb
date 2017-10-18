@@ -169,13 +169,13 @@ FROM schools</textarea>
 
 <p>
 	A typical query will contain a combination of <em>keywords</em> and words that are specific to your situation.
-	In this example, and throughout the following lessons, keywords will be capitalized. SELECT and FROM are both keywords.
+	In this example, and throughout the following lessons, keywords will be capitalized. <code>SELECT</code> and <code>FROM</code> are both keywords.
 	They will appear in every query you ever write. The asterisk character and <em>schools</em> are
 	both specific to this example.
 </p>
 
 <ul>
-	<li>SELECT is like saying <em>please find for me...</em></li>
+	<li><code>SELECT</code> is like saying <em>please find for me...</em></li>
 	<li>The asterisk is a <em>wildcard</em> character that means <em>everything available</em>.</li>
 </ul>
 
@@ -184,7 +184,7 @@ FROM schools</textarea>
 </p>
 
 <ul>
-	<li>The keyword FROM tells the database in what table(s) to look</li>
+	<li>The keyword <code>FROM</code> tells the database in what table(s) to look</li>
 	<li><em>schools</em> is the name of the table we want it to look in</li>
 </ul>
 
@@ -259,8 +259,8 @@ WHERE city = 'University Park'</textarea>
 	<h4>A Brief Aside Concerning Capitalization</h4>
 	<p>
 		Throughout these lessons, you will not need to worry about capitalization when typing your SQL.
-		This means that <em>SELECT</em> will effectively be the same as <em>select</em>,
-		which will effectively be the same as <em>SeLeCt</em>. In ScriptKitty the following
+		This means that <code>SELECT</code> will effectively be the same as <code>select</code>,
+		which will effectively be the same as <code>SeLeCt</code>. In ScriptKitty the following
 		two queries are interchangeable:
 	</p>
 
@@ -435,7 +435,7 @@ Lesson.create( title: '<em>Equals</em> is not the only operator', objective: 'Se
 
 <p>
 	It was pretty cool, and it can definitely be helpful in some situations, but because it looks
-	for exact matches only, it is somewhat constraining. For example, this query
+	for <em>exact</em> matches only, it is somewhat constraining. For example, this query
 </p>
 
 <textarea class='raw-sql'>SELECT *
@@ -458,7 +458,7 @@ WHERE name LIKE '%Yale%'</textarea>
 <p>
 	Most of this query is the same as the previous example.  There are two important differences, however.
 	<ul>
-		<li>the operator is <code>LIKE</code> ( instead of <code>=</code> )</li>
+		<li>the operator is <code>LIKE</code> instead of <code>=</code></li>
 		<li>the text is now wrapped inside both quotation marks and <code>%</code> symbols</li>
 	</ul>
 </p>

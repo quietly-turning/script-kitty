@@ -1,70 +1,70 @@
 # 1.1
-Answer.create( result_set_hash: "979d6ad21a984b4f119326405052b00e78498059c6312e62d40e05a8c4a3a8cc", exercise_id: 1 )
+Answer.create( result_set_hash: "6ac6b5a4832fb0a2a0c079fab7eea9b1cf5a8c6bddad3f6aa1528ba9ebfd0fb9", exercise_id: 1 )
 # 1.2
-Answer.create( result_set_hash: "74bb695a25eccdd5ebaf072b5a077a9c7eab69b4af86bfbd440ae33c02b06a03", exercise_id: 2 )
+Answer.create( result_set_hash: "0374f4a1f15004fd545a09f54e576c0b55b9fa44ff78c47ae66aab4c963a9eb3", exercise_id: 2 )
 
 
 # 2.1
-Answer.create( result_set_hash: "3e7e08ff1bb8ce22af764bbef05affaa36ad45af2736639ac021ae266bd529cb", exercise_id: 3 )
+Answer.create( result_set_hash: "7d65315332499ca0de70d0e070cf86277e9773929bb273a54d577442434b0754", exercise_id: 3 )
 # 2.2
-Answer.create( result_set_hash: "1722ddfb13cf1d5a80bf92fd806484bc99eb28f628cb764eeb5f3de904d660ba", exercise_id: 4 )
+Answer.create( result_set_hash: "593e0bc597ad61c8c086879f893182dd9b7da2193bd1771649462713f0667252", exercise_id: 4 )
 
 
 # 3.1
-Answer.create( result_set_hash: "e9c9f762a242b04220c9e57b959502ac5183ddc21475aacb5d290126b6cfb574", exercise_id: 5 )
+Answer.create( result_set_hash: "84b9688432334fc8342c6b0153a6078636502b900ca03dc0544c94c04577d1e5", exercise_id: 5 )
 # 3.2
-Answer.create( result_set_hash: "c48c00dc473ec2fe15b3428989d43e60e33bf6e61778564df818a6b2521c3bb0", exercise_id: 6 )
+Answer.create( result_set_hash: "ef09eb4306817960b59ff15f6e6ae9e803c81711ae9b97f3868d5fb6b73c2db9", exercise_id: 6 )
 
 
 # 4.1
-Answer.create( result_set_hash: "38779e8aecc138a3ea62acdd5445a346dc155cb6fb5343ec5507ed15456f9498", exercise_id: 7 )
+Answer.create( result_set_hash: "72053e7df12a414e2b41eeaa360babe42279059f18fa3f12d9778b6f82107d7c", exercise_id: 7 )
 # 4.2
-Answer.create( result_set_hash: "7f3d9a679559a7bd65a7543b82f0252c827c9d8cd05f3638bd12ac481ec35406", exercise_id: 8 )
+Answer.create( result_set_hash: "24b5d6056bedd8c385581be49dd167c1efe422024156b60d5a5af9f32aecfc48", exercise_id: 8 )
 
 
 # 5.1
-Answer.create( result_set_hash: "d3867a7693f9f1cc482c0a060b6e0501073a42a152a3c914d3709f52cc168d5b", exercise_id: 9 )
+Answer.create( result_set_hash: "d80cbffe3132a24ac4a5af1021df806319e71b75d97a76933522443a3aed0cc3", exercise_id: 9 )
 # 5.2
-Answer.create( result_set_hash: "7c4c1e46916c36a44ad0a3403b0ae279b6d5ce3c67149266116e0264a0dd80eb", exercise_id: 10)
+Answer.create( result_set_hash: "98e795186320f8915d1ebb16c9504e8af75832b07bfeedf5b00654e1d7abeb61", exercise_id: 10)
 
 
 # 6.1
-Answer.create( result_set_hash: "61e62c5c19ad48eeb3546acdbfb384f4e24bb8cd9837f9e427aefb1bbc2cf2aa", exercise_id: 11)
+Answer.create( result_set_hash: "98da3a97c9aa876b245b7ba48eae03ab8427712ccf2fa3aa74ba33b1f22a0c3c", exercise_id: 11)
 # 6.2
-Answer.create( result_set_hash: "e54e5dcf7e92190cf80503545ca1e50458d7c8f9504445c9b63fc1645d7e52a7", exercise_id: 12)
+Answer.create( result_set_hash: "8fa3c565431dbefe638d90f3e350b833087879a89a9dcc6b653d7fccbf160681", exercise_id: 12)
 
 
 # 7.1
-Answer.create( result_set_hash: "8bf925e742e6392fa550a192ef7f1210f37a462d47cf32ed981a7513aba39abd", exercise_id: 13)
-Answer.create( result_set_hash: "ef1ce76ae286034d1b4246e182af66a8fcfabd5f921117de16aa353e68b90947", exercise_id: 13)
-Answer.create( result_set_hash: "059db970ea50ce0a90909aed14a9febf835a7dd1f4af3ab0e7c383eae6c5768a", exercise_id: 13)
-Answer.create( result_set_hash: "9a011769b8dd512aeedcdbe082608be66f6d9ccf226ec77ac686f05a879b0f5a", exercise_id: 13)
-Answer.create( result_set_hash: "c7de47f4f8b0f7b5dd832758ca50b564530dd0ce759211e37b3915bbb1a2952a", exercise_id: 13)
-Answer.create( result_set_hash: "b1919adc082bf597e368fd5febafaecdf55aef2330f9089b06883559a4757d28", exercise_id: 13)
+Answer.create( result_set_hash: "e51321c15bb5b1cd46d9b60a18f441c1c98c362b36a33dd12ed926fcaa0e9344", exercise_id: 13) # name, city, state
+Answer.create( result_set_hash: "5d87be18badfb3fe7a23e9dcba935e8f8839346b6b909402a4791e368e4e75f3", exercise_id: 13) # name, state, city
+Answer.create( result_set_hash: "a820bd3bb1e7567746481482ac390e0a57784dbcdecbffa3faad2ec46fd97b5c", exercise_id: 13) # state, name, city
+Answer.create( result_set_hash: "c5f7ae4cf193f472f63e8d8167a8952856206d151172c2f7eb5f7ffd013d9270", exercise_id: 13) # state, city, name
+Answer.create( result_set_hash: "f87ce3c96f74e2f5759123e832a686faa9b059a2388b047f464c37bab14806a4", exercise_id: 13) # city, name, state
+Answer.create( result_set_hash: "42963699346d3d863666fab19afca3570a427ead6839924bb4a2ad1bf99df2bd", exercise_id: 13) # city, state, name
 
 # 7.2
-Answer.create( result_set_hash: "cae8adad8dc4cee2c8f75ad79a9841da53fe842417764ff7027a56a8b7684aa5", exercise_id: 14)
-Answer.create( result_set_hash: "0775c3ab16bf98bc6d15265ffad6e84bb673f396bb32bafecf6bc7d1d7a8837d", exercise_id: 14)
-Answer.create( result_set_hash: "2c273a438612476c6748ce5114f7e07d89abfb82872c56cd20f10e0eefce0271", exercise_id: 14)
-Answer.create( result_set_hash: "1864d31f5b68e04ade555e620a684a3b6f9f2f0c3e0f7a3786f0e911a875b419", exercise_id: 14)
-Answer.create( result_set_hash: "9c8b6c55967216971355d4085b672ec616470855958402c67157ebd4ae6e3834", exercise_id: 14)
-Answer.create( result_set_hash: "2e29e52ba1c1eaa76ce4776d534dc30fc4b5df231399389268175ea7dd2a61f9", exercise_id: 14)
+Answer.create( result_set_hash: "5b19eed02475b545c3981b9d546ddba5da3adeaedc8b667a96bb03c55a33870f", exercise_id: 14) # name, city, state
+Answer.create( result_set_hash: "3c8eb46f65886ab79a4f45bedc215e6f0573c541c91ac3005e27f397e019beb4", exercise_id: 14) # name, state, city
+Answer.create( result_set_hash: "e413117517381bb612037a1e9d7cd9b611539ea52f647801e723c40a7cbb690f", exercise_id: 14) # state, name, city
+Answer.create( result_set_hash: "56e05643ed47864e3ba8fc36f87f75c46649e3f2c5edcf67a1e513e00357a50a", exercise_id: 14) # state, city, name
+Answer.create( result_set_hash: "1dc75e6ce3d97ad3fb32e474a54fdd702a45f43358714631ecddbee1ecfb4ee0", exercise_id: 14) # city, name, state
+Answer.create( result_set_hash: "a8bf28dac8c620bfc2fa44c45e594d6bc7336aadfbc827d3fe13d8c60f4a6d94", exercise_id: 14) # city, state, name
 
 
 # 8.1
-Answer.create( result_set_hash: "3f5ff9f3913199feb59601aba8a8833a90df3aa16d5b85e824c4b280df574888", exercise_id: 15)
-Answer.create( result_set_hash: "8dc1fb21c1bf09aff8c9211c1b56b8586d699767f62b93a9466df78ee996d2ea", exercise_id: 15)
+Answer.create( result_set_hash: "7abb7924512ddc05ce255a8dacee0e8c9a79b77a15f9c1d313dbd4bfd380542a", exercise_id: 15) # schools.name, #locales.name
+Answer.create( result_set_hash: "d394d52c2d76acc0764c5ac7428e04d2d659d7b1286539877ac0ecd2dbe7147b", exercise_id: 15) # locales.name, #schools.name
 # 8.2
-Answer.create( result_set_hash: "874a0438aa6f83d3369fd789a260a427cd501e4590222873efc7b9cef9836ac9", exercise_id: 16)
-Answer.create( result_set_hash: "04532881be32d7287e4c2c41216c7eada1d5bbed806bb1cfa4439221d1761968", exercise_id: 16)
-Answer.create( result_set_hash: "191dbebcd8bf22007b93c3ab0762a9661f809d475b752962cd950cf022125838", exercise_id: 16)
-Answer.create( result_set_hash: "b85a3c0781cae67519e17c46168236e9ba670c845653c984ee01e506b1c3fb3b", exercise_id: 16)
-Answer.create( result_set_hash: "d25244cd708de122e145bab3db50d8d93ae7407c005939072acacbfd439e3c41", exercise_id: 16)
-Answer.create( result_set_hash: "3ad3b59e225f354b23e4cc904544e7dd565ac1e46b631ad9c96963fc0db7ff73", exercise_id: 16)
+Answer.create( result_set_hash: "874a0438aa6f83d3369fd789a260a427cd501e4590222873efc7b9cef9836ac9", exercise_id: 16) # name, url, classification
+Answer.create( result_set_hash: "a28e1815eac6c0e91bc6fab022a97bf4560f628b2fbe97cdbbf002462ed0824d", exercise_id: 16) # name, classification, url
+Answer.create( result_set_hash: "cbf0fb5cd7046b62112793dc05ab4374b53d457a6ec7a9b6fa94a958fe4c265e", exercise_id: 16) # classification, name, url
+Answer.create( result_set_hash: "c537995496934de7ef368fae388258a43c7e2b396ce6db247f17813c195fda24", exercise_id: 16) # classification, url, name
+Answer.create( result_set_hash: "ad719d135313610e05686bc941b4e208cbaf7f58928109d4991da6138b75ccc0", exercise_id: 16) # url, name, classification
+Answer.create( result_set_hash: "2eb5cde7c0723adcc0c5a9cecdefcf3fd86447ae51890785896f5cb4be243e1c", exercise_id: 16) # url, classification, name
 # 8.3
-Answer.create( result_set_hash: "56e148aa3f8e520e209d4b024eefb59f25830fd75c640c809e79999b0dad0dd6", exercise_id: 17)
-Answer.create( result_set_hash: "c6f4b801826e5b3ffb78da4f07f541c29c3f35734b1212600048ed6be26a1ea6", exercise_id: 17)
-Answer.create( result_set_hash: "d8557247e15b89e3a5d302ddadbe4379b50953dea083015ba953f61af953797e", exercise_id: 17)
-Answer.create( result_set_hash: "c931027b12fc58a094a64da4ba0edef11e5ab24c4721071e704e6b12c03dc14c", exercise_id: 17)
-Answer.create( result_set_hash: "338e54fc669141c00ec6310f1855adbade71b43f79bfe4730d5df51dc9061203", exercise_id: 17)
-Answer.create( result_set_hash: "429403ea4e654027865a3d59881a79f34ea76275b6d46fd340b6b3f444b3c3bf", exercise_id: 17)
+Answer.create( result_set_hash: "c9538d723d6b5482c2bcb913531cdadb6a06f711a06abf1f344add2d12386290", exercise_id: 17) # name, city, url
+Answer.create( result_set_hash: "af230b10191ce6b2ade456864ea7d561ae779e83d7b7b3dda2b7b40fd7aacd6f", exercise_id: 17) # name, url, city
+Answer.create( result_set_hash: "33552196852acf2c5f8966768f98a68256a185450ec3d072d08666554fc6ba11", exercise_id: 17) # url, name, city
+Answer.create( result_set_hash: "eac5085200b13b99ef8e80bdcf2c33d5db1f9de5db8d67aa850e6fbfe1c1db75", exercise_id: 17) # url, city, name
+Answer.create( result_set_hash: "5300c522863c0c2c8ee2adbc4b06566aa4e0d827a0b23cc277814737b56879c4", exercise_id: 17) # city, url, name
+Answer.create( result_set_hash: "38230ea8f5c2378d71d349c5a21898aaf2f59ac5eea98e597f84eb4b31b96252", exercise_id: 17) # city, name, url
