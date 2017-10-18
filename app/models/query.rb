@@ -199,7 +199,7 @@ class Query < ActiveRecord::Base
 		# store the true size of the result set now
 		self.result_size = @result.size
 
-	    htmlTable += "<table>"
+	    htmlTable += "<table class='table table-sm'>"
 	    htmlTable += "\n\t<thead>\n\t\t<tr>"
 
 		# http://rubydoc.info/gems/mysql2/0.2.6/Mysql2/Result#fields-instance_method

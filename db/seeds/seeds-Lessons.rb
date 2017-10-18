@@ -22,7 +22,7 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 <p>
 
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<caption>Schools</caption>
 	<thead>
 		<tr>
@@ -99,7 +99,7 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 	key attribtues of database structure.  Each horizontal <strong>row</strong> represents
 	one school.  For example:
 
-	<table class='responsive'>
+	<table class='table table-responsive'>
 		<tbody>
 			<tr>
 				<td>6</td>
@@ -169,22 +169,22 @@ FROM schools</textarea>
 
 <p>
 	A typical query will contain a combination of <em>keywords</em> and words that are specific to your situation.
-	In this example, and throughout the following lessons, keywords will be capitalized. SELECT and FROM are both keywords.
+	In this example, and throughout the following lessons, keywords will be capitalized. <code>SELECT</code> and <code>FROM</code> are both keywords.
 	They will appear in every query you ever write. The asterisk character and <em>schools</em> are
 	both specific to this example.
 </p>
 
 <ul>
-	<li>SELECT is like saying <em>please find for me...</em></li>
+	<li><code>SELECT</code> is like saying <em>please find for me...</em></li>
 	<li>The asterisk is a <em>wildcard</em> character that means <em>everything available</em>.</li>
 </ul>
 
 <p>
-	So, the statement <strong>SELECT *</strong> is like saying <em>please find for me everything available</em>
+	So, the statement <code>SELECT *</code> is like saying <em>please find for me everything available</em>
 </p>
 
 <ul>
-	<li>The keyword FROM tells the database in what table(s) to look</li>
+	<li>The keyword <code>FROM</code> tells the database in what table(s) to look</li>
 	<li><em>schools</em> is the name of the table we want it to look in</li>
 </ul>
 
@@ -218,7 +218,7 @@ WHERE city = 'University Park'</textarea>
 	This query would return exactly one row:
 </p>
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<tbody>
 		<tr>
 			<td>3636</td>
@@ -240,9 +240,9 @@ WHERE city = 'University Park'</textarea>
 </p>
 
 <ul>
-	<li><strong>WHERE</strong> is like saying <em>I am only interested in the rows that meet this condition</em></li>
+	<li><code>WHERE</code> is like saying <em>I am only interested in the rows that meet this condition</em></li>
 	<li><em>city</em> is one of the columns in the schools table; it is an attribute of a school</li>
-	<li><strong>=</strong> is a SQL operator; it compares the attribute on its left to the value on its right</li>
+	<li><code>=</code> is a SQL operator; it compares the attribute on its left to the value on its right</li>
 	<li><em>'University Park'</em> is a value that you have provided, in this case a city you are interested in</li>
 </ul>
 
@@ -259,8 +259,8 @@ WHERE city = 'University Park'</textarea>
 	<h4>A Brief Aside Concerning Capitalization</h4>
 	<p>
 		Throughout these lessons, you will not need to worry about capitalization when typing your SQL.
-		This means that <em>SELECT</em> will effectively be the same as <em>select</em>,
-		which will effectively be the same as <em>SeLeCt</em>. In ScriptKitty the following
+		This means that <code>SELECT</code> will effectively be the same as <code>select</code>,
+		which will effectively be the same as <code>SeLeCt</code>. In ScriptKitty the following
 		two queries are interchangeable:
 	</p>
 
@@ -297,7 +297,7 @@ WHERE state = 'AK'</textarea>
 	In plain English, the query would read: <em>please give me all the attributes of any schools in which the state exactly matches 'AK'</em>.  This query returns the following twelve rows:
 </p>
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -429,13 +429,13 @@ WHERE state = 'AK'</textarea>
 Lesson.create( title: '<em>Equals</em> is not the only operator', objective: 'Search through text using the <em>like</em> operator.', body: "
 <p>
 	In the <a href='./2/'>previous lesson</a>, we learned how to limit the results of our query by adding a condition.
-	The <strong>WHERE</strong> keyword signifies that you want to limit your results by comparing some value to some table attribute
-	using an operator.  We learned how to use the <strong>=</strong> operator to perform an exact match.
+	The <code>WHERE</code> keyword signifies that you want to limit your results by comparing some value to some table attribute
+	using an operator.  We learned how to use the <code>=</code> operator to perform an exact match.
 </p>
 
 <p>
 	It was pretty cool, and it can definitely be helpful in some situations, but because it looks
-	for exact matches only, it is somewhat constraining. For example, this query
+	for <em>exact</em> matches only, it is somewhat constraining. For example, this query
 </p>
 
 <textarea class='raw-sql'>SELECT *
@@ -458,12 +458,12 @@ WHERE name LIKE '%Yale%'</textarea>
 <p>
 	Most of this query is the same as the previous example.  There are two important differences, however.
 	<ul>
-		<li>the operator is <strong>LIKE</strong> ( instead of <strong>=</strong> )</li>
-		<li>the text is now wrapped inside both quotation marks and <strong>%</strong> symbols</li>
+		<li>the operator is <code>LIKE</code> instead of <code>=</code></li>
+		<li>the text is now wrapped inside both quotation marks and <code>%</code> symbols</li>
 	</ul>
 </p>
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -508,13 +508,13 @@ WHERE name LIKE '%Yale%'</textarea>
 
 <p>
 	There are many different operators available in SQL that each perform a unique action.
-	The <strong>LIKE</strong> operator checks an attribute to see if it contains some text you provide.
+	The <code>LIKE</code> operator checks an attribute to see if it contains some text you provide.
 </p>
 
 <p>
-	The <strong>%</strong> symbols are a way of denoting that there is an unknown number of characters
+	The <code>%</code> symbols are a way of denoting that there is an unknown number of characters
 	before and after your text.  It doesn't matter what they are.  What matters is whether the attribute
-	contains the text between the two <strong>%</strong> symbols.  If it does, it will show up in your results.
+	contains the text between the two <code>%</code> symbols.  If it does, it will show up in your results.
 </p>
 
 <p>
@@ -536,8 +536,8 @@ WHERE name LIKE '%Yale%'</textarea>
 
 Lesson.create( title: 'Compound Conditional Statements: Part 1', objective: 'Chain two conditions together with <em>OR</em>.', body: "
 <p>
-	We're starting to pick up some steam now!  We've learned how to search for exact matches using <strong>=</strong>
-	and how to sift through text using <strong>LIKE</strong>.  Remember that those are both called operators.  There
+	We're starting to pick up some steam now!  We've learned how to search for exact matches using <code>=</code>
+	and how to sift through text using <code>LIKE</code>.  Remember that those are both called operators.  There
 	are a few more handy operators that we'll cover eventually, but we'll get to those later.  This lesson will introduce
 	the idea of <em>compound conditions</em>.
 </p>
@@ -580,7 +580,7 @@ WHERE chief LIKE '%Cate%'</textarea>
 
 
 <p>
-	Thankfully, we can combine those into a single query using <strong>OR</strong>:
+	Thankfully, we can combine those into a single query using <code>OR</code>:
 </p>
 
 <textarea class='raw-sql'>SELECT *
@@ -589,11 +589,11 @@ WHERE chief LIKE '%Kate%'
 OR chief LIKE '%Cate%'</textarea>
 
 <p>
-	Using <strong>OR</strong> often broadens your result set.  If one condition is not true, perhaps the other one will be.
+	Using <code>OR</code> often broadens your result set.  If one condition is not true, perhaps the other one will be.
 	Neat!  Let's check our results:
 </p>
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -692,8 +692,8 @@ OR chief LIKE '%Cate%'</textarea>
 </table>
 
 <p>
-	You are not limited to using <strong>OR</strong> once in a query.  In 'real world' queries,
-	<strong>OR</strong> is commonly used to chain multiple conditions together, like this example:
+	You are not limited to using <code>OR</code> once in a query.  In 'real world' queries,
+	<code>OR</code> is commonly used to chain multiple conditions together, like this example:
 </p>
 
 <textarea class='raw-sql'>SELECT *
@@ -719,7 +719,7 @@ Lesson.create( title: 'Compound Conditional Statements: Part 2', objective: 'Cha
 <p>
 	In the <a href='./4'>previous lesson</a> we learned how to broaden the scope of our queries
 	by using OR to chain conditions together.  In this lesson, we'll cover the opposite idea -- a way to narrow
-	the scope of your queries and make them <em>more</em> specific.  We can do this using the <strong>AND</strong>
+	the scope of your queries and make them <em>more</em> specific.  We can do this using the <code>AND</code>
 	keyword.
 </p>
 
@@ -736,9 +736,9 @@ WHERE city = 'Harrisburg'</textarea>
 </p>
 
 <p>
-	In a situation like this, we could use an <strong>AND</strong> to chain more than one condition.  In this case,
+	In a situation like this, we could use an <code>AND</code> to chain more than one condition.  In this case,
 	<em>both</em> conditions must be true for the row to be returned.  (This is a significant difference from using
-	<strong>OR</strong>, where only one condition needed to be true.)  The query would look like this:
+	<code>OR</code>, where only one condition needed to be true.)  The query would look like this:
 <p>
 
 <textarea class='raw-sql'>SELECT *
@@ -750,7 +750,7 @@ AND city = 'Harrisburg'</textarea>
 	It would return a single row:
 </p>
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -782,7 +782,7 @@ AND city = 'Harrisburg'</textarea>
 </p>
 
 <p>
-	Some people find it helpful to think of <strong>AND</strong> in terms of a Venn Diagram.
+	Some people find it helpful to think of <code>AND</code> in terms of a Venn Diagram.
 </p>
 
 <p>
@@ -790,19 +790,19 @@ AND city = 'Harrisburg'</textarea>
 </p>
 
 <p>
-	<strong>WHERE state = 'IL'</strong> is a single condition that would return its own set of results.<br>
-	<strong>WHERE city = 'Harrisburg'</strong> is also a single condition that would return its own set of results.
+	<code>WHERE state = 'IL'</code> is a single condition that would return its own set of results.<br>
+	<code>WHERE city = 'Harrisburg'</code> is also a single condition that would return its own set of results.
 </p>
 
 <p>
-	By chaining them together with an <strong>AND</strong> we let the database know that we are only interested in
+	By chaining them together with an <code>AND</code> we let the database know that we are only interested in
 	the results that are common to both.
 </p>
 " )
 
 Lesson.create( title: 'Does Not Equal', objective: 'Filter your results using the <em>does not equal</em> operator.', body: "
 <p>
-	Now that we've learned how to chain multiple conditions together using <strong>AND</strong> and <strong>OR</strong>,
+	Now that we've learned how to chain multiple conditions together using <code>AND</code> and <code>OR</code>,
 	we can continue with operators.  This lesson will be short, but can be useful at times to limit results.  It
 	will introduce the idea of <em>does not equal</em>.
 </p>
@@ -823,11 +823,11 @@ WHERE city = 'Scranton'
 AND name &lt;&gt; 'University of Scranton'</textarea>
 
 <p>
-	The SQL operator for <em>does not equal</em> here is represented as <strong>&lt;&gt;</strong> and the query returns
+	The SQL operator for <em>does not equal</em> here is represented as <code>&lt;&gt;</code> and the query returns
 	results like:
 </p>
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -922,12 +922,12 @@ AND name &lt;&gt; 'University of Scranton'</textarea>
 </p>
 
 <p>
-	Keep in mind that there is no <em>but</em> keyword in SQL; there is only <strong>AND</strong> and <strong>OR</strong>.
+	Keep in mind that there is no <em>but</em> keyword in SQL; there is only <code>AND</code> and <code>OR</code>.
 <p>
 
 <p>
-	It is also worth noting that <em>does not equal</em> is usually written as <strong>&lt;&gt;</strong>
-	but it is sometimes written as <strong>!=</strong>
+	It is also worth noting that <em>does not equal</em> is usually written as <code>&lt;&gt;</code>
+	but it is sometimes written as <code>!=</code>
 </p>
 
 This:
@@ -945,7 +945,7 @@ WHERE city = 'Scranton'
 AND name &lt;&gt; 'University of Scranton'</textarea>
 
 <p>
-	They are two ways of saying the same thing.  Both are equally valid, but <strong>&lt;&gt;</strong>
+	They are two ways of saying the same thing.  Both are equally valid, but <code>&lt;&gt;</code>
 	is more commonly seen and used.
 </p>
 
@@ -969,7 +969,7 @@ WHERE city = 'University Park'</textarea>
 	returned a single row with all seven columns intact.
 </p>
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<thead>
 		<tr>
 			<th>id</th>
@@ -1002,7 +1002,7 @@ WHERE city = 'University Park'</textarea>
 </p>
 
 <p>
-	So, there are situations when <strong>SELECT *</strong> is too broad.  In such cases, we can specify
+	So, there are situations when <code>SELECT *</code> is too broad.  In such cases, we can specify
 	exactly which columns we are interested in retrieving.  Let's take a look at this query:
 </p>
 
@@ -1014,7 +1014,7 @@ WHERE city = 'University Park'</textarea>
 	This would return a result set like:
 </p>
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<thead>
 		<tr>
 			<th>chief</th>
@@ -1028,7 +1028,7 @@ WHERE city = 'University Park'</textarea>
 </table>
 
 <p>
-	Notice that instead of the usual <strong>SELECT *</strong>, we've specified a column.  <strong>SELECT chief</strong>
+	Notice that instead of the usual <code>SELECT *</code>, we've specified a column.  <code>SELECT chief</code>
 </p>
 
 <p>
@@ -1043,7 +1043,7 @@ WHERE zip like '%18509%'</textarea>
 	returns three rows across four columns.
 </p>
 
-<table class='responsive'>
+<table class='table table-responsive'>
 	<thead>
 		<tr>
 			<th>name</th>
@@ -1130,21 +1130,21 @@ AND schools.state &lt;&gt; 'CA'</textarea>
 </p>
 
 <p>
-	The second line is familiar, (we are retrieving data <strong>FROM</strong> <em>schools</em>),
+	The second line is familiar, (we are retrieving data <code>FROM schools</code>),
 	but perhaps it is also confusing.  What about <em>locales</em>?  Shouldn't we also retrieve
-	data <strong>FROM</strong> <em>locales</em>?
+	data <code>FROM locales</code>?
 </p>
 
 <p>
 	Well, we do!  With each additional table we want to query, we'll need an additional line of SQL
-	explicitly <strong>JOIN</strong>ing that table to the original in a meaningful way.  In this example,
-	the third line of the query serves to <strong>JOIN</strong> the second table to the first.
+	explicitly <code>JOIN</code>ing that table to the original in a meaningful way.  In this example,
+	the third line of the query serves to <code>JOIN</code> the second table to the first.
 </p>
 
 <p>
-	A <strong>JOIN</strong> statement will always be followed by a meaningful <strong>ON</strong> statement,
-	which might look similar to the simple <strong>WHERE</strong> statements we learned in <a href='./2'>Lesson 2</a>.
-	<strong>ON</strong> is different, however, in that it must utilize the <strong>=</strong> operator to link
+	A <code>JOIN</code> statement will always be followed by a meaningful <code>ON</code> statement,
+	which might look similar to the simple <code>WHERE</code> statements we learned in <a href='./2'>Lesson 2</a>.
+	<code>ON</code> is different, however, in that it must utilize the <code>=</code> operator to link
 	two related columns from two different tables which are typically numerical IDs. Here, we are linking <em>locales.id</em> and <em>schools.locale_id</em>.
 </p>
 
@@ -1175,7 +1175,7 @@ WHERE city = 'university park'</textarea>
 
 <p>
 	In ScriptKitty, and in most real-world scenarios, the database tables will be properly set up by an
-	experienced database administrator to allow easy <strong>JOIN</strong>ing through thoughtfully named
+	experienced database administrator to allow easy <code>JOIN</code>ing through thoughtfully named
 	columns.  While relational database design is a worthy and engaging topic of its own, it is outside
 	the scope of these lessons.  There are additional educational resources listed on the <a href='../about'>About</a>
 	page if you are still curious later.

@@ -37,7 +37,7 @@ gem 'jquery-ui-rails'
 # login/authentication
 gem 'devise'
 # flexible layout
-gem 'foundation-rails', '5.5.2.1'
+gem 'bootstrap', '~> 4.0.0.beta'
 # pagination
 gem 'kaminari'
 # a web-based text editor

@@ -1,11 +1,11 @@
-<div class="row">
+<div class="row justify-content-center">
 
-	<div class="medium-8 small-11 small-centered columns">
+	<div class="col-sm-11 col-md-8">
 		<h3><%= link_to "Educator Panel", educator_index_path %> / Lessons </h3>
 
 		<p><%= paginate @lessons %></p>
 
-		<table>
+		<table class="table">
 			<thead>
 				<tr>
 					<th>Lesson ID</th>

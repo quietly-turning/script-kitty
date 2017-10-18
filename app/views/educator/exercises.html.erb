@@ -53,27 +53,27 @@
 	});
 </script>
 
-<div class="row">
+<div class="row justify-content-center">
 
-	<div class="medium-8 small-11 small-centered columns">
+	<div class="col-sm-11 col-md-8">
 		<h3><%= link_to "Educator Panel", educator_index_path %> / Exercises </h3>
 
 		<p><%= paginate @exercises %></p>
 	</div>
 
-	<div class="medium-8 small-11 small-centered columns">
+	<div class="col-sm-11 col-md-8">
 		<div id="table_div"></div>
 	</div>
 
 	<br><br>
-	<div class="medium-8 small-11 small-centered columns">
+	<div class="col-sm-11 col-md-8">
 		<div id="master_chart"></div>
 	</div>
 
 
 	<% @columns.each do |column| %>
 		<br><br><br>
-		<div class="medium-8 small-11 small-centered columns">
+		<div class="col-sm-11 col-md-8">
 			<div id="chart_div_<%= column %>"></div>
 		</div>
 	<% end %>

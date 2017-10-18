@@ -8,10 +8,10 @@
 
 
 #poof{
-    background: transparent url(poof.png) no-repeat 0 0; 
-    height: 128px; 
-    position: fixed; 
-    width: 128px; 
+    background: transparent url(poof.png) no-repeat 0 0;
+    height: 128px;
+    position: fixed;
+    width: 128px;
 }
 
 .actions{
@@ -122,7 +122,7 @@ div.parameterInput input{
 	font-size:0.8em;
 	height:36px;
 	width:140px;
-	
+
 //	this is crucial
 //	foundation auto-adds margins to inputs but we do NOT want them here
 	margin:0px;
