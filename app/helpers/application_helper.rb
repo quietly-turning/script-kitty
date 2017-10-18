@@ -11,8 +11,8 @@ module ApplicationHelper
 					return "<span class='invalid'>&#x2717;</span>"
 
 				# valid, but incorrect
-				# elsif query.status == 1
-				# 	return ""
+				elsif query.status == 1
+					return "<span class='valid'>?</span>"
 
 				# correct
 				elsif query.status == 2
