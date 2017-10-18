@@ -26,7 +26,7 @@
 						Lessons
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<% for lesson in Lesson.all %>
+						<% @lessons.each do |lesson| %>
 							<%= link_to "Lesson #{lesson.id}", lesson_path(lesson.id), class: "dropdown-item" %>
 						<% end %>
 					</div>
@@ -37,10 +37,8 @@
 						Exercises
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<% for lesson in Lesson.all %>
-							<% for exercise in lesson.exercises %>
-								<%= link_to ("Exercise #{exercise.lesson_id}.#{exercise.dummy_id}  " + user_exercise_status(exercise)).html_safe, lesson_exercise_path(lesson, exercise), class: "dropdown-item" %>
-							<% end %>
+						<% @exercises.each do |exercise| %>
+							<%= link_to ("Exercise #{exercise.lesson_id}.#{exercise.dummy_id}  #{user_exercise_status(exercise)}").html_safe, lesson_exercise_path(exercise.lesson, exercise), class: "dropdown-item" %>
 						<% end %>
 		        </div>
 		      </li>

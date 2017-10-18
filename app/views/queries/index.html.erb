@@ -3,56 +3,39 @@
 </div>
 
 <div class="row">
-	<div class="col-sm-10 mx-auto">
+	<div class="col-sm-5 col-md-4 mx-auto">
 		<h1>My Progress</h1>
 	</div>
 </div>
 
-<div class="row">
-		<div class="col-sm-6 col-md-5">
 
-			<% @lessons_first_half.each do |lesson| %>
-				<h3>Lesson <%= lesson.id %></h3>
-				<p class="subtitle"><%= lesson.title.html_safe %></p>
-
-				<ul>
-			    <% lesson.exercises.each do |exercise| %>
-					<li>
-					<% if @queries[lesson.id][exercise.dummy_id] %>
-						<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", query_path(@queries[lesson.id][exercise.dummy_id]), :title => exercise.description %> -
-						<%= give_meaning_to(@queries[lesson.id][exercise.dummy_id].status).html_safe %>
-					<% else %>
-						<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", lesson_exercise_path(lesson, exercise), :title => exercise.description %> -
-						<em>not attempted yet</em>
-				    <% end %>
-					</li>
-				<% end %>
-				</ul>
-
-			<% end %>
-		</div><!-- medium-5 -->
+<div class="row justify-content-center">
+	<% @lessons.each_with_index do |lesson, i| %>
+		<% if i%2==0 %>
+			<div class="col-md-1"></div>
+		<% end%>
 
 		<div class="col-sm-6 col-md-5">
+			<h3>Lesson <%= lesson.id %></h3>
+			<p class="subtitle"><%= lesson.title.html_safe %></p>
 
-			<% @lessons_second_half.each do |lesson| %>
-				<h3>Lesson <%= lesson.id %></h3>
-				<p class="subtitle"><%= lesson.title.html_safe %></p>
-
-				<ul>
-			    <% lesson.exercises.each do |exercise| %>
-					<li>
-					<% if @queries[lesson.id][exercise.dummy_id] %>
-						<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", query_path(@queries[lesson.id][exercise.dummy_id]), :title => exercise.description %> -
-						<%= give_meaning_to(@queries[lesson.id][exercise.dummy_id].status).html_safe %>
-
-					<% else %>
-						<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", lesson_exercise_path(lesson, exercise), :title => exercise.description %> -
-						<em>not attempted yet</em>
-				    <% end %>
-					</li>
-				<% end %>
-				</ul>
-
+			<ul>
+		    <% lesson.exercises.each do |exercise| %>
+				<li>
+				<% if @queries[lesson.id][exercise.dummy_id] %>
+					<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", query_path(@queries[lesson.id][exercise.dummy_id]), :title => exercise.description %> -
+					<%= give_meaning_to(@queries[lesson.id][exercise.dummy_id].status).html_safe %>
+				<% else %>
+					<%= link_to "Exercise #{lesson.id}.#{exercise.dummy_id}", lesson_exercise_path(lesson, exercise), :title => exercise.description %> -
+					<em>not attempted yet</em>
+			    <% end %>
+				</li>
 			<% end %>
-		</div><!-- medium-5 -->
-</div><!-- row -->
+			</ul>
+		</div>
+
+		<% if i%2==1 %>
+			<div class="col-md-1"></div>
+		<% end%>
+	<% end %>
+</div>
