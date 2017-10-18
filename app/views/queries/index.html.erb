@@ -3,19 +3,19 @@
 </div>
 
 <div class="row">
-	<div class="col-sm-5 col-md-4 mx-auto">
+	<div class="col-10 text-center">
 		<h1>My Progress</h1>
 	</div>
 </div>
 
 
-<div class="row justify-content-center">
+<div class="row">
 	<% @lessons.each_with_index do |lesson, i| %>
 		<% if i%2==0 %>
-			<div class="col-md-1"></div>
+			<div class="col-md-1 col-lg-2"></div>
 		<% end%>
 
-		<div class="col-sm-6 col-md-5">
+		<div class="col-sm-6 col-md-5 col-lg-4">
 			<h3>Lesson <%= lesson.id %></h3>
 			<p class="subtitle"><%= lesson.title.html_safe %></p>
 
@@ -35,7 +35,7 @@
 		</div>
 
 		<% if i%2==1 %>
-			<div class="col-md-1"></div>
+			<div class="col-md-1 col-lg-2"></div>
 		<% end%>
 	<% end %>
 </div>

@@ -19,14 +19,17 @@ class QueriesController < ApplicationController
   # GET /queries
   # GET /queries.json
   def index
-	 @lessons = Lesson.all
-	 @lessons_first_half =  @lessons[0..3]
-	 @lessons_second_half = @lessons[4..7]
+	 @lessons ||= Lesson.all
+
 	 @next_lesson_to_try = 1
 	 continue_searching_for_next_lesson = true
 
-	 @queries = Array.new
+	 # @queries = {}
+	 # @exercises.each do |exercise|
+	 # 		 @queries["#{exercise.id}"] = Query.where(user_id: current_user.id, exercise_id: exercise.id).order(:created_at).last
+	 # end
 
+	 @queries = []
 	 @lessons.each do |lesson|
 		 @queries[lesson.id] = Array.new
 		 exercises = Exercise.where(lesson_id: lesson.id)

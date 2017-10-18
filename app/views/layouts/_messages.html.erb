@@ -1,7 +1,6 @@
 <% flash.each do |name, msg| %>
 
 	<% if msg.is_a?(String) and not msg.blank? %>
-		<div class="col-sm-3"></div>
 
  		<div class="col-sm-6 kitty-bubble bubbletype-<%= name.to_s == 'notice' ? 'success' : 'alert' %>">
 			<div class="message"><%= msg.html_safe %></div>
