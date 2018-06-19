@@ -20,9 +20,15 @@
 		<%= @lesson.body.html_safe %>
 
 		<hr>
-		<h4>
-			<%= link_to "Try Exercise " + @lesson.id.to_s + "." + @lesson.exercises.first.dummy_id.to_s, lesson_exercise_path(@lesson, @lesson.exercises.first) %>
-		</h4>
+    <% if current_user %>
+  		<h4>
+  			<%= link_to "Try Exercise " + @lesson.id.to_s + "." + @lesson.exercises.first.dummy_id.to_s, lesson_exercise_path(@lesson, @lesson.exercises.first) %>
+  		</h4>
+    <% else %>
+      <h4>
+        <%= link_to('Login', new_user_session_path)  %> or <%= link_to 'Create A New Account', new_user_registration_path %> to try Exercise <%= @lesson.id.to_s + ".1" %>
+      </h4>
+    <% end %>
 		<br><br><br>
 	</div>
 </div>

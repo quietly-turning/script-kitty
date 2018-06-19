@@ -36,11 +36,12 @@ table {
 }
 
 table caption {
-	caption-side: top;
-	color: black;
-	padding-bottom: 0rem;
-	font-weight:bold;
-	font-size: 1.25em;
+//	caption-side: top;
+//	color: black;
+//	padding-bottom: 0rem;
+//	font-weight:bold;
+//	font-size: 1.25em;
+	display:none;
 }
 
 table, th, td {

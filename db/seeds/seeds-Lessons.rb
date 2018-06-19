@@ -5,6 +5,8 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 	It is likely that you interact with databases on a daily basis but don't realize it.
 	Popular websites like Google, Facebook, and YouTube all rely on databases.
 	Databases contain data in a way that makes them easily searched, filtered, and retrieved.
+</p>
+<p>
 	That searching, filtering, and retrieval is most often done using a language called SQL or
 	<strong>S</strong>tructured <strong>Q</strong>uery <strong>L</strong>anguage.
 </p>
@@ -21,10 +23,10 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 	Here is a very simple database consisting of a single table that contains seven columns and six rows (don't include the header row in your count).
 <p>
 
-
-<table class='table table-responsive'>
+<h2>Schools</h2>
+<table class='table table-bordered table-responsive'>
 	<caption>Schools</caption>
-	<thead>
+	<thead class=\"thead-dark\">
 		<tr>
 			<th>id</th>
 			<th>name</th>
@@ -99,7 +101,7 @@ Lesson.create( title: 'What is SQL?', objective: 'Write a simple query.', body: 
 	key attribtues of database structure.  Each horizontal <strong>row</strong> represents
 	one school.  For example:
 
-	<table class='table table-responsive'>
+	<table class='table table-bordered table-responsive'>
 		<tbody>
 			<tr>
 				<td>6</td>
@@ -218,7 +220,7 @@ WHERE city = 'University Park'</textarea>
 	This query would return exactly one row:
 </p>
 
-<table class='table table-responsive'>
+<table class='table table-bordered table-responsive'>
 	<tbody>
 		<tr>
 			<td>3636</td>
@@ -297,8 +299,8 @@ WHERE state = 'AK'</textarea>
 	In plain English, the query would read: <em>please give me all the attributes of any schools in which the state exactly matches 'AK'</em>.  This query returns the following twelve rows:
 </p>
 
-<table class='table table-responsive'>
-	<thead>
+<table class='table table-bordered table-responsive'>
+	<thead class=\"thead-dark\">
 		<tr>
 			<th>id</th>
 			<th>name</th>
@@ -463,8 +465,8 @@ WHERE name LIKE '%Yale%'</textarea>
 	</ul>
 </p>
 
-<table class='table table-responsive'>
-	<thead>
+<table class='table table-bordered table-responsive'>
+	<thead class=\"thead-dark\">
 		<tr>
 			<th>id</th>
 			<th>name</th>
@@ -593,8 +595,8 @@ OR chief LIKE '%Cate%'</textarea>
 	Neat!  Let's check our results:
 </p>
 
-<table class='table table-responsive'>
-	<thead>
+<table class='table table-bordered table-responsive'>
+	<thead class=\"thead-dark\">
 		<tr>
 			<th>id</th>
 			<th>name</th>
@@ -750,8 +752,8 @@ AND city = 'Harrisburg'</textarea>
 	It would return a single row:
 </p>
 
-<table class='table table-responsive'>
-	<thead>
+<table class='table table-bordered table-responsive'>
+	<thead class=\"thead-dark\">
 		<tr>
 			<th>id</th>
 			<th>name</th>
@@ -827,8 +829,8 @@ AND name &lt;&gt; 'University of Scranton'</textarea>
 	results like:
 </p>
 
-<table class='table table-responsive'>
-	<thead>
+<table class='table table-bordered table-responsive'>
+	<thead class=\"thead-dark\">
 		<tr>
 			<th>id</th>
 			<th>name</th>
@@ -969,8 +971,8 @@ WHERE city = 'University Park'</textarea>
 	returned a single row with all seven columns intact.
 </p>
 
-<table class='table table-responsive'>
-	<thead>
+<table class='table table-bordered table-responsive'>
+	<thead class=\"thead-dark\">
 		<tr>
 			<th>id</th>
 			<th>name</th>
@@ -1014,8 +1016,8 @@ WHERE city = 'University Park'</textarea>
 	This would return a result set like:
 </p>
 
-<table class='table table-responsive'>
-	<thead>
+<table class='table table-bordered table-responsive'>
+	<thead class=\"thead-dark\">
 		<tr>
 			<th>chief</th>
 		</tr>
@@ -1043,8 +1045,8 @@ WHERE zip like '%18509%'</textarea>
 	returns three rows across four columns.
 </p>
 
-<table class='table table-responsive'>
-	<thead>
+<table class='table table-bordered table-responsive'>
+	<thead class=\"thead-dark\">
 		<tr>
 			<th>name</th>
 			<th>city</th>
@@ -1192,7 +1194,7 @@ WHERE city = 'university park'</textarea>
 </p>
 
 <table class='responsive' width='100%'>
-	<thead>
+	<thead class=\"thead-dark\">
 		<tr>
 			<th>name</th>
 			<th>state</th>
